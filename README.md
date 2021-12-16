@@ -2,4 +2,4 @@
 books
 
 
-[kubebuilder 从零开始](/kubebuiler-zero-to-one/)
+[kubebuilder 从零开始](/kubebuilder-zero-to-one/)
