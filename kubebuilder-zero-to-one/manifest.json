@@ -1,0 +1,15 @@
+{
+  "name": "kuberbuilder 从零开始",
+  "short_name": "kuberbuilder 从零开始",
+  "start_url": "/kubebuilder-zero-to-one/",
+  "scope": "/kubebuilder-zero-to-one/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/kubebuilder-zero-to-one/favicon.svg",
+      "sizes": "512x512"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+navigator.serviceWorker&&navigator.serviceWorker.register("/kubebuilder-zero-to-one/sw.js",{scope:"/kubebuilder-zero-to-one/"})
