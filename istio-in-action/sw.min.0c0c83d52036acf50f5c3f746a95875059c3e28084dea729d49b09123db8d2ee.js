@@ -1,0 +1,1 @@
+navigator.serviceWorker&&navigator.serviceWorker.register("/istio-in-action/sw.js",{scope:"/istio-in-action/"})

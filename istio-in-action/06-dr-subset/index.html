@@ -1,0 +1,139 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="使用 DestinationRule Subset 进行路由分组(版本控制) #  当一个程序并行发布多个版本的时候， 如 prod-v1 / prod-v2
+kgd NAME READY UP-TO-DATE AVAILABLE AGE toolbox 1/1 1 1 3d22h prod-v1 1/1 1 1 16m prod-v2 1/1 1 1 16m // 两个版本的测试结果， 仅定义为 version 不一致 { &#34;data&#34;: { &#34;Name&#34;: &#34;istio in action&#34;, &#34;Price&#34;: 300, &#34;Reviews&#34;: null }, &#34;version&#34;: &#34;v2.0.0&#34; // &#34;version&#34;: &#34;v1.0.0&#34; } k8s Service 依旧实现最根本的 服务级别的 Selector。
+--- # Service apiVersion: v1 kind: Service metadata: labels: app: prod name: svc-prod namespace: myistio spec: ports: - name: 80-8080 port: 80 protocol: TCP targetPort: 8080 selector: app: prod type: ClusterIP 默认情况下会根据 VirtualService 的默认规则 轮询 到后端的所有服务。"><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="使用 DestinationRule Subset 进行路由分组(版本控制) #  当一个程序并行发布多个版本的时候， 如 prod-v1 / prod-v2
+kgd NAME READY UP-TO-DATE AVAILABLE AGE toolbox 1/1 1 1 3d22h prod-v1 1/1 1 1 16m prod-v2 1/1 1 1 16m // 两个版本的测试结果， 仅定义为 version 不一致 { &#34;data&#34;: { &#34;Name&#34;: &#34;istio in action&#34;, &#34;Price&#34;: 300, &#34;Reviews&#34;: null }, &#34;version&#34;: &#34;v2.0.0&#34; // &#34;version&#34;: &#34;v1.0.0&#34; } k8s Service 依旧实现最根本的 服务级别的 Selector。
+--- # Service apiVersion: v1 kind: Service metadata: labels: app: prod name: svc-prod namespace: myistio spec: ports: - name: 80-8080 port: 80 protocol: TCP targetPort: 8080 selector: app: prod type: ClusterIP 默认情况下会根据 VirtualService 的默认规则 轮询 到后端的所有服务。"><meta property="og:type" content="article"><meta property="og:url" content="https://books.tangx.in/istio-in-action/06-dr-subset/"><meta property="article:section" content><title>06 Dr Subset | kuberbuilder 从零开始</title><link rel=manifest href=/istio-in-action/manifest.json><link rel=icon href=/istio-in-action/favicon.png type=image/x-icon><link rel=stylesheet href=/istio-in-action/book.min.958cea7827621d6fbcb3acf091344c3e44e3d2a9428f9c3c38bb9eb37bf8c45d.css integrity="sha256-lYzqeCdiHW+8s6zwkTRMPkTj0qlCj5w8OLues3v4xF0=" crossorigin=anonymous><script defer src=/istio-in-action/flexsearch.min.js></script><script defer src=/istio-in-action/en.search.min.adb51cd47feaf600848d6f5cb6f26433673ebe5ba51856091c25785042123ebb.js integrity="sha256-rbUc1H/q9gCEjW9ctvJkM2c+vlulGFYJHCV4UEISPrs=" crossorigin=anonymous></script><script defer src=/istio-in-action/sw.min.0c0c83d52036acf50f5c3f746a95875059c3e28084dea729d49b09123db8d2ee.js integrity="sha256-DAyD1SA2rPUPXD90apWHUFnD4oCE3qcp1JsJEj240u4=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/istio-in-action/><img src=/istio-in-action/logo.png alt=Logo><span>kuberbuilder 从零开始</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><h1 id=目录>目录
+<a class=anchor href=#%e7%9b%ae%e5%bd%95>#</a></h1><h2 id=环境准备>环境准备
+<a class=anchor href=#%e7%8e%af%e5%a2%83%e5%87%86%e5%a4%87>#</a></h2><ol><li><a href=/istio-in-action/01-install/>安装 docker, k3s, istio 环境</a></li><li><a href=/istio-in-action/02-initial-project/>初始化第一个项目 - prod</a></li><li><a href=/istio-in-action/07-upgrade-project/>升级项目 - prod and review</a></li><li><a href=/istio-in-action/16-lego-create-server-certificate/>使用 lego 创建 https 证书</a></li></ol><h2 id=virtualservice>VirtualService
+<a class=anchor href=#virtualservice>#</a></h2><ol start=3><li><a href=/istio-in-action/03-vs-and-ingress/>istio VirtualService 和 k8s Ingress</a></li><li><a href=/istio-in-action/04-gateway/>创建 Gateway 允许外部访问</a></li><li><a href=/istio-in-action/05-vs-http-rewrite-by-uri/>VirtualService 给予 uri 重写路由</a></li><li><a href=/istio-in-action/06-dr-subset/ class=active>使用 DestinationRule Subset 进行路由分组(版本控制)</a></li><li><a href=/istio-in-action/08-vs-http-rewrite-by-header/>VirtualService 基于 Header 重写路由</a></li><li>VirtualService 支持重写路由的所有方式</li><li><a href=/istio-in-action/10-vs-http-redirect/>VirtualService 路由重定向</a></li><li><a href=/istio-in-action/11-vs-http-retry/>VirtualService 的重试机制</a></li><li><a href=/istio-in-action/12-vs-http-fault-injection/>VirtualService 注入错误实现混沌测试</a></li><li>VirtualService 委托: 测试失败</li><li><a href=/istio-in-action/14-vs-http-header-operation/>VirtualService Header 管理</a></li><li>VirutalService 根据客户端 Label 转发路由(sourceLabels): 待测试</li><li><a href=/istio-in-action/17-gw-https-support-standard/>Gateway 支持 https 访问 - 标准模式</a></li><li><a href=/istio-in-action/18-dr-simple-loadbalance/>使用 DestionationRule 流量控制策略 - 简单负载均衡</a></li></ol></nav><script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/istio-in-action/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>06 Dr Subset</strong>
+<label for=toc-control><img src=/istio-in-action/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#使用-subset-实现路由控制>使用 subset 实现路由控制</a></li><li><a href=#destinationrule-服务分组><code>DestinationRule</code> 服务分组</a><ul><li><a href=#1-使用-流量权重-实现分组>1. 使用 <strong>流量权重</strong> 实现分组</a></li><li><a href=#2-使用-路由重写-实现分组>2. 使用 <strong>路由重写</strong> 实现分组</a></li></ul></li><li><a href=#流量的目的地址>流量的目的地址</a></li></ul></nav></aside></header><article class=markdown><h1 id=使用-destinationrule-subset-进行路由分组版本控制>使用 DestinationRule Subset 进行路由分组(版本控制)
+<a class=anchor href=#%e4%bd%bf%e7%94%a8-destinationrule-subset-%e8%bf%9b%e8%a1%8c%e8%b7%af%e7%94%b1%e5%88%86%e7%bb%84%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6>#</a></h1><p>当一个程序并行发布多个版本的时候， 如 <code>prod-v1 / prod-v2</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kgd
+    NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+    toolbox   1/1     <span style=color:#ae81ff>1</span>            <span style=color:#ae81ff>1</span>           3d22h
+    prod-v1   1/1     <span style=color:#ae81ff>1</span>            <span style=color:#ae81ff>1</span>           16m
+    prod-v2   1/1     <span style=color:#ae81ff>1</span>            <span style=color:#ae81ff>1</span>           16m
+</code></pre></div><pre><code class=language-json5 data-lang=json5>// 两个版本的测试结果， 仅定义为 version 不一致
+{
+  &quot;data&quot;: {
+    &quot;Name&quot;: &quot;istio in action&quot;,
+    &quot;Price&quot;: 300,
+    &quot;Reviews&quot;: null
+  },
+  &quot;version&quot;: &quot;v2.0.0&quot;  //   &quot;version&quot;: &quot;v1.0.0&quot; 
+}
+</code></pre><p><strong>k8s Service</strong> 依旧实现最根本的 <strong>服务级别的 Selector</strong>。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
+<span style=color:#75715e># Service</span>
+<span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>v1</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Service</span>
+<span style=color:#f92672>metadata</span>:
+  <span style=color:#f92672>labels</span>:
+    <span style=color:#f92672>app</span>: <span style=color:#ae81ff>prod</span>
+  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>svc-prod</span>
+  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>myistio</span>
+<span style=color:#f92672>spec</span>:
+  <span style=color:#f92672>ports</span>:
+  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>80-8080</span>
+    <span style=color:#f92672>port</span>: <span style=color:#ae81ff>80</span>
+    <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
+    <span style=color:#f92672>targetPort</span>: <span style=color:#ae81ff>8080</span>
+  <span style=color:#f92672>selector</span>:
+    <span style=color:#f92672>app</span>: <span style=color:#ae81ff>prod</span>
+  <span style=color:#f92672>type</span>: <span style=color:#ae81ff>ClusterIP</span>
+</code></pre></div><p>默认情况下会根据 VirtualService 的默认规则 <strong>轮询</strong> 到后端的所有服务。</p><h2 id=使用-subset-实现路由控制>使用 subset 实现路由控制
+<a class=anchor href=#%e4%bd%bf%e7%94%a8-subset-%e5%ae%9e%e7%8e%b0%e8%b7%af%e7%94%b1%e6%8e%a7%e5%88%b6>#</a></h2><p>但是在一些特定的环境下，需要对路由或者流量进行精确的认为控制。 这个时候就需要对后端服务进行 <strong>分组</strong> 处理。</p><p>这个时候就可以使用 istio 的 subset 功能。 subset 的定义为 <code>Service Version (服务版本)</code>， 产生的目的就是为了在持续集成场景中， 可以通过 <strong>路由、 请求头(Header)、权重等</strong> 等方式进行路由或流量控制，以便进行 A/B 测试、金丝雀测试等。</p><h2 id=destinationrule-服务分组><code>DestinationRule</code> 服务分组
+<a class=anchor href=#destinationrule-%e6%9c%8d%e5%8a%a1%e5%88%86%e7%bb%84>#</a></h2><p>在 vs 使用 subset 的时候， <strong>必须依赖</strong> <code>DestinationRule</code> 控制器进行 <strong>后端服务的分组</strong>。</p><p>DR 通过 label 规则对后端进行服务分组。</p><p>这样当流量达到 envoy 的以后， 进一步根据 <code>label-> version:v1</code> 选择真是的后端服务。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>networking.istio.io/v1alpha3</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>DestinationRule</span>
+<span style=color:#f92672>metadata</span>:
+  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>dr-prod</span>
+<span style=color:#f92672>spec</span>:
+  <span style=color:#f92672>host</span>: <span style=color:#ae81ff>svc-prod</span>
+  <span style=color:#f92672>subsets</span>:
+  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>subset-groupv1</span>
+    <span style=color:#f92672>labels</span>:
+      <span style=color:#f92672>version</span>: <span style=color:#ae81ff>v1</span>
+  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>subset-groupv2</span>
+    <span style=color:#f92672>labels</span>:
+      <span style=color:#f92672>version</span>: <span style=color:#ae81ff>v2</span>
+</code></pre></div><h3 id=1-使用-流量权重-实现分组>1. 使用 <strong>流量权重</strong> 实现分组
+<a class=anchor href=#1-%e4%bd%bf%e7%94%a8-%e6%b5%81%e9%87%8f%e6%9d%83%e9%87%8d-%e5%ae%9e%e7%8e%b0%e5%88%86%e7%bb%84>#</a></h3><p>在 <strong>同一个</strong> 路由规则下， 可以使用 <strong>权重模式</strong> ， 将流量分发到不同的后端 subset 组中。</p><blockquote><p>注意: 权重值的总和必须是 100 。</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
+<span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>networking.istio.io/v1alpha3</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>VirtualService</span>
+<span style=color:#f92672>metadata</span>:
+  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>vs-prod</span>
+  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>myistio</span>
+<span style=color:#f92672>spec</span>:
+  <span style=color:#f92672>gateways</span>:
+    - <span style=color:#ae81ff>istio-tangx-in</span>
+  <span style=color:#f92672>hosts</span>:
+    - <span style=color:#ae81ff>svc-prod</span>
+    - <span style=color:#ae81ff>istio.tangx.in</span>
+  <span style=color:#f92672>http</span>:
+  - <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;v1-subset&#34;</span>
+    <span style=color:#f92672>route</span>:                  <span style=color:#75715e># 同一个 route 下面的两个 destination</span>
+    - <span style=color:#f92672>destination</span>:
+        <span style=color:#f92672>host</span>: <span style=color:#ae81ff>svc-prod</span>
+        <span style=color:#f92672>subset</span>: <span style=color:#ae81ff>subset-groupv1    </span> <span style=color:#75715e># subset 的值与 DestinationRule 中定义一致</span>
+      <span style=color:#f92672>weight</span>: <span style=color:#ae81ff>25</span>
+    - <span style=color:#f92672>destination</span>:
+        <span style=color:#f92672>host</span>: <span style=color:#ae81ff>svc-prod</span>
+        <span style=color:#f92672>subset</span>: <span style=color:#ae81ff>subset-groupv2</span>
+      <span style=color:#f92672>weight</span>: <span style=color:#ae81ff>75</span>
+</code></pre></div><p>使用如下命令进行测试</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ka -f istio-samples/06-dr-subset/
+ka -f istio-samples/06-dr-subset/vs/03-subset-weight.yml
+</code></pre></div><h3 id=2-使用-路由重写-实现分组>2. 使用 <strong>路由重写</strong> 实现分组
+<a class=anchor href=#2-%e4%bd%bf%e7%94%a8-%e8%b7%af%e7%94%b1%e9%87%8d%e5%86%99-%e5%ae%9e%e7%8e%b0%e5%88%86%e7%bb%84>#</a></h3><p><strong>路由重写</strong> 只是路由分组其中一个小的分支。 同样还可以使用 header， queryParams 参数。 逻辑都是类似的。</p><p>在 VirtualService 配置中， 使用多个 route 规则， 将流量转发到不同的后端组。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
+<span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>networking.istio.io/v1alpha3</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>VirtualService</span>
+<span style=color:#f92672>metadata</span>:
+  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>vs-prod</span>
+  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>myistio</span>
+<span style=color:#f92672>spec</span>:
+  <span style=color:#f92672>gateways</span>:
+    - <span style=color:#ae81ff>istio-tangx-in</span>
+  <span style=color:#f92672>hosts</span>:
+    - <span style=color:#ae81ff>svc-prod</span>
+    - <span style=color:#ae81ff>istio.tangx.in</span>
+  <span style=color:#f92672>http</span>:
+  - <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;v2-routes&#34;</span>      <span style=color:#75715e># 路由重写分组， 是针对不同的路由匹配规则</span>
+    <span style=color:#f92672>match</span>:
+      - <span style=color:#f92672>uri</span>:
+          <span style=color:#f92672>prefix</span>: <span style=color:#e6db74>&#34;/v2/prod&#34;</span>    <span style=color:#75715e># 新增一个路由匹配规则， 只有 uri 满足 /v2/prod 才会访问 v2 版本的 pod</span>
+    <span style=color:#f92672>rewrite</span>:
+      <span style=color:#f92672>uri</span>: <span style=color:#e6db74>&#34;/prod&#34;</span>
+    <span style=color:#f92672>route</span>:
+    - <span style=color:#f92672>destination</span>:
+        <span style=color:#f92672>host</span>: <span style=color:#ae81ff>svc-prod</span>
+        <span style=color:#f92672>subset</span>: <span style=color:#ae81ff>subset-groupv2</span>
+  - <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;default-routes&#34;</span>   <span style=color:#75715e># 可以说是默认分组</span>
+    <span style=color:#f92672>route</span>:
+    - <span style=color:#f92672>destination</span>:
+        <span style=color:#f92672>host</span>: <span style=color:#ae81ff>svc-prod</span>
+        <span style=color:#f92672>subset</span>: <span style=color:#ae81ff>subset-groupv1</span>
+</code></pre></div><p>使用如下命令进行测试</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ka -f istio-samples/06/
+ka -f istio-samples/06/vs/02-subset-rewrite-path.yml
+</code></pre></div><h2 id=流量的目的地址>流量的目的地址
+<a class=anchor href=#%e6%b5%81%e9%87%8f%e7%9a%84%e7%9b%ae%e7%9a%84%e5%9c%b0%e5%9d%80>#</a></h2><p>这里总结一下， 无论是在 <code>VirtualService</code> 还是在 <code>DestinationRule</code> 中， 流量的目的地址都是 <code>k8s service</code>。</p><blockquote><p>注意: 这里的 <code>k8s service</code> 指的是在 istio 以外能满足 FQDN</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
+<span style=color:#75715e># DestinationRule</span>
+<span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>networking.istio.io/v1alpha3</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>DestinationRule</span>
+<span style=color:#f92672>spec</span>:
+  <span style=color:#f92672>host</span>: <span style=color:#ae81ff>svc-prod           </span> <span style=color:#75715e># 目的地址是 svc</span>
+  <span style=color:#75715e># ....</span>
+
+
+---
+<span style=color:#75715e># VirtualService</span>
+<span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>networking.istio.io/v1alpha3</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>VirtualService</span>
+<span style=color:#f92672>spec</span>:
+  <span style=color:#f92672>http</span>:
+  - <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;default-routes&#34;</span>
+    <span style=color:#f92672>route</span>:
+    - <span style=color:#f92672>destination</span>:
+        <span style=color:#f92672>host</span>: <span style=color:#ae81ff>svc-prod     </span> <span style=color:#75715e># 目的地址是 svc</span>
+        <span style=color:#f92672>subset</span>: <span style=color:#ae81ff>subset-groupv1</span>
+  <span style=color:#75715e># .....</span>
+</code></pre></div></article><div class="book-footer justify-between"></div><hr style=height:1px;background:var(--gray-200)><br><p>本图书由<a href=https://github.com/tangx>老麦</a>©2021 版权所有，<a href=https://github.com/tangx/kubebuilder-zero-to-one>所有文章</a>采用<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh>知识署名-非商业性使用-禁止演绎 4.0 国际</a>进行许可。</p><div style=text-align:center><p><img width=70% style=width:70%;height:70%;!important src=https://tangx.in/assets/images/wx-qrcode.png></p></div><script src=https://utteranc.es/client.js repo=tangx/tangx.github.io issue-term=title theme=github-light crossorigin=anonymous async></script><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/tangx/kubebuilder-zero-to-one/edit/master/./06-dr-subset.md target=_blank rel=noopener><img src=/istio-in-action/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span></a></div></div><script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#使用-subset-实现路由控制>使用 subset 实现路由控制</a></li><li><a href=#destinationrule-服务分组><code>DestinationRule</code> 服务分组</a><ul><li><a href=#1-使用-流量权重-实现分组>1. 使用 <strong>流量权重</strong> 实现分组</a></li><li><a href=#2-使用-路由重写-实现分组>2. 使用 <strong>路由重写</strong> 实现分组</a></li></ul></li><li><a href=#流量的目的地址>流量的目的地址</a></li></ul></nav></div></aside></main></body></html>
