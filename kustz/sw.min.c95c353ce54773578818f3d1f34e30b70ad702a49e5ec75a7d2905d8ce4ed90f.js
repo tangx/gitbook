@@ -1,0 +1,1 @@
+navigator.serviceWorker&&navigator.serviceWorker.register("/kustz/sw.js",{scope:"/kustz/"})

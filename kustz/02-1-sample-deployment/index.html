@@ -1,0 +1,92 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="2.1. 模仿 kubectl create 创建 Deployment 样例 #  为了简单， 我们假定所管理的 Deployment 都是 单容器 的。
+首先参考 kubectl create 命令
+$ kubectl create deployment my-dep --image=busybox --replicas 1 --dry-run=client -o yaml 安装 client-go API #  访问 client-go https://github.com/kubernetes/client-go
+$ go get k8s.io/client-go@v0.25.4 这里直接选用最新版本 v0.25.4。 对于其他版本的兼容， 留在以后再做。
+定义 Kustz Config #  参考 kubectl create 命令， 创建配置文件 kustz.yml 结构如下
+# kustz.yml namespace: demo-demo name: srv-webapp-demo service: name: nginx image: docker.io/library/nginx:alpine replicas: 2 在 service 中添加了 name 字段， 这是在 kubectl create 命令中没有的。 后者直接使用了镜像名称作为 name 的值。"><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="2.1. 模仿 kubectl create 创建 Deployment 样例 #  为了简单， 我们假定所管理的 Deployment 都是 单容器 的。
+首先参考 kubectl create 命令
+$ kubectl create deployment my-dep --image=busybox --replicas 1 --dry-run=client -o yaml 安装 client-go API #  访问 client-go https://github.com/kubernetes/client-go
+$ go get k8s.io/client-go@v0.25.4 这里直接选用最新版本 v0.25.4。 对于其他版本的兼容， 留在以后再做。
+定义 Kustz Config #  参考 kubectl create 命令， 创建配置文件 kustz.yml 结构如下
+# kustz.yml namespace: demo-demo name: srv-webapp-demo service: name: nginx image: docker.io/library/nginx:alpine replicas: 2 在 service 中添加了 name 字段， 这是在 kubectl create 命令中没有的。 后者直接使用了镜像名称作为 name 的值。"><meta property="og:type" content="article"><meta property="og:url" content="https://books.tangx.in/kustz/02-1-sample-deployment/"><meta property="article:section" content><title>02 1 Sample Deployment | kuberbuilder 从零开始</title><link rel=manifest href=/kustz/manifest.json><link rel=icon href=/kustz/favicon.png type=image/x-icon><link rel=stylesheet href=/kustz/book.min.958cea7827621d6fbcb3acf091344c3e44e3d2a9428f9c3c38bb9eb37bf8c45d.css integrity="sha256-lYzqeCdiHW+8s6zwkTRMPkTj0qlCj5w8OLues3v4xF0=" crossorigin=anonymous><script defer src=/kustz/flexsearch.min.js></script><script defer src=/kustz/en.search.min.b9d8c85edd90596233da86b293de906d80f21eaf7c5a9d1e202761f136afc2d1.js integrity="sha256-udjIXt2QWWIz2oayk96QbYDyHq98Wp0eICdh8TavwtE=" crossorigin=anonymous></script><script defer src=/kustz/sw.min.c95c353ce54773578818f3d1f34e30b70ad702a49e5ec75a7d2905d8ce4ed90f.js integrity="sha256-yVw1POVHc1eIGPPR804wtwrXAqSeXsdafSkF2M5O2Q8=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/kustz/><img src=/kustz/logo.png alt=Logo><span>kuberbuilder 从零开始</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div></nav><script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/kustz/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>02 1 Sample Deployment</strong>
+<label for=toc-control><img src=/kustz/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#安装-client-go-api>安装 client-go API</a></li><li><a href=#定义-kustz-config>定义 Kustz Config</a></li><li><a href=#拼凑-deployment-api>拼凑 Deployment API</a><ul><li><a href=#公共标签>公共标签</a></li></ul></li><li><a href=#文件解析>文件解析</a></li><li><a href=#测试>测试</a></li></ul></nav></aside></header><article class=markdown><h1 id=21-模仿-kubectl-create-创建-deployment-样例>2.1. 模仿 kubectl create 创建 Deployment 样例
+<a class=anchor href=#21-%e6%a8%a1%e4%bb%bf-kubectl-create-%e5%88%9b%e5%bb%ba-deployment-%e6%a0%b7%e4%be%8b>#</a></h1><p>为了简单， 我们假定所管理的 Deployment 都是 <strong>单容器</strong> 的。</p><p>首先参考 <code>kubectl create</code> 命令</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl create deployment my-dep --image<span style=color:#f92672>=</span>busybox --replicas <span style=color:#ae81ff>1</span> --dry-run<span style=color:#f92672>=</span>client -o yaml
+</code></pre></div><h2 id=安装-client-go-api>安装 client-go API
+<a class=anchor href=#%e5%ae%89%e8%a3%85-client-go-api>#</a></h2><p>访问 <code>client-go</code> <a href=https://github.com/kubernetes/client-go>https://github.com/kubernetes/client-go</a></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ go get k8s.io/client-go@v0.25.4
+</code></pre></div><p>这里直接选用最新版本 <code>v0.25.4</code>。 对于其他版本的兼容， 留在以后再做。</p><h2 id=定义-kustz-config>定义 Kustz Config
+<a class=anchor href=#%e5%ae%9a%e4%b9%89-kustz-config>#</a></h2><p>参考 <code>kubectl create</code> 命令， 创建配置文件 <code>kustz.yml</code> 结构如下</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># kustz.yml</span>
+<span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>demo-demo</span>
+<span style=color:#f92672>name</span>: <span style=color:#ae81ff>srv-webapp-demo</span>
+
+<span style=color:#f92672>service</span>:
+  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>nginx</span>
+  <span style=color:#f92672>image</span>: <span style=color:#ae81ff>docker.io/library/nginx:alpine</span>
+  <span style=color:#f92672>replicas</span>: <span style=color:#ae81ff>2</span>
+
+</code></pre></div><p>在 service 中添加了 name 字段， 这是在 <code>kubectl create</code> 命令中没有的。 后者直接使用了镜像名称作为 name 的值。</p><blockquote><p>由于我们的设计只有一个容器， 这里也可以 <strong>省略或使用默认值</strong>。 这里增加字段 <strong>完全是为了展示凑 API</strong>。</p></blockquote><p>在 <code>/pkg/kustz/kustz.go</code> 中创建 <code>Config</code>， 对应所有字段。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Config</span> <span style=color:#66d9ef>struct</span> {
+	<span style=color:#a6e22e>Name</span>      <span style=color:#66d9ef>string</span>  <span style=color:#e6db74>`json:&#34;name&#34;`</span>
+	<span style=color:#a6e22e>Namespace</span> <span style=color:#66d9ef>string</span>  <span style=color:#e6db74>`json:&#34;namespace&#34;`</span>
+	<span style=color:#a6e22e>Service</span>   <span style=color:#a6e22e>Service</span> <span style=color:#e6db74>`json:&#34;service&#34;`</span>
+}
+
+<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Service</span> <span style=color:#66d9ef>struct</span> {
+	<span style=color:#a6e22e>Name</span>     <span style=color:#66d9ef>string</span> <span style=color:#e6db74>`json:&#34;name&#34;`</span>
+	<span style=color:#a6e22e>Image</span>    <span style=color:#66d9ef>string</span> <span style=color:#e6db74>`json:&#34;image&#34;`</span>
+	<span style=color:#a6e22e>Replicas</span> <span style=color:#66d9ef>int32</span>  <span style=color:#e6db74>`json:&#34;replicas&#34;`</span>
+}
+</code></pre></div><h2 id=拼凑-deployment-api>拼凑 Deployment API
+<a class=anchor href=#%e6%8b%bc%e5%87%91-deployment-api>#</a></h2><p>从这个标题就可以看出来， 这里就就没什么难度了， 就是把 <code>kustz.Config</code> 中的所有字段全部放在 <code>Deployment API</code> 中。</p><p>为 <code>kustz.Config</code> 添加 <code>KubeDeployment</code> 方法， 在 <code>/pkg/kustz/k_deployment.go</code> 中。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>kz</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>Config</span>) <span style=color:#a6e22e>KubeDeployment</span>() <span style=color:#f92672>*</span><span style=color:#a6e22e>appv1</span>.<span style=color:#a6e22e>Deployment</span> {
+	<span style=color:#66d9ef>return</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>appv1</span>.<span style=color:#a6e22e>Deployment</span>{
+		<span style=color:#a6e22e>TypeMeta</span>: <span style=color:#a6e22e>metav1</span>.<span style=color:#a6e22e>TypeMeta</span>{
+			<span style=color:#a6e22e>Kind</span>:       <span style=color:#e6db74>&#34;Deployment&#34;</span>,
+			<span style=color:#a6e22e>APIVersion</span>: <span style=color:#e6db74>&#34;apps/v1&#34;</span>,
+		},
+		<span style=color:#a6e22e>ObjectMeta</span>: <span style=color:#a6e22e>metav1</span>.<span style=color:#a6e22e>ObjectMeta</span>{
+			<span style=color:#a6e22e>Name</span>:      <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>Name</span>,
+			<span style=color:#a6e22e>Namespace</span>: <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>Namespace</span>,
+			<span style=color:#a6e22e>Labels</span>:    <span style=color:#a6e22e>CommonLabels</span>(<span style=color:#f92672>*</span><span style=color:#a6e22e>kz</span>),
+		},
+		<span style=color:#a6e22e>Spec</span>: <span style=color:#a6e22e>appv1</span>.<span style=color:#a6e22e>DeploymentSpec</span>{
+			<span style=color:#a6e22e>Replicas</span>: <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>Service</span>.<span style=color:#a6e22e>Replicas</span>,
+			<span style=color:#a6e22e>Template</span>: <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>KubePod</span>(),
+			<span style=color:#a6e22e>Selector</span>: <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>metav1</span>.<span style=color:#a6e22e>LabelSelector</span>{
+				<span style=color:#a6e22e>MatchLabels</span>: <span style=color:#a6e22e>CommonLabels</span>(<span style=color:#f92672>*</span><span style=color:#a6e22e>kz</span>),
+			},
+		},
+	}
+}
+</code></pre></div><p>可以看到， 拼凑主要由 3 部分， 都是很熟悉的字段。</p><ol><li><code>TypeMeta</code>: <strong>Deployment</strong> 的信息申明</li><li><code>ObjectMeta</code>: <strong>应用服务</strong> 的信息申明</li><li><code>Spec</code>: 就是具体信息了。</li></ol><p>如果你看的够仔细，可以在 <code>Spec</code> 中发现 <code>Template</code> 字段就开始 <strong>套娃</strong> 了。</p><p><code>KubeDeployment</code> 中调用了 <code>/pkg/kustz/k_pod.go</code> 中的 <code>KubePod</code> 方法。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>kz</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>Config</span>) <span style=color:#a6e22e>KubeDeployment</span>() <span style=color:#f92672>*</span><span style=color:#a6e22e>appv1</span>.<span style=color:#a6e22e>Deployment</span> {
+	<span style=color:#66d9ef>return</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>appv1</span>.<span style=color:#a6e22e>Deployment</span>{
+		<span style=color:#a6e22e>Spec</span>: <span style=color:#a6e22e>appv1</span>.<span style=color:#a6e22e>DeploymentSpec</span>{
+			<span style=color:#75715e>// ... 省略
+</span><span style=color:#75715e></span>			<span style=color:#a6e22e>Template</span>: <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>KubePod</span>(),
+		},
+	}
+}
+</code></pre></div><p><code>KubePod</code> 中调用了 <code>/pkg/kustz/k_container.go</code> 中的 <code>KubeContainer</code> 方法。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>kz</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>Config</span>) <span style=color:#a6e22e>KubePod</span>() <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>PodTemplateSpec</span> {
+	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>PodTemplateSpec</span>{
+		<span style=color:#75715e>// ... 省略
+</span><span style=color:#75715e></span>		<span style=color:#a6e22e>Spec</span>: <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>PodSpec</span>{
+			<span style=color:#a6e22e>Containers</span>: <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>KubeContainer</span>(),
+		},
+	}
+}
+</code></pre></div><p>最后， 在 <code>KubeContainer</code> 方法中， 创建了最里面的 container 信息。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>kz</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>Config</span>) <span style=color:#a6e22e>KubeContainer</span>() []<span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>Container</span> {
+	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>Service</span>.<span style=color:#a6e22e>Name</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;&#34;</span> {
+		<span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>Service</span>.<span style=color:#a6e22e>Name</span> = <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>Name</span>
+	}
+
+	<span style=color:#75715e>// ...省略
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>return</span> []<span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>Container</span>{<span style=color:#a6e22e>c</span>}
+}
+</code></pre></div><p>前面我们说到过 <code>kz.Service.Name</code> 为了展示 <strong>API</strong> 的拼凑。 为了以后使用方便， 这里我们设置其默认值为应用服务名 <code>kz.Name</code> 。</p><h3 id=公共标签>公共标签
+<a class=anchor href=#%e5%85%ac%e5%85%b1%e6%a0%87%e7%ad%be>#</a></h3><p>在 Kubernetes 中， 不同 API 之间的关系都是通过 <strong>标签选择</strong> 关联的。
+为了方便， 在 <code>/pkg/kustz/common.go</code> 中使用函数 <code>CommonLabels()</code> 创建公共标签， 方便关联。</p><h2 id=文件解析>文件解析
+<a class=anchor href=#%e6%96%87%e4%bb%b6%e8%a7%a3%e6%9e%90>#</a></h2><p>细心的你可以已经发现了， 明明配置文件用的是 <code>yaml</code> 格式， 但是在 <code>Config</code> 中的标签却是 <code>json:"name"</code>。</p><p>这里只是为了 <strong>单纯</strong> 为了保障 yaml 库一致， 在 <code>/pkg/kubeutils/yaml.go</code> 中使用了 <code>sigs.k8s.io/yaml</code> 库而已, 这个库可以兼容 <code>json, yaml</code> 标签。</p><h2 id=测试>测试
+<a class=anchor href=#%e6%b5%8b%e8%af%95>#</a></h2><p>进入 <code>kustz</code>， 执行命令</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ go test -v .
+
+$ kubectl create deployment srv-webapp-demo --image<span style=color:#f92672>=</span>nginx -n demo-demo --dry-run<span style=color:#f92672>=</span>client -o  yaml 
+</code></pre></div><p>对比二者内容， 基本上完全一样了。</p></article><div class="book-footer justify-between"></div><hr style=height:1px;background:var(--gray-200)><br><p>本图书由<a href=https://github.com/tangx>老麦</a>©2021 版权所有，<a href=https://github.com/tangx/kubebuilder-zero-to-one>所有文章</a>采用<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh>知识署名-非商业性使用-禁止演绎 4.0 国际</a>进行许可。</p><div style=text-align:center><p><img width=70% style=width:70%;height:70%;!important src=https://tangx.in/assets/images/wx-qrcode.png></p></div><script src=https://utteranc.es/client.js repo=tangx/tangx.github.io issue-term=title theme=github-light crossorigin=anonymous async></script><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/tangx/kubebuilder-zero-to-one/edit/master/./02-1-sample-deployment.md target=_blank rel=noopener><img src=/kustz/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span></a></div></div><script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#安装-client-go-api>安装 client-go API</a></li><li><a href=#定义-kustz-config>定义 Kustz Config</a></li><li><a href=#拼凑-deployment-api>拼凑 Deployment API</a><ul><li><a href=#公共标签>公共标签</a></li></ul></li><li><a href=#文件解析>文件解析</a></li><li><a href=#测试>测试</a></li></ul></nav></div></aside></main></body></html>

@@ -1,0 +1,55 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="4.1. 使用 cobrautils 为命令添加更实用的命令参数 #   大家好， 我是老麦。
+ 之前的章节， 我们陆陆续续给 kustz 库添加了很多丰富服务的配置
+但 kustz 命令， 还是处于一个很原始的命令状态。 接下来我们给 kustz 添加一些更丰富的参数 ， 使 kustz 用起来更顺手。
+在 CICD 的中， 一般情况下 变量，健康检查， 镜像策略 等很难发生变动。 而镜像名称 经常性 的在每次打包后发生变化。
+每次CI触发都去修改 kustz.yml 配置显然是不可能的。 因此， 我们需要绑定更丰富的参数来支持我们 CI 的运行。
+cobra flag #  之前在 /cmd/kustz/cmd/render.go 中， 我们为命令添加了一个指定配置文件的参数。
+func init() { cmdRender.Flags().StringVarP(&config, &#34;config&#34;, &#34;c&#34;, &#34;kustz.yml&#34;, &#34;kustz config&#34;) } var config string 这种方法是 cobra 官方提供的基本模式。 在绑定的时候， 需要一行写一个， 并且不支持 指针参数 。"><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="4.1. 使用 cobrautils 为命令添加更实用的命令参数 #   大家好， 我是老麦。
+ 之前的章节， 我们陆陆续续给 kustz 库添加了很多丰富服务的配置
+但 kustz 命令， 还是处于一个很原始的命令状态。 接下来我们给 kustz 添加一些更丰富的参数 ， 使 kustz 用起来更顺手。
+在 CICD 的中， 一般情况下 变量，健康检查， 镜像策略 等很难发生变动。 而镜像名称 经常性 的在每次打包后发生变化。
+每次CI触发都去修改 kustz.yml 配置显然是不可能的。 因此， 我们需要绑定更丰富的参数来支持我们 CI 的运行。
+cobra flag #  之前在 /cmd/kustz/cmd/render.go 中， 我们为命令添加了一个指定配置文件的参数。
+func init() { cmdRender.Flags().StringVarP(&config, &#34;config&#34;, &#34;c&#34;, &#34;kustz.yml&#34;, &#34;kustz config&#34;) } var config string 这种方法是 cobra 官方提供的基本模式。 在绑定的时候， 需要一行写一个， 并且不支持 指针参数 。"><meta property="og:type" content="article"><meta property="og:url" content="https://books.tangx.in/kustz/04-1-kustz-flags/"><meta property="article:section" content><title>04 1 Kustz Flags | kuberbuilder 从零开始</title><link rel=manifest href=/kustz/manifest.json><link rel=icon href=/kustz/favicon.png type=image/x-icon><link rel=stylesheet href=/kustz/book.min.958cea7827621d6fbcb3acf091344c3e44e3d2a9428f9c3c38bb9eb37bf8c45d.css integrity="sha256-lYzqeCdiHW+8s6zwkTRMPkTj0qlCj5w8OLues3v4xF0=" crossorigin=anonymous><script defer src=/kustz/flexsearch.min.js></script><script defer src=/kustz/en.search.min.b9d8c85edd90596233da86b293de906d80f21eaf7c5a9d1e202761f136afc2d1.js integrity="sha256-udjIXt2QWWIz2oayk96QbYDyHq98Wp0eICdh8TavwtE=" crossorigin=anonymous></script><script defer src=/kustz/sw.min.c95c353ce54773578818f3d1f34e30b70ad702a49e5ec75a7d2905d8ce4ed90f.js integrity="sha256-yVw1POVHc1eIGPPR804wtwrXAqSeXsdafSkF2M5O2Q8=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/kustz/><img src=/kustz/logo.png alt=Logo><span>kuberbuilder 从零开始</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div></nav><script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/kustz/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>04 1 Kustz Flags</strong>
+<label for=toc-control><img src=/kustz/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#cobra-flag>cobra flag</a></li><li><a href=#cobrautils-库>cobrautils 库</a></li></ul></nav></aside></header><article class=markdown><h1 id=41-使用-cobrautils-为命令添加更实用的命令参数>4.1. 使用 cobrautils 为命令添加更实用的命令参数
+<a class=anchor href=#41-%e4%bd%bf%e7%94%a8-cobrautils-%e4%b8%ba%e5%91%bd%e4%bb%a4%e6%b7%bb%e5%8a%a0%e6%9b%b4%e5%ae%9e%e7%94%a8%e7%9a%84%e5%91%bd%e4%bb%a4%e5%8f%82%e6%95%b0>#</a></h1><blockquote><p>大家好， 我是老麦。</p></blockquote><p>之前的章节， 我们陆陆续续给 kustz 库添加了很多丰富服务的配置</p><p>但 kustz 命令， 还是处于一个很原始的命令状态。
+接下来我们给 kustz 添加一些更丰富的参数 ， 使 kustz 用起来更顺手。</p><p>在 CICD 的中， 一般情况下 <strong>变量，健康检查， 镜像策略</strong> 等很难发生变动。 而镜像名称 <strong>经常性</strong> 的在每次打包后发生变化。</p><p>每次CI触发都去修改 <code>kustz.yml</code> 配置显然是不可能的。 因此， 我们需要绑定更丰富的参数来支持我们 CI 的运行。</p><h2 id=cobra-flag>cobra flag
+<a class=anchor href=#cobra-flag>#</a></h2><p>之前在 <code>/cmd/kustz/cmd/render.go</code> 中， 我们为命令添加了一个指定配置文件的参数。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>init</span>() {
+	<span style=color:#a6e22e>cmdRender</span>.<span style=color:#a6e22e>Flags</span>().<span style=color:#a6e22e>StringVarP</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>config</span>, <span style=color:#e6db74>&#34;config&#34;</span>, <span style=color:#e6db74>&#34;c&#34;</span>, <span style=color:#e6db74>&#34;kustz.yml&#34;</span>, <span style=color:#e6db74>&#34;kustz config&#34;</span>)
+}
+
+<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>config</span> <span style=color:#66d9ef>string</span>
+</code></pre></div><p>这种方法是 cobra 官方提供的基本模式。 在绑定的时候， 需要一行写一个， 并且不支持 <strong>指针参数</strong> 。</p><h2 id=cobrautils-库>cobrautils 库
+<a class=anchor href=#cobrautils-%e5%ba%93>#</a></h2><p>接下来我们使用自己封装的 <code>cobrautils</code> 库。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ go get -u github.com/go-jarvis/cobrautils
+</code></pre></div><p>详细描述参考 <a href=https://github.com/go-jarvis/cobrautils>https://github.com/go-jarvis/cobrautils</a></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>init</span>() {
+	<span style=color:#a6e22e>cobrautils</span>.<span style=color:#a6e22e>BindFlags</span>(<span style=color:#a6e22e>cmdRender</span>, <span style=color:#a6e22e>flags</span>)
+}
+
+<span style=color:#75715e>// KustzFlag 定义 flag
+</span><span style=color:#75715e></span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>KustzFlag</span> <span style=color:#66d9ef>struct</span> {
+	<span style=color:#a6e22e>Config</span>   <span style=color:#66d9ef>string</span> <span style=color:#e6db74>`flag:&#34;config&#34; usage:&#34;kustz config&#34; shorthand:&#34;c&#34;`</span>
+	<span style=color:#a6e22e>Image</span>    <span style=color:#66d9ef>string</span> <span style=color:#e6db74>`flag:&#34;image&#34; usage:&#34;image name&#34;`</span>
+	<span style=color:#a6e22e>Replicas</span> <span style=color:#f92672>*</span><span style=color:#66d9ef>int</span>   <span style=color:#e6db74>`flag:&#34;replicas&#34; usage:&#34;pod replicas number&#34;`</span>
+}
+
+<span style=color:#75715e>// 初始化默认值
+</span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>flags</span> = <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>KustzFlag</span>{
+	<span style=color:#a6e22e>Config</span>: <span style=color:#e6db74>&#34;kustz.yml&#34;</span>,
+}
+</code></pre></div><p>可以看到， 使用 cobrautils 之后。</p><ol><li>使用结构体组合了所有参数， 每个字段通过注释描述， 作用更清晰， 耦合度更高。</li><li>支持 <strong>指针参数</strong>， 解决了 <strong>零值</strong> 带来的负面影响。</li><li>一行命令解决了所有参数的绑定。</li></ol><blockquote><p>其实如果喜欢的话， 可以将 <code>/pkg/kustz/kustz.go</code> 中的完整 <code>Config</code> 做成参数。</p></blockquote><p>在 <code>/cmd/kustz/cmd/render.go</code> 中， 将 <code>Image, Replicas</code> 两个参数注入到配置文件中即可。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>
+<span style=color:#66d9ef>func</span> <span style=color:#a6e22e>render</span>() {
+	<span style=color:#a6e22e>kz</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>kustz</span>.<span style=color:#a6e22e>NewKustzFromConfig</span>(<span style=color:#a6e22e>flags</span>.<span style=color:#a6e22e>Config</span>)
+
+	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>flags</span>.<span style=color:#a6e22e>Image</span> <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;&#34;</span> {
+		<span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>Service</span>.<span style=color:#a6e22e>Image</span> = <span style=color:#a6e22e>flags</span>.<span style=color:#a6e22e>Image</span>
+	}
+	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>flags</span>.<span style=color:#a6e22e>Replicas</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+		<span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>Service</span>.<span style=color:#a6e22e>Replicas</span> = int32(<span style=color:#f92672>*</span><span style=color:#a6e22e>flags</span>.<span style=color:#a6e22e>Replicas</span>)
+	}
+
+	<span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>RenderAll</span>()
+}
+</code></pre></div></article><div class="book-footer justify-between"></div><hr style=height:1px;background:var(--gray-200)><br><p>本图书由<a href=https://github.com/tangx>老麦</a>©2021 版权所有，<a href=https://github.com/tangx/kubebuilder-zero-to-one>所有文章</a>采用<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh>知识署名-非商业性使用-禁止演绎 4.0 国际</a>进行许可。</p><div style=text-align:center><p><img width=70% style=width:70%;height:70%;!important src=https://tangx.in/assets/images/wx-qrcode.png></p></div><script src=https://utteranc.es/client.js repo=tangx/tangx.github.io issue-term=title theme=github-light crossorigin=anonymous async></script><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/tangx/kubebuilder-zero-to-one/edit/master/./04-1-kustz-flags.md target=_blank rel=noopener><img src=/kustz/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span></a></div></div><script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#cobra-flag>cobra flag</a></li><li><a href=#cobrautils-库>cobrautils 库</a></li></ul></nav></div></aside></main></body></html>

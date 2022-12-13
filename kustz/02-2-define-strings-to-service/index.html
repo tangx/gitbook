@@ -1,0 +1,154 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="2.2. 定义字符串创建 Service #    大家好， 我是老麦， 一个小运维。 今天我们为 kustz 增加 service 解析功能。
+ 通过 kubectl create service 命令可以看到， service 的模式还是挺多的。
+$ kubectl create service -h Create a service using a specified subcommand. Aliases: service, svc Available Commands: clusterip Create a ClusterIP service externalname Create an ExternalName service loadbalancer Create a LoadBalancer service nodeport Create a NodePort service 除了以上列出来的四种之外， 还用一种 Headless Service(https://kubernetes.io/docs/concepts/services-networking/service/#headless-services)。
+Headless Service 是当 类型 为 ClusterIP，且 IP 值为 None。 所以是 Cluster IP 的一种特殊情况。"><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="2.2. 定义字符串创建 Service #    大家好， 我是老麦， 一个小运维。 今天我们为 kustz 增加 service 解析功能。
+ 通过 kubectl create service 命令可以看到， service 的模式还是挺多的。
+$ kubectl create service -h Create a service using a specified subcommand. Aliases: service, svc Available Commands: clusterip Create a ClusterIP service externalname Create an ExternalName service loadbalancer Create a LoadBalancer service nodeport Create a NodePort service 除了以上列出来的四种之外， 还用一种 Headless Service(https://kubernetes.io/docs/concepts/services-networking/service/#headless-services)。
+Headless Service 是当 类型 为 ClusterIP，且 IP 值为 None。 所以是 Cluster IP 的一种特殊情况。"><meta property="og:type" content="article"><meta property="og:url" content="https://books.tangx.in/kustz/02-2-define-strings-to-service/"><meta property="article:section" content><title>02 2 Define Strings to Service | kuberbuilder 从零开始</title><link rel=manifest href=/kustz/manifest.json><link rel=icon href=/kustz/favicon.png type=image/x-icon><link rel=stylesheet href=/kustz/book.min.958cea7827621d6fbcb3acf091344c3e44e3d2a9428f9c3c38bb9eb37bf8c45d.css integrity="sha256-lYzqeCdiHW+8s6zwkTRMPkTj0qlCj5w8OLues3v4xF0=" crossorigin=anonymous><script defer src=/kustz/flexsearch.min.js></script><script defer src=/kustz/en.search.min.b9d8c85edd90596233da86b293de906d80f21eaf7c5a9d1e202761f136afc2d1.js integrity="sha256-udjIXt2QWWIz2oayk96QbYDyHq98Wp0eICdh8TavwtE=" crossorigin=anonymous></script><script defer src=/kustz/sw.min.c95c353ce54773578818f3d1f34e30b70ad702a49e5ec75a7d2905d8ce4ed90f.js integrity="sha256-yVw1POVHc1eIGPPR804wtwrXAqSeXsdafSkF2M5O2Q8=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/kustz/><img src=/kustz/logo.png alt=Logo><span>kuberbuilder 从零开始</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div></nav><script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/kustz/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>02 2 Define Strings to Service</strong>
+<label for=toc-control><img src=/kustz/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#service-api-中的-port>Service API 中的 Port</a></li><li><a href=#kubez-中的-service-规则>kubez 中的 service 规则</a></li><li><a href=#代码实现>代码实现</a><ul><li><a href=#先说一个变更>先说一个变更</a></li><li><a href=#生成-service-api>生成 Service API</a></li><li><a href=#portstring>PortString</a></li></ul></li><li><a href=#测试>测试</a></li></ul></nav></aside></header><article class=markdown><h1 id=22-定义字符串创建-service>2.2. 定义字符串创建 Service
+<a class=anchor href=#22-%e5%ae%9a%e4%b9%89%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%88%9b%e5%bb%ba-service>#</a></h1><p><img src=./img/kustz-logo.jpg alt></p><blockquote><p>大家好， 我是老麦， 一个小运维。
+今天我们为 kustz 增加 service 解析功能。</p></blockquote><p>通过 <code>kubectl create service</code> 命令可以看到， service 的模式还是挺多的。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl create service -h
+Create a service using a specified subcommand.
+
+Aliases:
+service, svc
+
+Available Commands:
+  clusterip      Create a ClusterIP service
+  externalname   Create an ExternalName service
+  loadbalancer   Create a LoadBalancer service
+  nodeport       Create a NodePort service
+</code></pre></div><p>除了以上列出来的四种之外， 还用一种 <code>Headless Service</code>(<a href=https://kubernetes.io/docs/concepts/services-networking/service/#headless-services>https://kubernetes.io/docs/concepts/services-networking/service/#headless-services</a>)。</p><p><code>Headless Service</code> 是当 <strong>类型</strong> 为 ClusterIP，且 IP 值为 <code>None</code>。 所以是 <code>Cluster IP</code> 的一种特殊情况。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># 创建一个新的 ClusterIP service</span>
+$ kubectl create service clusterip my-cs --tcp<span style=color:#f92672>=</span>5678:8080
+
+<span style=color:#75715e># 创建一个新的 ClusterIP service (headless 模式)</span>
+$ kubectl create service clusterip my-cs --clusterip<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;None&#34;</span>
+</code></pre></div><h2 id=service-api-中的-port>Service API 中的 Port
+<a class=anchor href=#service-api-%e4%b8%ad%e7%9a%84-port>#</a></h2><p>如果你之前留意过 Service API， 你就应该会发现 API 中带有 port 的字段就有 3 个。 弄清楚他们分别对应什么<strong>这点很重要</strong></p><p>先来看看一个 <code>NodePort</code> 的 API。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># $ kubectl create service nodeport my-cs --tcp=80:8080 --dry-run=client -o yaml</span>
+<span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>v1</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Service</span>
+  <span style=color:#75715e># ... 省略</span>
+<span style=color:#f92672>spec</span>:
+  <span style=color:#f92672>ports</span>:
+  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>80-8080</span>
+    <span style=color:#f92672>nodePort</span>: <span style=color:#ae81ff>18080</span>
+    <span style=color:#f92672>port</span>: <span style=color:#ae81ff>80</span>
+    <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
+    <span style=color:#f92672>targetPort</span>: <span style=color:#ae81ff>8080</span>
+  <span style=color:#f92672>selector</span>:
+    <span style=color:#f92672>app</span>: <span style=color:#ae81ff>my-cs</span>
+  <span style=color:#f92672>type</span>: <span style=color:#ae81ff>NodePort</span>
+</code></pre></div><p>对于 <code>nodePort, port, targetPort</code> 这三个名词如果还不能直接回答的话， 认真记住下面这张图。</p><p><img src=./img/nodeport-port-targetport.png alt=nodeport></p><ol><li>集群外部用户通过 <code>nodePort -> port -> targetPort</code>。</li><li>集群内部用户通过 <code>port -> targetPort</code>。</li></ol><h2 id=kubez-中的-service-规则>kubez 中的 service 规则
+<a class=anchor href=#kubez-%e4%b8%ad%e7%9a%84-service-%e8%a7%84%e5%88%99>#</a></h2><p>在看随后的规则的时候， 再回头看看之前的 API， 能否找到几个关键要素。</p><ol><li>端口映射规则。</li><li>Service 类型。</li><li>端口协议。 通常不太关注。</li><li>明确且有意义区分符号。 这是一个隐藏点。</li></ol><ul><li>clusterip: <code>80:8080</code>。 无任何特殊符号。</li><li>headless: <code>#80:8080</code>。 <strong>注释符号 #</strong> 顾名思义， 就是把某些 Head <strong>隐藏</strong> 之后成为 Headless。</li><li>nodeport: <code>!18080:80:800</code> / <code>!80:8080</code>。 <strong>叹号 !</strong> 表示重要， 因为我们要暴露端口到外部， 这是一个风险点。 NodePort 有两个规则， 是因为如果 <strong>不指定</strong> 端口就使用 <strong>随机</strong> 端口。</li><li>externalname: <code>@example.com</code>。 <strong>AT @</strong>， 指定或指向某个地方。</li><li>loadbalancer: <code>%80:8080</code>。 <strong>分号 %</strong>， 看起来就像个天平， 一人一半， 分流。</li></ul><p>上面的规则中， 并没有提到 <strong>端口协议</strong>。</p><ul><li>含有协议的规则 <code>tcp://80:8080</code> / <code>udp://!18080:80:8080</code>。 就用协议地址的写法， 使用 <code>://</code> 分割 <strong>协议</strong> 和 <strong>转发规则</strong>。</li></ul><p>之所以协议拿出来单独说， 其原因是协议通常不太关注， 默认都用 TCP。因此在 kustsz 中也作为可省略字段。</p><blockquote><p>以上规则都是个人习惯。 仅供参考。</p></blockquote><h2 id=代码实现>代码实现
+<a class=anchor href=#%e4%bb%a3%e7%a0%81%e5%ae%9e%e7%8e%b0>#</a></h2><p>凑 API 还是很简单的， 不过需要注意当出现<strong>多个规则</strong>的时候<strong>怎样</strong>确定<strong>最终</strong>的 <code>Type</code>。</p><p>例如规则中存在 <code>ClusterIP, NodePort 和 ExternalName</code>， 那在最终呈现的时候， Type 值是顺序第一？逆序第一？还是冲突报错？ 一切看自己需求和习惯。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>ports</span>:
+  - <span style=color:#e6db74>&#34;8099:80&#34;</span>
+  - <span style=color:#e6db74>&#34;!28080:80&#34;</span>
+  - <span style=color:#e6db74>&#34;@example.com&#34;</span>
+</code></pre></div><p>本章代码就先只实现两个， ClusterIP 和 NodePort。 完整配置查看 <code>/pkg/kustz/kustz.yml</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># ... 省略</span>
+<span style=color:#f92672>service</span>:
+<span style=color:#75715e># ... 省略</span>
+  <span style=color:#f92672>ports</span>:
+    - <span style=color:#e6db74>&#34;80:8080&#34;</span> <span style=color:#75715e># cluster ip</span>
+    - <span style=color:#e6db74>&#34;udp://!9998:8889&#34;</span> <span style=color:#75715e># 随机 nodeport</span>
+    <span style=color:#75715e># - &#34;!20080:80:8080&#34; # 指定 nodeport</span>
+</code></pre></div><h3 id=先说一个变更>先说一个变更
+<a class=anchor href=#%e5%85%88%e8%af%b4%e4%b8%80%e4%b8%aa%e5%8f%98%e6%9b%b4>#</a></h3><p>在 <code>/pkg/kustz/common.go</code> 中， 之前的 <code>func CommonLabels(kz *Config)</code> 函数变为了 <code>func (kz *Config) CommonLabels()</code> 方法。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>kz</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>Config</span>) <span style=color:#a6e22e>CommonLabels</span>() <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>string</span> {
+	<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>string</span>{
+		<span style=color:#e6db74>&#34;app&#34;</span>: <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>Name</span>,
+	}
+}
+</code></pre></div><h3 id=生成-service-api>生成 Service API
+<a class=anchor href=#%e7%94%9f%e6%88%90-service-api>#</a></h3><p>在创建 Service API 的方法中还是中规中矩的在凑 API。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>
+<span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>kz</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>Config</span>) <span style=color:#a6e22e>KubeService</span>() <span style=color:#f92672>*</span><span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>Service</span> {
+
+	<span style=color:#a6e22e>ports</span>, <span style=color:#a6e22e>typ</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>ParsePortStrings</span>(<span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>Service</span>.<span style=color:#a6e22e>Ports</span>)
+
+	<span style=color:#a6e22e>svc</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>Service</span>{
+		<span style=color:#a6e22e>TypeMeta</span>: <span style=color:#a6e22e>metav1</span>.<span style=color:#a6e22e>TypeMeta</span>{
+			<span style=color:#a6e22e>APIVersion</span>: <span style=color:#e6db74>&#34;v1&#34;</span>,
+			<span style=color:#a6e22e>Kind</span>:       <span style=color:#e6db74>&#34;Service&#34;</span>,
+		},
+		<span style=color:#a6e22e>ObjectMeta</span>: <span style=color:#a6e22e>metav1</span>.<span style=color:#a6e22e>ObjectMeta</span>{
+			<span style=color:#a6e22e>Name</span>:   <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>Name</span>,
+			<span style=color:#a6e22e>Labels</span>: <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>CommonLabels</span>(),
+			<span style=color:#75715e>// Namespace: kz.Namespace,
+</span><span style=color:#75715e></span>		},
+		<span style=color:#a6e22e>Spec</span>: <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>ServiceSpec</span>{
+			<span style=color:#a6e22e>Selector</span>: <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>CommonLabels</span>(),
+			<span style=color:#a6e22e>Type</span>:     <span style=color:#a6e22e>typ</span>,
+			<span style=color:#a6e22e>Ports</span>:    <span style=color:#a6e22e>ports</span>,
+		},
+	}
+
+	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>svc</span>
+}
+</code></pre></div><p>在 ObjectMeta 中可以注意到， <code>Namespace</code> 字段是被注释了的。</p><ol><li>因为 namespace 是<strong>环境限定</strong>， 而非服务本身特性。 即部署在 ns-a 和 ns-b 中， 服务配置本身并没有改变。</li><li>对于 namespace 值提供， 我想放在 <code>kustomization.yml</code> 中, 通过 <code>kubectl apply -n ns-demo</code> 提供。</li></ol><blockquote><p>同样的， 在 <code>/pkg/kustz/k_deployment.go</code> 中的 Deployment API 的 ObjectMeta 也删除了 namespace 字段。</p></blockquote><h3 id=portstring>PortString
+<a class=anchor href=#portstring>#</a></h3><p>从 <code>corev1.ServiceSpec</code> 中可以看到， Type 和 Ports 是并列关系， 且只有一个 Type</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>		<span style=color:#a6e22e>Spec</span>: <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>ServiceSpec</span>{
+			<span style=color:#a6e22e>Selector</span>: <span style=color:#a6e22e>kz</span>.<span style=color:#a6e22e>CommonLabels</span>(),
+			<span style=color:#a6e22e>Type</span>:     <span style=color:#a6e22e>typ</span>,
+			<span style=color:#a6e22e>Ports</span>:    <span style=color:#a6e22e>ports</span>,
+		},
+</code></pre></div><p>而在我们 kustz.yml 文件中, <code>!9998:8889</code>, Type <strong>符号</strong> 存在于每一条规则中。</p><p>因此， 通过函数 <code>ParsePortStrings</code> 解析所有规则， 并返回一个并列关系。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>ParsePortStrings</span>(<span style=color:#a6e22e>values</span> []<span style=color:#66d9ef>string</span>) ([]<span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>ServicePort</span>, <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>ServiceType</span>) {
+<span style=color:#75715e>// ...
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>value</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>values</span> {
+		<span style=color:#a6e22e>port</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>NewPortFromString</span>(<span style=color:#a6e22e>value</span>)
+		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>port</span>.<span style=color:#a6e22e>Type</span> <span style=color:#f92672>!=</span> <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>ServiceTypeClusterIP</span> {
+			<span style=color:#a6e22e>typ</span> = <span style=color:#a6e22e>port</span>.<span style=color:#a6e22e>Type</span>
+		}
+		<span style=color:#a6e22e>sps</span> = append(<span style=color:#a6e22e>sps</span>, <span style=color:#a6e22e>port</span>.<span style=color:#a6e22e>KubeServicePort</span>())
+	}
+
+	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>sps</span>, <span style=color:#a6e22e>typ</span>
+}
+</code></pre></div><p>在 for 循环中， 处理了当 <code>ports</code> 出现多个 Type 规则的时候以谁为准的问题， 正如我们之前提到的。</p><p>这里我使用了 <strong>Type 默认为 ClusterIP， 且最后出现的 <code>非ClusterIP</code> 为准（如有）</strong> 。</p><p>为此， 我定义一个命令 <code>PortString</code> 的结构体，</p><ol><li>通过 <code>NewPortFromString</code> 函数从 <strong>字符串</strong> 中提取关键信息。</li><li>并通过 <code>PortString KubeServicePort</code> 方法将结构体转换成的 <code>corev1.ServicePort</code></li></ol><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>PortString</span> <span style=color:#66d9ef>struct</span> {
+	<span style=color:#a6e22e>Port</span>       <span style=color:#66d9ef>int32</span>
+	<span style=color:#a6e22e>TargetPort</span> <span style=color:#66d9ef>int32</span>
+	<span style=color:#a6e22e>NodePort</span>   <span style=color:#66d9ef>int32</span>
+	<span style=color:#a6e22e>Protocol</span>   <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>Protocol</span>
+	<span style=color:#a6e22e>Type</span>       <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>ServiceType</span>
+}
+
+<span style=color:#75715e>// NewPortFromString parse port from string to PortString
+</span><span style=color:#75715e></span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>NewPortFromString</span>(<span style=color:#a6e22e>value</span> <span style=color:#66d9ef>string</span>) <span style=color:#a6e22e>PortString</span> {}
+
+<span style=color:#75715e>// KubeServicePort return a corev1.ServicePort
+</span><span style=color:#75715e></span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>p</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>PortString</span>) <span style=color:#a6e22e>KubeServicePort</span>() <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>ServicePort</span> {}
+</code></pre></div><p><code>PortString</code> 提供了相应的方法按规则从 <code>string</code> 提取关键信息。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#75715e>// toServiceClusterIP parse value from for ClusterIP
+</span><span style=color:#75715e></span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>p</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>PortString</span>) <span style=color:#a6e22e>toServiceClusterIP</span>(<span style=color:#a6e22e>value</span> <span style=color:#66d9ef>string</span>) {
+
+	<span style=color:#a6e22e>parts</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>value</span>, <span style=color:#e6db74>&#34;:&#34;</span>)
+	<span style=color:#66d9ef>switch</span> len(<span style=color:#a6e22e>parts</span>) {
+	<span style=color:#66d9ef>case</span> <span style=color:#ae81ff>1</span>:
+		<span style=color:#a6e22e>n</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>StringToInt32</span>(<span style=color:#a6e22e>parts</span>[<span style=color:#ae81ff>0</span>])
+		<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>Port</span> = <span style=color:#a6e22e>n</span>
+		<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>TargetPort</span> = <span style=color:#a6e22e>n</span>
+	<span style=color:#66d9ef>case</span> <span style=color:#ae81ff>2</span>:
+		<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>Port</span> = <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>StringToInt32</span>(<span style=color:#a6e22e>parts</span>[<span style=color:#ae81ff>0</span>])
+		<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>TargetPort</span> = <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>StringToInt32</span>(<span style=color:#a6e22e>parts</span>[<span style=color:#ae81ff>1</span>])
+	}
+
+	<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>Type</span> = <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>ServiceTypeClusterIP</span>
+}
+
+<span style=color:#75715e>// toServiceNodePort parse value from for NodePort
+</span><span style=color:#75715e></span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>p</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>PortString</span>) <span style=color:#a6e22e>toServiceNodePort</span>(<span style=color:#a6e22e>value</span> <span style=color:#66d9ef>string</span>) {
+
+	<span style=color:#a6e22e>value</span> = <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>TrimPrefix</span>(<span style=color:#a6e22e>value</span>, <span style=color:#e6db74>&#34;!&#34;</span>)
+	<span style=color:#a6e22e>parts</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>value</span>, <span style=color:#e6db74>&#34;:&#34;</span>)
+	<span style=color:#66d9ef>switch</span> len(<span style=color:#a6e22e>parts</span>) {
+	<span style=color:#66d9ef>case</span> <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>:
+		<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>toServiceClusterIP</span>(<span style=color:#a6e22e>value</span>)
+	<span style=color:#66d9ef>case</span> <span style=color:#ae81ff>3</span>:
+		<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>NodePort</span> = <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>StringToInt32</span>(<span style=color:#a6e22e>parts</span>[<span style=color:#ae81ff>0</span>])
+		<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>Port</span> = <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>StringToInt32</span>(<span style=color:#a6e22e>parts</span>[<span style=color:#ae81ff>1</span>])
+		<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>TargetPort</span> = <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>StringToInt32</span>(<span style=color:#a6e22e>parts</span>[<span style=color:#ae81ff>2</span>])
+	}
+
+	<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>Type</span> = <span style=color:#a6e22e>corev1</span>.<span style=color:#a6e22e>ServiceTypeNodePort</span>
+}
+</code></pre></div><h2 id=测试>测试
+<a class=anchor href=#%e6%b5%8b%e8%af%95>#</a></h2><p>在 <code>/pkg/kustz/kustz_test.go</code> 中， 拆分了 test 规则。</p><p>执行命令， 检查结果是不是和自己期待的一样。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ go test -timeout 30s -run ^Test_KustzService$ ./pkg/kustz/ -v
+</code></pre></div><p>如果不是， 就回去检查代码吧。</p></article><div class="book-footer justify-between"></div><hr style=height:1px;background:var(--gray-200)><br><p>本图书由<a href=https://github.com/tangx>老麦</a>©2021 版权所有，<a href=https://github.com/tangx/kubebuilder-zero-to-one>所有文章</a>采用<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh>知识署名-非商业性使用-禁止演绎 4.0 国际</a>进行许可。</p><div style=text-align:center><p><img width=70% style=width:70%;height:70%;!important src=https://tangx.in/assets/images/wx-qrcode.png></p></div><script src=https://utteranc.es/client.js repo=tangx/tangx.github.io issue-term=title theme=github-light crossorigin=anonymous async></script><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/tangx/kubebuilder-zero-to-one/edit/master/./02-2-define-strings-to-service.md target=_blank rel=noopener><img src=/kustz/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span></a></div></div><script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#service-api-中的-port>Service API 中的 Port</a></li><li><a href=#kubez-中的-service-规则>kubez 中的 service 规则</a></li><li><a href=#代码实现>代码实现</a><ul><li><a href=#先说一个变更>先说一个变更</a></li><li><a href=#生成-service-api>生成 Service API</a></li><li><a href=#portstring>PortString</a></li></ul></li><li><a href=#测试>测试</a></li></ul></nav></div></aside></main></body></html>
