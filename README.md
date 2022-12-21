@@ -18,4 +18,4 @@
 
 # 关注我
 
-![](./kustz/img/wx-qrcode.png)
+<img src="./kustz/img/wx-qrcode.png" width="500px">
