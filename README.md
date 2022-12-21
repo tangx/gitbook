@@ -16,7 +16,7 @@
 
 ## k8sailor 写一个难看但能用 Kubernetes 控制台
 
-[<img src="./k8sailor/assets/img/gopher-pirate.jpg" width="500px">](/kustz/)
+[<img src="./k8sailor/assets/img/gopher-pirate.jpg" width="500px">](/k8sailor/)
 
 
 # 关注我
