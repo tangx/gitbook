@@ -21,4 +21,4 @@
 
 # 关注我
 
-<img src="./kustz/img/wx-qrcode.png" width="500px">
+<img src="https://tangx.in/assets/images/wx-qrcode.png" width="500px">
