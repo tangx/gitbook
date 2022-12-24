@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /tags/*
 
-Sitemap: https://books.tangx.in/k8sailor/sitemap.xml
+Sitemap: https://tangx.in/books/k8sailor/sitemap.xml
