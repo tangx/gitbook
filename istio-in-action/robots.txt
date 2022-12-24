@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /tags/*
 
-Sitemap: https://books.tangx.in/istio-in-action/sitemap.xml
+Sitemap: https://tangx.in/books/istio-in-action/sitemap.xml
