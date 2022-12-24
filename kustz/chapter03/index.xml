@@ -3,7 +3,7 @@
 然而 kustz 的功能还简陋。 今天我们就先来为容器添加环境变量。
 为容器设置环境变量 在官方文档中， 提高了两种为容器设置环境变量的方法
 https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
-env: 提供 k-v 模式 键值对。 值可以直接 value 提供。 也可以通过 valueFrom 从 secret 或 configmap 引用。 envFrom: 从 secret 或 configmap 中读取键值对， 注入到容器中。。 https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/ kubez.</description></item><item><title/><link>https://tangx.in/books/kustz/chapter03/02-configmap-secret-generator/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tangx.in/books/kustz/chapter03/02-configmap-secret-generator/</guid><description>3.2. [kustz] ConfigMap 和 Secret 的生成器 大家好， 我是老麦， 一个运维小学生。 今天我们通过 kustomize 管理 ConfigMap 和 Secret。
+env: 提供 k-v 模式 键值对。 值可以直接 value 提供。 也可以通过 valueFrom 从 secret 或 configmap 引用。 envFrom: 从 secret 或 configmap 中读取键值对， 注入到容器中。。 https://kubernetes.</description></item><item><title/><link>https://tangx.in/books/kustz/chapter03/02-configmap-secret-generator/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tangx.in/books/kustz/chapter03/02-configmap-secret-generator/</guid><description>3.2. [kustz] ConfigMap 和 Secret 的生成器 大家好， 我是老麦， 一个运维小学生。 今天我们通过 kustomize 管理 ConfigMap 和 Secret。
 上一节我们通过 k-v 和 YAML文件 为容器添加环境变量。 同时也提到了可以通过 envFrom 这个关键字， 直接读取 ConfigMap 或 Secret 中的 k-v 作为容器的环境变量。
 除了环境变量之外， ConfigMap 和 Secret 还能管理的东西还很多。 所以我个人觉得单应用管理部署的话， 对于配置的管理，还是比较重要的。
 Kustomize 中的 ConfigMap Env File 在 kustzomize 中， ConfigMap 和 Secret 都是通过 生成器 Generator 管理的， 有很多配置。
@@ -25,8 +25,7 @@ Guaranteed: request = limit Burstable: request &amp;lt; limit BestEffort: 没有
 我们要知道， 确定一个应用能不能对外提供服务之前， 需要进行一个 可用性 检测。 而这个检测通常被我们称为 健康检查。
 Kubernetes 的健康检查 在 Kubernetes 中， 为我们提供了 主要 的 3类状态 的健康检查。
 startup: 等待探针。 如果执行成功， 则再执行 liveness, readienss。 如果执行失败， 则遵循 restartPolicy 规则。 liveness: 存活探针， 如果失败， 服务将被重新发布(redeploy)。 readiness: 就绪探针， 如果失败， 服务不会加入到 service backend endpoints 中对外提供服务。 https://kubebyexample.com/learning-paths/application-development-kubernetes/lesson-4-customize-deployments-application-2
-此外， Kubernetes 支持 4种类型 的检查方式
-httpGet: 检查 GET 接口返回值。 tcp: tcp 端口是否打开。 exec: 命令执行是否成功。 grpc: grpc 端口是否打开。 kustz.</description></item><item><title/><link>https://tangx.in/books/kustz/chapter03/06-image-pull-policy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tangx.in/books/kustz/chapter03/06-image-pull-policy/</guid><description>3.6. 镜像拉取鉴权和策略 大家好， 我是老麦。 今天我们解决镜像拉取鉴权和策略
+此外， Kubernetes 支持 4种类型 的检查方式</description></item><item><title/><link>https://tangx.in/books/kustz/chapter03/06-image-pull-policy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tangx.in/books/kustz/chapter03/06-image-pull-policy/</guid><description>3.6. 镜像拉取鉴权和策略 大家好， 我是老麦。 今天我们解决镜像拉取鉴权和策略
 镜像拉取鉴权 拉取私有镜像或私有仓库镜像的时候， 需要提供鉴权信息。
 在 Kubernets 中， 通过 Secret 管理账号这些账号信息。 Secret 类型分为两种，
 kubernetes.io/dockerconfigjson: 如果有linux安装了 docker， 就是 ~/.docker/config.json 这个文件。
