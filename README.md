@@ -1,4 +1,6 @@
-# https://books.tangx.in
+# 老麦的图书馆
+
+[图书馆](https://tangx.in/books/)
 
 从 0 到 1 系列丛书
 
