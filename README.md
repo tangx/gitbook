@@ -6,7 +6,7 @@
 
 ## kustz 从零开始写一个 OAM 管理工具
 
-[<img src="./kustz/img/kustz-logo.jpg" width="500px">](/books/kustz/)
+[<img src="./kustz/static/logo/kustz.jpg" width="500px">](/books/kustz/)
 
 ## istio-in-action 实践指南
 
