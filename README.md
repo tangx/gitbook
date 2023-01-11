@@ -23,4 +23,4 @@
 
 # 关注我
 
-<img src="https://tangx.in/assets/images/wx-qrcode.png" width="500px">
+<img src="https://tangx.in/mp/qrcode.png" width="500px">
