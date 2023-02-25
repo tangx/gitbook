@@ -5,11 +5,29 @@
     <loc>https://typonotes.com/books/golang/</loc>
     <priority>0</priority>
   </url><url>
+    <loc>https://typonotes.com/books/golang/cobra-in-action/01-cobra-sample/</loc>
+  </url><url>
     <loc>https://typonotes.com/books/golang/chapter01/01-introduce/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/chapter01/02-install/</loc>
   </url><url>
+    <loc>https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/chapter01/03-vscode/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/cobra-in-action/04-layout/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/cobra-in-action/05-2-gin-router-tree/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/</loc>
+  </url><url>
     <loc>https://typonotes.com/books/golang/chapter01/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/cobra-in-action/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/tags/</loc>
   </url>

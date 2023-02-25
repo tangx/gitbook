@@ -9,10 +9,18 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+  <meta name="description" content="原文链接: https://tangx.in/posts/2023/01/26/devopscamp-cobra-interactive-survey/
+本文为 DevOpsCamp 实战训练作业 cobra - 03 配置文件的读取与写入（简单） 的解题答案
+DevoOpsCamp 作业地址： https://www.devopscamp.cc/semi-plan-202301-2/posts/homework/cobra03/
+作业: cobra - 03 交互式命令 要求:
+使用 https://github.com/spf13/cobra 实现命令工具
+使用 https://github.com/go-survey/survey 实现交互式命令
+实现 Demo 效果
+除了官方效果之外， 我还发现了 aliyun 命令行工具在配置账户的时候使用的是 交互式 ， 如下
+为了更好的体现 实战性， 我们将以 aliyun configure --profile 的作为例子， 并进行一些优化。
+解题过程 1. 安装 survey 依赖 这是一个意外收获， survey 库的 Github 地址与 go module 名称不一致。 同时， survey 版本还是 v2 了。
+关于 go module version ， 参考文章： https://go.dev/doc/modules/version-numbers
+话说回来， 虽然 github 仓库地址是 https://github." />
 
 
   
@@ -41,7 +49,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>2. 下载安装与环境配置 | 《Shell 转 Go》</title>
+  <title>3. 交互式命令 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -62,42 +70,58 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
   
   <meta
     property="og:title"
-    content="2. 下载安装与环境配置"
+    content="3. 交互式命令"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+  <meta property="og:description" content="原文链接: https://tangx.in/posts/2023/01/26/devopscamp-cobra-interactive-survey/
+本文为 DevOpsCamp 实战训练作业 cobra - 03 配置文件的读取与写入（简单） 的解题答案
+DevoOpsCamp 作业地址： https://www.devopscamp.cc/semi-plan-202301-2/posts/homework/cobra03/
+作业: cobra - 03 交互式命令 要求:
+使用 https://github.com/spf13/cobra 实现命令工具
+使用 https://github.com/go-survey/survey 实现交互式命令
+实现 Demo 效果
+除了官方效果之外， 我还发现了 aliyun 命令行工具在配置账户的时候使用的是 交互式 ， 如下
+为了更好的体现 实战性， 我们将以 aliyun configure --profile 的作为例子， 并进行一些优化。
+解题过程 1. 安装 survey 依赖 这是一个意外收获， survey 库的 Github 地址与 go module 名称不一致。 同时， survey 版本还是 v2 了。
+关于 go module version ， 参考文章： https://go.dev/doc/modules/version-numbers
+话说回来， 虽然 github 仓库地址是 https://github." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/chapter01/02-install/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/" />
 
-<meta property="article:section" content="Chapter01" />
+<meta property="article:section" content="Cobra in Action" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="2. 下载安装与环境配置" />
-  <meta name="twitter:description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+<meta name="twitter:title" content="3. 交互式命令" />
+  <meta name="twitter:description" content="原文链接: https://tangx.in/posts/2023/01/26/devopscamp-cobra-interactive-survey/
+本文为 DevOpsCamp 实战训练作业 cobra - 03 配置文件的读取与写入（简单） 的解题答案
+DevoOpsCamp 作业地址： https://www.devopscamp.cc/semi-plan-202301-2/posts/homework/cobra03/
+作业: cobra - 03 交互式命令 要求:
+使用 https://github.com/spf13/cobra 实现命令工具
+使用 https://github.com/go-survey/survey 实现交互式命令
+实现 Demo 效果
+除了官方效果之外， 我还发现了 aliyun 命令行工具在配置账户的时候使用的是 交互式 ， 如下
+为了更好的体现 实战性， 我们将以 aliyun configure --profile 的作为例子， 并进行一些优化。
+解题过程 1. 安装 survey 依赖 这是一个意外收获， survey 库的 Github 地址与 go module 名称不一致。 同时， survey 版本还是 v2 了。
+关于 go module version ， 参考文章： https://go.dev/doc/modules/version-numbers
+话说回来， 虽然 github 仓库地址是 https://github." />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Chapter01",
-      "name": "2. 下载安装与环境配置",
-      "url" : "https://typonotes.com/books/golang/chapter01/02-install/",
-      "headline": "2. 下载安装与环境配置",
-      "description": "下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。\n通常我会选择压缩包， 然后解压到所需要安装的目录。\n例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz\ncd \/tmp wget -c https:\/\/go.dev\/dl\/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C \/usr\/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https:\/\/goproxy.cn 或 https:\/\/goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 \/usr\/local\/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH\/bin\/ 使用 go get 下载的所有库文件在 $GOPATH\/pkg\/mod\/ 中 可以直接 go mod init， 如果项目在 $GOPATH\/src\/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 \/etc\/profile 中。",
-      "wordCount" : "113",
+      "articleSection": "Cobra in Action",
+      "name": "3. 交互式命令",
+      "url" : "https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/",
+      "headline": "3. 交互式命令",
+      "description": "原文链接: https:\/\/tangx.in\/posts\/2023\/01\/26\/devopscamp-cobra-interactive-survey\/\n本文为 DevOpsCamp 实战训练作业 cobra - 03 配置文件的读取与写入（简单） 的解题答案\nDevoOpsCamp 作业地址： https:\/\/www.devopscamp.cc\/semi-plan-202301-2\/posts\/homework\/cobra03\/\n作业: cobra - 03 交互式命令 要求:\n使用 https:\/\/github.com\/spf13\/cobra 实现命令工具\n使用 https:\/\/github.com\/go-survey\/survey 实现交互式命令\n实现 Demo 效果\n除了官方效果之外， 我还发现了 aliyun 命令行工具在配置账户的时候使用的是 交互式 ， 如下\n为了更好的体现 实战性， 我们将以 aliyun configure --profile 的作为例子， 并进行一些优化。\n解题过程 1. 安装 survey 依赖 这是一个意外收获， survey 库的 Github 地址与 go module 名称不一致。 同时， survey 版本还是 v2 了。\n关于 go module version ， 参考文章： https:\/\/go.dev\/doc\/modules\/version-numbers\n话说回来， 虽然 github 仓库地址是 https:\/\/github.",
+      "wordCount" : "436",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/chapter01/02-install/"
+          "@id": "https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -181,7 +205,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/chapter01/02-install/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -414,7 +438,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
                 <span class="flex">
                   <a
                     href="/books/golang/chapter01/02-install/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     2. 下载安装与环境配置
                   </a>
@@ -598,7 +622,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
                 <span class="flex">
                   <a
                     href="/books/golang/cobra-in-action/03-interactive-command/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     3. 交互式命令
                   </a>
@@ -828,7 +852,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter01/' href='/books/golang/chapter01/'><span itemprop='name'>Chapter01</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>2. 下载安装与环境配置</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/cobra-in-action/' href='/books/golang/cobra-in-action/'><span itemprop='name'>Cobra-in-action</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>3. 交互式命令</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -844,75 +868,335 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>2. 下载安装与环境配置</h1>
-  <div class="gdoc-page__anchorwrap">
-    <h2 id="下载和安装">
-        下载和安装
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#下载和安装" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 下载和安装" aria-label="Anchor to: 下载和安装" href="#%e4%b8%8b%e8%bd%bd%e5%92%8c%e5%ae%89%e8%a3%85">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<p>前往 <a
+  <h1>3. 交互式命令</h1>
+  <blockquote>
+<p><strong>原文链接:</strong> <a
   class="gdoc-markdown__link"
-  href="https://go.dev/dl/"
->官网Go下载地址</a> 页面下载与自己操作系统对应二进制文件。</p>
-<p>通常我会选择压缩包， 然后解压到所需要安装的目录。</p>
-<p>例如， 我是 mac 的 intel 系统， <code>go1.19.6.darwin-amd64.tar.gz</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /tmp
-</span></span><span class="line"><span class="cl">wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h3 id="配置环境变量">
-        配置环境变量
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#配置环境变量" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 配置环境变量" aria-label="Anchor to: 配置环境变量" href="#%e9%85%8d%e7%bd%ae%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<ol>
-<li><code>GOPROXY</code>: Go代理地址， 通常使用 <code>https://goproxy.cn</code> 或 <code>https://goproxy.io</code></li>
-<li><code>GOROOT</code>: Go 二进制的位置, 即我们上面解压目录的 <code>/usr/local/go</code></li>
-<li><code>GOPATH</code>: 这个是我们项目代码的位置， 有了 <code>go mod</code> 之后 <strong>不是绝对的了</strong></li>
-</ol>
-<ul>
-<li>使用 <code>go install</code> 后， 编译的二进制会默认在 <code>$GOPATH/bin/</code></li>
-<li>使用 <code>go get</code> 下载的所有库文件在 <code>$GOPATH/pkg/mod/</code> 中</li>
-<li>可以直接 <code>go mod init</code>， 如果项目在 <code>$GOPATH/src/</code> 中， 会默认以相对目录配置 <code>module</code> 路径。</li>
-</ul>
-<p>对于 <code>Mac</code> 和 <code>Linux</code> 系统， 设置环境变量。 配置到 <code>/etc/profile</code> 中。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPROXY</span><span class="o">=</span><span class="s2">&#34;https://goproxy.cn&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOROOT</span><span class="o">=</span><span class="s2">&#34;/usr/local/go&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPATH</span><span class="o">=</span><span class="s2">&#34;/data/gopath&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$GOROOT</span><span class="s2">/bin:</span><span class="nv">$GOPATH</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span>
-</span></span></code></pre></div><p>执行 <code>go version</code> 命令测试结果。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="err">$</span> <span class="k">go</span> <span class="nx">version</span>
-</span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">version</span> <span class="nx">go1</span><span class="mf">.19.6</span> <span class="nx">darwin</span><span class="o">/</span><span class="nx">amd64</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h3 id="关于go版本的选择">
-        关于Go版本的选择
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#关于go版本的选择" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 关于Go版本的选择" aria-label="Anchor to: 关于Go版本的选择" href="#%e5%85%b3%e4%ba%8ego%e7%89%88%e6%9c%ac%e7%9a%84%e9%80%89%e6%8b%a9">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<ol>
-<li>我会选择使用 <strong>次新版本</strong>(当前为 <code>v1.19.z</code>) ， 并随时保持更新。</li>
-<li>当 <strong>最新版本</strong>(当前为 <code>1.20.z</code>) 的 z 编号 <strong>不小于5</strong> （即 <code>1.20.5</code>）的时候， 才会选择升级到最新版本。</li>
-</ol>
-<blockquote>
-<p>个人意见， 仅供参考。</p>
+  href="https://tangx.in/posts/2023/01/26/devopscamp-cobra-interactive-survey/"
+>https://tangx.in/posts/2023/01/26/devopscamp-cobra-interactive-survey/</a></p>
 </blockquote>
+<p>本文为 DevOpsCamp 实战训练作业 <strong>cobra - 03 配置文件的读取与写入（简单）</strong> 的解题答案</p>
+<blockquote>
+<p>DevoOpsCamp 作业地址： <a
+  class="gdoc-markdown__link"
+  href="https://www.devopscamp.cc/semi-plan-202301-2/posts/homework/cobra03/"
+>https://www.devopscamp.cc/semi-plan-202301-2/posts/homework/cobra03/</a></p>
+</blockquote>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.tangx.in/assets/tttuigguang/devops-camp-02.jpeg" alt="devopscamp-logo"  /></p>
 <div class="gdoc-page__anchorwrap">
-    <h2 id="vscode-安装和插件">
-        VSCode 安装和插件
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#vscode-安装和插件" class="gdoc-page__anchor clip flex align-center" title="Anchor to: VSCode 安装和插件" aria-label="Anchor to: VSCode 安装和插件" href="#vscode-%e5%ae%89%e8%a3%85%e5%92%8c%e6%8f%92%e4%bb%b6">
+    <h1 id="作业-cobra---03-交互式命令">
+        作业: cobra - 03 交互式命令
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/#作业-cobra---03-交互式命令" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 作业: cobra - 03 交互式命令" aria-label="Anchor to: 作业: cobra - 03 交互式命令" href="#%e4%bd%9c%e4%b8%9a-cobra---03-%e4%ba%a4%e4%ba%92%e5%bc%8f%e5%91%bd%e4%bb%a4">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h1>
+</div>
+<p>要求:</p>
+<ol>
+<li>
+<p>使用 <a
+  class="gdoc-markdown__link"
+  href="https://github.com/spf13/cobra"
+>https://github.com/spf13/cobra</a> 实现命令工具</p>
+</li>
+<li>
+<p>使用 <a
+  class="gdoc-markdown__link"
+  href="https://github.com/go-survey/survey"
+>https://github.com/go-survey/survey</a> 实现交互式命令</p>
+</li>
+<li>
+<p>实现 Demo 效果</p>
+</li>
+</ol>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://camo.githubusercontent.com/fd7c6e39ecf076e5da86a26ecfaa92d4e2ec3b56effe53bb804ed5cd7bb5f895/68747470733a2f2f7468756d62732e6766796361742e636f6d2f56696c6c61696e6f757347726163696f75734b6f75707265792d73697a655f726573747269637465642e676966" alt="demo"  /></p>
+<p>除了官方效果之外， 我还发现了 <code>aliyun</code> 命令行工具在配置账户的时候使用的是 <strong>交互式</strong> ， 如下</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/01/26/devopscamp-cobra-interactive-survey/aliyun-configure-profile.gif" alt="aliyun-cnofigure-profile"  /></p>
+<p>为了更好的体现 <strong>实战性</strong>， 我们将以 <code>aliyun configure --profile</code> 的作为例子， 并进行一些优化。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="解题过程">
+        解题过程
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/#解题过程" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 解题过程" aria-label="Anchor to: 解题过程" href="#%e8%a7%a3%e9%a2%98%e8%bf%87%e7%a8%8b">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="1-安装-survey-依赖">
+        1. 安装 <code>survey</code> 依赖
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/#1-安装-survey-依赖" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 1. 安装 survey 依赖" aria-label="Anchor to: 1. 安装 survey 依赖" href="#1-%e5%ae%89%e8%a3%85-survey-%e4%be%9d%e8%b5%96">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>这是一个意外收获， survey 库的 Github 地址与 <code>go module</code> 名称不一致。 同时， <code>survey</code> 版本还是 v2 了。</p>
+<p>关于 <code>go module version</code> ， 参考文章： <a
+  class="gdoc-markdown__link"
+  href="https://go.dev/doc/modules/version-numbers"
+>https://go.dev/doc/modules/version-numbers</a></p>
+<p>话说回来， 虽然 github 仓库地址是 <code>https://github.com/go-survey/survey</code> ， 但安装库需要使用命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ go get -u github.com/AlecAivazis/survey/v2
+</span></span></code></pre></div><p>在 <a
+  class="gdoc-markdown__link--code"
+  href="https://github.com/go-survey/survey/blob/master/go.mod"
+><code>go.mod</code></a> 第一行中, 也可以看到 module 的名称</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go.mod" data-lang="go.mod"><span class="line"><span class="cl"><span class="n">module</span> <span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">AlecAivazis</span><span class="o">/</span><span class="n">survey</span><span class="o">/</span><span class="n">v2</span>
+</span></span></code></pre></div><p>平时在使用的时候， 应该多注意官方文档的 <code>Usage</code>、 <code>exmaple</code> 或者 <code>_test.go</code> 等。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="2-需要使用的交互组件">
+        2. 需要使用的交互组件
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/#2-需要使用的交互组件" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 2. 需要使用的交互组件" aria-label="Anchor to: 2. 需要使用的交互组件" href="#2-%e9%9c%80%e8%a6%81%e4%bd%bf%e7%94%a8%e7%9a%84%e4%ba%a4%e4%ba%92%e7%bb%84%e4%bb%b6">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p><code>survey</code> 提供了很多组件类型以及 <code>Option</code> 参数、 <strong>验证器</strong> 等功能，非常全面。 在这里简单介绍常用的几种</p>
+<ol>
+<li><code>Input</code> 组件： 普通输入框， 输入什么就显示什么。</li>
+<li><code>Password</code> 组件： 密码输入框， 输入的内容不直接显示， 使用 <code>*</code> 替代。</li>
+<li><code>Select</code> 组件： 单选框。</li>
+<li><code>MultiSelect</code> 组件： 多选框， 结果为 <strong>切片</strong> 类型。</li>
+<li><code>Confirm</code> 组件： 确认框， 结果为 <strong>布尔</strong> 类型。</li>
+</ol>
+<p>更多其它组件， 可以参考官方文档。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="3-代码片段">
+        3. 代码片段
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/#3-代码片段" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 3. 代码片段" aria-label="Anchor to: 3. 代码片段" href="#3-%e4%bb%a3%e7%a0%81%e7%89%87%e6%ae%b5">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>参考 aliyun 命令行， 我们自己实现的功能需要以下字段。</p>
+<ol>
+<li>Access Secret ID</li>
+<li>Access Secret Key</li>
+<li>Region</li>
+<li>Language</li>
+</ol>
+<p>代码中， 创建了 <strong>匿名</strong> struct ， 并创建 <strong>实例</strong> 赋值给 <code>answers</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">	<span class="nx">answers</span> <span class="o">:=</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">ID</span>          <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Key</span>         <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">ChinaRegion</span> <span class="kt">string</span> <span class="s">`survey:&#34;region&#34;`</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Language</span>    <span class="p">[]</span><span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}{}</span>
+</span></span></code></pre></div><p>其中 <code>ChinaRegion</code> 字段通过 tag <code>survey:&quot;region&quot;</code> 指定了一个映射名字 <code>region</code>。  回想一下， 这种用法是不是和上一篇配置文件中的 <code>json, yaml</code> 字段的映射名字用法一样？</p>
+<p>另一方面， 我们还准备了一系列问题， 引导用户输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// the questions to ask
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">qs</span> <span class="p">=</span> <span class="p">[]</span><span class="o">*</span><span class="nx">survey</span><span class="p">.</span><span class="nx">Question</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 1. Input 输入框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;id&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Prompt</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">survey</span><span class="p">.</span><span class="nx">Input</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">Message</span><span class="p">:</span> <span class="s">&#34;Access Secret ID: &#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Validate</span><span class="p">:</span> <span class="nx">survey</span><span class="p">.</span><span class="nx">Required</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 2. Password 密码输入框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;key&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Prompt</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">survey</span><span class="p">.</span><span class="nx">Password</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">Message</span><span class="p">:</span> <span class="s">&#34;Access Secret Key: &#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Validate</span><span class="p">:</span> <span class="nx">survey</span><span class="p">.</span><span class="nx">Required</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 3. Select 单选框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;region&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Prompt</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">survey</span><span class="p">.</span><span class="nx">Select</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">Message</span><span class="p">:</span> <span class="s">&#34;Choose a region:&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">Options</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;cn-shanghai&#34;</span><span class="p">,</span> <span class="s">&#34;cn-hangzhou&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">Default</span><span class="p">:</span> <span class="s">&#34;cn-hangzhou&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 4. MultiSelect 多选框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;language&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Prompt</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">survey</span><span class="p">.</span><span class="nx">MultiSelect</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">Message</span><span class="p">:</span> <span class="s">&#34;Supported Configure Language: &#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">Options</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;zh&#34;</span><span class="p">,</span> <span class="s">&#34;en&#34;</span><span class="p">,</span> <span class="s">&#34;jp&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol>
+<li><code>qs</code> 中的 <code>Name</code> 名称与 <code>answers</code> 中的字段名称都是一一对应的。</li>
+<li>在 <code>id</code> 和 <code>key</code> 字段， 设置了验证器， 要求 <strong>必须提供</strong>。</li>
+<li>在 <code>region</code> 字段， 设置 <code>cn-hangzhou</code> 为默认值， 虽然在切片中排在第二位。</li>
+</ol>
+<p>另外， 我们还使用 <code>Confirm</code> 组件引导用户确认是否将输入内容保存到文件中。 由于 <strong>保存确认</strong> 并不需要保存到配置文件中， 因此我们将其单独封装在了 <code>confirm</code> 函数中。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">confirm</span><span class="p">()</span> <span class="kt">bool</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ok</span> <span class="o">:=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 5. Confirm 确认框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">prompt</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">survey</span><span class="p">.</span><span class="nx">Confirm</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Message</span><span class="p">:</span> <span class="s">&#34;是否保存文件?&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">survey</span><span class="p">.</span><span class="nf">AskOne</span><span class="p">(</span><span class="nx">prompt</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">ok</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">ok</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h3 id="4-json-mashralindent">
+        4. <code>JSON MashralIndent</code>
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/#4-json-mashralindent" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 4. JSON MashralIndent" aria-label="Anchor to: 4. JSON MashralIndent" href="#4-json-mashralindent">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>为了更好的可读性， 这次在保存配置文件的时候， 使用了 <code>MarshalIndent</code> 方法。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ID&#34;</span><span class="p">:</span> <span class="s2">&#34;AKID-demodemo-adsfasdf&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;Key&#34;</span><span class="p">:</span> <span class="s2">&#34;flasjdflaksdjf&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ChinaRegion&#34;</span><span class="p">:</span> <span class="s2">&#34;cn-shanghai&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;Language&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;zh&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;en&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h3 id="5-全局-profile-字段">
+        5. 全局 <code>profile</code> 字段
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/#5-全局-profile-字段" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 5. 全局 profile 字段" aria-label="Anchor to: 5. 全局 profile 字段" href="#5-%e5%85%a8%e5%b1%80-profile-%e5%ad%97%e6%ae%b5">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>你可能已经注意到了， 目前所有的代码都在 <code>main</code> 包下面， 并没有 <strong>划分目录结构</strong>。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">profile</span> <span class="kt">string</span>
+</span></span></code></pre></div><p>因此定义的 <code>profile</code> 是全局变量， 可以在 <strong>任意位置</strong> 直接使用。</p>
+<p>但是我们在使用的时候并没有在函数中直接使用， 而是通过 <strong>函数参数</strong> 的方式传递下去的。 这是我们 <strong>刻意</strong> 回避直接在 <code>dumpConfig</code> 中直接使用 <code>全局的profile</code> 的。</p>
+<p>关于 <strong>目录结构</strong> 我们将会在后面的作业中提到。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">root</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Use</span><span class="p">:</span>   <span class="s">&#34;aliyunx&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Short</span><span class="p">:</span> <span class="s">&#34;aliyun 配置中心&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Run</span><span class="p">:</span> <span class="kd">func</span><span class="p">(</span><span class="nx">cmd</span> <span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">,</span> <span class="nx">args</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 1. 使用全局 profile
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nf">interactive</span><span class="p">(</span><span class="nx">profile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">interactive</span><span class="p">(</span><span class="nx">profile</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 2. 参数传递
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">dumpConfig</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span> <span class="nx">answers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">dumpConfig</span><span class="p">(</span><span class="nx">profile</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">answer</span> <span class="nx">any</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 3. 参数传递
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">name</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%s.config.json&#34;</span><span class="p">,</span> <span class="nx">profile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">err2</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">WriteFile</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">ModePerm</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err2</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h2 id="效果展示">
+        效果展示
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/03-interactive-command/#效果展示" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 效果展示" aria-label="Anchor to: 效果展示" href="#%e6%95%88%e6%9e%9c%e5%b1%95%e7%a4%ba">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/01/26/devopscamp-cobra-interactive-survey/aliyunx-profile.gif" alt="aliyunx-profile"  /></p>
 
 </article>
 
@@ -1012,9 +1296,6 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
       
 
       
-        
-        
-      
 
       
     
@@ -1040,9 +1321,6 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
       
       
 
-      
-        
-        
       
 
       

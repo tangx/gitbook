@@ -9,10 +9,8 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+  <meta name="description" content="gin 的路由树 与 cobra 相比， gin 的路由树实现就是另外一种方式了， 我称之为 生长。 换句话说， gin 路由的子节点不能独立于父节点 单独 定义。
+// Group creates a new router group. You should add all the routes that have common middlewares or the same path prefix. // For example, all the routes that use a common middleware for authorization could be grouped. func (group *RouterGroup) Group(relativePath string, handlers ...HandlerFunc) *RouterGroup { return &amp;RouterGroup{ Handlers: group.combineHandlers(handlers), basePath: group.calculateAbsolutePath(relativePath), engine: group.engine, } } 从上面代码可以看出来， RouterGroup 是通过 Group 方法实现路由节点 生长 的， 在调用 Group 方法的时候，" />
 
 
   
@@ -41,7 +39,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>2. 下载安装与环境配置 | 《Shell 转 Go》</title>
+  <title>5.2 gin 路由树的实现(扩展) | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -62,42 +60,38 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
   
   <meta
     property="og:title"
-    content="2. 下载安装与环境配置"
+    content="5.2 gin 路由树的实现(扩展)"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+  <meta property="og:description" content="gin 的路由树 与 cobra 相比， gin 的路由树实现就是另外一种方式了， 我称之为 生长。 换句话说， gin 路由的子节点不能独立于父节点 单独 定义。
+// Group creates a new router group. You should add all the routes that have common middlewares or the same path prefix. // For example, all the routes that use a common middleware for authorization could be grouped. func (group *RouterGroup) Group(relativePath string, handlers ...HandlerFunc) *RouterGroup { return &amp;RouterGroup{ Handlers: group.combineHandlers(handlers), basePath: group.calculateAbsolutePath(relativePath), engine: group.engine, } } 从上面代码可以看出来， RouterGroup 是通过 Group 方法实现路由节点 生长 的， 在调用 Group 方法的时候，" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/chapter01/02-install/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/cobra-in-action/05-2-gin-router-tree/" />
 
-<meta property="article:section" content="Chapter01" />
+<meta property="article:section" content="Cobra in Action" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="2. 下载安装与环境配置" />
-  <meta name="twitter:description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+<meta name="twitter:title" content="5.2 gin 路由树的实现(扩展)" />
+  <meta name="twitter:description" content="gin 的路由树 与 cobra 相比， gin 的路由树实现就是另外一种方式了， 我称之为 生长。 换句话说， gin 路由的子节点不能独立于父节点 单独 定义。
+// Group creates a new router group. You should add all the routes that have common middlewares or the same path prefix. // For example, all the routes that use a common middleware for authorization could be grouped. func (group *RouterGroup) Group(relativePath string, handlers ...HandlerFunc) *RouterGroup { return &amp;RouterGroup{ Handlers: group.combineHandlers(handlers), basePath: group.calculateAbsolutePath(relativePath), engine: group.engine, } } 从上面代码可以看出来， RouterGroup 是通过 Group 方法实现路由节点 生长 的， 在调用 Group 方法的时候，" />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Chapter01",
-      "name": "2. 下载安装与环境配置",
-      "url" : "https://typonotes.com/books/golang/chapter01/02-install/",
-      "headline": "2. 下载安装与环境配置",
-      "description": "下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。\n通常我会选择压缩包， 然后解压到所需要安装的目录。\n例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz\ncd \/tmp wget -c https:\/\/go.dev\/dl\/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C \/usr\/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https:\/\/goproxy.cn 或 https:\/\/goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 \/usr\/local\/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH\/bin\/ 使用 go get 下载的所有库文件在 $GOPATH\/pkg\/mod\/ 中 可以直接 go mod init， 如果项目在 $GOPATH\/src\/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 \/etc\/profile 中。",
-      "wordCount" : "113",
+      "articleSection": "Cobra in Action",
+      "name": "5.2 gin 路由树的实现(扩展)",
+      "url" : "https://typonotes.com/books/golang/cobra-in-action/05-2-gin-router-tree/",
+      "headline": "5.2 gin 路由树的实现(扩展)",
+      "description": "gin 的路由树 与 cobra 相比， gin 的路由树实现就是另外一种方式了， 我称之为 生长。 换句话说， gin 路由的子节点不能独立于父节点 单独 定义。\n\/\/ Group creates a new router group. You should add all the routes that have common middlewares or the same path prefix. \/\/ For example, all the routes that use a common middleware for authorization could be grouped. func (group *RouterGroup) Group(relativePath string, handlers ...HandlerFunc) *RouterGroup { return \u0026RouterGroup{ Handlers: group.combineHandlers(handlers), basePath: group.calculateAbsolutePath(relativePath), engine: group.engine, } } 从上面代码可以看出来， RouterGroup 是通过 Group 方法实现路由节点 生长 的， 在调用 Group 方法的时候，",
+      "wordCount" : "101",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/chapter01/02-install/"
+          "@id": "https://typonotes.com/books/golang/cobra-in-action/05-2-gin-router-tree/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -181,7 +175,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/chapter01/02-install/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/cobra-in-action/05-2-gin-router-tree/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -414,7 +408,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
                 <span class="flex">
                   <a
                     href="/books/golang/chapter01/02-install/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     2. 下载安装与环境配置
                   </a>
@@ -706,7 +700,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
                 <span class="flex">
                   <a
                     href="/books/golang/cobra-in-action/05-2-gin-router-tree/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     5.2 gin 路由树的实现(扩展)
                   </a>
@@ -828,7 +822,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter01/' href='/books/golang/chapter01/'><span itemprop='name'>Chapter01</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>2. 下载安装与环境配置</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/cobra-in-action/' href='/books/golang/cobra-in-action/'><span itemprop='name'>Cobra-in-action</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>5.2 gin 路由树的实现(扩展)</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -844,75 +838,66 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>2. 下载安装与环境配置</h1>
+  <h1>5.2 gin 路由树的实现(扩展)</h1>
   <div class="gdoc-page__anchorwrap">
-    <h2 id="下载和安装">
-        下载和安装
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#下载和安装" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 下载和安装" aria-label="Anchor to: 下载和安装" href="#%e4%b8%8b%e8%bd%bd%e5%92%8c%e5%ae%89%e8%a3%85">
+    <h2 id="gin-的路由树">
+        gin 的路由树
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/05-2-gin-router-tree/#gin-的路由树" class="gdoc-page__anchor clip flex align-center" title="Anchor to: gin 的路由树" aria-label="Anchor to: gin 的路由树" href="#gin-%e7%9a%84%e8%b7%af%e7%94%b1%e6%a0%91">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
-<p>前往 <a
-  class="gdoc-markdown__link"
-  href="https://go.dev/dl/"
->官网Go下载地址</a> 页面下载与自己操作系统对应二进制文件。</p>
-<p>通常我会选择压缩包， 然后解压到所需要安装的目录。</p>
-<p>例如， 我是 mac 的 intel 系统， <code>go1.19.6.darwin-amd64.tar.gz</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /tmp
-</span></span><span class="line"><span class="cl">wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h3 id="配置环境变量">
-        配置环境变量
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#配置环境变量" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 配置环境变量" aria-label="Anchor to: 配置环境变量" href="#%e9%85%8d%e7%bd%ae%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
+<p>与 cobra 相比， gin 的路由树实现就是另外一种方式了， 我称之为 <strong>生长</strong>。 换句话说， gin 路由的子节点不能独立于父节点 <strong>单独</strong> 定义。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// Group creates a new router group. You should add all the routes that have common middlewares or the same path prefix.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// For example, all the routes that use a common middleware for authorization could be grouped.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">group</span> <span class="o">*</span><span class="nx">RouterGroup</span><span class="p">)</span> <span class="nf">Group</span><span class="p">(</span><span class="nx">relativePath</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">handlers</span> <span class="o">...</span><span class="nx">HandlerFunc</span><span class="p">)</span> <span class="o">*</span><span class="nx">RouterGroup</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">RouterGroup</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Handlers</span><span class="p">:</span> <span class="nx">group</span><span class="p">.</span><span class="nf">combineHandlers</span><span class="p">(</span><span class="nx">handlers</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">basePath</span><span class="p">:</span> <span class="nx">group</span><span class="p">.</span><span class="nf">calculateAbsolutePath</span><span class="p">(</span><span class="nx">relativePath</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">engine</span><span class="p">:</span>   <span class="nx">group</span><span class="p">.</span><span class="nx">engine</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>从上面代码可以看出来， <code>RouterGroup</code> 是通过 <code>Group</code> 方法实现路由节点 <strong>生长</strong> 的， 在调用 <code>Group</code> 方法的时候，</p>
 <ol>
-<li><code>GOPROXY</code>: Go代理地址， 通常使用 <code>https://goproxy.cn</code> 或 <code>https://goproxy.io</code></li>
-<li><code>GOROOT</code>: Go 二进制的位置, 即我们上面解压目录的 <code>/usr/local/go</code></li>
-<li><code>GOPATH</code>: 这个是我们项目代码的位置， 有了 <code>go mod</code> 之后 <strong>不是绝对的了</strong></li>
+<li><strong>必须</strong> 要传入 <strong>子节点</strong> 的相对路径</li>
+<li>使用私有方法计算出 <code>basePath</code> 的值。</li>
 </ol>
-<ul>
-<li>使用 <code>go install</code> 后， 编译的二进制会默认在 <code>$GOPATH/bin/</code></li>
-<li>使用 <code>go get</code> 下载的所有库文件在 <code>$GOPATH/pkg/mod/</code> 中</li>
-<li>可以直接 <code>go mod init</code>， 如果项目在 <code>$GOPATH/src/</code> 中， 会默认以相对目录配置 <code>module</code> 路径。</li>
-</ul>
-<p>对于 <code>Mac</code> 和 <code>Linux</code> 系统， 设置环境变量。 配置到 <code>/etc/profile</code> 中。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPROXY</span><span class="o">=</span><span class="s2">&#34;https://goproxy.cn&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOROOT</span><span class="o">=</span><span class="s2">&#34;/usr/local/go&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPATH</span><span class="o">=</span><span class="s2">&#34;/data/gopath&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$GOROOT</span><span class="s2">/bin:</span><span class="nv">$GOPATH</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span>
-</span></span></code></pre></div><p>执行 <code>go version</code> 命令测试结果。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="err">$</span> <span class="k">go</span> <span class="nx">version</span>
-</span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">version</span> <span class="nx">go1</span><span class="mf">.19.6</span> <span class="nx">darwin</span><span class="o">/</span><span class="nx">amd64</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h3 id="关于go版本的选择">
-        关于Go版本的选择
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#关于go版本的选择" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 关于Go版本的选择" aria-label="Anchor to: 关于Go版本的选择" href="#%e5%85%b3%e4%ba%8ego%e7%89%88%e6%9c%ac%e7%9a%84%e9%80%89%e6%8b%a9">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<ol>
-<li>我会选择使用 <strong>次新版本</strong>(当前为 <code>v1.19.z</code>) ， 并随时保持更新。</li>
-<li>当 <strong>最新版本</strong>(当前为 <code>1.20.z</code>) 的 z 编号 <strong>不小于5</strong> （即 <code>1.20.5</code>）的时候， 才会选择升级到最新版本。</li>
-</ol>
-<blockquote>
-<p>个人意见， 仅供参考。</p>
-</blockquote>
+<p>这个特别像怀孕生孩子， 一代接一代。 绝对错不了。 <code>O.o</code>。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/02/14/devopscamp-cobra-05-subcommand/gin-router-tree-fs8.png" alt=""  /></p>
 <div class="gdoc-page__anchorwrap">
-    <h2 id="vscode-安装和插件">
-        VSCode 安装和插件
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#vscode-安装和插件" class="gdoc-page__anchor clip flex align-center" title="Anchor to: VSCode 安装和插件" aria-label="Anchor to: VSCode 安装和插件" href="#vscode-%e5%ae%89%e8%a3%85%e5%92%8c%e6%8f%92%e4%bb%b6">
+    <h3 id="gin-的-routergroup-能实现-认亲挂靠-模式吗">
+        gin 的 RouterGroup 能实现 <strong>认亲/挂靠</strong> 模式吗？
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/05-2-gin-router-tree/#gin-的-routergroup-能实现-认亲挂靠-模式吗" class="gdoc-page__anchor clip flex align-center" title="Anchor to: gin 的 RouterGroup 能实现 认亲/挂靠 模式吗？" aria-label="Anchor to: gin 的 RouterGroup 能实现 认亲/挂靠 模式吗？" href="#gin-%e7%9a%84-routergroup-%e8%83%bd%e5%ae%9e%e7%8e%b0-%e8%ae%a4%e4%ba%b2%e6%8c%82%e9%9d%a0-%e6%a8%a1%e5%bc%8f%e5%90%97">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
-    </h2>
+    </h3>
 </div>
+<p>肯定可以， 做个变形手术就好了。 这里挖个坑吧。</p>
 
 </article>
 
@@ -1012,9 +997,6 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
       
 
       
-        
-        
-      
 
       
     
@@ -1040,9 +1022,6 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
       
       
 
-      
-        
-        
       
 
       

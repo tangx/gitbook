@@ -9,10 +9,15 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+  <meta name="description" content="Go 项目的目录结构 Go 项目的目录结构， 通常都会参考该项目 Go语言规范/项目结构 - Github 。
+这是一个社区规范， 遵守这个规范， 大家都会很轻松。 但并不是严格的 Go 语言标准， 实际操作中各个公司可能会有自己的标准。
+另外， 在上述的 Github 仓库中可以看到， 所有 目录功能 都只有一层。 这样就意味着在实际使用时我们是可以自由组合。 只要遵守该层的功能约定就可以了。
+例如， 使用 cobra 时， 用于管理命令的 cmd 目录， 位置可以是
+/cmd/appname/cmd # 或 /pkg/cmd/ # 或 /internal/pkg/cmd # 或 /pkg/internal/cmd 关于这个没有必要钻牛角尖， 只要是一群相对固定的维护人员认同的约定， 就可以了。
+internal 包 internal 包是是特殊的， 也是 Go 语言规范 强制 约束的。
+首先， 它的目录位置不是固定的， 和其他包一样。 其次， 它的访问是受限的， 只有和他有 近亲亲属关系 的路径才能访问。 举个例子， 代码在 https://github.com/tangx-labs/go-internal-demo
+代码目录树如下
+限制访问 在上图中, 其中 (2) 的调用因为没有权限被限制" />
 
 
   
@@ -41,7 +46,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>2. 下载安装与环境配置 | 《Shell 转 Go》</title>
+  <title>4. 项目的目录结构 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -62,42 +67,52 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
   
   <meta
     property="og:title"
-    content="2. 下载安装与环境配置"
+    content="4. 项目的目录结构"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+  <meta property="og:description" content="Go 项目的目录结构 Go 项目的目录结构， 通常都会参考该项目 Go语言规范/项目结构 - Github 。
+这是一个社区规范， 遵守这个规范， 大家都会很轻松。 但并不是严格的 Go 语言标准， 实际操作中各个公司可能会有自己的标准。
+另外， 在上述的 Github 仓库中可以看到， 所有 目录功能 都只有一层。 这样就意味着在实际使用时我们是可以自由组合。 只要遵守该层的功能约定就可以了。
+例如， 使用 cobra 时， 用于管理命令的 cmd 目录， 位置可以是
+/cmd/appname/cmd # 或 /pkg/cmd/ # 或 /internal/pkg/cmd # 或 /pkg/internal/cmd 关于这个没有必要钻牛角尖， 只要是一群相对固定的维护人员认同的约定， 就可以了。
+internal 包 internal 包是是特殊的， 也是 Go 语言规范 强制 约束的。
+首先， 它的目录位置不是固定的， 和其他包一样。 其次， 它的访问是受限的， 只有和他有 近亲亲属关系 的路径才能访问。 举个例子， 代码在 https://github.com/tangx-labs/go-internal-demo
+代码目录树如下
+限制访问 在上图中, 其中 (2) 的调用因为没有权限被限制" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/chapter01/02-install/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/cobra-in-action/04-layout/" />
 
-<meta property="article:section" content="Chapter01" />
+<meta property="article:section" content="Cobra in Action" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="2. 下载安装与环境配置" />
-  <meta name="twitter:description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+<meta name="twitter:title" content="4. 项目的目录结构" />
+  <meta name="twitter:description" content="Go 项目的目录结构 Go 项目的目录结构， 通常都会参考该项目 Go语言规范/项目结构 - Github 。
+这是一个社区规范， 遵守这个规范， 大家都会很轻松。 但并不是严格的 Go 语言标准， 实际操作中各个公司可能会有自己的标准。
+另外， 在上述的 Github 仓库中可以看到， 所有 目录功能 都只有一层。 这样就意味着在实际使用时我们是可以自由组合。 只要遵守该层的功能约定就可以了。
+例如， 使用 cobra 时， 用于管理命令的 cmd 目录， 位置可以是
+/cmd/appname/cmd # 或 /pkg/cmd/ # 或 /internal/pkg/cmd # 或 /pkg/internal/cmd 关于这个没有必要钻牛角尖， 只要是一群相对固定的维护人员认同的约定， 就可以了。
+internal 包 internal 包是是特殊的， 也是 Go 语言规范 强制 约束的。
+首先， 它的目录位置不是固定的， 和其他包一样。 其次， 它的访问是受限的， 只有和他有 近亲亲属关系 的路径才能访问。 举个例子， 代码在 https://github.com/tangx-labs/go-internal-demo
+代码目录树如下
+限制访问 在上图中, 其中 (2) 的调用因为没有权限被限制" />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Chapter01",
-      "name": "2. 下载安装与环境配置",
-      "url" : "https://typonotes.com/books/golang/chapter01/02-install/",
-      "headline": "2. 下载安装与环境配置",
-      "description": "下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。\n通常我会选择压缩包， 然后解压到所需要安装的目录。\n例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz\ncd \/tmp wget -c https:\/\/go.dev\/dl\/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C \/usr\/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https:\/\/goproxy.cn 或 https:\/\/goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 \/usr\/local\/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH\/bin\/ 使用 go get 下载的所有库文件在 $GOPATH\/pkg\/mod\/ 中 可以直接 go mod init， 如果项目在 $GOPATH\/src\/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 \/etc\/profile 中。",
-      "wordCount" : "113",
+      "articleSection": "Cobra in Action",
+      "name": "4. 项目的目录结构",
+      "url" : "https://typonotes.com/books/golang/cobra-in-action/04-layout/",
+      "headline": "4. 项目的目录结构",
+      "description": "Go 项目的目录结构 Go 项目的目录结构， 通常都会参考该项目 Go语言规范\/项目结构 - Github 。\n这是一个社区规范， 遵守这个规范， 大家都会很轻松。 但并不是严格的 Go 语言标准， 实际操作中各个公司可能会有自己的标准。\n另外， 在上述的 Github 仓库中可以看到， 所有 目录功能 都只有一层。 这样就意味着在实际使用时我们是可以自由组合。 只要遵守该层的功能约定就可以了。\n例如， 使用 cobra 时， 用于管理命令的 cmd 目录， 位置可以是\n\/cmd\/appname\/cmd # 或 \/pkg\/cmd\/ # 或 \/internal\/pkg\/cmd # 或 \/pkg\/internal\/cmd 关于这个没有必要钻牛角尖， 只要是一群相对固定的维护人员认同的约定， 就可以了。\ninternal 包 internal 包是是特殊的， 也是 Go 语言规范 强制 约束的。\n首先， 它的目录位置不是固定的， 和其他包一样。 其次， 它的访问是受限的， 只有和他有 近亲亲属关系 的路径才能访问。 举个例子， 代码在 https:\/\/github.com\/tangx-labs\/go-internal-demo\n代码目录树如下\n限制访问 在上图中, 其中 (2) 的调用因为没有权限被限制",
+      "wordCount" : "183",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/chapter01/02-install/"
+          "@id": "https://typonotes.com/books/golang/cobra-in-action/04-layout/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -181,7 +196,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/chapter01/02-install/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/cobra-in-action/04-layout/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -414,7 +429,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
                 <span class="flex">
                   <a
                     href="/books/golang/chapter01/02-install/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     2. 下载安装与环境配置
                   </a>
@@ -634,7 +649,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
                 <span class="flex">
                   <a
                     href="/books/golang/cobra-in-action/04-layout/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     4. 项目的目录结构
                   </a>
@@ -828,7 +843,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter01/' href='/books/golang/chapter01/'><span itemprop='name'>Chapter01</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>2. 下载安装与环境配置</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/cobra-in-action/' href='/books/golang/cobra-in-action/'><span itemprop='name'>Cobra-in-action</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>4. 项目的目录结构</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -844,75 +859,263 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>2. 下载安装与环境配置</h1>
+  <h1>4. 项目的目录结构</h1>
   <div class="gdoc-page__anchorwrap">
-    <h2 id="下载和安装">
-        下载和安装
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#下载和安装" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 下载和安装" aria-label="Anchor to: 下载和安装" href="#%e4%b8%8b%e8%bd%bd%e5%92%8c%e5%ae%89%e8%a3%85">
+    <h2 id="go-项目的目录结构">
+        Go 项目的目录结构
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/04-layout/#go-项目的目录结构" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Go 项目的目录结构" aria-label="Anchor to: Go 项目的目录结构" href="#go-%e9%a1%b9%e7%9b%ae%e7%9a%84%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
-<p>前往 <a
+<p>Go 项目的目录结构， 通常都会参考该项目 <a
   class="gdoc-markdown__link"
-  href="https://go.dev/dl/"
->官网Go下载地址</a> 页面下载与自己操作系统对应二进制文件。</p>
-<p>通常我会选择压缩包， 然后解压到所需要安装的目录。</p>
-<p>例如， 我是 mac 的 intel 系统， <code>go1.19.6.darwin-amd64.tar.gz</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /tmp
-</span></span><span class="line"><span class="cl">wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz
+  href="https://github.com/golang-standards/project-layout"
+>Go语言规范/项目结构 - Github</a> 。</p>
+<p>这是一个社区规范， 遵守这个规范， 大家都会很轻松。  但并不是严格的 Go 语言标准， 实际操作中各个公司可能会有自己的标准。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/02/13/devopscamp-cobra-05-layout/the-code-is-more-like-guidelines-fs8.png" alt=""  /></p>
+<p>另外， 在上述的 Github 仓库中可以看到， 所有 <strong>目录功能</strong> 都只有一层。 这样就意味着在实际使用时我们是可以自由组合。 只要遵守该层的功能约定就可以了。</p>
+<p>例如， 使用 cobra 时， 用于管理命令的 <code>cmd</code> 目录， 位置可以是</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/cmd/appname/cmd
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h3 id="配置环境变量">
-        配置环境变量
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#配置环境变量" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 配置环境变量" aria-label="Anchor to: 配置环境变量" href="#%e9%85%8d%e7%bd%ae%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<ol>
-<li><code>GOPROXY</code>: Go代理地址， 通常使用 <code>https://goproxy.cn</code> 或 <code>https://goproxy.io</code></li>
-<li><code>GOROOT</code>: Go 二进制的位置, 即我们上面解压目录的 <code>/usr/local/go</code></li>
-<li><code>GOPATH</code>: 这个是我们项目代码的位置， 有了 <code>go mod</code> 之后 <strong>不是绝对的了</strong></li>
-</ol>
-<ul>
-<li>使用 <code>go install</code> 后， 编译的二进制会默认在 <code>$GOPATH/bin/</code></li>
-<li>使用 <code>go get</code> 下载的所有库文件在 <code>$GOPATH/pkg/mod/</code> 中</li>
-<li>可以直接 <code>go mod init</code>， 如果项目在 <code>$GOPATH/src/</code> 中， 会默认以相对目录配置 <code>module</code> 路径。</li>
-</ul>
-<p>对于 <code>Mac</code> 和 <code>Linux</code> 系统， 设置环境变量。 配置到 <code>/etc/profile</code> 中。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPROXY</span><span class="o">=</span><span class="s2">&#34;https://goproxy.cn&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOROOT</span><span class="o">=</span><span class="s2">&#34;/usr/local/go&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPATH</span><span class="o">=</span><span class="s2">&#34;/data/gopath&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 或</span>
+</span></span><span class="line"><span class="cl">/pkg/cmd/
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$GOROOT</span><span class="s2">/bin:</span><span class="nv">$GOPATH</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span>
-</span></span></code></pre></div><p>执行 <code>go version</code> 命令测试结果。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="err">$</span> <span class="k">go</span> <span class="nx">version</span>
-</span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">version</span> <span class="nx">go1</span><span class="mf">.19.6</span> <span class="nx">darwin</span><span class="o">/</span><span class="nx">amd64</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h3 id="关于go版本的选择">
-        关于Go版本的选择
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#关于go版本的选择" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 关于Go版本的选择" aria-label="Anchor to: 关于Go版本的选择" href="#%e5%85%b3%e4%ba%8ego%e7%89%88%e6%9c%ac%e7%9a%84%e9%80%89%e6%8b%a9">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<ol>
-<li>我会选择使用 <strong>次新版本</strong>(当前为 <code>v1.19.z</code>) ， 并随时保持更新。</li>
-<li>当 <strong>最新版本</strong>(当前为 <code>1.20.z</code>) 的 z 编号 <strong>不小于5</strong> （即 <code>1.20.5</code>）的时候， 才会选择升级到最新版本。</li>
-</ol>
-<blockquote>
-<p>个人意见， 仅供参考。</p>
-</blockquote>
+</span></span><span class="line"><span class="cl"><span class="c1"># 或</span>
+</span></span><span class="line"><span class="cl">/internal/pkg/cmd
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 或</span>
+</span></span><span class="line"><span class="cl">/pkg/internal/cmd
+</span></span></code></pre></div><p>关于这个没有必要钻牛角尖， 只要是一群相对固定的维护人员认同的约定， 就可以了。</p>
 <div class="gdoc-page__anchorwrap">
-    <h2 id="vscode-安装和插件">
-        VSCode 安装和插件
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#vscode-安装和插件" class="gdoc-page__anchor clip flex align-center" title="Anchor to: VSCode 安装和插件" aria-label="Anchor to: VSCode 安装和插件" href="#vscode-%e5%ae%89%e8%a3%85%e5%92%8c%e6%8f%92%e4%bb%b6">
+    <h2 id="internal-包">
+        <code>internal</code> 包
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/04-layout/#internal-包" class="gdoc-page__anchor clip flex align-center" title="Anchor to: internal 包" aria-label="Anchor to: internal 包" href="#internal-%e5%8c%85">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
+<p><code>internal</code> 包是是特殊的， 也是 Go 语言规范 <strong>强制</strong> 约束的。</p>
+<ol>
+<li>首先， 它的目录位置不是固定的， 和其他包一样。</li>
+<li>其次， 它的访问是受限的， 只有和他有 <strong>近亲亲属关系</strong> 的路径才能访问。</li>
+</ol>
+<p>举个例子， 代码在 <a
+  class="gdoc-markdown__link"
+  href="https://github.com/tangx-labs/go-internal-demo"
+>https://github.com/tangx-labs/go-internal-demo</a></p>
+<p>代码目录树如下</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/02/13/devopscamp-cobra-05-layout/golang-internal-03-fs8.png" alt=""  /></p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="限制访问">
+        限制访问
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/04-layout/#限制访问" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 限制访问" aria-label="Anchor to: 限制访问" href="#%e9%99%90%e5%88%b6%e8%ae%bf%e9%97%ae">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/02/13/devopscamp-cobra-05-layout/golang-internal-01-fs8.png" alt=""  /></p>
+<p>在上图中, 其中 (2) 的调用因为没有权限被限制</p>
+<p>在 <code>/cmd/appname/cmd/say</code> 访问 <code>pkg/internal/master</code> 时，</p>
+<ol>
+<li>找到与 <code>/pkg</code> 与 <code>/cmd</code> 是相同层级。</li>
+<li>但是 <code>/pkg/internal</code> 是子层级， 与 <code>/cmd/appname</code> 是同一层级。</li>
+<li>因此属于 <strong>远亲</strong>， 不能直接调用 <code>/pkg/internal/master</code></li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="公共方法暴露">
+        公共方法暴露
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/04-layout/#公共方法暴露" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 公共方法暴露" aria-label="Anchor to: 公共方法暴露" href="#%e5%85%ac%e5%85%b1%e6%96%b9%e6%b3%95%e6%9a%b4%e9%9c%b2">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/02/13/devopscamp-cobra-05-layout/golang-internal-01-fs8.png" alt=""  /></p>
+<p>但是， 可以通过 <strong>私有包的公共方法暴露</strong>， 例如上图中的 (3)</p>
+<ol>
+<li><code>/pkg/hello</code> 与 <code>/pkg/internal</code> 是同级， 且是 <strong>近亲</strong>， 可以调用。</li>
+<li><code>/pkg/hello</code> 是公共的</li>
+<li><code>/cmd/appname/cmd/say</code> 可以通过调用 <code>/pkg/hello</code> 间接实现调用 master 的逻辑。（</li>
+</ol>
+<p>更多详细信息， 可以阅读 <a
+  class="gdoc-markdown__link"
+  href="https://go.dev/s/go14internal"
+>internal 运行机制</a></p>
+<p>那 internal 是不是就一定不能被访问了呢？ 也不一定， 可以参考 <a
+  class="gdoc-markdown__link"
+  href="https://colobu.com/2017/05/12/call-private-functions-in-other-packages/"
+>突破限制,访问其它Go package中的私有函数
+</a></p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="包命名规范">
+        包命名规范
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/04-layout/#包命名规范" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 包命名规范" aria-label="Anchor to: 包命名规范" href="#%e5%8c%85%e5%91%bd%e5%90%8d%e8%a7%84%e8%8c%83">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>关于包的命名规范， Go 官方是有明确说明的， 但是 <strong>没有强制约束</strong> 。</p>
+<p>要求</p>
+<ol>
+<li><strong>短，好记，有意义</strong>： <code>bytes, io, os</code></li>
+<li>小写字母。 多个单词使用 <strong>连字符（-）</strong> 连接， 不要使用 <strong>蛇形（下划线）</strong> 或者 <strong>驼峰</strong>： <code>qcloud-cdn-sdk</code></li>
+</ol>
+<p>更多信息， 参考 <a
+  class="gdoc-markdown__link"
+  href="https://go.dev/doc/effective_go#package-names"
+>effective_go</a></p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="函数方法变量命令">
+        函数/方法，变量命令
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/04-layout/#函数方法变量命令" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 函数/方法，变量命令" aria-label="Anchor to: 函数/方法，变量命令" href="#%e5%87%bd%e6%95%b0%e6%96%b9%e6%b3%95%e5%8f%98%e9%87%8f%e5%91%bd%e4%bb%a4">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<ol>
+<li><strong>大写开头是公共， 小写开头是私有</strong>： 这个就不多说了</li>
+<li>命名不要与包名有重复： 假如包名为 <code>bytes</code>，</li>
+<li>函数名就不用叫 <code>BytesReader</code> 了， 否则调用起来就是 <code>bytes.BytesReader</code>。</li>
+<li>函数名就叫 <code>Reader</code> 就好了， 调用起来就是 <code>bytes.Reader</code>。</li>
+<li>命令要有意义： 见名知义。</li>
+<li>命名要遵循 <strong>驼峰</strong> 规则。</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="循环依赖">
+        循环依赖
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/04-layout/#循环依赖" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 循环依赖" aria-label="Anchor to: 循环依赖" href="#%e5%be%aa%e7%8e%af%e4%be%9d%e8%b5%96">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>这个就不多说了， 学了基础的都应该知道， 相关文章一搜一大把。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/02/13/devopscamp-cobra-05-layout/golang-cycle-import-fs8.png" alt=""  /></p>
+<p>这个是 Go 语言的 <strong>强制约束</strong>。 换句话说， 不用等到编译， 在写代码的时候 IDE 就会提示你出现错误。</p>
 
 </article>
 
@@ -1012,9 +1215,6 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
       
 
       
-        
-        
-      
 
       
     
@@ -1040,9 +1240,6 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
       
       
 
-      
-        
-        
       
 
       

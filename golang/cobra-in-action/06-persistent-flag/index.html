@@ -9,10 +9,12 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+  <meta name="description" content="DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
+状态: 未更新
+原文链接: https://typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/
+嗯， 在 cobra 中提供了一种叫做 Persistent 的 状态， 定向支持 函数 与 参数。
+下面这段代码是是使用时的定义。
+var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) PersistentPreRun: func(cmd *cobra.Command, args []string) { fmt.Println(&#34;PersistentPreRun in root&#34;) }, Run: func(cmd *cobra.Command, args []string) { _ = cmd.Help() }, } var config string func init() { // Persistent Flag (2) root." />
 
 
   
@@ -41,7 +43,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>2. 下载安装与环境配置 | 《Shell 转 Go》</title>
+  <title>6. 持久化命令与Go引用类型的使用 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -62,42 +64,46 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
   
   <meta
     property="og:title"
-    content="2. 下载安装与环境配置"
+    content="6. 持久化命令与Go引用类型的使用"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+  <meta property="og:description" content="DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
+状态: 未更新
+原文链接: https://typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/
+嗯， 在 cobra 中提供了一种叫做 Persistent 的 状态， 定向支持 函数 与 参数。
+下面这段代码是是使用时的定义。
+var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) PersistentPreRun: func(cmd *cobra.Command, args []string) { fmt.Println(&#34;PersistentPreRun in root&#34;) }, Run: func(cmd *cobra.Command, args []string) { _ = cmd.Help() }, } var config string func init() { // Persistent Flag (2) root." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/chapter01/02-install/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/" />
 
-<meta property="article:section" content="Chapter01" />
+<meta property="article:section" content="Cobra in Action" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="2. 下载安装与环境配置" />
-  <meta name="twitter:description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+<meta name="twitter:title" content="6. 持久化命令与Go引用类型的使用" />
+  <meta name="twitter:description" content="DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
+状态: 未更新
+原文链接: https://typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/
+嗯， 在 cobra 中提供了一种叫做 Persistent 的 状态， 定向支持 函数 与 参数。
+下面这段代码是是使用时的定义。
+var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) PersistentPreRun: func(cmd *cobra.Command, args []string) { fmt.Println(&#34;PersistentPreRun in root&#34;) }, Run: func(cmd *cobra.Command, args []string) { _ = cmd.Help() }, } var config string func init() { // Persistent Flag (2) root." />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Chapter01",
-      "name": "2. 下载安装与环境配置",
-      "url" : "https://typonotes.com/books/golang/chapter01/02-install/",
-      "headline": "2. 下载安装与环境配置",
-      "description": "下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。\n通常我会选择压缩包， 然后解压到所需要安装的目录。\n例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz\ncd \/tmp wget -c https:\/\/go.dev\/dl\/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C \/usr\/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https:\/\/goproxy.cn 或 https:\/\/goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 \/usr\/local\/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH\/bin\/ 使用 go get 下载的所有库文件在 $GOPATH\/pkg\/mod\/ 中 可以直接 go mod init， 如果项目在 $GOPATH\/src\/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 \/etc\/profile 中。",
-      "wordCount" : "113",
+      "articleSection": "Cobra in Action",
+      "name": "6. 持久化命令与Go引用类型的使用",
+      "url" : "https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/",
+      "headline": "6. 持久化命令与Go引用类型的使用",
+      "description": "DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。\n状态: 未更新\n原文链接: https:\/\/typonotes.com\/posts\/2023\/02\/19\/devopscamp-cobra-06-persistent-run-and-flags\/\n嗯， 在 cobra 中提供了一种叫做 Persistent 的 状态， 定向支持 函数 与 参数。\n下面这段代码是是使用时的定义。\nvar root = \u0026cobra.Command{ Use: \u0022root\u0022, \/\/ Persistent Run (1) PersistentPreRun: func(cmd *cobra.Command, args []string) { fmt.Println(\u0022PersistentPreRun in root\u0022) }, Run: func(cmd *cobra.Command, args []string) { _ = cmd.Help() }, } var config string func init() { \/\/ Persistent Flag (2) root.",
+      "wordCount" : "363",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/chapter01/02-install/"
+          "@id": "https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -181,7 +187,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/chapter01/02-install/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -414,7 +420,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
                 <span class="flex">
                   <a
                     href="/books/golang/chapter01/02-install/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     2. 下载安装与环境配置
                   </a>
@@ -742,7 +748,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
                 <span class="flex">
                   <a
                     href="/books/golang/cobra-in-action/06-persistent-flag/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     6. 持久化命令与Go引用类型的使用
                   </a>
@@ -828,7 +834,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter01/' href='/books/golang/chapter01/'><span itemprop='name'>Chapter01</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>2. 下载安装与环境配置</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/cobra-in-action/' href='/books/golang/cobra-in-action/'><span itemprop='name'>Cobra-in-action</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>6. 持久化命令与Go引用类型的使用</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -844,75 +850,270 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>2. 下载安装与环境配置</h1>
-  <div class="gdoc-page__anchorwrap">
-    <h2 id="下载和安装">
-        下载和安装
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#下载和安装" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 下载和安装" aria-label="Anchor to: 下载和安装" href="#%e4%b8%8b%e8%bd%bd%e5%92%8c%e5%ae%89%e8%a3%85">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<p>前往 <a
-  class="gdoc-markdown__link"
-  href="https://go.dev/dl/"
->官网Go下载地址</a> 页面下载与自己操作系统对应二进制文件。</p>
-<p>通常我会选择压缩包， 然后解压到所需要安装的目录。</p>
-<p>例如， 我是 mac 的 intel 系统， <code>go1.19.6.darwin-amd64.tar.gz</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /tmp
-</span></span><span class="line"><span class="cl">wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h3 id="配置环境变量">
-        配置环境变量
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#配置环境变量" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 配置环境变量" aria-label="Anchor to: 配置环境变量" href="#%e9%85%8d%e7%bd%ae%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<ol>
-<li><code>GOPROXY</code>: Go代理地址， 通常使用 <code>https://goproxy.cn</code> 或 <code>https://goproxy.io</code></li>
-<li><code>GOROOT</code>: Go 二进制的位置, 即我们上面解压目录的 <code>/usr/local/go</code></li>
-<li><code>GOPATH</code>: 这个是我们项目代码的位置， 有了 <code>go mod</code> 之后 <strong>不是绝对的了</strong></li>
-</ol>
-<ul>
-<li>使用 <code>go install</code> 后， 编译的二进制会默认在 <code>$GOPATH/bin/</code></li>
-<li>使用 <code>go get</code> 下载的所有库文件在 <code>$GOPATH/pkg/mod/</code> 中</li>
-<li>可以直接 <code>go mod init</code>， 如果项目在 <code>$GOPATH/src/</code> 中， 会默认以相对目录配置 <code>module</code> 路径。</li>
-</ul>
-<p>对于 <code>Mac</code> 和 <code>Linux</code> 系统， 设置环境变量。 配置到 <code>/etc/profile</code> 中。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPROXY</span><span class="o">=</span><span class="s2">&#34;https://goproxy.cn&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOROOT</span><span class="o">=</span><span class="s2">&#34;/usr/local/go&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPATH</span><span class="o">=</span><span class="s2">&#34;/data/gopath&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$GOROOT</span><span class="s2">/bin:</span><span class="nv">$GOPATH</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span>
-</span></span></code></pre></div><p>执行 <code>go version</code> 命令测试结果。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="err">$</span> <span class="k">go</span> <span class="nx">version</span>
-</span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">version</span> <span class="nx">go1</span><span class="mf">.19.6</span> <span class="nx">darwin</span><span class="o">/</span><span class="nx">amd64</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h3 id="关于go版本的选择">
-        关于Go版本的选择
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#关于go版本的选择" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 关于Go版本的选择" aria-label="Anchor to: 关于Go版本的选择" href="#%e5%85%b3%e4%ba%8ego%e7%89%88%e6%9c%ac%e7%9a%84%e9%80%89%e6%8b%a9">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<ol>
-<li>我会选择使用 <strong>次新版本</strong>(当前为 <code>v1.19.z</code>) ， 并随时保持更新。</li>
-<li>当 <strong>最新版本</strong>(当前为 <code>1.20.z</code>) 的 z 编号 <strong>不小于5</strong> （即 <code>1.20.5</code>）的时候， 才会选择升级到最新版本。</li>
-</ol>
-<blockquote>
-<p>个人意见， 仅供参考。</p>
-</blockquote>
+  <h1>6. 持久化命令与Go引用类型的使用</h1>
+  <!--
+> 大家好， 我是老麦
+>
+> 欢迎 **关注公众号** `Go与云原生` 或 **订阅网站** `https://typonotes.com/` 第一时间看后续精彩文章。
+>
+> 觉得好的话，请猛击文章右下角「点赞、关注、转发」 一键三连， 是对我的最大支持。
+> 
+-->
 <div class="gdoc-page__anchorwrap">
-    <h2 id="vscode-安装和插件">
-        VSCode 安装和插件
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#vscode-安装和插件" class="gdoc-page__anchor clip flex align-center" title="Anchor to: VSCode 安装和插件" aria-label="Anchor to: VSCode 安装和插件" href="#vscode-%e5%ae%89%e8%a3%85%e5%92%8c%e6%8f%92%e4%bb%b6">
+    <h1 id="devopscamp第2期从-cobra---06-持久化命令-开始聊聊-go语言-指针类型的使用注意事项">
+        DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/#devopscamp第2期从-cobra---06-持久化命令-开始聊聊-go语言-指针类型的使用注意事项" class="gdoc-page__anchor clip flex align-center" title="Anchor to: DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项" aria-label="Anchor to: DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项" href="#devopscamp%e7%ac%ac2%e6%9c%9f%e4%bb%8e-cobra---06-%e6%8c%81%e4%b9%85%e5%8c%96%e5%91%bd%e4%bb%a4-%e5%bc%80%e5%a7%8b%e8%81%8a%e8%81%8a-go%e8%af%ad%e8%a8%80-%e6%8c%87%e9%92%88%e7%b1%bb%e5%9e%8b%e7%9a%84%e4%bd%bf%e7%94%a8%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h1>
+</div>
+<p>如果在 <strong>公众号</strong> 文章发现状态为 <strong>已更新</strong>， 建议点击 <strong>查看原文</strong> 查看最新内容。</p>
+<p>状态: <strong>未更新</strong></p>
+<blockquote>
+<p><strong>原文链接:</strong> <a
+  class="gdoc-markdown__link"
+  href="https://typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/"
+>https://typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/</a></p>
+</blockquote>
+<p>嗯， 在 cobra 中提供了一种叫做 <code>Persistent</code> 的 <strong>状态</strong>， 定向支持 <strong>函数</strong> 与 <strong>参数</strong>。</p>
+<p>下面这段代码是是使用时的定义。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">root</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Use</span><span class="p">:</span> <span class="s">&#34;root&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Persistent Run (1)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">PersistentPreRun</span><span class="p">:</span> <span class="kd">func</span><span class="p">(</span><span class="nx">cmd</span> <span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">,</span> <span class="nx">args</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;PersistentPreRun in root&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Run</span><span class="p">:</span> <span class="kd">func</span><span class="p">(</span><span class="nx">cmd</span> <span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">,</span> <span class="nx">args</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">_</span> <span class="p">=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">Help</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">config</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Persistent Flag (2)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">root</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">StringVarP</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">config</span><span class="p">,</span> <span class="s">&#34;config&#34;</span><span class="p">,</span> <span class="s">&#34;c&#34;</span><span class="p">,</span> <span class="s">&#34;~/.config.json&#34;</span><span class="p">,</span> <span class="s">&#34;配置文件&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>凡是定义了 <code>Persistent</code> <strong>Run(1) 和 Flag(2)</strong> 的节点， 其子孙节点都会 <strong>继承</strong> 这种状态。 这种状态也可以被子孙节点的自定义状态覆盖。</p>
+<p><strong>注意</strong>： 这种状态是继承自 <strong>其父节点</strong>， 而非 <strong>上级节点</strong> 。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="父节点不是上级节点">
+        父节点不是上级节点
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/#父节点不是上级节点" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 父节点不是上级节点" aria-label="Anchor to: 父节点不是上级节点" href="#%e7%88%b6%e8%8a%82%e7%82%b9%e4%b8%8d%e6%98%af%e4%b8%8a%e7%ba%a7%e8%8a%82%e7%82%b9">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
+<p>这个的问题的发生原因， 还是在 <code>xxx.AddCommand</code> 的时候造成的。  因为 <code>&amp;cobra.Command{}</code> 是指针对象/引用对象， 因此在不同的地方修改是会全局影响的。 这个是基础知识， 也是重要的 <strong>坑</strong> 点， 需要牢记。</p>
+<p>下面是一个代码案例， 帮助理解。</p>
+<p>案例代码在在 Github: <a
+  class="gdoc-markdown__link"
+  href="https://github.com/tangx-labs/cobra06-demo"
+>https://github.com/tangx-labs/cobra06-demo</a></p>
+<p>代码中实现了一个如下图所示的 <strong>命令树</strong> 结构。 其中 <code>sub2</code> 同时挂载到了 <code>root</code> 和 <code>sub1</code> 节点。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/cobra-tree.jpg" alt=""  /></p>
+<p>以下是代码执行结果执行结果， 注意看</p>
+<ol>
+<li><code>--config</code> 的参数值</li>
+<li><code>PersistentPreRun</code> 的执行结果</li>
+<li><code>sub2</code> 的 <code>Usage</code> 路径， 无论从哪里进入， 都是 <code>root sub1 sub2</code>。</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="代码执行过程">
+        代码执行过程
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/#代码执行过程" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 代码执行过程" aria-label="Anchor to: 代码执行过程" href="#%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e8%bf%87%e7%a8%8b">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<ol>
+<li><code>./cobra-demo6</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ./cobra-demo6</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PersistentPreRun in root
+</span></span><span class="line"><span class="cl">Flags:
+</span></span><span class="line"><span class="cl">  -c, --config string   配置文件 <span class="o">(</span>default <span class="s2">&#34;~/.config.json&#34;</span><span class="o">)</span>
+</span></span></code></pre></div><ol start="2">
+<li><code>./cobra-demo6 sub1 </code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ./cobra-demo6 sub1 </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PersistentPreRun in sub1
+</span></span><span class="line"><span class="cl">Flags:
+</span></span><span class="line"><span class="cl">  -c, --config string   配置文件 <span class="o">(</span>default <span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.config.json&#34;</span><span class="o">)</span>
+</span></span></code></pre></div><ol start="3">
+<li><code>./cobra06-demo sub2</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ./cobra06-demo sub2  # (1)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PersistentPreRun in sub1 <span class="c1"># (2)</span>
+</span></span><span class="line"><span class="cl">Usage:
+</span></span><span class="line"><span class="cl">  root sub1 sub2 <span class="o">[</span>flags<span class="o">]</span> <span class="c1"># (3)</span>
+</span></span><span class="line"><span class="cl">Global Flags:
+</span></span><span class="line"><span class="cl">  -c, --config string   配置文件 <span class="o">(</span>default <span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.config.json&#34;</span><span class="o">)</span> <span class="c1"># (4)</span>
+</span></span></code></pre></div><ol start="4">
+<li><code>./cobra06-demo sub1 sub2</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ./cobra06-demo sub1 sub2 #(1)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PersistentPreRun in sub1 <span class="c1">#(2)</span>
+</span></span><span class="line"><span class="cl">Usage:
+</span></span><span class="line"><span class="cl">  root sub1 sub2 <span class="o">[</span>flags<span class="o">]</span> <span class="c1">#(3)</span>
+</span></span><span class="line"><span class="cl">Global Flags:
+</span></span><span class="line"><span class="cl">  -c, --config string   配置文件 <span class="o">(</span>default <span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.config.json&#34;</span><span class="o">)</span> <span class="c1">#(4)</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h3 id="引用类型回顾">
+        引用类型回顾
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/#引用类型回顾" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 引用类型回顾" aria-label="Anchor to: 引用类型回顾" href="#%e5%bc%95%e7%94%a8%e7%b1%bb%e5%9e%8b%e5%9b%9e%e9%a1%be">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>首先， 我们再来回顾一下一下 <code>Cobra Command</code> 的结构体</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Command</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Use</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">parent</span> <span class="o">*</span><span class="nx">Command</span>	<span class="c1">// 父命令
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">commands</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Command</span>	<span class="c1">// 子命令
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>可以看到， <code>parent *Command</code> 是指针类型。 这意味着， <strong>在任何地方修改都会影响全局引用</strong>。</p>
+<p>这里简单的回顾一下 <strong>引用对象</strong>。 <strong>A, B, C</strong> 都指向 <strong>指针地址</strong>， 而 <strong>指针地址</strong> 纸箱 <strong>真实数据地址</strong>。 当因为某个外力修改了 <strong>真实数据地址</strong> 中的内容的时候， 虽然 A, B, C 都没变化， 但是他们 <strong>取</strong> 到的东西发生了变化。</p>
+<p>举个例子，</p>
+<ol>
+<li>你去温泉之前寄存物品， 商家会给你一个 <strong>手牌（指针地址）</strong>， 你拿着手牌将 <strong>名贵手表（数据）</strong> 放入对应的 <strong>100号柜子（真实地址）</strong>。</li>
+<li>在你泡温泉的时候， <strong>某个人（外力）</strong> 打开了柜子， 把你的手表换成了 <strong>塑料手表（数据修改）</strong>。</li>
+<li>等你回来的时候， 虽然你的手牌没变， 但是你打开柜子的时候， 你拿到的不再你期望的东西了。</li>
+</ol>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/golang-reference-type.jpg" alt=""  /></p>
+<p>而正好， 每次执行 <code>xxx.AddCommand(children)</code> 添加子命令的时候， <code>children</code> 节点的 <code>parent</code> 字段都会被修改。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Command</span><span class="p">)</span> <span class="nf">AddCommand</span><span class="p">(</span><span class="nx">cmds</span> <span class="o">...*</span><span class="nx">Command</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">x</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">cmds</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">cmds</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">==</span> <span class="nx">c</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nb">panic</span><span class="p">(</span><span class="s">&#34;Command can&#39;t be a child of itself&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">cmds</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">parent</span> <span class="p">=</span> <span class="nx">c</span>  <span class="c1">// child 的父节点会被修改
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 省略
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>当一个节点， 重复被假如到其他节点的时候， 会出现这个问题。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="cobra-树实现过程解析">
+        cobra 树实现过程解析
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/#cobra-树实现过程解析" class="gdoc-page__anchor clip flex align-center" title="Anchor to: cobra 树实现过程解析" aria-label="Anchor to: cobra 树实现过程解析" href="#cobra-%e6%a0%91%e5%ae%9e%e7%8e%b0%e8%bf%87%e7%a8%8b%e8%a7%a3%e6%9e%90">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>下面， 我们对命令树的实现过程进行拆分。 <strong>注意</strong> 每个节点分为上下两层， <strong>上层</strong> 表示父节点的名称， <strong>下层</strong> 表示当前节点。</p>
+<pre tabindex="0"><code>  parent
+----------
+   node
+</code></pre><p>当执行第一条命令时时候， 此时创建的命令树就有所差异了。 左侧时从 <code>root</code> 开始， 右侧是从 <code>sub1</code> 开始。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/cobra-tree-step1.jpg" alt=""  /></p>
+<p>当执行的第二条命令的时候， 都实现了相同结构的命令树（不看父节点差异的话）。</p>
+<p>但仔细分析其内部节点， 可以知道， <strong>相同位置的节点， 其父节点不一样</strong>。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/cobra-tree-step2.jpg" alt=""  /></p>
 
 </article>
 
@@ -1012,9 +1213,6 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
       
 
       
-        
-        
-      
 
       
     
@@ -1040,9 +1238,6 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
       
       
 
-      
-        
-        
       
 
       

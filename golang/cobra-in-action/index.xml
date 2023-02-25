@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>《Shell 转 Go》</title>
-    <link>https://typonotes.com/books/golang/</link>
-    <description>Recent content on 《Shell 转 Go》</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/index.xml" rel="self" type="application/rss+xml" />
+    <title>Cobra-in-action on 《Shell 转 Go》</title>
+    <link>https://typonotes.com/books/golang/cobra-in-action/</link>
+    <description>Recent content in Cobra-in-action on 《Shell 转 Go》</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/cobra-in-action/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1. 参数绑定与交叉编译</title>
       <link>https://typonotes.com/books/golang/cobra-in-action/01-cobra-sample/</link>
@@ -12,27 +12,6 @@
       
       <guid>https://typonotes.com/books/golang/cobra-in-action/01-cobra-sample/</guid>
       <description>作业要求: 使用 https://github.com/spf13/cobra 实现命令工具 命令具有以下参数 --name 姓名 --age 年龄 如果年龄为空， 默认为 20 岁。 完成交叉编译脚本， 编译其他平台的二进制文件 -rwxr-xr-x 1 devopscamp staff 4220672 Jan 13 15:35 greeting-darwin-amd64 -rwxr-xr-x 1 devopscamp staff 4203442 Jan 13 15:35 greeting-darwin-arm64 -rwxr-xr-x 1 devopscamp staff 4215010 Jan 13 15:35 greeting-linux-amd64 -rwxr-xr-x 1 devopscamp staff 4157892 Jan 13 15:35 greeting-linux-arm64 执行输出效果如下 $ ./out/greeting-darwin-arm64 你好, 今年 20 岁 $ ./out/greeting-darwin-arm64 --age 30 --name zhangsan zhangsan 你好, 今年 30 岁 解题过程 1.</description>
-    </item>
-    
-    <item>
-      <title>1. 项目简介</title>
-      <link>https://typonotes.com/books/golang/chapter01/01-introduce/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/chapter01/01-introduce/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>2. 下载安装与环境配置</title>
-      <link>https://typonotes.com/books/golang/chapter01/02-install/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/chapter01/02-install/</guid>
-      <description>下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。</description>
     </item>
     
     <item>
@@ -46,15 +25,6 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 { &amp;#34;name&amp;#34;:&amp;#34;zhangsan&amp;#34;, &amp;#34;age&amp;#34;: 20 } 单个参数绑定的困境 之前我们使用了 单个参数独立绑定 的方式， 为我们的 greeting 应用绑定了 name 和 age 参数。
 这种方式有个很明显的缺点， 如果应用参数的数量较多（比如说几十个） 的时候， 就会出现庞大的参数列表， 可读性 和 维护性 都会变得很差。
 var ( name string age int ) func init() { root.Flags().StringVarP(&amp;amp;name, &amp;#34;name&amp;#34;, &amp;#34;n&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;名字&amp;#34;) root.Flags().IntVarP(&amp;amp;age, &amp;#34;age&amp;#34;, &amp;#34;a&amp;#34;, 20, &amp;#34;名字&amp;#34;) } 因此在生产中， 我们常常会选择 配置 文件来进行 参数/变量 的管理。 例如作业要求中提到的 YAML 或者 JSON 文件。</description>
-    </item>
-    
-    <item>
-      <title>3. VSCode配置与插件</title>
-      <link>https://typonotes.com/books/golang/chapter01/03-vscode/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/chapter01/03-vscode/</guid>
-      <description></description>
     </item>
     
     <item>
