@@ -92,7 +92,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
       "url" : "https://typonotes.com/books/golang/chapter01/02-install/",
       "headline": "02. 下载安装与环境配置",
       "description": "下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。\n通常我会选择压缩包， 然后解压到所需要安装的目录。\n例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz\ncd \/tmp wget -c https:\/\/go.dev\/dl\/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C \/usr\/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https:\/\/goproxy.cn 或 https:\/\/goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 \/usr\/local\/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH\/bin\/ 使用 go get 下载的所有库文件在 $GOPATH\/pkg\/mod\/ 中 可以直接 go mod init， 如果项目在 $GOPATH\/src\/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 \/etc\/profile 中。",
-      "wordCount" : "113",
+      "wordCount" : "111",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -1422,14 +1422,6 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 <blockquote>
 <p>个人意见， 仅供参考。</p>
 </blockquote>
-<div class="gdoc-page__anchorwrap">
-    <h2 id="vscode-安装和插件">
-        VSCode 安装和插件
-        <a data-clipboard-text="https://typonotes.com/books/golang/chapter01/02-install/#vscode-安装和插件" class="gdoc-page__anchor clip flex align-center" title="Anchor to: VSCode 安装和插件" aria-label="Anchor to: VSCode 安装和插件" href="#vscode-%e5%ae%89%e8%a3%85%e5%92%8c%e6%8f%92%e4%bb%b6">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
 
 </article>
 
