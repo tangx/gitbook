@@ -9,10 +9,11 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+  <meta name="description" content="VS Code 我更喜欢 gopls， 所以我没用 goland。
+下载 到 微软官方 下载 VS Code: https://code.visualstudio.com/ 。
+插件 一个好汉三个帮， 一个篱笆三个桩。
+VSCode 本身并不是某个特定语言的 IDE。 但是安装了插件 VSCode 就是鸟枪换炮， 爽得飞起。
+Go 相关的 必须安装的 Go 插件 , 现在已经交给 Go Team 维护: 非常有用的 Go template 插件， 可以提供 template 的 高亮 和 格式化。 测试使用的 Go Test Explorer， 前期不写单元测试， 也可以不装。 提供代码片段缩写的 Go Snippet， 有用但不多。 可以将 JSON 文件直接转换成结构体的 Paste JSON as Code 通用的 格式化 JSON 的 Json Tools。 展示更方便。 远程开发必备的 Remote - SSH。 可以直接在目标机器（容器）中开发、调试。 一款网络请求的客户端工具 REST Client , 有他就可以不用 Postman 了。 工具 在安装完 最核心的 Go 插件后， VSCode 就会推荐按安装各种开发工具了。" />
 
 
   
@@ -41,7 +42,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>02. 下载安装与环境配置 | 《Shell 转 Go》</title>
+  <title>03. VSCode配置与插件 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -62,25 +63,27 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
   
   <meta
     property="og:title"
-    content="02. 下载安装与环境配置"
+    content="03. VSCode配置与插件"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+  <meta property="og:description" content="VS Code 我更喜欢 gopls， 所以我没用 goland。
+下载 到 微软官方 下载 VS Code: https://code.visualstudio.com/ 。
+插件 一个好汉三个帮， 一个篱笆三个桩。
+VSCode 本身并不是某个特定语言的 IDE。 但是安装了插件 VSCode 就是鸟枪换炮， 爽得飞起。
+Go 相关的 必须安装的 Go 插件 , 现在已经交给 Go Team 维护: 非常有用的 Go template 插件， 可以提供 template 的 高亮 和 格式化。 测试使用的 Go Test Explorer， 前期不写单元测试， 也可以不装。 提供代码片段缩写的 Go Snippet， 有用但不多。 可以将 JSON 文件直接转换成结构体的 Paste JSON as Code 通用的 格式化 JSON 的 Json Tools。 展示更方便。 远程开发必备的 Remote - SSH。 可以直接在目标机器（容器）中开发、调试。 一款网络请求的客户端工具 REST Client , 有他就可以不用 Postman 了。 工具 在安装完 最核心的 Go 插件后， VSCode 就会推荐按安装各种开发工具了。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/startup/02-install/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/startup/vscode/" />
 
 <meta property="article:section" content="Startup" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="02. 下载安装与环境配置" />
-  <meta name="twitter:description" content="下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。" />
+<meta name="twitter:title" content="03. VSCode配置与插件" />
+  <meta name="twitter:description" content="VS Code 我更喜欢 gopls， 所以我没用 goland。
+下载 到 微软官方 下载 VS Code: https://code.visualstudio.com/ 。
+插件 一个好汉三个帮， 一个篱笆三个桩。
+VSCode 本身并不是某个特定语言的 IDE。 但是安装了插件 VSCode 就是鸟枪换炮， 爽得飞起。
+Go 相关的 必须安装的 Go 插件 , 现在已经交给 Go Team 维护: 非常有用的 Go template 插件， 可以提供 template 的 高亮 和 格式化。 测试使用的 Go Test Explorer， 前期不写单元测试， 也可以不装。 提供代码片段缩写的 Go Snippet， 有用但不多。 可以将 JSON 文件直接转换成结构体的 Paste JSON as Code 通用的 格式化 JSON 的 Json Tools。 展示更方便。 远程开发必备的 Remote - SSH。 可以直接在目标机器（容器）中开发、调试。 一款网络请求的客户端工具 REST Client , 有他就可以不用 Postman 了。 工具 在安装完 最核心的 Go 插件后， VSCode 就会推荐按安装各种开发工具了。" />
 
 
   <script type="application/ld+json">
@@ -88,16 +91,16 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
       "@context": "http://schema.org",
       "@type": "TechArticle",
       "articleSection": "Startup",
-      "name": "02. 下载安装与环境配置",
-      "url" : "https://typonotes.com/books/golang/startup/02-install/",
-      "headline": "02. 下载安装与环境配置",
-      "description": "下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。\n通常我会选择压缩包， 然后解压到所需要安装的目录。\n例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz\ncd \/tmp wget -c https:\/\/go.dev\/dl\/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C \/usr\/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https:\/\/goproxy.cn 或 https:\/\/goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 \/usr\/local\/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH\/bin\/ 使用 go get 下载的所有库文件在 $GOPATH\/pkg\/mod\/ 中 可以直接 go mod init， 如果项目在 $GOPATH\/src\/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 \/etc\/profile 中。",
-      "wordCount" : "111",
+      "name": "03. VSCode配置与插件",
+      "url" : "https://typonotes.com/books/golang/startup/vscode/",
+      "headline": "03. VSCode配置与插件",
+      "description": "VS Code 我更喜欢 gopls， 所以我没用 goland。\n下载 到 微软官方 下载 VS Code: https:\/\/code.visualstudio.com\/ 。\n插件 一个好汉三个帮， 一个篱笆三个桩。\nVSCode 本身并不是某个特定语言的 IDE。 但是安装了插件 VSCode 就是鸟枪换炮， 爽得飞起。\nGo 相关的 必须安装的 Go 插件 , 现在已经交给 Go Team 维护: 非常有用的 Go template 插件， 可以提供 template 的 高亮 和 格式化。 测试使用的 Go Test Explorer， 前期不写单元测试， 也可以不装。 提供代码片段缩写的 Go Snippet， 有用但不多。 可以将 JSON 文件直接转换成结构体的 Paste JSON as Code 通用的 格式化 JSON 的 Json Tools。 展示更方便。 远程开发必备的 Remote - SSH。 可以直接在目标机器（容器）中开发、调试。 一款网络请求的客户端工具 REST Client , 有他就可以不用 Postman 了。 工具 在安装完 最核心的 Go 插件后， VSCode 就会推荐按安装各种开发工具了。",
+      "wordCount" : "106",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/startup/02-install/"
+          "@id": "https://typonotes.com/books/golang/startup/vscode/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -181,7 +184,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/startup/02-install/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/startup/vscode/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -423,8 +426,8 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
               
                 <span class="flex">
                   <a
-                    href="/books/golang/startup/02-install/"
-                    class="gdoc-nav__entry is-active"
+                    href="/books/golang/startup/install/"
+                    class="gdoc-nav__entry"
                   >
                     02. 下载安装与环境配置
                   </a>
@@ -457,7 +460,14 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
               
             >
               
-                <span class="flex">03. VSCode配置与插件</span>
+                <span class="flex">
+                  <a
+                    href="/books/golang/startup/vscode/"
+                    class="gdoc-nav__entry is-active"
+                  >
+                    03. VSCode配置与插件
+                  </a>
+                </span>
               
               
             </label>
@@ -1985,7 +1995,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/startup/' href='/books/golang/startup/'><span itemprop='name'>01. Go开发环境配置</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>02. 下载安装与环境配置</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/startup/' href='/books/golang/startup/'><span itemprop='name'>01. Go开发环境配置</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>03. VSCode配置与插件</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -2001,67 +2011,138 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>02. 下载安装与环境配置</h1>
+  <h1>03. VSCode配置与插件</h1>
   <div class="gdoc-page__anchorwrap">
-    <h2 id="下载和安装">
-        下载和安装
-        <a data-clipboard-text="https://typonotes.com/books/golang/startup/02-install/#下载和安装" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 下载和安装" aria-label="Anchor to: 下载和安装" href="#%e4%b8%8b%e8%bd%bd%e5%92%8c%e5%ae%89%e8%a3%85">
+    <h1 id="vs-code">
+        VS Code
+        <a data-clipboard-text="https://typonotes.com/books/golang/startup/vscode/#vs-code" class="gdoc-page__anchor clip flex align-center" title="Anchor to: VS Code" aria-label="Anchor to: VS Code" href="#vs-code">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h1>
+</div>
+<p>我更喜欢 <code>gopls</code>， 所以我没用 <code>goland</code>。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="下载">
+        下载
+        <a data-clipboard-text="https://typonotes.com/books/golang/startup/vscode/#下载" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 下载" aria-label="Anchor to: 下载" href="#%e4%b8%8b%e8%bd%bd">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
-<p>前往 <a
+<p>到 <strong>微软官方</strong> 下载 VS Code: <a
   class="gdoc-markdown__link"
-  href="https://go.dev/dl/"
->官网Go下载地址</a> 页面下载与自己操作系统对应二进制文件。</p>
-<p>通常我会选择压缩包， 然后解压到所需要安装的目录。</p>
-<p>例如， 我是 mac 的 intel 系统， <code>go1.19.6.darwin-amd64.tar.gz</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /tmp
-</span></span><span class="line"><span class="cl">wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h3 id="配置环境变量">
-        配置环境变量
-        <a data-clipboard-text="https://typonotes.com/books/golang/startup/02-install/#配置环境变量" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 配置环境变量" aria-label="Anchor to: 配置环境变量" href="#%e9%85%8d%e7%bd%ae%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f">
+  href="https://code.visualstudio.com/"
+>https://code.visualstudio.com/</a> 。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="插件">
+        插件
+        <a data-clipboard-text="https://typonotes.com/books/golang/startup/vscode/#插件" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 插件" aria-label="Anchor to: 插件" href="#%e6%8f%92%e4%bb%b6">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
-    </h3>
+    </h2>
 </div>
-<ol>
-<li><code>GOPROXY</code>: Go代理地址， 通常使用 <code>https://goproxy.cn</code> 或 <code>https://goproxy.io</code></li>
-<li><code>GOROOT</code>: Go 二进制的位置, 即我们上面解压目录的 <code>/usr/local/go</code></li>
-<li><code>GOPATH</code>: 这个是我们项目代码的位置， 有了 <code>go mod</code> 之后 <strong>不是绝对的了</strong></li>
-</ol>
-<ul>
-<li>使用 <code>go install</code> 后， 编译的二进制会默认在 <code>$GOPATH/bin/</code></li>
-<li>使用 <code>go get</code> 下载的所有库文件在 <code>$GOPATH/pkg/mod/</code> 中</li>
-<li>可以直接 <code>go mod init</code>， 如果项目在 <code>$GOPATH/src/</code> 中， 会默认以相对目录配置 <code>module</code> 路径。</li>
-</ul>
-<p>对于 <code>Mac</code> 和 <code>Linux</code> 系统， 设置环境变量。 配置到 <code>/etc/profile</code> 中。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPROXY</span><span class="o">=</span><span class="s2">&#34;https://goproxy.cn&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOROOT</span><span class="o">=</span><span class="s2">&#34;/usr/local/go&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPATH</span><span class="o">=</span><span class="s2">&#34;/data/gopath&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$GOROOT</span><span class="s2">/bin:</span><span class="nv">$GOPATH</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span>
-</span></span></code></pre></div><p>执行 <code>go version</code> 命令测试结果。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="err">$</span> <span class="k">go</span> <span class="nx">version</span>
-</span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">version</span> <span class="nx">go1</span><span class="mf">.19.6</span> <span class="nx">darwin</span><span class="o">/</span><span class="nx">amd64</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h3 id="关于go版本的选择">
-        关于Go版本的选择
-        <a data-clipboard-text="https://typonotes.com/books/golang/startup/02-install/#关于go版本的选择" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 关于Go版本的选择" aria-label="Anchor to: 关于Go版本的选择" href="#%e5%85%b3%e4%ba%8ego%e7%89%88%e6%9c%ac%e7%9a%84%e9%80%89%e6%8b%a9">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<ol>
-<li>我会选择使用 <strong>次新版本</strong>(当前为 <code>v1.19.z</code>) ， 并随时保持更新。</li>
-<li>当 <strong>最新版本</strong>(当前为 <code>1.20.z</code>) 的 z 编号 <strong>不小于5</strong> （即 <code>1.20.5</code>）的时候， 才会选择升级到最新版本。</li>
-</ol>
 <blockquote>
-<p>个人意见， 仅供参考。</p>
+<p>一个好汉三个帮， 一个篱笆三个桩。</p>
 </blockquote>
+<p>VSCode 本身并不是某个特定语言的 IDE。 但是安装了插件 VSCode 就是鸟枪换炮， 爽得飞起。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="go-相关的">
+        Go 相关的
+        <a data-clipboard-text="https://typonotes.com/books/golang/startup/vscode/#go-相关的" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Go 相关的" aria-label="Anchor to: Go 相关的" href="#go-%e7%9b%b8%e5%85%b3%e7%9a%84">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<ol>
+<li>必须安装的 <a
+  class="gdoc-markdown__link"
+  href="https://marketplace.visualstudio.com/items?itemName=golang.Go"
+><strong>Go 插件</strong></a> , 现在已经交给 Go Team 维护:</li>
+<li>非常有用的 <a
+  class="gdoc-markdown__link"
+  href="https://marketplace.visualstudio.com/items?itemName=jinliming2.vscode-go-template"
+><strong>Go template</strong></a> 插件， 可以提供 template 的 <strong>高亮</strong> 和 <strong>格式化</strong>。</li>
+<li>测试使用的 <a
+  class="gdoc-markdown__link"
+  href="https://marketplace.visualstudio.com/items?itemName=premparihar.gotestexplorer"
+><strong>Go Test Explorer</strong></a>， 前期不写单元测试， 也可以不装。</li>
+<li>提供代码片段缩写的 <a
+  class="gdoc-markdown__link"
+  href="https://marketplace.visualstudio.com/items?itemName=honnamkuan.golang-snippets"
+><strong>Go Snippet</strong></a>， 有用但不多。</li>
+<li>可以将 JSON 文件直接转换成结构体的 <a
+  class="gdoc-markdown__link"
+  href="https://marketplace.visualstudio.com/items?itemName=quicktype.quicktype"
+>Paste JSON as Code</a></li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="通用的">
+        通用的
+        <a data-clipboard-text="https://typonotes.com/books/golang/startup/vscode/#通用的" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 通用的" aria-label="Anchor to: 通用的" href="#%e9%80%9a%e7%94%a8%e7%9a%84">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<ol>
+<li>格式化 JSON 的 <a
+  class="gdoc-markdown__link"
+  href="https://marketplace.visualstudio.com/items?itemName=eriklynd.json-tools"
+>Json Tools</a>。 展示更方便。</li>
+<li>远程开发必备的 <a
+  class="gdoc-markdown__link"
+  href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh"
+>Remote - SSH</a>。 可以直接在目标机器（容器）中开发、调试。</li>
+<li>一款网络请求的客户端工具 <a
+  class="gdoc-markdown__link"
+  href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client"
+>REST Client</a> ,  有他就可以不用 Postman 了。</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="工具">
+        工具
+        <a data-clipboard-text="https://typonotes.com/books/golang/startup/vscode/#工具" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 工具" aria-label="Anchor to: 工具" href="#%e5%b7%a5%e5%85%b7">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>在安装完 <strong>最核心的 <code>Go</code></strong> 插件后， VSCode 就会推荐按安装各种开发工具了。</p>
+<p>在 mac 下， 其他平台快捷键略有不同。</p>
+<ol>
+<li><code>command + shift + p</code> 调出对话框，</li>
+<li>输入 <code>install</code> 搜索， 得到结果 <code>Go: install/update tools</code></li>
+<li>全选， 安装即可。</li>
+</ol>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="/books/golang/startup/vscode/go-install-tools.jpg" alt=""  /></p>
 
 </article>
 

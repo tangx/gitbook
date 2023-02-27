@@ -63,10 +63,10 @@ golang程序 在 复制了开始运行的那一瞬间的当前环境所有变量
     
     <item>
       <title>01. 项目简介</title>
-      <link>https://typonotes.com/books/golang/startup/01-introduce/</link>
+      <link>https://typonotes.com/books/golang/startup/introduce/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/startup/01-introduce/</guid>
+      <guid>https://typonotes.com/books/golang/startup/introduce/</guid>
       <description></description>
     </item>
     
@@ -85,10 +85,10 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
     
     <item>
       <title>02. 下载安装与环境配置</title>
-      <link>https://typonotes.com/books/golang/startup/02-install/</link>
+      <link>https://typonotes.com/books/golang/startup/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/startup/02-install/</guid>
+      <guid>https://typonotes.com/books/golang/startup/install/</guid>
       <description>下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
 通常我会选择压缩包， 然后解压到所需要安装的目录。
 例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
@@ -151,11 +151,15 @@ time.Sleep(200) 如果要实现如果实现 秒 级别等待，
     
     <item>
       <title>03. VSCode配置与插件</title>
-      <link>https://typonotes.com/books/golang/startup/03-vscode/</link>
+      <link>https://typonotes.com/books/golang/startup/vscode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/startup/03-vscode/</guid>
-      <description></description>
+      <guid>https://typonotes.com/books/golang/startup/vscode/</guid>
+      <description>VS Code 我更喜欢 gopls， 所以我没用 goland。
+下载 到 微软官方 下载 VS Code: https://code.visualstudio.com/ 。
+插件 一个好汉三个帮， 一个篱笆三个桩。
+VSCode 本身并不是某个特定语言的 IDE。 但是安装了插件 VSCode 就是鸟枪换炮， 爽得飞起。
+Go 相关的 必须安装的 Go 插件 , 现在已经交给 Go Team 维护: 非常有用的 Go template 插件， 可以提供 template 的 高亮 和 格式化。 测试使用的 Go Test Explorer， 前期不写单元测试， 也可以不装。 提供代码片段缩写的 Go Snippet， 有用但不多。 可以将 JSON 文件直接转换成结构体的 Paste JSON as Code 通用的 格式化 JSON 的 Json Tools。 展示更方便。 远程开发必备的 Remote - SSH。 可以直接在目标机器（容器）中开发、调试。 一款网络请求的客户端工具 REST Client , 有他就可以不用 Postman 了。 工具 在安装完 最核心的 Go 插件后， VSCode 就会推荐按安装各种开发工具了。</description>
     </item>
     
     <item>
