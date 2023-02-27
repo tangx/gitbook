@@ -7,6 +7,8 @@
   </url><url>
     <loc>https://typonotes.com/books/golang/startup/</loc>
   </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/context/</loc>
+  </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/variable/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/process-control/if-else/</loc>
@@ -31,11 +33,15 @@
   </url><url>
     <loc>https://typonotes.com/books/golang/linux-go-snippet/sleep/</loc>
   </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/struct/</loc>
+  </url><url>
     <loc>https://typonotes.com/books/golang/go-features/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/startup/03-vscode/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/process-control/switch/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/interface/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/linux-go-snippet/filepath/</loc>
   </url><url>
@@ -47,15 +53,27 @@
   </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/process-control/label/</loc>
   </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/channel/</loc>
+  </url><url>
     <loc>https://typonotes.com/books/golang/linux-go-snippet/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/linux-go-snippet/tr/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/process-control/select/</loc>
   </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/generic/</loc>
+  </url><url>
     <loc>https://typonotes.com/books/golang/daily-notes/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/linux-go-snippet/cut/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/error-operation/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/defer/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/panic-recover/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/cobra-in-action/01-cobra-sample/</loc>
   </url><url>

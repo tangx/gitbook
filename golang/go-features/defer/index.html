@@ -9,11 +9,11 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="这些关于 Golang timezone 时区的坑， 我已经帮你踩过了 原文链接: https://typonotes.com/posts/2023/01/09/golang-timezone-issue/
-Golang 中一些不太注意的时区问题
-1. time/tzdata 库 Golang 内置的一个时区文件。
-可以在程序中任意位置被导入。 导入后， 如果程序 找不到本地 时区文件， 就会使用该库的数据。 本地 指的是 运行环境， 可能是实际的服务器， 也可能是容器。 通常， 应该在 main.go 中被导入。 如果是 库代码 则 不应该 导入该文件。 导入该文件后， 程序会增加 450KB 大小。 import ( _ &#34;time/tzdata&#34; ) 在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。
-FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . RUN CGO_ENABLED=0 GOOS=linux go build -o myapp FROM scratch as final COPY --from=build /app/myapp ." />
+  <meta name="description" content="变量在 defer 中的值， 其实在问变量的作用域 有没有想过， 面试中经常问的 变量在 defer 之后的值， 其实是在问 函数变量的作用域
+简单的说， defer 就是将当前操作放入 堆 中， 等待触发 return 的时候再拿出来执行。 符合堆的特色， 先进后出。
+从细节来了， 还需要注意
+变量 在 defer 中的 作用域 ？ 函数 的 执行操作 是在 入堆前还是后 ？ defer 中的函数发生了 panic 会怎样 ？ 真题测试 以下这是 go语言爱好者 97 期的一道题目。 要求很简单， 代码执行 i, j 的值分别是什么。
+func Test_Demo(t *testing.T) { i := 10 j := hello(&amp;i) fmt.Println(i, j) } func hello(i *int) int { defer func() { *i = 19 }() return *i } 这道题虽然代码少， 但是考点还是蛮多的" />
 
 
   
@@ -42,7 +42,7 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>02. Go 的时区管理 | 《Shell 转 Go》</title>
+  <title>07. defer | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -63,44 +63,44 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
   
   <meta
     property="og:title"
-    content="02. Go 的时区管理"
+    content="07. defer"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="这些关于 Golang timezone 时区的坑， 我已经帮你踩过了 原文链接: https://typonotes.com/posts/2023/01/09/golang-timezone-issue/
-Golang 中一些不太注意的时区问题
-1. time/tzdata 库 Golang 内置的一个时区文件。
-可以在程序中任意位置被导入。 导入后， 如果程序 找不到本地 时区文件， 就会使用该库的数据。 本地 指的是 运行环境， 可能是实际的服务器， 也可能是容器。 通常， 应该在 main.go 中被导入。 如果是 库代码 则 不应该 导入该文件。 导入该文件后， 程序会增加 450KB 大小。 import ( _ &#34;time/tzdata&#34; ) 在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。
-FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . RUN CGO_ENABLED=0 GOOS=linux go build -o myapp FROM scratch as final COPY --from=build /app/myapp ." />
+  <meta property="og:description" content="变量在 defer 中的值， 其实在问变量的作用域 有没有想过， 面试中经常问的 变量在 defer 之后的值， 其实是在问 函数变量的作用域
+简单的说， defer 就是将当前操作放入 堆 中， 等待触发 return 的时候再拿出来执行。 符合堆的特色， 先进后出。
+从细节来了， 还需要注意
+变量 在 defer 中的 作用域 ？ 函数 的 执行操作 是在 入堆前还是后 ？ defer 中的函数发生了 panic 会怎样 ？ 真题测试 以下这是 go语言爱好者 97 期的一道题目。 要求很简单， 代码执行 i, j 的值分别是什么。
+func Test_Demo(t *testing.T) { i := 10 j := hello(&amp;i) fmt.Println(i, j) } func hello(i *int) int { defer func() { *i = 19 }() return *i } 这道题虽然代码少， 但是考点还是蛮多的" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/daily-notes/timezone/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/go-features/defer/" />
 
-<meta property="article:section" content="Daily Notes" />
+<meta property="article:section" content="Go Features" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="02. Go 的时区管理" />
-  <meta name="twitter:description" content="这些关于 Golang timezone 时区的坑， 我已经帮你踩过了 原文链接: https://typonotes.com/posts/2023/01/09/golang-timezone-issue/
-Golang 中一些不太注意的时区问题
-1. time/tzdata 库 Golang 内置的一个时区文件。
-可以在程序中任意位置被导入。 导入后， 如果程序 找不到本地 时区文件， 就会使用该库的数据。 本地 指的是 运行环境， 可能是实际的服务器， 也可能是容器。 通常， 应该在 main.go 中被导入。 如果是 库代码 则 不应该 导入该文件。 导入该文件后， 程序会增加 450KB 大小。 import ( _ &#34;time/tzdata&#34; ) 在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。
-FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . RUN CGO_ENABLED=0 GOOS=linux go build -o myapp FROM scratch as final COPY --from=build /app/myapp ." />
+<meta name="twitter:title" content="07. defer" />
+  <meta name="twitter:description" content="变量在 defer 中的值， 其实在问变量的作用域 有没有想过， 面试中经常问的 变量在 defer 之后的值， 其实是在问 函数变量的作用域
+简单的说， defer 就是将当前操作放入 堆 中， 等待触发 return 的时候再拿出来执行。 符合堆的特色， 先进后出。
+从细节来了， 还需要注意
+变量 在 defer 中的 作用域 ？ 函数 的 执行操作 是在 入堆前还是后 ？ defer 中的函数发生了 panic 会怎样 ？ 真题测试 以下这是 go语言爱好者 97 期的一道题目。 要求很简单， 代码执行 i, j 的值分别是什么。
+func Test_Demo(t *testing.T) { i := 10 j := hello(&amp;i) fmt.Println(i, j) } func hello(i *int) int { defer func() { *i = 19 }() return *i } 这道题虽然代码少， 但是考点还是蛮多的" />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Daily Notes",
-      "name": "02. Go 的时区管理",
-      "url" : "https://typonotes.com/books/golang/daily-notes/timezone/",
-      "headline": "02. Go 的时区管理",
-      "description": "这些关于 Golang timezone 时区的坑， 我已经帮你踩过了 原文链接: https:\/\/typonotes.com\/posts\/2023\/01\/09\/golang-timezone-issue\/\nGolang 中一些不太注意的时区问题\n1. time\/tzdata 库 Golang 内置的一个时区文件。\n可以在程序中任意位置被导入。 导入后， 如果程序 找不到本地 时区文件， 就会使用该库的数据。 本地 指的是 运行环境， 可能是实际的服务器， 也可能是容器。 通常， 应该在 main.go 中被导入。 如果是 库代码 则 不应该 导入该文件。 导入该文件后， 程序会增加 450KB 大小。 import ( _ \u0022time\/tzdata\u0022 ) 在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。\nFROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR \/app ADD . . RUN CGO_ENABLED=0 GOOS=linux go build -o myapp FROM scratch as final COPY --from=build \/app\/myapp .",
-      "wordCount" : "317",
+      "articleSection": "Go Features",
+      "name": "07. defer",
+      "url" : "https://typonotes.com/books/golang/go-features/defer/",
+      "headline": "07. defer",
+      "description": "变量在 defer 中的值， 其实在问变量的作用域 有没有想过， 面试中经常问的 变量在 defer 之后的值， 其实是在问 函数变量的作用域\n简单的说， defer 就是将当前操作放入 堆 中， 等待触发 return 的时候再拿出来执行。 符合堆的特色， 先进后出。\n从细节来了， 还需要注意\n变量 在 defer 中的 作用域 ？ 函数 的 执行操作 是在 入堆前还是后 ？ defer 中的函数发生了 panic 会怎样 ？ 真题测试 以下这是 go语言爱好者 97 期的一道题目。 要求很简单， 代码执行 i, j 的值分别是什么。\nfunc Test_Demo(t *testing.T) { i := 10 j := hello(\u0026i) fmt.Println(i, j) } func hello(i *int) int { defer func() { *i = 19 }() return *i } 这道题虽然代码少， 但是考点还是蛮多的",
+      "wordCount" : "380",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/daily-notes/timezone/"
+          "@id": "https://typonotes.com/books/golang/go-features/defer/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -184,7 +184,7 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/daily-notes/timezone/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/go-features/defer/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -1071,7 +1071,7 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
                 <span class="flex">
                   <a
                     href="/books/golang/go-features/defer/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     07. defer
                   </a>
@@ -1519,7 +1519,7 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
                 <span class="flex">
                   <a
                     href="/books/golang/daily-notes/timezone/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     02. Go 的时区管理
                   </a>
@@ -1904,7 +1904,7 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/daily-notes/' href='/books/golang/daily-notes/'><span itemprop='name'>06. Go 应用笔记</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>02. Go 的时区管理</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/go-features/' href='/books/golang/go-features/'><span itemprop='name'>03. Go 特性语法</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>07. defer</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -1920,191 +1920,216 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>02. Go 的时区管理</h1>
+  <h1>07. defer</h1>
   <div class="gdoc-page__anchorwrap">
-    <h1 id="这些关于-golang-timezone-时区的坑-我已经帮你踩过了">
-        这些关于 Golang timezone 时区的坑， 我已经帮你踩过了
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#这些关于-golang-timezone-时区的坑-我已经帮你踩过了" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 这些关于 Golang timezone 时区的坑， 我已经帮你踩过了" aria-label="Anchor to: 这些关于 Golang timezone 时区的坑， 我已经帮你踩过了" href="#%e8%bf%99%e4%ba%9b%e5%85%b3%e4%ba%8e-golang-timezone-%e6%97%b6%e5%8c%ba%e7%9a%84%e5%9d%91-%e6%88%91%e5%b7%b2%e7%bb%8f%e5%b8%ae%e4%bd%a0%e8%b8%a9%e8%bf%87%e4%ba%86">
+    <h1 id="变量在-defer-中的值-其实在问变量的作用域">
+        变量在 defer 中的值， 其实在问变量的作用域
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/defer/#变量在-defer-中的值-其实在问变量的作用域" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 变量在 defer 中的值， 其实在问变量的作用域" aria-label="Anchor to: 变量在 defer 中的值， 其实在问变量的作用域" href="#%e5%8f%98%e9%87%8f%e5%9c%a8-defer-%e4%b8%ad%e7%9a%84%e5%80%bc-%e5%85%b6%e5%ae%9e%e5%9c%a8%e9%97%ae%e5%8f%98%e9%87%8f%e7%9a%84%e4%bd%9c%e7%94%a8%e5%9f%9f">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h1>
 </div>
-<blockquote>
-<p><strong>原文链接:</strong> <a
+<p>有没有想过， 面试中经常问的 <strong>变量在 defer 之后的值</strong>， 其实是在问 <strong>函数变量的作用域</strong></p>
+<p>简单的说， defer 就是将当前操作放入 <strong>堆</strong> 中， 等待触发 <code>return</code> 的时候再拿出来执行。 符合堆的特色， <strong>先进后出</strong>。</p>
+<p>从细节来了， 还需要注意</p>
+<ol>
+<li><strong>变量</strong> 在 defer 中的 <strong>作用域</strong> ？</li>
+<li><strong>函数</strong> 的 <strong>执行操作</strong> 是在 <strong>入堆前还是后</strong> ？</li>
+<li>defer 中的函数发生了 <code>panic</code> 会怎样 ？</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="真题测试">
+        真题测试
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/defer/#真题测试" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 真题测试" aria-label="Anchor to: 真题测试" href="#%e7%9c%9f%e9%a2%98%e6%b5%8b%e8%af%95">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>以下这是 go语言爱好者 97 期的一道题目。
+要求很简单， 代码执行 i, j 的值分别是什么。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Test_Demo</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">j</span> <span class="o">:=</span> <span class="nf">hello</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">hello</span><span class="p">(</span><span class="nx">i</span> <span class="o">*</span><span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="o">*</span><span class="nx">i</span> <span class="p">=</span> <span class="mi">19</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}()</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">*</span><span class="nx">i</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>这道题虽然代码少， 但是考点还是蛮多的</p>
+<ol>
+<li>核心: <strong>函数变量作用域</strong></li>
+<li>defer 执行时间</li>
+<li>闭包</li>
+<li>指针</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="知识点">
+        知识点
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/defer/#知识点" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 知识点" aria-label="Anchor to: 知识点" href="#%e7%9f%a5%e8%af%86%e7%82%b9">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>这里面所有的内容都可以在 <a
   class="gdoc-markdown__link"
-  href="https://typonotes.com/posts/2023/01/09/golang-timezone-issue/"
->https://typonotes.com/posts/2023/01/09/golang-timezone-issue/</a></p>
-</blockquote>
-<p>Golang 中一些不太注意的时区问题</p>
+  href="https://golang.org/doc/effective_go"
+>Effective Go 中解决</a></p>
 <div class="gdoc-page__anchorwrap">
-    <h2 id="1-timetzdata-库">
-        1. <code>time/tzdata</code> 库
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#1-timetzdata-库" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 1. time/tzdata 库" aria-label="Anchor to: 1. time/tzdata 库" href="#1-timetzdata-%e5%ba%93">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<p>Golang 内置的一个时区文件。</p>
-<ol>
-<li>可以在程序中任意位置被导入。 导入后， 如果程序 <strong>找不到本地</strong> 时区文件， 就会使用该库的数据。
-<ul>
-<li><strong>本地</strong> 指的是 <strong>运行环境</strong>， 可能是实际的服务器， 也可能是容器。</li>
-</ul>
-</li>
-<li>通常， 应该在 <code>main.go</code> 中被导入。 如果是 <strong>库代码</strong> 则 <strong>不应该</strong> 导入该文件。</li>
-<li>导入该文件后， 程序会增加 450KB 大小。</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">_</span> <span class="s">&#34;time/tzdata&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span></code></pre></div><p>在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> golang:alpine as build</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apk --no-cache add tzdata<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ADD</span> . .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">0</span> <span class="nv">GOOS</span><span class="o">=</span>linux go build -o myapp<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> scratch as final</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>build /app/myapp .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>build /usr/share/zoneinfo /usr/share/zoneinfo<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">TZ</span><span class="o">=</span>Europe/Berlin<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;/myapp&#34;</span><span class="p">]</span><span class="err">
-</span></span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h2 id="2-timeparse-and-timeparseinlocation">
-        2. <code>time.Parse</code> and <code>time.ParseInLocation</code>
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#2-timeparse-and-timeparseinlocation" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 2. time.Parse and time.ParseInLocation" aria-label="Anchor to: 2. time.Parse and time.ParseInLocation" href="#2-timeparse-and-timeparseinlocation">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<ol>
-<li>使用 <code>time.Parse</code> 解析时间， <strong>默认</strong> 时区是 <code>UTC</code>。</li>
-<li>使用 <code>time.ParseInLocation</code> 解析时间， <strong>可以指定时区</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">timeStr2Time</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">timeStr</span> <span class="o">:=</span> <span class="s">&#34;2023-01-09 22:13:17&#34;</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 返回的是UTC时间 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 2023-01-09 22:13:17 +0000 UTC  
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">utcTimeObj</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="nx">timeStr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;time.Parse&#34;</span><span class="p">,</span> <span class="nx">utcTimeObj</span><span class="p">,</span> <span class="nx">utcTimeObj</span><span class="p">.</span><span class="nf">Unix</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// 返回的是当地时间 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 2023-01-09 22:13:17 +0800 CST
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">localTimeObj</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseInLocation</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="nx">timeStr</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;time.ParseLocation&#34;</span><span class="p">,</span> <span class="nx">localTimeObj</span><span class="p">,</span> <span class="nx">localTimeObj</span><span class="p">.</span><span class="nf">Unix</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h2 id="3-内部时区管理">
-        3. 内部时区管理
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#3-内部时区管理" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 3. 内部时区管理" aria-label="Anchor to: 3. 内部时区管理" href="#3-%e5%86%85%e9%83%a8%e6%97%b6%e5%8c%ba%e7%ae%a1%e7%90%86">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<ol>
-<li>默认情况下， 程序使用 <strong>程序运行的本地时区</strong></li>
-<li>Go提供了两个函数快速转换 <strong>时区</strong>
-<ol>
-<li><code>time.UTC()</code></li>
-<li><code>time.Local()</code></li>
-</ol>
-</li>
-<li>使用 <code>LoadLocation(name)</code> 设置时区。</li>
-<li>使用 <code>In(loc)</code> 使用时区</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">setTimezone</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">n1</span><span class="p">.</span><span class="nf">UTC</span><span class="p">()</span>      <span class="c1">// 转换为 UTC 时区
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">n1</span><span class="p">.</span><span class="nf">Local</span><span class="p">()</span>    <span class="c1">// 转换为 本地时区
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="nx">n1</span><span class="p">.</span><span class="nf">Location</span><span class="p">()</span> <span class="c1">// 返回当前时间时区
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 没怎么用过
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// loc := time.LoadLocationFromTZData()
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="nx">loc2</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">LoadLocation</span><span class="p">(</span><span class="s">&#34;Asia/Shanghai&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">n1</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">In</span><span class="p">(</span><span class="nx">loc2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">n1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h2 id="4-通过代码设置时区">
-        4. 通过代码设置时区
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#4-通过代码设置时区" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 4. 通过代码设置时区" aria-label="Anchor to: 4. 通过代码设置时区" href="#4-%e9%80%9a%e8%bf%87%e4%bb%a3%e7%a0%81%e8%ae%be%e7%bd%ae%e6%97%b6%e5%8c%ba">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<!-- golang 是 **没法** 设置全局时区的。 -->
-<p>在 <strong>实践操作</strong> 中 <strong>不允许</strong> 通过 <strong>代码</strong> 为 <strong>程序</strong> 本身设置时区的。</p>
-<p>上面提到的 <strong>不允许</strong>， 说明</p>
-<ol>
-<li><strong>行为上</strong> 可以通过代码设置时区。</li>
-<li><strong>事实上</strong> 无法控制结果。</li>
-</ol>
-<div class="gdoc-page__anchorwrap">
-    <h3 id="41-通过环境变量设置时区">
-        4.1 通过环境变量设置时区
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#41-通过环境变量设置时区" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 4.1 通过环境变量设置时区" aria-label="Anchor to: 4.1 通过环境变量设置时区" href="#41-%e9%80%9a%e8%bf%87%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e8%ae%be%e7%bd%ae%e6%97%b6%e5%8c%ba">
+    <h3 id="贪婪算法">
+        贪婪算法
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/defer/#贪婪算法" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 贪婪算法" aria-label="Anchor to: 贪婪算法" href="#%e8%b4%aa%e5%a9%aa%e7%ae%97%e6%b3%95">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h3>
 </div>
-<p>可以通过设置 <strong>环境变量</strong> 的方式， 设置程序时区。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// $ date # 本地时区 CST
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Mon Jan  9 23:43:03 CST 2023
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">setTimezone</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;TZ&#34;</span><span class="p">,</span> <span class="s">&#34;UTC&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 2023-01-09 15:42:51.309248 +0000 UTC m=+0.000084251
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></div><p>但是， 之后就 <strong>再也无法改变</strong> 时区了。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">setTimezone</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;TZ&#34;</span><span class="p">,</span> <span class="s">&#34;UTC&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;TZ&#34;</span><span class="p">,</span> <span class="s">&#34;Asia/Shanghai&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 注意看第二个时间也是 UTC 时间
-</span></span></span><span class="line"><span class="cl"><span class="c1">// 2023-01-09 15:46:41.130211 +0000 UTC m=+0.000180001
-</span></span></span><span class="line"><span class="cl"><span class="c1">// 2023-01-09 15:46:41.130284 +0000 UTC m=+0.000253042
-</span></span></span></code></pre></div><p>不仅如此， 如果之前执行过时间命令， 那么 <strong>即使第一次设置</strong> 时区也是无效的。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">setTimezone</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;TZ&#34;</span><span class="p">,</span> <span class="s">&#34;UTC&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 2023-01-09 23:48:52.72857 +0800 CST m=+0.000167418
-</span></span></span><span class="line"><span class="cl"><span class="c1">// 2023-01-09 23:48:52.729103 +0800 CST m=+0.000696960
-</span></span></span></code></pre></div><p>总结， 时间操作的顺序会 <strong>影响</strong> 时区的设置。</p>
+<p>什么是贪婪算法， <strong>就是找到局部最优解， 合并后就是全局最优解</strong>。</p>
+<p>怎么找局部最优解， 就是要 <strong>对事情进行抽象，掌握事情的本质</strong> 。</p>
 <div class="gdoc-page__anchorwrap">
-    <h2 id="设置时区">
-        设置时区
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#设置时区" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 设置时区" aria-label="Anchor to: 设置时区" href="#%e8%ae%be%e7%bd%ae%e6%97%b6%e5%8c%ba">
+    <h3 id="defer-延迟执行">
+        defer 延迟执行
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/defer/#defer-延迟执行" class="gdoc-page__anchor clip flex align-center" title="Anchor to: defer 延迟执行" aria-label="Anchor to: defer 延迟执行" href="#defer-%e5%bb%b6%e8%bf%9f%e6%89%a7%e8%a1%8c">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p><strong>defer</strong> 就是语句进行压栈(<code>FILO</code>)处理， 延迟到 <strong>在函数 <code>return</code> 之前执行</strong> 执行。
+本身没什么难点。 其设计目的也很明确就是为了 <strong>解决资源释放</strong> 的问题。</p>
+<ol>
+<li><code>open</code> 和 <code>close</code> 写在一起， 语意更直观。</li>
+<li>解决因为错误退出，导致而 <strong>无法或忘记</strong> 释放资源</li>
+</ol>
+<blockquote>
+<p>Effective Go 中对 <code>defer</code> 的概述。</p>
+<blockquote>
+<p>It&rsquo;s an unusual but effective way to deal with situations such as resources that must be released regardless of which path a function takes to return.</p>
+<p>这是一种不寻常但有效的方法来处理诸如必须释放资源的情况，而不管函数采用哪条路径返回。</p>
+</blockquote>
+</blockquote>
+<p>因此 defer 有什么好考的， 而且实际场景代码也不会那样写（违反了<strong>可读性</strong>的这一基本之准则）。</p>
+<p>所以通常面试中有 defer 的问题都不是在考 defer ， 只不过是披上了 defer 的狼皮。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="函数及返回值">
+        函数及返回值
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/defer/#函数及返回值" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 函数及返回值" aria-label="Anchor to: 函数及返回值" href="#%e5%87%bd%e6%95%b0%e5%8f%8a%e8%bf%94%e5%9b%9e%e5%80%bc">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>其实 go 中关于函数返回花样还是挺多的。</p>
+<ol>
+<li>命名的/匿名的 返回值 <code>func NamedResult(i, j int) (x int)</code></li>
+<li>带参数不带参数的 return <code>return</code></li>
+</ol>
+<p>感觉和 golang 本身的代码可读性的的理念有一点冲突。 就像为什么不支持三元运算符一样。
+其实这样本身也没有什么， 就是一两个 <strong>死记硬背</strong> 的知识点而已。</p>
+<p>但是遇到了 <code>defer</code>, <code>闭包</code>, <code>指针</code> 中对变量有操作， 那么问题可能就大了。</p>
+<p>如果对 <strong>函数变量的作用域</strong> 理解不清楚的话， 就容易掉坑。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 命名结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">NamedResult</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">x</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">x</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">j</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 默认返回
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 匿名结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">UnnamedResult</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 指定返回
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">j</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>我们开启汇编， 查看一下函数过程</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">go tool compile -N -l -S  main.go
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="/books/golang/go-features/golang-defer-func-variables-scope/named-unamed-result.png" alt="name-unnamed-result.png"  /></p>
+<p>从汇编结果可以看到:</p>
+<ol>
+<li>虽然我们在 <code>UnnamedResult</code> 代码中没有显式的提供返回值的变量名， 但是 golang 自动为我们生成了一个叫 <code>~r2</code> 变量名， 其 <strong>等价于 <code>NamedResult</code> 函数中的变量<code>x</code></strong></li>
+<li>汇编中 <code>RET</code>后<strong>没有</strong>带任何参数</li>
+</ol>
+<ul>
+<li>所有与结果有关的操作都标记了 <code>(SP)</code> , ex: <code>MOVQ    AX, &quot;&quot;.~r2+24(SP)</code></li>
+</ul>
+<p>既然如此， 我们就将所有函数的写法全部统一， 不再区分 <strong>命名的、 匿名的</strong> ， <strong>默认的， 指定的</strong></p>
+<ol>
+<li><strong>命名返回值</strong></li>
+<li><strong>return 指定结果</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">ReformResult</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">r2</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">r2</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">j</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">r2</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>这样看起来， 整个函数就清晰的多了。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="实战练习一下">
+        实战练习一下
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/defer/#实战练习一下" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 实战练习一下" aria-label="Anchor to: 实战练习一下" href="#%e5%ae%9e%e6%88%98%e7%bb%83%e4%b9%a0%e4%b8%80%e4%b8%8b">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
-<p>到目前为止， 我还是只能老老实实去 <strong>运行环境</strong> 中操作， 设置 <strong>环境变量 <code>TZ</code></strong>。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TZ</span><span class="o">=</span>Asia/Shanghai
-</span></span></code></pre></div><p>具体可以参考 <a
-  class="gdoc-markdown__link"
-  href="https://tangx.in/posts/2022/12/21/docker-container-set-timezone/"title="在容器中设置时区原来这么简单"
->在容器中设置时区原来这么简单</a>。</p>
-<p>除此之外， 还没找到其它好的办法。</p>
+<p>根据之前所说， 我们这里来对函数做一下整形手术。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Test_reformDemo</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">j</span> <span class="o">:=</span> <span class="nf">reformHello</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span> <span class="c1">// 19 10
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// hello 原函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">hello</span><span class="p">(</span><span class="nx">i</span> <span class="o">*</span><span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="o">*</span><span class="nx">i</span> <span class="p">=</span> <span class="mi">19</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}()</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">*</span><span class="nx">i</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// reformHello 整形函数
+</span></span></span><span class="line"><span class="cl"><span class="c1">// reform 1. 匿名变命名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">reformHello</span><span class="p">(</span><span class="nx">i</span> <span class="o">*</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">_x</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// reform 2. return 拆分
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// reform 2.1 显式赋值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">_x</span> <span class="p">=</span> <span class="o">*</span><span class="nx">i</span>  <span class="c1">// _x=10
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// reform 3. defer 在返回前执行 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="o">*</span><span class="nx">i</span> <span class="p">=</span> <span class="mi">19</span> <span class="p">}()</span>  <span class="c1">// *i=19
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// reform 2.2 显式返回
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="nx">_x</span> <span class="c1">// _x=10
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>这样看， defer 是不是很简单了啊？</p>
 
 </article>
 

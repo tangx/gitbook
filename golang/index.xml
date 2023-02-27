@@ -6,6 +6,15 @@
     <description>Recent content on 《Shell 转 Go》</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>01. 上下文 context</title>
+      <link>https://typonotes.com/books/golang/go-features/context/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/context/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>01. 变量声明</title>
       <link>https://typonotes.com/books/golang/shell-to-go/variable/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -132,6 +141,15 @@ time.Sleep(200) 如果要实现如果实现 秒 级别等待，
     </item>
     
     <item>
+      <title>02. 结构体 struct</title>
+      <link>https://typonotes.com/books/golang/go-features/struct/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/struct/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>03. VSCode配置与插件</title>
       <link>https://typonotes.com/books/golang/startup/03-vscode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -149,6 +167,15 @@ time.Sleep(200) 如果要实现如果实现 秒 级别等待，
       <description>在 Shell 中使用 case ... in 做分支语句。
 使用 case ... in 作为开始， 使用 esac 作为结尾 使用 xxx ) 格式作为条件分支。 其中 xxx 可以是多个并列条件 使用 ;; 作为语句块结束。 使用 * 作为默认条件语句， 可省略。 case $1 in &amp;#34;n1&amp;#34;) echo &amp;#34;n1&amp;#34; ;; &amp;#34;n2&amp;#34; | &amp;#34;n3&amp;#34;) echo &amp;#34;n2 or n3&amp;#34; ;; *) echo &amp;#34;default&amp;#34; ;; esac 在 Go 中使用 switch 作为分支语句
 使用 switch 关键字作为开始 使用 case 关键字作为分支条件。 没有单独的结尾关键字 使用 default 作为 switch n { case 1: fmt.Println(&amp;#34;1&amp;#34;) fallthrough case 2, 3, &amp;#34;a&amp;#34;: fmt.</description>
+    </item>
+    
+    <item>
+      <title>03. 接口 interface</title>
+      <link>https://typonotes.com/books/golang/go-features/interface/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/interface/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -183,6 +210,15 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
     </item>
     
     <item>
+      <title>04. 通道 channel</title>
+      <link>https://typonotes.com/books/golang/go-features/channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/channel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>05. 大小写转换(tr)</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/tr/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -204,11 +240,60 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
     </item>
     
     <item>
+      <title>05. 泛型</title>
+      <link>https://typonotes.com/books/golang/go-features/generic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/generic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>06. 字符串切割(cut)</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/cut/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://typonotes.com/books/golang/linux-go-snippet/cut/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>06. 错误处理(error)</title>
+      <link>https://typonotes.com/books/golang/go-features/error-operation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/error-operation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>07. defer</title>
+      <link>https://typonotes.com/books/golang/go-features/defer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/defer/</guid>
+      <description>变量在 defer 中的值， 其实在问变量的作用域 有没有想过， 面试中经常问的 变量在 defer 之后的值， 其实是在问 函数变量的作用域
+简单的说， defer 就是将当前操作放入 堆 中， 等待触发 return 的时候再拿出来执行。 符合堆的特色， 先进后出。
+从细节来了， 还需要注意
+变量 在 defer 中的 作用域 ？ 函数 的 执行操作 是在 入堆前还是后 ？ defer 中的函数发生了 panic 会怎样 ？ 真题测试 以下这是 go语言爱好者 97 期的一道题目。 要求很简单， 代码执行 i, j 的值分别是什么。
+func Test_Demo(t *testing.T) { i := 10 j := hello(&amp;amp;i) fmt.Println(i, j) } func hello(i *int) int { defer func() { *i = 19 }() return *i } 这道题虽然代码少， 但是考点还是蛮多的</description>
+    </item>
+    
+    <item>
+      <title>07. md5 计算</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>08. panic and recover</title>
+      <link>https://typonotes.com/books/golang/go-features/panic-recover/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/panic-recover/</guid>
       <description></description>
     </item>
     

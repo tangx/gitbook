@@ -9,11 +9,6 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="这些关于 Golang timezone 时区的坑， 我已经帮你踩过了 原文链接: https://typonotes.com/posts/2023/01/09/golang-timezone-issue/
-Golang 中一些不太注意的时区问题
-1. time/tzdata 库 Golang 内置的一个时区文件。
-可以在程序中任意位置被导入。 导入后， 如果程序 找不到本地 时区文件， 就会使用该库的数据。 本地 指的是 运行环境， 可能是实际的服务器， 也可能是容器。 通常， 应该在 main.go 中被导入。 如果是 库代码 则 不应该 导入该文件。 导入该文件后， 程序会增加 450KB 大小。 import ( _ &#34;time/tzdata&#34; ) 在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。
-FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . RUN CGO_ENABLED=0 GOOS=linux go build -o myapp FROM scratch as final COPY --from=build /app/myapp ." />
 
 
   
@@ -42,7 +37,7 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>02. Go 的时区管理 | 《Shell 转 Go》</title>
+  <title>03. 接口 interface | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -63,44 +58,33 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
   
   <meta
     property="og:title"
-    content="02. Go 的时区管理"
+    content="03. 接口 interface"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="这些关于 Golang timezone 时区的坑， 我已经帮你踩过了 原文链接: https://typonotes.com/posts/2023/01/09/golang-timezone-issue/
-Golang 中一些不太注意的时区问题
-1. time/tzdata 库 Golang 内置的一个时区文件。
-可以在程序中任意位置被导入。 导入后， 如果程序 找不到本地 时区文件， 就会使用该库的数据。 本地 指的是 运行环境， 可能是实际的服务器， 也可能是容器。 通常， 应该在 main.go 中被导入。 如果是 库代码 则 不应该 导入该文件。 导入该文件后， 程序会增加 450KB 大小。 import ( _ &#34;time/tzdata&#34; ) 在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。
-FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . RUN CGO_ENABLED=0 GOOS=linux go build -o myapp FROM scratch as final COPY --from=build /app/myapp ." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/daily-notes/timezone/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/go-features/interface/" />
 
-<meta property="article:section" content="Daily Notes" />
+<meta property="article:section" content="Go Features" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="02. Go 的时区管理" />
-  <meta name="twitter:description" content="这些关于 Golang timezone 时区的坑， 我已经帮你踩过了 原文链接: https://typonotes.com/posts/2023/01/09/golang-timezone-issue/
-Golang 中一些不太注意的时区问题
-1. time/tzdata 库 Golang 内置的一个时区文件。
-可以在程序中任意位置被导入。 导入后， 如果程序 找不到本地 时区文件， 就会使用该库的数据。 本地 指的是 运行环境， 可能是实际的服务器， 也可能是容器。 通常， 应该在 main.go 中被导入。 如果是 库代码 则 不应该 导入该文件。 导入该文件后， 程序会增加 450KB 大小。 import ( _ &#34;time/tzdata&#34; ) 在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。
-FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . RUN CGO_ENABLED=0 GOOS=linux go build -o myapp FROM scratch as final COPY --from=build /app/myapp ." />
+<meta name="twitter:title" content="03. 接口 interface" />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Daily Notes",
-      "name": "02. Go 的时区管理",
-      "url" : "https://typonotes.com/books/golang/daily-notes/timezone/",
-      "headline": "02. Go 的时区管理",
-      "description": "这些关于 Golang timezone 时区的坑， 我已经帮你踩过了 原文链接: https:\/\/typonotes.com\/posts\/2023\/01\/09\/golang-timezone-issue\/\nGolang 中一些不太注意的时区问题\n1. time\/tzdata 库 Golang 内置的一个时区文件。\n可以在程序中任意位置被导入。 导入后， 如果程序 找不到本地 时区文件， 就会使用该库的数据。 本地 指的是 运行环境， 可能是实际的服务器， 也可能是容器。 通常， 应该在 main.go 中被导入。 如果是 库代码 则 不应该 导入该文件。 导入该文件后， 程序会增加 450KB 大小。 import ( _ \u0022time\/tzdata\u0022 ) 在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。\nFROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR \/app ADD . . RUN CGO_ENABLED=0 GOOS=linux go build -o myapp FROM scratch as final COPY --from=build \/app\/myapp .",
-      "wordCount" : "317",
+      "articleSection": "Go Features",
+      "name": "03. 接口 interface",
+      "url" : "https://typonotes.com/books/golang/go-features/interface/",
+      "headline": "03. 接口 interface",
+      "wordCount" : "0",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/daily-notes/timezone/"
+          "@id": "https://typonotes.com/books/golang/go-features/interface/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -184,7 +168,7 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/daily-notes/timezone/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/go-features/interface/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -1519,7 +1503,7 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
                 <span class="flex">
                   <a
                     href="/books/golang/daily-notes/timezone/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     02. Go 的时区管理
                   </a>
@@ -1904,7 +1888,7 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/daily-notes/' href='/books/golang/daily-notes/'><span itemprop='name'>06. Go 应用笔记</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>02. Go 的时区管理</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/go-features/' href='/books/golang/go-features/'><span itemprop='name'>03. Go 特性语法</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>03. 接口 interface</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -1920,192 +1904,8 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>02. Go 的时区管理</h1>
-  <div class="gdoc-page__anchorwrap">
-    <h1 id="这些关于-golang-timezone-时区的坑-我已经帮你踩过了">
-        这些关于 Golang timezone 时区的坑， 我已经帮你踩过了
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#这些关于-golang-timezone-时区的坑-我已经帮你踩过了" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 这些关于 Golang timezone 时区的坑， 我已经帮你踩过了" aria-label="Anchor to: 这些关于 Golang timezone 时区的坑， 我已经帮你踩过了" href="#%e8%bf%99%e4%ba%9b%e5%85%b3%e4%ba%8e-golang-timezone-%e6%97%b6%e5%8c%ba%e7%9a%84%e5%9d%91-%e6%88%91%e5%b7%b2%e7%bb%8f%e5%b8%ae%e4%bd%a0%e8%b8%a9%e8%bf%87%e4%ba%86">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h1>
-</div>
-<blockquote>
-<p><strong>原文链接:</strong> <a
-  class="gdoc-markdown__link"
-  href="https://typonotes.com/posts/2023/01/09/golang-timezone-issue/"
->https://typonotes.com/posts/2023/01/09/golang-timezone-issue/</a></p>
-</blockquote>
-<p>Golang 中一些不太注意的时区问题</p>
-<div class="gdoc-page__anchorwrap">
-    <h2 id="1-timetzdata-库">
-        1. <code>time/tzdata</code> 库
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#1-timetzdata-库" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 1. time/tzdata 库" aria-label="Anchor to: 1. time/tzdata 库" href="#1-timetzdata-%e5%ba%93">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<p>Golang 内置的一个时区文件。</p>
-<ol>
-<li>可以在程序中任意位置被导入。 导入后， 如果程序 <strong>找不到本地</strong> 时区文件， 就会使用该库的数据。
-<ul>
-<li><strong>本地</strong> 指的是 <strong>运行环境</strong>， 可能是实际的服务器， 也可能是容器。</li>
-</ul>
-</li>
-<li>通常， 应该在 <code>main.go</code> 中被导入。 如果是 <strong>库代码</strong> 则 <strong>不应该</strong> 导入该文件。</li>
-<li>导入该文件后， 程序会增加 450KB 大小。</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">_</span> <span class="s">&#34;time/tzdata&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span></code></pre></div><p>在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> golang:alpine as build</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apk --no-cache add tzdata<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ADD</span> . .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">0</span> <span class="nv">GOOS</span><span class="o">=</span>linux go build -o myapp<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> scratch as final</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>build /app/myapp .<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>build /usr/share/zoneinfo /usr/share/zoneinfo<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">TZ</span><span class="o">=</span>Europe/Berlin<span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;/myapp&#34;</span><span class="p">]</span><span class="err">
-</span></span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h2 id="2-timeparse-and-timeparseinlocation">
-        2. <code>time.Parse</code> and <code>time.ParseInLocation</code>
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#2-timeparse-and-timeparseinlocation" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 2. time.Parse and time.ParseInLocation" aria-label="Anchor to: 2. time.Parse and time.ParseInLocation" href="#2-timeparse-and-timeparseinlocation">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<ol>
-<li>使用 <code>time.Parse</code> 解析时间， <strong>默认</strong> 时区是 <code>UTC</code>。</li>
-<li>使用 <code>time.ParseInLocation</code> 解析时间， <strong>可以指定时区</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">timeStr2Time</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">timeStr</span> <span class="o">:=</span> <span class="s">&#34;2023-01-09 22:13:17&#34;</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 返回的是UTC时间 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 2023-01-09 22:13:17 +0000 UTC  
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">utcTimeObj</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="nx">timeStr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;time.Parse&#34;</span><span class="p">,</span> <span class="nx">utcTimeObj</span><span class="p">,</span> <span class="nx">utcTimeObj</span><span class="p">.</span><span class="nf">Unix</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// 返回的是当地时间 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 2023-01-09 22:13:17 +0800 CST
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">localTimeObj</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseInLocation</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="nx">timeStr</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;time.ParseLocation&#34;</span><span class="p">,</span> <span class="nx">localTimeObj</span><span class="p">,</span> <span class="nx">localTimeObj</span><span class="p">.</span><span class="nf">Unix</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h2 id="3-内部时区管理">
-        3. 内部时区管理
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#3-内部时区管理" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 3. 内部时区管理" aria-label="Anchor to: 3. 内部时区管理" href="#3-%e5%86%85%e9%83%a8%e6%97%b6%e5%8c%ba%e7%ae%a1%e7%90%86">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<ol>
-<li>默认情况下， 程序使用 <strong>程序运行的本地时区</strong></li>
-<li>Go提供了两个函数快速转换 <strong>时区</strong>
-<ol>
-<li><code>time.UTC()</code></li>
-<li><code>time.Local()</code></li>
-</ol>
-</li>
-<li>使用 <code>LoadLocation(name)</code> 设置时区。</li>
-<li>使用 <code>In(loc)</code> 使用时区</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">setTimezone</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">n1</span><span class="p">.</span><span class="nf">UTC</span><span class="p">()</span>      <span class="c1">// 转换为 UTC 时区
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">n1</span><span class="p">.</span><span class="nf">Local</span><span class="p">()</span>    <span class="c1">// 转换为 本地时区
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="nx">n1</span><span class="p">.</span><span class="nf">Location</span><span class="p">()</span> <span class="c1">// 返回当前时间时区
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 没怎么用过
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// loc := time.LoadLocationFromTZData()
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="nx">loc2</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">LoadLocation</span><span class="p">(</span><span class="s">&#34;Asia/Shanghai&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">n1</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">In</span><span class="p">(</span><span class="nx">loc2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">n1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h2 id="4-通过代码设置时区">
-        4. 通过代码设置时区
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#4-通过代码设置时区" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 4. 通过代码设置时区" aria-label="Anchor to: 4. 通过代码设置时区" href="#4-%e9%80%9a%e8%bf%87%e4%bb%a3%e7%a0%81%e8%ae%be%e7%bd%ae%e6%97%b6%e5%8c%ba">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<!-- golang 是 **没法** 设置全局时区的。 -->
-<p>在 <strong>实践操作</strong> 中 <strong>不允许</strong> 通过 <strong>代码</strong> 为 <strong>程序</strong> 本身设置时区的。</p>
-<p>上面提到的 <strong>不允许</strong>， 说明</p>
-<ol>
-<li><strong>行为上</strong> 可以通过代码设置时区。</li>
-<li><strong>事实上</strong> 无法控制结果。</li>
-</ol>
-<div class="gdoc-page__anchorwrap">
-    <h3 id="41-通过环境变量设置时区">
-        4.1 通过环境变量设置时区
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#41-通过环境变量设置时区" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 4.1 通过环境变量设置时区" aria-label="Anchor to: 4.1 通过环境变量设置时区" href="#41-%e9%80%9a%e8%bf%87%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e8%ae%be%e7%bd%ae%e6%97%b6%e5%8c%ba">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<p>可以通过设置 <strong>环境变量</strong> 的方式， 设置程序时区。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// $ date # 本地时区 CST
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Mon Jan  9 23:43:03 CST 2023
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">setTimezone</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;TZ&#34;</span><span class="p">,</span> <span class="s">&#34;UTC&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 2023-01-09 15:42:51.309248 +0000 UTC m=+0.000084251
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></div><p>但是， 之后就 <strong>再也无法改变</strong> 时区了。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">setTimezone</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;TZ&#34;</span><span class="p">,</span> <span class="s">&#34;UTC&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;TZ&#34;</span><span class="p">,</span> <span class="s">&#34;Asia/Shanghai&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 注意看第二个时间也是 UTC 时间
-</span></span></span><span class="line"><span class="cl"><span class="c1">// 2023-01-09 15:46:41.130211 +0000 UTC m=+0.000180001
-</span></span></span><span class="line"><span class="cl"><span class="c1">// 2023-01-09 15:46:41.130284 +0000 UTC m=+0.000253042
-</span></span></span></code></pre></div><p>不仅如此， 如果之前执行过时间命令， 那么 <strong>即使第一次设置</strong> 时区也是无效的。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">setTimezone</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;TZ&#34;</span><span class="p">,</span> <span class="s">&#34;UTC&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 2023-01-09 23:48:52.72857 +0800 CST m=+0.000167418
-</span></span></span><span class="line"><span class="cl"><span class="c1">// 2023-01-09 23:48:52.729103 +0800 CST m=+0.000696960
-</span></span></span></code></pre></div><p>总结， 时间操作的顺序会 <strong>影响</strong> 时区的设置。</p>
-<div class="gdoc-page__anchorwrap">
-    <h2 id="设置时区">
-        设置时区
-        <a data-clipboard-text="https://typonotes.com/books/golang/daily-notes/timezone/#设置时区" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 设置时区" aria-label="Anchor to: 设置时区" href="#%e8%ae%be%e7%bd%ae%e6%97%b6%e5%8c%ba">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<p>到目前为止， 我还是只能老老实实去 <strong>运行环境</strong> 中操作， 设置 <strong>环境变量 <code>TZ</code></strong>。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TZ</span><span class="o">=</span>Asia/Shanghai
-</span></span></code></pre></div><p>具体可以参考 <a
-  class="gdoc-markdown__link"
-  href="https://tangx.in/posts/2022/12/21/docker-container-set-timezone/"title="在容器中设置时区原来这么简单"
->在容器中设置时区原来这么简单</a>。</p>
-<p>除此之外， 还没找到其它好的办法。</p>
-
+  <h1>03. 接口 interface</h1>
+  
 </article>
 
 

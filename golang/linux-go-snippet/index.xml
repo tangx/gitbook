@@ -63,5 +63,14 @@ time.Sleep(200) 如果要实现如果实现 秒 级别等待，
       <description></description>
     </item>
     
+    <item>
+      <title>07. md5 计算</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

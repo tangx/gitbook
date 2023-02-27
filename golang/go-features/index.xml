@@ -5,5 +5,81 @@
     <link>https://typonotes.com/books/golang/go-features/</link>
     <description>Recent content in 03. Go 特性语法 on 《Shell 转 Go》</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/go-features/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>01. 上下文 context</title>
+      <link>https://typonotes.com/books/golang/go-features/context/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/context/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>02. 结构体 struct</title>
+      <link>https://typonotes.com/books/golang/go-features/struct/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/struct/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>03. 接口 interface</title>
+      <link>https://typonotes.com/books/golang/go-features/interface/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/interface/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>04. 通道 channel</title>
+      <link>https://typonotes.com/books/golang/go-features/channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/channel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>05. 泛型</title>
+      <link>https://typonotes.com/books/golang/go-features/generic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/generic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>06. 错误处理(error)</title>
+      <link>https://typonotes.com/books/golang/go-features/error-operation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/error-operation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>07. defer</title>
+      <link>https://typonotes.com/books/golang/go-features/defer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/defer/</guid>
+      <description>变量在 defer 中的值， 其实在问变量的作用域 有没有想过， 面试中经常问的 变量在 defer 之后的值， 其实是在问 函数变量的作用域
+简单的说， defer 就是将当前操作放入 堆 中， 等待触发 return 的时候再拿出来执行。 符合堆的特色， 先进后出。
+从细节来了， 还需要注意
+变量 在 defer 中的 作用域 ？ 函数 的 执行操作 是在 入堆前还是后 ？ defer 中的函数发生了 panic 会怎样 ？ 真题测试 以下这是 go语言爱好者 97 期的一道题目。 要求很简单， 代码执行 i, j 的值分别是什么。
+func Test_Demo(t *testing.T) { i := 10 j := hello(&amp;amp;i) fmt.Println(i, j) } func hello(i *int) int { defer func() { *i = 19 }() return *i } 这道题虽然代码少， 但是考点还是蛮多的</description>
+    </item>
+    
+    <item>
+      <title>08. panic and recover</title>
+      <link>https://typonotes.com/books/golang/go-features/panic-recover/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/panic-recover/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
