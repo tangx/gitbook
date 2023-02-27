@@ -92,7 +92,7 @@ Go 声明变量 在 Go 中， 也有两种方式
       "url" : "https://typonotes.com/books/golang/chapter02/variable/",
       "headline": "01. 变量声明",
       "description": "变量声明 Shell 声明变量 在 Shell 中， 变量声明通常有两种方式\n通过 declare 进行变量声明， 并赋值。 省略 declare 进行变量声明。 # 方式1 declare abc=\u0022abc\u0022 declare abc_123=123 # 方式2 abc=\u0022abc\u0022 abc_123=123 事实上， declare 的用法还是很复杂的， 更多可以参考: https:\/\/www.runoob.com\/linux\/linux-comm-declare.html\nGo 声明变量 在 Go 中， 也有两种方式\n通过 var 关键字定义， 这种方式可以在 任意位置 定义变量。 省略 var 后， 可以使用 := 进行变量声明。 但是这种方式只能在 代码块 中使用， 可以简单的理解为 只能在函数中使用。 var abc int8 = 100 \/\/ 指定 abc 的类型是 int8 var def = 100 \/\/ 推定类型为 int func demo() { a1 := 100 var a2 = 100 fmt.",
-      "wordCount" : "275",
+      "wordCount" : "280",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -1371,6 +1371,15 @@ Go 声明变量 在 Go 中， 也有两种方式
 <li>可以通过 <code>_</code> 占位符， <strong>顺序递增</strong>。</li>
 <li>可以使用 <code>iota+n</code> 实现 <strong>跳值</strong>。</li>
 </ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="总结">
+        总结
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/variable/#总结" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 总结" aria-label="Anchor to: 总结" href="#%e6%80%bb%e7%bb%93">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>除了 <strong>弱类型和强类型</strong> 之外， 其他大部分使用方式都差不多。</p>
 
 </article>
 
