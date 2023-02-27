@@ -15,5 +15,19 @@
 if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有可无， 但是最好还是带上， 增强可读性。 判断条件使用 方括号 [ ] 或 [[ ]] 定义。 Go func if_else(n int) { if n &amp;gt;= 100 || n &amp;lt;= -1 { fmt.Println(&amp;#34;无效&amp;#34;) } else if n &amp;gt; 90 { fmt.</description>
     </item>
     
+    <item>
+      <title>02. 循环</title>
+      <link>https://typonotes.com/books/golang/chapter02/process-control/for-loops/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter02/process-control/for-loops/</guid>
+      <description>Go 循环 在 Go 中， 循环只有一个关键字 for， 通过不同的 格式 实现不同的逻辑
+基本格式如下
+for 默认值; 条件; 计数器 { fmt.Println(&amp;#34;i=&amp;#34;, i) } 以上的 每一个字段都可以省略 。
+计数循环 在 shell 中， 通常使用 seq 实现计数循环
+for i in $(seq 1 10); do { echo &amp;#34;i = $i&amp;#34; } done 而在 Go 中，
+for i := 0; i &amp;lt; 1; i++ { fmt.Println(&amp;#34;i=&amp;#34;, i) } 遍历循环 for name in zhangsan lisi wangwu zhaoliu; do { echo &amp;#34;name = $name&amp;#34; } done 在 Go 中， 需要将对象放入到 切片 中</description>
+    </item>
+    
   </channel>
 </rss>

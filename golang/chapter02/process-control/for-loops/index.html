@@ -9,12 +9,12 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
-状态: 未更新
-原文链接: https://typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/
-嗯， 在 cobra 中提供了一种叫做 Persistent 的 状态， 定向支持 函数 与 参数。
-下面这段代码是是使用时的定义。
-var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) PersistentPreRun: func(cmd *cobra.Command, args []string) { fmt.Println(&#34;PersistentPreRun in root&#34;) }, Run: func(cmd *cobra.Command, args []string) { _ = cmd.Help() }, } var config string func init() { // Persistent Flag (2) root." />
+  <meta name="description" content="Go 循环 在 Go 中， 循环只有一个关键字 for， 通过不同的 格式 实现不同的逻辑
+基本格式如下
+for 默认值; 条件; 计数器 { fmt.Println(&#34;i=&#34;, i) } 以上的 每一个字段都可以省略 。
+计数循环 在 shell 中， 通常使用 seq 实现计数循环
+for i in $(seq 1 10); do { echo &#34;i = $i&#34; } done 而在 Go 中，
+for i := 0; i &lt; 1; i&#43;&#43; { fmt.Println(&#34;i=&#34;, i) } 遍历循环 for name in zhangsan lisi wangwu zhaoliu; do { echo &#34;name = $name&#34; } done 在 Go 中， 需要将对象放入到 切片 中" />
 
 
   
@@ -43,7 +43,7 @@ var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) Persis
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>6. 持久化命令与Go引用类型的使用 | 《Shell 转 Go》</title>
+  <title>02. 循环 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -64,46 +64,46 @@ var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) Persis
   
   <meta
     property="og:title"
-    content="6. 持久化命令与Go引用类型的使用"
+    content="02. 循环"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
-状态: 未更新
-原文链接: https://typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/
-嗯， 在 cobra 中提供了一种叫做 Persistent 的 状态， 定向支持 函数 与 参数。
-下面这段代码是是使用时的定义。
-var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) PersistentPreRun: func(cmd *cobra.Command, args []string) { fmt.Println(&#34;PersistentPreRun in root&#34;) }, Run: func(cmd *cobra.Command, args []string) { _ = cmd.Help() }, } var config string func init() { // Persistent Flag (2) root." />
+  <meta property="og:description" content="Go 循环 在 Go 中， 循环只有一个关键字 for， 通过不同的 格式 实现不同的逻辑
+基本格式如下
+for 默认值; 条件; 计数器 { fmt.Println(&#34;i=&#34;, i) } 以上的 每一个字段都可以省略 。
+计数循环 在 shell 中， 通常使用 seq 实现计数循环
+for i in $(seq 1 10); do { echo &#34;i = $i&#34; } done 而在 Go 中，
+for i := 0; i &lt; 1; i&#43;&#43; { fmt.Println(&#34;i=&#34;, i) } 遍历循环 for name in zhangsan lisi wangwu zhaoliu; do { echo &#34;name = $name&#34; } done 在 Go 中， 需要将对象放入到 切片 中" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/chapter02/process-control/for-loops/" />
 
-<meta property="article:section" content="Cobra in Action" />
+<meta property="article:section" content="Chapter02" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="6. 持久化命令与Go引用类型的使用" />
-  <meta name="twitter:description" content="DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
-状态: 未更新
-原文链接: https://typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/
-嗯， 在 cobra 中提供了一种叫做 Persistent 的 状态， 定向支持 函数 与 参数。
-下面这段代码是是使用时的定义。
-var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) PersistentPreRun: func(cmd *cobra.Command, args []string) { fmt.Println(&#34;PersistentPreRun in root&#34;) }, Run: func(cmd *cobra.Command, args []string) { _ = cmd.Help() }, } var config string func init() { // Persistent Flag (2) root." />
+<meta name="twitter:title" content="02. 循环" />
+  <meta name="twitter:description" content="Go 循环 在 Go 中， 循环只有一个关键字 for， 通过不同的 格式 实现不同的逻辑
+基本格式如下
+for 默认值; 条件; 计数器 { fmt.Println(&#34;i=&#34;, i) } 以上的 每一个字段都可以省略 。
+计数循环 在 shell 中， 通常使用 seq 实现计数循环
+for i in $(seq 1 10); do { echo &#34;i = $i&#34; } done 而在 Go 中，
+for i := 0; i &lt; 1; i&#43;&#43; { fmt.Println(&#34;i=&#34;, i) } 遍历循环 for name in zhangsan lisi wangwu zhaoliu; do { echo &#34;name = $name&#34; } done 在 Go 中， 需要将对象放入到 切片 中" />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Cobra in Action",
-      "name": "6. 持久化命令与Go引用类型的使用",
-      "url" : "https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/",
-      "headline": "6. 持久化命令与Go引用类型的使用",
-      "description": "DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。\n状态: 未更新\n原文链接: https:\/\/typonotes.com\/posts\/2023\/02\/19\/devopscamp-cobra-06-persistent-run-and-flags\/\n嗯， 在 cobra 中提供了一种叫做 Persistent 的 状态， 定向支持 函数 与 参数。\n下面这段代码是是使用时的定义。\nvar root = \u0026cobra.Command{ Use: \u0022root\u0022, \/\/ Persistent Run (1) PersistentPreRun: func(cmd *cobra.Command, args []string) { fmt.Println(\u0022PersistentPreRun in root\u0022) }, Run: func(cmd *cobra.Command, args []string) { _ = cmd.Help() }, } var config string func init() { \/\/ Persistent Flag (2) root.",
-      "wordCount" : "363",
+      "articleSection": "Chapter02",
+      "name": "02. 循环",
+      "url" : "https://typonotes.com/books/golang/chapter02/process-control/for-loops/",
+      "headline": "02. 循环",
+      "description": "Go 循环 在 Go 中， 循环只有一个关键字 for， 通过不同的 格式 实现不同的逻辑\n基本格式如下\nfor 默认值; 条件; 计数器 { fmt.Println(\u0022i=\u0022, i) } 以上的 每一个字段都可以省略 。\n计数循环 在 shell 中， 通常使用 seq 实现计数循环\nfor i in $(seq 1 10); do { echo \u0022i = $i\u0022 } done 而在 Go 中，\nfor i := 0; i \u003c 1; i\u002b\u002b { fmt.Println(\u0022i=\u0022, i) } 遍历循环 for name in zhangsan lisi wangwu zhaoliu; do { echo \u0022name = $name\u0022 } done 在 Go 中， 需要将对象放入到 切片 中",
+      "wordCount" : "195",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/"
+          "@id": "https://typonotes.com/books/golang/chapter02/process-control/for-loops/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -187,7 +187,7 @@ var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) Persis
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/chapter02/process-control/for-loops/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -731,7 +731,7 @@ var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) Persis
                 <span class="flex">
                   <a
                     href="/books/golang/chapter02/process-control/for-loops/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     02. 循环
                   </a>
@@ -1258,7 +1258,7 @@ var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) Persis
                 <span class="flex">
                   <a
                     href="/books/golang/cobra-in-action/06-persistent-flag/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     6. 持久化命令与Go引用类型的使用
                   </a>
@@ -1344,7 +1344,15 @@ var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) Persis
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/cobra-in-action/' href='/books/golang/cobra-in-action/'><span itemprop='name'>99. Cobra 实战项目</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>6. 持久化命令与Go引用类型的使用</span><meta itemprop='position' content='5' /></li>
+    
+    
+    
+    
+  
+  
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter02/' href='/books/golang/chapter02/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter02/process-control/' href='/books/golang/chapter02/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>02. 循环</span><meta itemprop='position' content='6' /></li>
+  
+
   
 
   
@@ -1360,270 +1368,102 @@ var root = &amp;cobra.Command{ Use: &#34;root&#34;, // Persistent Run (1) Persis
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>6. 持久化命令与Go引用类型的使用</h1>
-  <!--
-> 大家好， 我是老麦
->
-> 欢迎 **关注公众号** `Go与云原生` 或 **订阅网站** `https://typonotes.com/` 第一时间看后续精彩文章。
->
-> 觉得好的话，请猛击文章右下角「点赞、关注、转发」 一键三连， 是对我的最大支持。
-> 
--->
-<div class="gdoc-page__anchorwrap">
-    <h1 id="devopscamp第2期从-cobra---06-持久化命令-开始聊聊-go语言-指针类型的使用注意事项">
-        DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/#devopscamp第2期从-cobra---06-持久化命令-开始聊聊-go语言-指针类型的使用注意事项" class="gdoc-page__anchor clip flex align-center" title="Anchor to: DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项" aria-label="Anchor to: DevOpsCamp第2期：从 《cobra - 06 持久化命令》 开始聊聊 Go语言 指针类型的使用注意事项" href="#devopscamp%e7%ac%ac2%e6%9c%9f%e4%bb%8e-cobra---06-%e6%8c%81%e4%b9%85%e5%8c%96%e5%91%bd%e4%bb%a4-%e5%bc%80%e5%a7%8b%e8%81%8a%e8%81%8a-go%e8%af%ad%e8%a8%80-%e6%8c%87%e9%92%88%e7%b1%bb%e5%9e%8b%e7%9a%84%e4%bd%bf%e7%94%a8%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9">
+  <h1>02. 循环</h1>
+  <div class="gdoc-page__anchorwrap">
+    <h1 id="go-循环">
+        Go 循环
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/for-loops/#go-循环" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Go 循环" aria-label="Anchor to: Go 循环" href="#go-%e5%be%aa%e7%8e%af">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h1>
 </div>
-<p>如果在 <strong>公众号</strong> 文章发现状态为 <strong>已更新</strong>， 建议点击 <strong>查看原文</strong> 查看最新内容。</p>
-<p>状态: <strong>未更新</strong></p>
-<blockquote>
-<p><strong>原文链接:</strong> <a
-  class="gdoc-markdown__link"
-  href="https://typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/"
->https://typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/</a></p>
-</blockquote>
-<p>嗯， 在 cobra 中提供了一种叫做 <code>Persistent</code> 的 <strong>状态</strong>， 定向支持 <strong>函数</strong> 与 <strong>参数</strong>。</p>
-<p>下面这段代码是是使用时的定义。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">root</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Use</span><span class="p">:</span> <span class="s">&#34;root&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Persistent Run (1)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">PersistentPreRun</span><span class="p">:</span> <span class="kd">func</span><span class="p">(</span><span class="nx">cmd</span> <span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">,</span> <span class="nx">args</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;PersistentPreRun in root&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">},</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Run</span><span class="p">:</span> <span class="kd">func</span><span class="p">(</span><span class="nx">cmd</span> <span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">,</span> <span class="nx">args</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">_</span> <span class="p">=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">Help</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+<p>在 Go 中， 循环只有一个关键字 <code>for</code>， 通过不同的 <strong>格式</strong> 实现不同的逻辑</p>
+<p>基本格式如下</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">默认值</span><span class="p">;</span> <span class="nx">条件</span><span class="p">;</span> <span class="nx">计数器</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;i=&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">config</span> <span class="kt">string</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Persistent Flag (2)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">root</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">StringVarP</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">config</span><span class="p">,</span> <span class="s">&#34;config&#34;</span><span class="p">,</span> <span class="s">&#34;c&#34;</span><span class="p">,</span> <span class="s">&#34;~/.config.json&#34;</span><span class="p">,</span> <span class="s">&#34;配置文件&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>凡是定义了 <code>Persistent</code> <strong>Run(1) 和 Flag(2)</strong> 的节点， 其子孙节点都会 <strong>继承</strong> 这种状态。 这种状态也可以被子孙节点的自定义状态覆盖。</p>
-<p><strong>注意</strong>： 这种状态是继承自 <strong>其父节点</strong>， 而非 <strong>上级节点</strong> 。</p>
+</span></span></code></pre></div><p>以上的 <strong>每一个字段都可以省略</strong> 。</p>
 <div class="gdoc-page__anchorwrap">
-    <h2 id="父节点不是上级节点">
-        父节点不是上级节点
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/#父节点不是上级节点" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 父节点不是上级节点" aria-label="Anchor to: 父节点不是上级节点" href="#%e7%88%b6%e8%8a%82%e7%82%b9%e4%b8%8d%e6%98%af%e4%b8%8a%e7%ba%a7%e8%8a%82%e7%82%b9">
+    <h2 id="计数循环">
+        计数循环
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/for-loops/#计数循环" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 计数循环" aria-label="Anchor to: 计数循环" href="#%e8%ae%a1%e6%95%b0%e5%be%aa%e7%8e%af">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
-<p>这个的问题的发生原因， 还是在 <code>xxx.AddCommand</code> 的时候造成的。  因为 <code>&amp;cobra.Command{}</code> 是指针对象/引用对象， 因此在不同的地方修改是会全局影响的。 这个是基础知识， 也是重要的 <strong>坑</strong> 点， 需要牢记。</p>
-<p>下面是一个代码案例， 帮助理解。</p>
-<p>案例代码在在 Github: <a
-  class="gdoc-markdown__link"
-  href="https://github.com/tangx-labs/cobra06-demo"
->https://github.com/tangx-labs/cobra06-demo</a></p>
-<p>代码中实现了一个如下图所示的 <strong>命令树</strong> 结构。 其中 <code>sub2</code> 同时挂载到了 <code>root</code> 和 <code>sub1</code> 节点。</p>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<img src="https://static.typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/cobra-tree.jpg" alt=""  /></p>
-<p>以下是代码执行结果执行结果， 注意看</p>
-<ol>
-<li><code>--config</code> 的参数值</li>
-<li><code>PersistentPreRun</code> 的执行结果</li>
-<li><code>sub2</code> 的 <code>Usage</code> 路径， 无论从哪里进入， 都是 <code>root sub1 sub2</code>。</li>
-</ol>
-<div class="gdoc-page__anchorwrap">
-    <h3 id="代码执行过程">
-        代码执行过程
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/#代码执行过程" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 代码执行过程" aria-label="Anchor to: 代码执行过程" href="#%e4%bb%a3%e7%a0%81%e6%89%a7%e8%a1%8c%e8%bf%87%e7%a8%8b">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<ol>
-<li><code>./cobra-demo6</code></li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ./cobra-demo6</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">PersistentPreRun in root
-</span></span><span class="line"><span class="cl">Flags:
-</span></span><span class="line"><span class="cl">  -c, --config string   配置文件 <span class="o">(</span>default <span class="s2">&#34;~/.config.json&#34;</span><span class="o">)</span>
-</span></span></code></pre></div><ol start="2">
-<li><code>./cobra-demo6 sub1 </code></li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ./cobra-demo6 sub1 </span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">PersistentPreRun in sub1
-</span></span><span class="line"><span class="cl">Flags:
-</span></span><span class="line"><span class="cl">  -c, --config string   配置文件 <span class="o">(</span>default <span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.config.json&#34;</span><span class="o">)</span>
-</span></span></code></pre></div><ol start="3">
-<li><code>./cobra06-demo sub2</code></li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ./cobra06-demo sub2  # (1)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">PersistentPreRun in sub1 <span class="c1"># (2)</span>
-</span></span><span class="line"><span class="cl">Usage:
-</span></span><span class="line"><span class="cl">  root sub1 sub2 <span class="o">[</span>flags<span class="o">]</span> <span class="c1"># (3)</span>
-</span></span><span class="line"><span class="cl">Global Flags:
-</span></span><span class="line"><span class="cl">  -c, --config string   配置文件 <span class="o">(</span>default <span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.config.json&#34;</span><span class="o">)</span> <span class="c1"># (4)</span>
-</span></span></code></pre></div><ol start="4">
-<li><code>./cobra06-demo sub1 sub2</code></li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ./cobra06-demo sub1 sub2 #(1)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">PersistentPreRun in sub1 <span class="c1">#(2)</span>
-</span></span><span class="line"><span class="cl">Usage:
-</span></span><span class="line"><span class="cl">  root sub1 sub2 <span class="o">[</span>flags<span class="o">]</span> <span class="c1">#(3)</span>
-</span></span><span class="line"><span class="cl">Global Flags:
-</span></span><span class="line"><span class="cl">  -c, --config string   配置文件 <span class="o">(</span>default <span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.config.json&#34;</span><span class="o">)</span> <span class="c1">#(4)</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h3 id="引用类型回顾">
-        引用类型回顾
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/#引用类型回顾" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 引用类型回顾" aria-label="Anchor to: 引用类型回顾" href="#%e5%bc%95%e7%94%a8%e7%b1%bb%e5%9e%8b%e5%9b%9e%e9%a1%be">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<p>首先， 我们再来回顾一下一下 <code>Cobra Command</code> 的结构体</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Command</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Use</span> <span class="kt">string</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">parent</span> <span class="o">*</span><span class="nx">Command</span>	<span class="c1">// 父命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">commands</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Command</span>	<span class="c1">// 子命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></div><p>可以看到， <code>parent *Command</code> 是指针类型。 这意味着， <strong>在任何地方修改都会影响全局引用</strong>。</p>
-<p>这里简单的回顾一下 <strong>引用对象</strong>。 <strong>A, B, C</strong> 都指向 <strong>指针地址</strong>， 而 <strong>指针地址</strong> 纸箱 <strong>真实数据地址</strong>。 当因为某个外力修改了 <strong>真实数据地址</strong> 中的内容的时候， 虽然 A, B, C 都没变化， 但是他们 <strong>取</strong> 到的东西发生了变化。</p>
-<p>举个例子，</p>
-<ol>
-<li>你去温泉之前寄存物品， 商家会给你一个 <strong>手牌（指针地址）</strong>， 你拿着手牌将 <strong>名贵手表（数据）</strong> 放入对应的 <strong>100号柜子（真实地址）</strong>。</li>
-<li>在你泡温泉的时候， <strong>某个人（外力）</strong> 打开了柜子， 把你的手表换成了 <strong>塑料手表（数据修改）</strong>。</li>
-<li>等你回来的时候， 虽然你的手牌没变， 但是你打开柜子的时候， 你拿到的不再你期望的东西了。</li>
-</ol>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<img src="https://static.typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/golang-reference-type.jpg" alt=""  /></p>
-<p>而正好， 每次执行 <code>xxx.AddCommand(children)</code> 添加子命令的时候， <code>children</code> 节点的 <code>parent</code> 字段都会被修改。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Command</span><span class="p">)</span> <span class="nf">AddCommand</span><span class="p">(</span><span class="nx">cmds</span> <span class="o">...*</span><span class="nx">Command</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">x</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">cmds</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">cmds</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">==</span> <span class="nx">c</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nb">panic</span><span class="p">(</span><span class="s">&#34;Command can&#39;t be a child of itself&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">cmds</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">parent</span> <span class="p">=</span> <span class="nx">c</span>  <span class="c1">// child 的父节点会被修改
-</span></span></span><span class="line"><span class="cl"><span class="c1">// 省略
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+<p>在 shell 中， 通常使用 <code>seq</code> 实现计数循环</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>seq <span class="m">1</span> 10<span class="k">)</span><span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="s2">&#34;i = </span><span class="nv">$i</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></div><p>而在 Go 中，</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;i=&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>当一个节点， 重复被假如到其他节点的时候， 会出现这个问题。</p>
-<div class="gdoc-page__anchorwrap">
-    <h3 id="cobra-树实现过程解析">
-        cobra 树实现过程解析
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/#cobra-树实现过程解析" class="gdoc-page__anchor clip flex align-center" title="Anchor to: cobra 树实现过程解析" aria-label="Anchor to: cobra 树实现过程解析" href="#cobra-%e6%a0%91%e5%ae%9e%e7%8e%b0%e8%bf%87%e7%a8%8b%e8%a7%a3%e6%9e%90">
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h2 id="遍历循环">
+        遍历循环
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/for-loops/#遍历循环" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 遍历循环" aria-label="Anchor to: 遍历循环" href="#%e9%81%8d%e5%8e%86%e5%be%aa%e7%8e%af">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
-    </h3>
+    </h2>
 </div>
-<p>下面， 我们对命令树的实现过程进行拆分。 <strong>注意</strong> 每个节点分为上下两层， <strong>上层</strong> 表示父节点的名称， <strong>下层</strong> 表示当前节点。</p>
-<pre tabindex="0"><code>  parent
-----------
-   node
-</code></pre><p>当执行第一条命令时时候， 此时创建的命令树就有所差异了。 左侧时从 <code>root</code> 开始， 右侧是从 <code>sub1</code> 开始。</p>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<img src="https://static.typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/cobra-tree-step1.jpg" alt=""  /></p>
-<p>当执行的第二条命令的时候， 都实现了相同结构的命令树（不看父节点差异的话）。</p>
-<p>但仔细分析其内部节点， 可以知道， <strong>相同位置的节点， 其父节点不一样</strong>。</p>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<img src="https://static.typonotes.com/posts/2023/02/19/devopscamp-cobra-06-persistent-run-and-flags/cobra-tree-step2.jpg" alt=""  /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> name in zhangsan lisi wangwu zhaoliu<span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="s2">&#34;name = </span><span class="nv">$name</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></div><p>在 Go 中， 需要将对象放入到 <strong>切片</strong> 中</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">rangeSlice</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">names</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;zhangsan&#34;</span><span class="p">,</span> <span class="s">&#34;lisi&#34;</span><span class="p">,</span> <span class="s">&#34;wangwu&#34;</span><span class="p">,</span> <span class="s">&#34;zhaoliu&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">names</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">names</span><span class="p">[</span><span class="nx">idx</span><span class="p">],</span> <span class="nx">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>其中， <code>idx</code> 为索引编号。</p>
+<p>另外， 如果遍历对象是 <strong>map</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">rangeMap</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">users</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="s">&#34;zhangsan&#34;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s">&#34;lisi&#34;</span><span class="p">:</span>     <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s">&#34;wangwu&#34;</span><span class="p">:</span>   <span class="mi">40</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">users</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>则第一个参数为 <code>key</code>。 而非索引。</p>
+<p><strong>注意</strong>: value 在循环中， 都可以 <strong>省略</strong>， 只获取 <strong>idx 或 key</strong>。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="while-循环">
+        While 循环
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/for-loops/#while-循环" class="gdoc-page__anchor clip flex align-center" title="Anchor to: While 循环" aria-label="Anchor to: While 循环" href="#while-%e5%be%aa%e7%8e%af">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>在 shell 中， 使用 while 实现条件语句。  如果条件 <strong>恒真</strong> 则使用 <code>True</code> 或 <code>:</code> 实现。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="k">while</span> True<span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        date
+</span></span><span class="line"><span class="cl">        sleep <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></div><p>在 Go 中， 省去前后两段， 实现条件 <code>a&lt;=b</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">for</span> <span class="p">;</span> <span class="nx">a</span><span class="o">&lt;=</span><span class="nx">b</span> <span class="p">;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 死循环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>如果条件 <strong>恒真</strong> 则为死循环， 省略所有条件语句即可。</p>
 
 </article>
 
