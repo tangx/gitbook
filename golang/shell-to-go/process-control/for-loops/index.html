@@ -98,7 +98,7 @@ for i := 0; i &lt; 1; i&#43;&#43; { fmt.Println(&#34;i=&#34;, i) } 遍历循环 
       "url" : "https://typonotes.com/books/golang/shell-to-go/process-control/for-loops/",
       "headline": "02. 循环语句 (for)",
       "description": "Go 循环 在 Go 中， 循环只有一个关键字 for， 通过不同的 格式 实现不同的逻辑\n基本格式如下\nfor 默认值; 条件; 计数器 { fmt.Println(\u0022i=\u0022, i) } 以上的 每一个字段都可以省略 。\n计数循环 在 shell 中， 通常使用 seq 实现计数循环\nfor i in $(seq 1 10); do { echo \u0022i = $i\u0022 } done 而在 Go 中，\nfor i := 0; i \u003c 1; i\u002b\u002b { fmt.Println(\u0022i=\u0022, i) } 遍历循环 for name in zhangsan lisi wangwu zhaoliu; do { echo \u0022name = $name\u0022 } done 在 Go 中， 需要将对象放入到 切片 中",
-      "wordCount" : "252",
+      "wordCount" : "259",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -1349,7 +1349,14 @@ for i := 0; i &lt; 1; i&#43;&#43; { fmt.Println(&#34;i=&#34;, i) } 遍历循环 
               
             >
               
-                <span class="flex">05. 大小写转换(tr)</span>
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/tr/"
+                    class="gdoc-nav__entry"
+                  >
+                    05. 大小写转换(tr)
+                  </a>
+                </span>
               
               
             </label>
@@ -1407,7 +1414,14 @@ for i := 0; i &lt; 1; i&#43;&#43; { fmt.Println(&#34;i=&#34;, i) } 遍历循环 
               
             >
               
-                <span class="flex">07. md5 计算</span>
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/md5sum/"
+                    class="gdoc-nav__entry"
+                  >
+                    07. 计算MD5值(md5sum)
+                  </a>
+                </span>
               
               
             </label>
@@ -1986,6 +2000,14 @@ for i := 0; i &lt; 1; i&#43;&#43; { fmt.Println(&#34;i=&#34;, i) } 遍历循环 
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>其中， <code>idx</code> 为索引编号。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="遍历-map-对象">
+        遍历 map 对象
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/process-control/for-loops/#遍历-map-对象" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 遍历 map 对象" aria-label="Anchor to: 遍历 map 对象" href="#%e9%81%8d%e5%8e%86-map-%e5%af%b9%e8%b1%a1">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
 <p>另外， 如果遍历对象是 <strong>map</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">rangeMap</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">users</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
@@ -1999,7 +2021,7 @@ for i := 0; i &lt; 1; i&#43;&#43; { fmt.Println(&#34;i=&#34;, i) } 遍历循环 
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>则第一个参数为 <code>key</code>。 而非索引。</p>
-<p><strong>注意</strong>: value 在循环中， 都可以 <strong>省略</strong>， 只获取 <strong>idx 或 key</strong>。</p>
+<p><strong>注意</strong>: value 在循环中， 都可以 <strong>省略</strong>， 只获取 <strong>idx 或 key</strong>。 取值的时候， 就使用 <code>names[key]</code> 这种方式。</p>
 <div class="gdoc-page__anchorwrap">
     <h2 id="while-循环">
         While 循环
@@ -2028,12 +2050,12 @@ for i := 0; i &lt; 1; i&#43;&#43; { fmt.Println(&#34;i=&#34;, i) } 遍历循环 
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>如果条件 <strong>恒真</strong> 则为死循环， 省略所有条件语句即可。</p>
 <div class="gdoc-page__anchorwrap">
-    <h3 id="跳出循环">
+    <h2 id="跳出循环">
         跳出循环
         <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/process-control/for-loops/#跳出循环" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 跳出循环" aria-label="Anchor to: 跳出循环" href="#%e8%b7%b3%e5%87%ba%e5%be%aa%e7%8e%af">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
-    </h3>
+    </h2>
 </div>
 <p>跳出循环使用的两个关键字， 用法与 Shell 相同。</p>
 <ol>

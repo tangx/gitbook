@@ -9,6 +9,10 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
+  <meta name="description" content="在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。
+# 字符串 echo &#34;abc&#34; | md5sum # 文件 md5sum /path/2/file.txt 计算字符串 md5 计算字符串 md5 值相对简单， 直接使用标准库中的 md5 库就可以了
+func MustMd5(s string) string { h := md5.New() _, err := io.WriteString(h, s) if err != nil { panic(err) } return fmt.Sprintf(&#34;%x&#34;, h.Sum(nil)) } 计算文件 md5 计算文件的就稍微多一个步骤， 就是读取文件内容。 读取完了， 直接丢到上一个函数中就可以了。
+func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != nil { panic(err) } return MustMd5(string(data)) } " />
 
 
   
@@ -37,7 +41,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>07. md5 计算 | 《Shell 转 Go》</title>
+  <title>07. 计算MD5值(md5sum) | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -58,9 +62,13 @@
   
   <meta
     property="og:title"
-    content="07. md5 计算"
+    content="07. 计算MD5值(md5sum)"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
+  <meta property="og:description" content="在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。
+# 字符串 echo &#34;abc&#34; | md5sum # 文件 md5sum /path/2/file.txt 计算字符串 md5 计算字符串 md5 值相对简单， 直接使用标准库中的 md5 库就可以了
+func MustMd5(s string) string { h := md5.New() _, err := io.WriteString(h, s) if err != nil { panic(err) } return fmt.Sprintf(&#34;%x&#34;, h.Sum(nil)) } 计算文件 md5 计算文件的就稍微多一个步骤， 就是读取文件内容。 读取完了， 直接丢到上一个函数中就可以了。
+func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != nil { panic(err) } return MustMd5(string(data)) } " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://typonotes.com/books/golang/linux-go-snippet/md5sum/" />
 
@@ -68,7 +76,11 @@
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="07. md5 计算" />
+<meta name="twitter:title" content="07. 计算MD5值(md5sum)" />
+  <meta name="twitter:description" content="在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。
+# 字符串 echo &#34;abc&#34; | md5sum # 文件 md5sum /path/2/file.txt 计算字符串 md5 计算字符串 md5 值相对简单， 直接使用标准库中的 md5 库就可以了
+func MustMd5(s string) string { h := md5.New() _, err := io.WriteString(h, s) if err != nil { panic(err) } return fmt.Sprintf(&#34;%x&#34;, h.Sum(nil)) } 计算文件 md5 计算文件的就稍微多一个步骤， 就是读取文件内容。 读取完了， 直接丢到上一个函数中就可以了。
+func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != nil { panic(err) } return MustMd5(string(data)) } " />
 
 
   <script type="application/ld+json">
@@ -76,10 +88,11 @@
       "@context": "http://schema.org",
       "@type": "TechArticle",
       "articleSection": "Linux Go Snippet",
-      "name": "07. md5 计算",
+      "name": "07. 计算MD5值(md5sum)",
       "url" : "https://typonotes.com/books/golang/linux-go-snippet/md5sum/",
-      "headline": "07. md5 计算",
-      "wordCount" : "0",
+      "headline": "07. 计算MD5值(md5sum)",
+      "description": "在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。\n# 字符串 echo \u0022abc\u0022 | md5sum # 文件 md5sum \/path\/2\/file.txt 计算字符串 md5 计算字符串 md5 值相对简单， 直接使用标准库中的 md5 库就可以了\nfunc MustMd5(s string) string { h := md5.New() _, err := io.WriteString(h, s) if err != nil { panic(err) } return fmt.Sprintf(\u0022%x\u0022, h.Sum(nil)) } 计算文件 md5 计算文件的就稍微多一个步骤， 就是读取文件内容。 读取完了， 直接丢到上一个函数中就可以了。\nfunc MustMd5File(name string) string { data, err := os.ReadFile(name) if err != nil { panic(err) } return MustMd5(string(data)) } ",
+      "wordCount" : "73",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -1330,7 +1343,14 @@
               
             >
               
-                <span class="flex">05. 大小写转换(tr)</span>
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/tr/"
+                    class="gdoc-nav__entry"
+                  >
+                    05. 大小写转换(tr)
+                  </a>
+                </span>
               
               
             </label>
@@ -1388,7 +1408,14 @@
               
             >
               
-                <span class="flex">07. md5 计算</span>
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/md5sum/"
+                    class="gdoc-nav__entry is-active"
+                  >
+                    07. 计算MD5值(md5sum)
+                  </a>
+                </span>
               
               
             </label>
@@ -1888,7 +1915,7 @@
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>07. md5 计算</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>07. 计算MD5值(md5sum)</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -1904,8 +1931,49 @@
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>07. md5 计算</h1>
-  
+  <h1>07. 计算MD5值(md5sum)</h1>
+  <p>在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 字符串</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;abc&#34;</span> <span class="p">|</span> md5sum
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 文件</span>
+</span></span><span class="line"><span class="cl">md5sum /path/2/file.txt
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h2 id="计算字符串-md5">
+        计算字符串 md5
+        <a data-clipboard-text="https://typonotes.com/books/golang/linux-go-snippet/md5sum/#计算字符串-md5" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 计算字符串 md5" aria-label="Anchor to: 计算字符串 md5" href="#%e8%ae%a1%e7%ae%97%e5%ad%97%e7%ac%a6%e4%b8%b2-md5">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>计算字符串 md5 值相对简单， 直接使用标准库中的 <code>md5</code> 库就可以了</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">MustMd5</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">h</span> <span class="o">:=</span> <span class="nx">md5</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="nx">h</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%x&#34;</span><span class="p">,</span> <span class="nx">h</span><span class="p">.</span><span class="nf">Sum</span><span class="p">(</span><span class="kc">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h2 id="计算文件-md5">
+        计算文件 md5
+        <a data-clipboard-text="https://typonotes.com/books/golang/linux-go-snippet/md5sum/#计算文件-md5" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 计算文件 md5" aria-label="Anchor to: 计算文件 md5" href="#%e8%ae%a1%e7%ae%97%e6%96%87%e4%bb%b6-md5">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>计算文件的就稍微多一个步骤， 就是读取文件内容。 读取完了， 直接丢到上一个函数中就可以了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">MustMd5File</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">data</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nf">MustMd5</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
 </article>
 
 

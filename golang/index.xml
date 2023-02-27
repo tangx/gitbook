@@ -224,7 +224,11 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://typonotes.com/books/golang/linux-go-snippet/tr/</guid>
-      <description></description>
+      <description>大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
+echo &amp;#34;abcDefg&amp;#34; | tr &amp;#39;a-z&amp;#39; &amp;#39;A-Z&amp;#39; 对于这个使用 Go 中对应的标准库 strings
+s1 := strings.ToLower(&amp;#34;abcDEFg&amp;#34;) // 转小写 s2 := strings.ToUpper(&amp;#34;abcDEFg&amp;#34;) // 转大写 删除字符 使用 tr -d 删除出现的字符
+echo &amp;#34;abcabcabc&amp;#34; | tr -d &amp;#34;ac&amp;#34; 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器
+rep := strings.NewReplacer(&amp;#34;a&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;c&amp;#34;, &amp;#34;&amp;#34;) abc := rep.Replace(&amp;#34;abcabcabc&amp;#34;) fmt.Println(abc) 其中, NewReplacer 的参数必须为双数， 两个一组(old -&amp;gt; new)。 例如这里的就是 a -&amp;gt; 空, c -&amp;gt; 空， 也就是删除的意思。</description>
     </item>
     
     <item>
@@ -280,12 +284,15 @@ func Test_Demo(t *testing.T) { i := 10 j := hello(&amp;amp;i) fmt.Println(i, j) 
     </item>
     
     <item>
-      <title>07. md5 计算</title>
+      <title>07. 计算MD5值(md5sum)</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</guid>
-      <description></description>
+      <description>在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。
+# 字符串 echo &amp;#34;abc&amp;#34; | md5sum # 文件 md5sum /path/2/file.txt 计算字符串 md5 计算字符串 md5 值相对简单， 直接使用标准库中的 md5 库就可以了
+func MustMd5(s string) string { h := md5.New() _, err := io.WriteString(h, s) if err != nil { panic(err) } return fmt.Sprintf(&amp;#34;%x&amp;#34;, h.Sum(nil)) } 计算文件 md5 计算文件的就稍微多一个步骤， 就是读取文件内容。 读取完了， 直接丢到上一个函数中就可以了。
+func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != nil { panic(err) } return MustMd5(string(data)) } </description>
     </item>
     
     <item>

@@ -9,6 +9,11 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
+  <meta name="description" content="大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
+echo &#34;abcDefg&#34; | tr &#39;a-z&#39; &#39;A-Z&#39; 对于这个使用 Go 中对应的标准库 strings
+s1 := strings.ToLower(&#34;abcDEFg&#34;) // 转小写 s2 := strings.ToUpper(&#34;abcDEFg&#34;) // 转大写 删除字符 使用 tr -d 删除出现的字符
+echo &#34;abcabcabc&#34; | tr -d &#34;ac&#34; 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器
+rep := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) abc := rep.Replace(&#34;abcabcabc&#34;) fmt.Println(abc) 其中, NewReplacer 的参数必须为双数， 两个一组(old -&gt; new)。 例如这里的就是 a -&gt; 空, c -&gt; 空， 也就是删除的意思。" />
 
 
   
@@ -61,6 +66,11 @@
     content="05. 大小写转换(tr)"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
+  <meta property="og:description" content="大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
+echo &#34;abcDefg&#34; | tr &#39;a-z&#39; &#39;A-Z&#39; 对于这个使用 Go 中对应的标准库 strings
+s1 := strings.ToLower(&#34;abcDEFg&#34;) // 转小写 s2 := strings.ToUpper(&#34;abcDEFg&#34;) // 转大写 删除字符 使用 tr -d 删除出现的字符
+echo &#34;abcabcabc&#34; | tr -d &#34;ac&#34; 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器
+rep := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) abc := rep.Replace(&#34;abcabcabc&#34;) fmt.Println(abc) 其中, NewReplacer 的参数必须为双数， 两个一组(old -&gt; new)。 例如这里的就是 a -&gt; 空, c -&gt; 空， 也就是删除的意思。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://typonotes.com/books/golang/linux-go-snippet/tr/" />
 
@@ -69,6 +79,11 @@
 
   <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="05. 大小写转换(tr)" />
+  <meta name="twitter:description" content="大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
+echo &#34;abcDefg&#34; | tr &#39;a-z&#39; &#39;A-Z&#39; 对于这个使用 Go 中对应的标准库 strings
+s1 := strings.ToLower(&#34;abcDEFg&#34;) // 转小写 s2 := strings.ToUpper(&#34;abcDEFg&#34;) // 转大写 删除字符 使用 tr -d 删除出现的字符
+echo &#34;abcabcabc&#34; | tr -d &#34;ac&#34; 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器
+rep := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) abc := rep.Replace(&#34;abcabcabc&#34;) fmt.Println(abc) 其中, NewReplacer 的参数必须为双数， 两个一组(old -&gt; new)。 例如这里的就是 a -&gt; 空, c -&gt; 空， 也就是删除的意思。" />
 
 
   <script type="application/ld+json">
@@ -79,7 +94,8 @@
       "name": "05. 大小写转换(tr)",
       "url" : "https://typonotes.com/books/golang/linux-go-snippet/tr/",
       "headline": "05. 大小写转换(tr)",
-      "wordCount" : "0",
+      "description": "大小写转换 tr 其中一个最常见的， 是 大小写 的转换。\necho \u0022abcDefg\u0022 | tr \u0027a-z\u0027 \u0027A-Z\u0027 对于这个使用 Go 中对应的标准库 strings\ns1 := strings.ToLower(\u0022abcDEFg\u0022) \/\/ 转小写 s2 := strings.ToUpper(\u0022abcDEFg\u0022) \/\/ 转大写 删除字符 使用 tr -d 删除出现的字符\necho \u0022abcabcabc\u0022 | tr -d \u0022ac\u0022 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器\nrep := strings.NewReplacer(\u0022a\u0022, \u0022\u0022, \u0022c\u0022, \u0022\u0022) abc := rep.Replace(\u0022abcabcabc\u0022) fmt.Println(abc) 其中, NewReplacer 的参数必须为双数， 两个一组(old -\u003e new)。 例如这里的就是 a -\u003e 空, c -\u003e 空， 也就是删除的意思。",
+      "wordCount" : "65",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -1330,7 +1346,14 @@
               
             >
               
-                <span class="flex">05. 大小写转换(tr)</span>
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/tr/"
+                    class="gdoc-nav__entry is-active"
+                  >
+                    05. 大小写转换(tr)
+                  </a>
+                </span>
               
               
             </label>
@@ -1388,7 +1411,14 @@
               
             >
               
-                <span class="flex">07. md5 计算</span>
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/md5sum/"
+                    class="gdoc-nav__entry"
+                  >
+                    07. 计算MD5值(md5sum)
+                  </a>
+                </span>
               
               
             </label>
@@ -1905,7 +1935,35 @@
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
   <h1>05. 大小写转换(tr)</h1>
-  
+  <div class="gdoc-page__anchorwrap">
+    <h2 id="大小写转换">
+        大小写转换
+        <a data-clipboard-text="https://typonotes.com/books/golang/linux-go-snippet/tr/#大小写转换" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 大小写转换" aria-label="Anchor to: 大小写转换" href="#%e5%a4%a7%e5%b0%8f%e5%86%99%e8%bd%ac%e6%8d%a2">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p><code>tr</code> 其中一个最常见的， 是 <strong>大小写</strong> 的转换。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;abcDefg&#34;</span> <span class="p">|</span> tr <span class="s1">&#39;a-z&#39;</span> <span class="s1">&#39;A-Z&#39;</span>
+</span></span></code></pre></div><p>对于这个使用 Go 中对应的标准库 <code>strings</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">s1</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">(</span><span class="s">&#34;abcDEFg&#34;</span><span class="p">)</span> <span class="c1">// 转小写
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">s2</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">ToUpper</span><span class="p">(</span><span class="s">&#34;abcDEFg&#34;</span><span class="p">)</span> <span class="c1">// 转大写
+</span></span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h2 id="删除字符">
+        删除字符
+        <a data-clipboard-text="https://typonotes.com/books/golang/linux-go-snippet/tr/#删除字符" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 删除字符" aria-label="Anchor to: 删除字符" href="#%e5%88%a0%e9%99%a4%e5%ad%97%e7%ac%a6">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>使用 <code>tr -d</code> 删除出现的字符</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;abcabcabc&#34;</span> <span class="p">|</span> tr -d <span class="s2">&#34;ac&#34;</span>
+</span></span></code></pre></div><p>这种情况下， 可以使用 <code>strings.NewReplacer</code> 创建自己的过滤器</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">rep</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">NewReplacer</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;c&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">abc</span> <span class="o">:=</span> <span class="nx">rep</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">&#34;abcabcabc&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">abc</span><span class="p">)</span>
+</span></span></code></pre></div><p>其中, <code>NewReplacer</code> 的参数必须为双数， <strong>两个一组(<code>old -&gt; new)</code></strong>。 例如这里的就是 <code>a -&gt; 空, c -&gt; 空</code>， 也就是删除的意思。</p>
+
 </article>
 
 
