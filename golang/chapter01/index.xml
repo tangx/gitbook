@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chapter01 on 《Shell 转 Go》</title>
+    <title>01. Go开发环境配置 on 《Shell 转 Go》</title>
     <link>https://typonotes.com/books/golang/chapter01/</link>
-    <description>Recent content in Chapter01 on 《Shell 转 Go》</description>
+    <description>Recent content in 01. Go开发环境配置 on 《Shell 转 Go》</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/chapter01/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1. 项目简介</title>

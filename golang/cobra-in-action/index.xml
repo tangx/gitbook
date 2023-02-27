@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cobra-in-action on 《Shell 转 Go》</title>
+    <title>99. Cobra 实战项目 on 《Shell 转 Go》</title>
     <link>https://typonotes.com/books/golang/cobra-in-action/</link>
-    <description>Recent content in Cobra-in-action on 《Shell 转 Go》</description>
+    <description>Recent content in 99. Cobra 实战项目 on 《Shell 转 Go》</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/cobra-in-action/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1. 参数绑定与交叉编译</title>

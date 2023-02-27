@@ -6,6 +6,69 @@
     <description>Recent content on 《Shell 转 Go》</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>01 环境变量</title>
+      <link>https://typonotes.com/books/golang/chapter03/01-environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter03/01-environment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>01. 变量声明</title>
+      <link>https://typonotes.com/books/golang/chapter02/01-variable-declare/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter02/01-variable-declare/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>02 时间管理</title>
+      <link>https://typonotes.com/books/golang/chapter03/02-datetime/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter03/02-datetime/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>02. 函数</title>
+      <link>https://typonotes.com/books/golang/chapter02/02-function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter02/02-function/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>03 文件路径</title>
+      <link>https://typonotes.com/books/golang/chapter03/03-filepath/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter03/03-filepath/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>03. 流程控制</title>
+      <link>https://typonotes.com/books/golang/chapter02/03-clause/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter02/03-clause/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>04 文件操作</title>
+      <link>https://typonotes.com/books/golang/chapter03/04-file-operation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter03/04-file-operation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>1. 参数绑定与交叉编译</title>
       <link>https://typonotes.com/books/golang/cobra-in-action/01-cobra-sample/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
