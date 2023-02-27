@@ -6,7 +6,7 @@
     <description>Recent content in 03. 流程控制 on 《Shell 转 Go》</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/chapter02/process-control/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>01. if-else</title>
+      <title>01. 条件语句 (if else)</title>
       <link>https://typonotes.com/books/golang/chapter02/process-control/if-else/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -16,7 +16,7 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
     </item>
     
     <item>
-      <title>02. 循环</title>
+      <title>02. 循环语句 (for)</title>
       <link>https://typonotes.com/books/golang/chapter02/process-control/for-loops/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -27,6 +27,17 @@ for 默认值; 条件; 计数器 { fmt.Println(&amp;#34;i=&amp;#34;, i) } 以上
 计数循环 在 shell 中， 通常使用 seq 实现计数循环
 for i in $(seq 1 10); do { echo &amp;#34;i = $i&amp;#34; } done 而在 Go 中，
 for i := 0; i &amp;lt; 1; i++ { fmt.Println(&amp;#34;i=&amp;#34;, i) } 遍历循环 for name in zhangsan lisi wangwu zhaoliu; do { echo &amp;#34;name = $name&amp;#34; } done 在 Go 中， 需要将对象放入到 切片 中</description>
+    </item>
+    
+    <item>
+      <title>03. 分支语句 (switch)</title>
+      <link>https://typonotes.com/books/golang/chapter02/process-control/switch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter02/process-control/switch/</guid>
+      <description>在 Shell 中使用 case ... in 做分支语句。
+使用 case ... in 作为开始， 使用 esac 作为结尾 使用 xxx ) 格式作为条件分支。 其中 xxx 可以是多个并列条件 使用 ;; 作为语句块结束。 使用 * 作为默认条件语句， 可省略。 case $1 in &amp;#34;n1&amp;#34;) echo &amp;#34;n1&amp;#34; ;; &amp;#34;n2&amp;#34; | &amp;#34;n3&amp;#34;) echo &amp;#34;n2 or n3&amp;#34; ;; *) echo &amp;#34;default&amp;#34; ;; esac 在 Go 中使用 switch 作为分支语句
+使用 switch 关键字作为开始 使用 case 关键字作为分支条件。 没有单独的结尾关键字 使用 default 作为 switch n { case 1: fmt.Println(&amp;#34;1&amp;#34;) fallthrough case 2, 3, &amp;#34;a&amp;#34;: fmt.</description>
     </item>
     
   </channel>

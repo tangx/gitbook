@@ -9,6 +9,9 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
+  <meta name="description" content="在 Shell 中使用 case ... in 做分支语句。
+使用 case ... in 作为开始， 使用 esac 作为结尾 使用 xxx ) 格式作为条件分支。 其中 xxx 可以是多个并列条件 使用 ;; 作为语句块结束。 使用 * 作为默认条件语句， 可省略。 case $1 in &#34;n1&#34;) echo &#34;n1&#34; ;; &#34;n2&#34; | &#34;n3&#34;) echo &#34;n2 or n3&#34; ;; *) echo &#34;default&#34; ;; esac 在 Go 中使用 switch 作为分支语句
+使用 switch 关键字作为开始 使用 case 关键字作为分支条件。 没有单独的结尾关键字 使用 default 作为 switch n { case 1: fmt.Println(&#34;1&#34;) fallthrough case 2, 3, &#34;a&#34;: fmt." />
 
 
   
@@ -37,7 +40,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>Tags | 《Shell 转 Go》</title>
+  <title>03. 分支语句 (switch) | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -58,19 +61,59 @@
   
   <meta
     property="og:title"
-    content="Tags"
+    content="03. 分支语句 (switch)"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://typonotes.com/books/golang/tags/" />
+  <meta property="og:description" content="在 Shell 中使用 case ... in 做分支语句。
+使用 case ... in 作为开始， 使用 esac 作为结尾 使用 xxx ) 格式作为条件分支。 其中 xxx 可以是多个并列条件 使用 ;; 作为语句块结束。 使用 * 作为默认条件语句， 可省略。 case $1 in &#34;n1&#34;) echo &#34;n1&#34; ;; &#34;n2&#34; | &#34;n3&#34;) echo &#34;n2 or n3&#34; ;; *) echo &#34;default&#34; ;; esac 在 Go 中使用 switch 作为分支语句
+使用 switch 关键字作为开始 使用 case 关键字作为分支条件。 没有单独的结尾关键字 使用 default 作为 switch n { case 1: fmt.Println(&#34;1&#34;) fallthrough case 2, 3, &#34;a&#34;: fmt." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://typonotes.com/books/golang/chapter02/process-control/switch/" />
 
-
+<meta property="article:section" content="Chapter02" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Tags" />
+<meta name="twitter:title" content="03. 分支语句 (switch)" />
+  <meta name="twitter:description" content="在 Shell 中使用 case ... in 做分支语句。
+使用 case ... in 作为开始， 使用 esac 作为结尾 使用 xxx ) 格式作为条件分支。 其中 xxx 可以是多个并列条件 使用 ;; 作为语句块结束。 使用 * 作为默认条件语句， 可省略。 case $1 in &#34;n1&#34;) echo &#34;n1&#34; ;; &#34;n2&#34; | &#34;n3&#34;) echo &#34;n2 or n3&#34; ;; *) echo &#34;default&#34; ;; esac 在 Go 中使用 switch 作为分支语句
+使用 switch 关键字作为开始 使用 case 关键字作为分支条件。 没有单独的结尾关键字 使用 default 作为 switch n { case 1: fmt.Println(&#34;1&#34;) fallthrough case 2, 3, &#34;a&#34;: fmt." />
 
 
+  <script type="application/ld+json">
+  {
+      "@context": "http://schema.org",
+      "@type": "TechArticle",
+      "articleSection": "Chapter02",
+      "name": "03. 分支语句 (switch)",
+      "url" : "https://typonotes.com/books/golang/chapter02/process-control/switch/",
+      "headline": "03. 分支语句 (switch)",
+      "description": "在 Shell 中使用 case ... in 做分支语句。\n使用 case ... in 作为开始， 使用 esac 作为结尾 使用 xxx ) 格式作为条件分支。 其中 xxx 可以是多个并列条件 使用 ;; 作为语句块结束。 使用 * 作为默认条件语句， 可省略。 case $1 in \u0022n1\u0022) echo \u0022n1\u0022 ;; \u0022n2\u0022 | \u0022n3\u0022) echo \u0022n2 or n3\u0022 ;; *) echo \u0022default\u0022 ;; esac 在 Go 中使用 switch 作为分支语句\n使用 switch 关键字作为开始 使用 case 关键字作为分支条件。 没有单独的结尾关键字 使用 default 作为 switch n { case 1: fmt.Println(\u00221\u0022) fallthrough case 2, 3, \u0022a\u0022: fmt.",
+      "wordCount" : "91",
+      "inLanguage": "en",
+      "isFamilyFriendly": "true",
+      "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://typonotes.com/books/golang/chapter02/process-control/switch/"
+      },
+      "copyrightHolder" : "《Shell 转 Go》",
+      "copyrightYear" : "0001",
+      "dateCreated": "0001-01-01T00:00:00.00Z",
+      "datePublished": "0001-01-01T00:00:00.00Z",
+      "dateModified": "0001-01-01T00:00:00.00Z",
+      "publisher":{
+          "@type":"Organization",
+          "name": "《Shell 转 Go》",
+          "url": "https://typonotes.com/books/golang/",
+          "logo": {
+              "@type": "ImageObject",
+              "url": "https://typonotes.com/books/golang/brand.svg",
+              "width":"32",
+              "height":"32"
+          }
+      }
+  }
+  </script>
 
 
   
@@ -135,7 +178,7 @@
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/tags/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/chapter02/process-control/switch/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -686,7 +729,7 @@
                 <span class="flex">
                   <a
                     href="/books/golang/chapter02/process-control/switch/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     03. 分支语句 (switch)
                   </a>
@@ -1258,19 +1301,120 @@
 
       <div class="gdoc-page">
         
-  
+
+
+
   
 
 
-<nav class="gdoc-paging flex flex-even align-center" role="navigation">
-  <div class="gdoc-paging__item gdoc-paging__item--prev">
+
+
+
+
+<div
+  class="gdoc-page__header flex flex-wrap
+  
+    justify-between
+  
+  hidden-mobile
+  "
+  itemprop="breadcrumb"
+>
+  
+    <div>
+      <svg class="gdoc-icon gdoc_path hidden-mobile"><use xlink:href="#gdoc_path"></use></svg>
+      <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+        
+        
+        
+        
+  
+  
     
-  </div>
-  <div class="gdoc-paging__state">1/0</div>
-  <div class="gdoc-paging__item gdoc-paging__item--next">
     
-  </div>
-</nav>
+    
+    
+  
+  
+    
+    
+    
+    
+  
+  
+    
+    
+    
+    
+  
+  
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter02/' href='/books/golang/chapter02/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter02/process-control/' href='/books/golang/chapter02/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>03. 分支语句 (switch)</span><meta itemprop='position' content='6' /></li>
+  
+
+  
+
+  
+
+  
+
+      </ol>
+    </div>
+  
+  
+</div>
+
+
+
+<article class="gdoc-markdown gdoc-markdown__align-- left">
+  <h1>03. 分支语句 (switch)</h1>
+  <p>在 Shell 中使用 <code>case ... in</code> 做分支语句。</p>
+<ol>
+<li>使用 <code>case ... in</code> 作为开始， 使用 <code>esac</code> 作为结尾</li>
+<li>使用 <code>xxx )</code> 格式作为条件分支。 其中 <code>xxx</code> 可以是多个并列条件</li>
+<li>使用 <code>;;</code> 作为语句块结束。</li>
+<li>使用 <code>*</code> 作为默认条件语句， 可省略。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="k">case</span> <span class="nv">$1</span> in
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;n1&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;n1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">;;</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;n2&#34;</span> <span class="p">|</span> <span class="s2">&#34;n3&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;n2 or n3&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">*<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;default&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">;;</span>
+</span></span><span class="line"><span class="cl"><span class="k">esac</span>
+</span></span></code></pre></div><p>在 Go 中使用 <code>switch</code> 作为分支语句</p>
+<ol>
+<li>使用 <code>switch</code> 关键字作为开始</li>
+<li>使用 <code>case</code> 关键字作为分支条件。</li>
+<li>没有单独的结尾关键字</li>
+<li>使用 <code>default</code> 作为</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">switch</span> <span class="nx">n</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fallthrough</span>
+</span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#34;a&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;2 或 3&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;其他&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>当使用 <code>fallthrough</code> 关键字时， 会直接进入下一条 <code>case</code> 语句， 不再做判断。
+可以当作多个 <strong>并列条件</strong> 时使用。</p>
+
+</article>
+
+
+
+
+<div class="post bg-white">
+  <script src="https://utteranc.es/client.js" repo="tangx/tangx.github.io"
+    issue-term="pathname" theme="github-light" crossorigin="anonymous"
+    async>
+    </script>
+</div>
 
 
 
