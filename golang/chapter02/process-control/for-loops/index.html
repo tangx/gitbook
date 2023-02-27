@@ -98,7 +98,7 @@ for i := 0; i &lt; 1; i&#43;&#43; { fmt.Println(&#34;i=&#34;, i) } 遍历循环 
       "url" : "https://typonotes.com/books/golang/chapter02/process-control/for-loops/",
       "headline": "02. 循环语句 (for)",
       "description": "Go 循环 在 Go 中， 循环只有一个关键字 for， 通过不同的 格式 实现不同的逻辑\n基本格式如下\nfor 默认值; 条件; 计数器 { fmt.Println(\u0022i=\u0022, i) } 以上的 每一个字段都可以省略 。\n计数循环 在 shell 中， 通常使用 seq 实现计数循环\nfor i in $(seq 1 10); do { echo \u0022i = $i\u0022 } done 而在 Go 中，\nfor i := 0; i \u003c 1; i\u002b\u002b { fmt.Println(\u0022i=\u0022, i) } 遍历循环 for name in zhangsan lisi wangwu zhaoliu; do { echo \u0022name = $name\u0022 } done 在 Go 中， 需要将对象放入到 切片 中",
-      "wordCount" : "195",
+      "wordCount" : "252",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -1471,6 +1471,35 @@ for i := 0; i &lt; 1; i&#43;&#43; { fmt.Println(&#34;i=&#34;, i) } 遍历循环 
 </span></span><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>如果条件 <strong>恒真</strong> 则为死循环， 省略所有条件语句即可。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="跳出循环">
+        跳出循环
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/for-loops/#跳出循环" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 跳出循环" aria-label="Anchor to: 跳出循环" href="#%e8%b7%b3%e5%87%ba%e5%be%aa%e7%8e%af">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>跳出循环使用的两个关键字， 用法与 Shell 相同。</p>
+<ol>
+<li><code>continue</code>: 结束当前循环语句， 进入下一次循环。</li>
+<li><code>break</code>: 退出所有循环， 不再执行剩下的循环次数。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 当 i 是双数的时候， 退出当前循环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">i</span> <span class="p">&gt;</span> <span class="mi">6</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 当 i 大于 6 的时候， 结束所有循环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>实际输出结果为 <code>1, 3, 5</code>。
+<strong>注意</strong>， <code>i</code> 实际是等于 7 的时候才结束整个循环的。</p>
 
 </article>
 
