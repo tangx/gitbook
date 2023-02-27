@@ -226,9 +226,9 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
       <guid>https://typonotes.com/books/golang/linux-go-snippet/tr/</guid>
       <description>大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
 echo &amp;#34;abcDefg&amp;#34; | tr &amp;#39;a-z&amp;#39; &amp;#39;A-Z&amp;#39; 对于这个使用 Go 中对应的标准库 strings
-s1 := strings.ToLower(&amp;#34;abcDEFg&amp;#34;) // 转小写 s2 := strings.ToUpper(&amp;#34;abcDEFg&amp;#34;) // 转大写 删除字符 使用 tr -d 删除出现的字符
+func TrDemo() { s1 := strings.ToLower(&amp;#34;abcDEFg&amp;#34;) // 转小写 s2 := strings.ToUpper(&amp;#34;abcDEFg&amp;#34;) // 转大写 fmt.Println(s1, s2) } 删除字符 使用 tr -d 删除出现的字符
 echo &amp;#34;abcabcabc&amp;#34; | tr -d &amp;#34;ac&amp;#34; 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器
-rep := strings.NewReplacer(&amp;#34;a&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;c&amp;#34;, &amp;#34;&amp;#34;) abc := rep.Replace(&amp;#34;abcabcabc&amp;#34;) fmt.Println(abc) 其中, NewReplacer 的参数必须为双数， 两个一组(old -&amp;gt; new)。 例如这里的就是 a -&amp;gt; 空, c -&amp;gt; 空， 也就是删除的意思。</description>
+func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&amp;#34;a&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;c&amp;#34;, &amp;#34;&amp;#34;) ret := delAbc.Replace(&amp;#34;abcabcabc&amp;#34;) fmt.Println(ret) } 其中, NewReplacer 的参数必须为双数， 两个一组(old -&amp;gt; new)。 例如这里的就是 a -&amp;gt; 空, c -&amp;gt; 空， 也就是删除的意思。</description>
     </item>
     
     <item>

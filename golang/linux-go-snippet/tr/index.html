@@ -11,9 +11,9 @@
 
   <meta name="description" content="大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
 echo &#34;abcDefg&#34; | tr &#39;a-z&#39; &#39;A-Z&#39; 对于这个使用 Go 中对应的标准库 strings
-s1 := strings.ToLower(&#34;abcDEFg&#34;) // 转小写 s2 := strings.ToUpper(&#34;abcDEFg&#34;) // 转大写 删除字符 使用 tr -d 删除出现的字符
+func TrDemo() { s1 := strings.ToLower(&#34;abcDEFg&#34;) // 转小写 s2 := strings.ToUpper(&#34;abcDEFg&#34;) // 转大写 fmt.Println(s1, s2) } 删除字符 使用 tr -d 删除出现的字符
 echo &#34;abcabcabc&#34; | tr -d &#34;ac&#34; 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器
-rep := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) abc := rep.Replace(&#34;abcabcabc&#34;) fmt.Println(abc) 其中, NewReplacer 的参数必须为双数， 两个一组(old -&gt; new)。 例如这里的就是 a -&gt; 空, c -&gt; 空， 也就是删除的意思。" />
+func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) ret := delAbc.Replace(&#34;abcabcabc&#34;) fmt.Println(ret) } 其中, NewReplacer 的参数必须为双数， 两个一组(old -&gt; new)。 例如这里的就是 a -&gt; 空, c -&gt; 空， 也就是删除的意思。" />
 
 
   
@@ -68,9 +68,9 @@ rep := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) abc
   <meta property="og:site_name" content="《Shell 转 Go》" />
   <meta property="og:description" content="大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
 echo &#34;abcDefg&#34; | tr &#39;a-z&#39; &#39;A-Z&#39; 对于这个使用 Go 中对应的标准库 strings
-s1 := strings.ToLower(&#34;abcDEFg&#34;) // 转小写 s2 := strings.ToUpper(&#34;abcDEFg&#34;) // 转大写 删除字符 使用 tr -d 删除出现的字符
+func TrDemo() { s1 := strings.ToLower(&#34;abcDEFg&#34;) // 转小写 s2 := strings.ToUpper(&#34;abcDEFg&#34;) // 转大写 fmt.Println(s1, s2) } 删除字符 使用 tr -d 删除出现的字符
 echo &#34;abcabcabc&#34; | tr -d &#34;ac&#34; 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器
-rep := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) abc := rep.Replace(&#34;abcabcabc&#34;) fmt.Println(abc) 其中, NewReplacer 的参数必须为双数， 两个一组(old -&gt; new)。 例如这里的就是 a -&gt; 空, c -&gt; 空， 也就是删除的意思。" />
+func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) ret := delAbc.Replace(&#34;abcabcabc&#34;) fmt.Println(ret) } 其中, NewReplacer 的参数必须为双数， 两个一组(old -&gt; new)。 例如这里的就是 a -&gt; 空, c -&gt; 空， 也就是删除的意思。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://typonotes.com/books/golang/linux-go-snippet/tr/" />
 
@@ -81,9 +81,9 @@ rep := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) abc
 <meta name="twitter:title" content="05. 大小写转换(tr)" />
   <meta name="twitter:description" content="大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
 echo &#34;abcDefg&#34; | tr &#39;a-z&#39; &#39;A-Z&#39; 对于这个使用 Go 中对应的标准库 strings
-s1 := strings.ToLower(&#34;abcDEFg&#34;) // 转小写 s2 := strings.ToUpper(&#34;abcDEFg&#34;) // 转大写 删除字符 使用 tr -d 删除出现的字符
+func TrDemo() { s1 := strings.ToLower(&#34;abcDEFg&#34;) // 转小写 s2 := strings.ToUpper(&#34;abcDEFg&#34;) // 转大写 fmt.Println(s1, s2) } 删除字符 使用 tr -d 删除出现的字符
 echo &#34;abcabcabc&#34; | tr -d &#34;ac&#34; 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器
-rep := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) abc := rep.Replace(&#34;abcabcabc&#34;) fmt.Println(abc) 其中, NewReplacer 的参数必须为双数， 两个一组(old -&gt; new)。 例如这里的就是 a -&gt; 空, c -&gt; 空， 也就是删除的意思。" />
+func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) ret := delAbc.Replace(&#34;abcabcabc&#34;) fmt.Println(ret) } 其中, NewReplacer 的参数必须为双数， 两个一组(old -&gt; new)。 例如这里的就是 a -&gt; 空, c -&gt; 空， 也就是删除的意思。" />
 
 
   <script type="application/ld+json">
@@ -94,8 +94,8 @@ rep := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) abc
       "name": "05. 大小写转换(tr)",
       "url" : "https://typonotes.com/books/golang/linux-go-snippet/tr/",
       "headline": "05. 大小写转换(tr)",
-      "description": "大小写转换 tr 其中一个最常见的， 是 大小写 的转换。\necho \u0022abcDefg\u0022 | tr \u0027a-z\u0027 \u0027A-Z\u0027 对于这个使用 Go 中对应的标准库 strings\ns1 := strings.ToLower(\u0022abcDEFg\u0022) \/\/ 转小写 s2 := strings.ToUpper(\u0022abcDEFg\u0022) \/\/ 转大写 删除字符 使用 tr -d 删除出现的字符\necho \u0022abcabcabc\u0022 | tr -d \u0022ac\u0022 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器\nrep := strings.NewReplacer(\u0022a\u0022, \u0022\u0022, \u0022c\u0022, \u0022\u0022) abc := rep.Replace(\u0022abcabcabc\u0022) fmt.Println(abc) 其中, NewReplacer 的参数必须为双数， 两个一组(old -\u003e new)。 例如这里的就是 a -\u003e 空, c -\u003e 空， 也就是删除的意思。",
-      "wordCount" : "65",
+      "description": "大小写转换 tr 其中一个最常见的， 是 大小写 的转换。\necho \u0022abcDefg\u0022 | tr \u0027a-z\u0027 \u0027A-Z\u0027 对于这个使用 Go 中对应的标准库 strings\nfunc TrDemo() { s1 := strings.ToLower(\u0022abcDEFg\u0022) \/\/ 转小写 s2 := strings.ToUpper(\u0022abcDEFg\u0022) \/\/ 转大写 fmt.Println(s1, s2) } 删除字符 使用 tr -d 删除出现的字符\necho \u0022abcabcabc\u0022 | tr -d \u0022ac\u0022 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器\nfunc TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(\u0022a\u0022, \u0022\u0022, \u0022c\u0022, \u0022\u0022) ret := delAbc.Replace(\u0022abcabcabc\u0022) fmt.Println(ret) } 其中, NewReplacer 的参数必须为双数， 两个一组(old -\u003e new)。 例如这里的就是 a -\u003e 空, c -\u003e 空， 也就是删除的意思。",
+      "wordCount" : "76",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -1946,9 +1946,12 @@ rep := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) abc
 <p><code>tr</code> 其中一个最常见的， 是 <strong>大小写</strong> 的转换。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;abcDefg&#34;</span> <span class="p">|</span> tr <span class="s1">&#39;a-z&#39;</span> <span class="s1">&#39;A-Z&#39;</span>
 </span></span></code></pre></div><p>对于这个使用 Go 中对应的标准库 <code>strings</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">s1</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">(</span><span class="s">&#34;abcDEFg&#34;</span><span class="p">)</span> <span class="c1">// 转小写
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">s2</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">ToUpper</span><span class="p">(</span><span class="s">&#34;abcDEFg&#34;</span><span class="p">)</span> <span class="c1">// 转大写
-</span></span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TrDemo</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s1</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">(</span><span class="s">&#34;abcDEFg&#34;</span><span class="p">)</span> <span class="c1">// 转小写
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">s2</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">ToUpper</span><span class="p">(</span><span class="s">&#34;abcDEFg&#34;</span><span class="p">)</span> <span class="c1">// 转大写
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
     <h2 id="删除字符">
         删除字符
         <a data-clipboard-text="https://typonotes.com/books/golang/linux-go-snippet/tr/#删除字符" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 删除字符" aria-label="Anchor to: 删除字符" href="#%e5%88%a0%e9%99%a4%e5%ad%97%e7%ac%a6">
@@ -1959,9 +1962,11 @@ rep := strings.NewReplacer(&#34;a&#34;, &#34;&#34;, &#34;c&#34;, &#34;&#34;) abc
 <p>使用 <code>tr -d</code> 删除出现的字符</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;abcabcabc&#34;</span> <span class="p">|</span> tr -d <span class="s2">&#34;ac&#34;</span>
 </span></span></code></pre></div><p>这种情况下， 可以使用 <code>strings.NewReplacer</code> 创建自己的过滤器</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">rep</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">NewReplacer</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;c&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nx">abc</span> <span class="o">:=</span> <span class="nx">rep</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">&#34;abcabcabc&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">abc</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TrDeleteDemo</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">delAbc</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">NewReplacer</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;c&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ret</span> <span class="o">:=</span> <span class="nx">delAbc</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">&#34;abcabcabc&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ret</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>其中, <code>NewReplacer</code> 的参数必须为双数， <strong>两个一组(<code>old -&gt; new)</code></strong>。 例如这里的就是 <code>a -&gt; 空, c -&gt; 空</code>， 也就是删除的意思。</p>
 
 </article>
