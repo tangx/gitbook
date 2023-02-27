@@ -28,11 +28,27 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
     </item>
     
     <item>
-      <title>01. 环境变量</title>
-      <link>https://typonotes.com/books/golang/chapter03/01-environment/</link>
+      <title>01. 环境变量操作</title>
+      <link>https://typonotes.com/books/golang/chapter06/environment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter03/01-environment/</guid>
+      <guid>https://typonotes.com/books/golang/chapter06/environment/</guid>
+      <description>一篇文章告诉你 golang 环境变量的所有基础操作 原文链接： https://typonotes.com/posts/2021/09/06/golang-os-env-operation/
+golang 中的环境变量操作都在 os 包下面， 只有很少的几个方法， 而且字面意思也很明确。
+所有环境变量操作对象都是 字符串string ， 因此对于 int， bool 类型需要自己实现转换。
+golang 程序执行的时候， 是在 linux 系统中 fork 的一种子进程中
+golang程序 在 复制了开始运行的那一瞬间的当前环境所有变量， 之后的父进程中的变量变化不再影响 golang 程序。 golang 程序对环境变量的所有操作，都是在自身的子进程中，因此 只会影响 golang 程序本身。 go 语言中没有类似 bash 中的 export 的操作。 但是可以通过 os.Setenv 设置环境变量。 环境变量操作方法 1. os.Setenv(&amp;quot;key&amp;quot;,&amp;quot;val&amp;quot;) 创建一个环境变量
+2. os.Unsetenv(&amp;quot;key&amp;quot;) 取消一个变量
+3. val=os.Getenv(&amp;quot;key&amp;quot;) 返回一个变量的值。 如果变量不存在， val 为空字符串。 使用 len(val)==0 无法判断 变量值为空 或者 变量不存在
+4. val,ok=os.LookupEnv(&amp;quot;key&amp;quot;) 返回一个变量的值 与 变量是否存在的 bool 结果。</description>
+    </item>
+    
+    <item>
+      <title>01. 随机数处理(random)</title>
+      <link>https://typonotes.com/books/golang/chapter03/random/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter03/random/</guid>
       <description></description>
     </item>
     
@@ -43,6 +59,19 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
       
       <guid>https://typonotes.com/books/golang/chapter01/01-introduce/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>02. Go 的时区管理</title>
+      <link>https://typonotes.com/books/golang/chapter06/timezone/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter06/timezone/</guid>
+      <description>这些关于 Golang timezone 时区的坑， 我已经帮你踩过了 原文链接: https://typonotes.com/posts/2023/01/09/golang-timezone-issue/
+Golang 中一些不太注意的时区问题
+1. time/tzdata 库 Golang 内置的一个时区文件。
+可以在程序中任意位置被导入。 导入后， 如果程序 找不到本地 时区文件， 就会使用该库的数据。 本地 指的是 运行环境， 可能是实际的服务器， 也可能是容器。 通常， 应该在 main.go 中被导入。 如果是 库代码 则 不应该 导入该文件。 导入该文件后， 程序会增加 450KB 大小。 import ( _ &amp;#34;time/tzdata&amp;#34; ) 在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。
+FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . RUN CGO_ENABLED=0 GOOS=linux go build -o myapp FROM scratch as final COPY --from=build /app/myapp .</description>
     </item>
     
     <item>
@@ -90,12 +119,16 @@ for i := 0; i &amp;lt; 1; i++ { fmt.Println(&amp;#34;i=&amp;#34;, i) } 遍历循
     </item>
     
     <item>
-      <title>02. 时间管理</title>
-      <link>https://typonotes.com/books/golang/chapter03/02-datetime/</link>
+      <title>02. 时间等待(sleep)</title>
+      <link>https://typonotes.com/books/golang/chapter03/sleep/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter03/02-datetime/</guid>
-      <description></description>
+      <guid>https://typonotes.com/books/golang/chapter03/sleep/</guid>
+      <description>时间等待， 让程序 阻塞 一段时间
+在 Shell 中 在 Shell 中使用 sleep n ， n 的默认单位 秒
+sleep 2 在 Go 中 在 Go 中， 对应使用 time.Sleep(n) 方法。但是需要注意的是， n 的默认单位是 毫秒。
+time.Sleep(200) 如果要实现如果实现 秒 级别等待，
+可以将数字扩大 1000 倍， n * 1000 可以使用单位 n * time.Second time.Sleep(2 * 1000) time.Sleep(2 * time.Second) 常见单位 const ( Nanosecond Duration = 1 // 纳秒 Microsecond = 1000 * Nanosecond // 微秒 Millisecond = 1000 * Microsecond // 毫秒 Second = 1000 * Millisecond Minute = 60 * Second Hour = 60 * Minute ) </description>
     </item>
     
     <item>

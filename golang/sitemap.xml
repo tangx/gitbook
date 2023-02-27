@@ -11,9 +11,13 @@
   </url><url>
     <loc>https://typonotes.com/books/golang/chapter02/process-control/if-else/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter03/01-environment/</loc>
+    <loc>https://typonotes.com/books/golang/chapter06/environment/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/chapter03/random/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/chapter01/01-introduce/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/chapter06/timezone/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/chapter02/</loc>
   </url><url>
@@ -25,7 +29,7 @@
   </url><url>
     <loc>https://typonotes.com/books/golang/chapter02/process-control/for-loops/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter03/02-datetime/</loc>
+    <loc>https://typonotes.com/books/golang/chapter03/sleep/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/chapter03/</loc>
   </url><url>
@@ -46,6 +50,8 @@
     <loc>https://typonotes.com/books/golang/chapter05/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/chapter02/process-control/select/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/chapter06/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/cobra-in-action/01-cobra-sample/</loc>
   </url><url>

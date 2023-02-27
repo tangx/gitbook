@@ -9,6 +9,14 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
+  <meta name="description" content="一篇文章告诉你 golang 环境变量的所有基础操作 原文链接： https://typonotes.com/posts/2021/09/06/golang-os-env-operation/
+golang 中的环境变量操作都在 os 包下面， 只有很少的几个方法， 而且字面意思也很明确。
+所有环境变量操作对象都是 字符串string ， 因此对于 int， bool 类型需要自己实现转换。
+golang 程序执行的时候， 是在 linux 系统中 fork 的一种子进程中
+golang程序 在 复制了开始运行的那一瞬间的当前环境所有变量， 之后的父进程中的变量变化不再影响 golang 程序。 golang 程序对环境变量的所有操作，都是在自身的子进程中，因此 只会影响 golang 程序本身。 go 语言中没有类似 bash 中的 export 的操作。 但是可以通过 os.Setenv 设置环境变量。 环境变量操作方法 1. os.Setenv(&quot;key&quot;,&quot;val&quot;) 创建一个环境变量
+2. os.Unsetenv(&quot;key&quot;) 取消一个变量
+3. val=os.Getenv(&quot;key&quot;) 返回一个变量的值。 如果变量不存在， val 为空字符串。 使用 len(val)==0 无法判断 变量值为空 或者 变量不存在
+4. val,ok=os.LookupEnv(&quot;key&quot;) 返回一个变量的值 与 变量是否存在的 bool 结果。" />
 
 
   
@@ -37,7 +45,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>02. 基础数据类型 | 《Shell 转 Go》</title>
+  <title>01. 环境变量操作 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -58,33 +66,50 @@
   
   <meta
     property="og:title"
-    content="02. 基础数据类型"
+    content="01. 环境变量操作"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
+  <meta property="og:description" content="一篇文章告诉你 golang 环境变量的所有基础操作 原文链接： https://typonotes.com/posts/2021/09/06/golang-os-env-operation/
+golang 中的环境变量操作都在 os 包下面， 只有很少的几个方法， 而且字面意思也很明确。
+所有环境变量操作对象都是 字符串string ， 因此对于 int， bool 类型需要自己实现转换。
+golang 程序执行的时候， 是在 linux 系统中 fork 的一种子进程中
+golang程序 在 复制了开始运行的那一瞬间的当前环境所有变量， 之后的父进程中的变量变化不再影响 golang 程序。 golang 程序对环境变量的所有操作，都是在自身的子进程中，因此 只会影响 golang 程序本身。 go 语言中没有类似 bash 中的 export 的操作。 但是可以通过 os.Setenv 设置环境变量。 环境变量操作方法 1. os.Setenv(&#34;key&#34;,&#34;val&#34;) 创建一个环境变量
+2. os.Unsetenv(&#34;key&#34;) 取消一个变量
+3. val=os.Getenv(&#34;key&#34;) 返回一个变量的值。 如果变量不存在， val 为空字符串。 使用 len(val)==0 无法判断 变量值为空 或者 变量不存在
+4. val,ok=os.LookupEnv(&#34;key&#34;) 返回一个变量的值 与 变量是否存在的 bool 结果。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/chapter02/basic-type/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/chapter06/environment/" />
 
-<meta property="article:section" content="Chapter02" />
+<meta property="article:section" content="Chapter06" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="02. 基础数据类型" />
+<meta name="twitter:title" content="01. 环境变量操作" />
+  <meta name="twitter:description" content="一篇文章告诉你 golang 环境变量的所有基础操作 原文链接： https://typonotes.com/posts/2021/09/06/golang-os-env-operation/
+golang 中的环境变量操作都在 os 包下面， 只有很少的几个方法， 而且字面意思也很明确。
+所有环境变量操作对象都是 字符串string ， 因此对于 int， bool 类型需要自己实现转换。
+golang 程序执行的时候， 是在 linux 系统中 fork 的一种子进程中
+golang程序 在 复制了开始运行的那一瞬间的当前环境所有变量， 之后的父进程中的变量变化不再影响 golang 程序。 golang 程序对环境变量的所有操作，都是在自身的子进程中，因此 只会影响 golang 程序本身。 go 语言中没有类似 bash 中的 export 的操作。 但是可以通过 os.Setenv 设置环境变量。 环境变量操作方法 1. os.Setenv(&#34;key&#34;,&#34;val&#34;) 创建一个环境变量
+2. os.Unsetenv(&#34;key&#34;) 取消一个变量
+3. val=os.Getenv(&#34;key&#34;) 返回一个变量的值。 如果变量不存在， val 为空字符串。 使用 len(val)==0 无法判断 变量值为空 或者 变量不存在
+4. val,ok=os.LookupEnv(&#34;key&#34;) 返回一个变量的值 与 变量是否存在的 bool 结果。" />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Chapter02",
-      "name": "02. 基础数据类型",
-      "url" : "https://typonotes.com/books/golang/chapter02/basic-type/",
-      "headline": "02. 基础数据类型",
-      "wordCount" : "0",
+      "articleSection": "Chapter06",
+      "name": "01. 环境变量操作",
+      "url" : "https://typonotes.com/books/golang/chapter06/environment/",
+      "headline": "01. 环境变量操作",
+      "description": "一篇文章告诉你 golang 环境变量的所有基础操作 原文链接： https:\/\/typonotes.com\/posts\/2021\/09\/06\/golang-os-env-operation\/\ngolang 中的环境变量操作都在 os 包下面， 只有很少的几个方法， 而且字面意思也很明确。\n所有环境变量操作对象都是 字符串string ， 因此对于 int， bool 类型需要自己实现转换。\ngolang 程序执行的时候， 是在 linux 系统中 fork 的一种子进程中\ngolang程序 在 复制了开始运行的那一瞬间的当前环境所有变量， 之后的父进程中的变量变化不再影响 golang 程序。 golang 程序对环境变量的所有操作，都是在自身的子进程中，因此 只会影响 golang 程序本身。 go 语言中没有类似 bash 中的 export 的操作。 但是可以通过 os.Setenv 设置环境变量。 环境变量操作方法 1. os.Setenv(\u0022key\u0022,\u0022val\u0022) 创建一个环境变量\n2. os.Unsetenv(\u0022key\u0022) 取消一个变量\n3. val=os.Getenv(\u0022key\u0022) 返回一个变量的值。 如果变量不存在， val 为空字符串。 使用 len(val)==0 无法判断 变量值为空 或者 变量不存在\n4. val,ok=os.LookupEnv(\u0022key\u0022) 返回一个变量的值 与 变量是否存在的 bool 结果。",
+      "wordCount" : "239",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/chapter02/basic-type/"
+          "@id": "https://typonotes.com/books/golang/chapter06/environment/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -168,7 +193,7 @@
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/chapter02/basic-type/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/chapter06/environment/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -1116,7 +1141,7 @@
                 <span class="flex">
                   <a
                     href="/books/golang/chapter06/environment/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     01. 环境变量操作
                   </a>
@@ -1537,7 +1562,7 @@
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter02/' href='/books/golang/chapter02/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>02. 基础数据类型</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter06/' href='/books/golang/chapter06/'><span itemprop='name'>06. Go 应用笔记</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>01. 环境变量操作</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -1553,8 +1578,173 @@
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>02. 基础数据类型</h1>
-  
+  <h1>01. 环境变量操作</h1>
+  <div class="gdoc-page__anchorwrap">
+    <h1 id="一篇文章告诉你-golang-环境变量的所有基础操作">
+        一篇文章告诉你 golang 环境变量的所有基础操作
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter06/environment/#一篇文章告诉你-golang-环境变量的所有基础操作" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 一篇文章告诉你 golang 环境变量的所有基础操作" aria-label="Anchor to: 一篇文章告诉你 golang 环境变量的所有基础操作" href="#%e4%b8%80%e7%af%87%e6%96%87%e7%ab%a0%e5%91%8a%e8%af%89%e4%bd%a0-golang-%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e7%9a%84%e6%89%80%e6%9c%89%e5%9f%ba%e7%a1%80%e6%93%8d%e4%bd%9c">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h1>
+</div>
+<blockquote>
+<p><strong>原文链接</strong>： <a
+  class="gdoc-markdown__link"
+  href="https://typonotes.com/posts/2021/09/06/golang-os-env-operation/"
+>https://typonotes.com/posts/2021/09/06/golang-os-env-operation/</a></p>
+</blockquote>
+<p>golang 中的环境变量操作都在 <code>os</code> 包下面， 只有很少的几个方法， 而且字面意思也很明确。</p>
+<ol>
+<li>
+<p>所有环境变量操作对象都是 <strong>字符串<code>string</code></strong> ， 因此对于 <strong>int， bool</strong> 类型需要自己实现转换。</p>
+</li>
+<li>
+<p>golang 程序执行的时候， 是在 linux 系统中 <strong>fork</strong> 的一种子进程中</p>
+<ol>
+<li>golang程序 在 <strong>复制了开始运行的那一瞬间的当前环境所有变量</strong>， 之后的父进程中的变量变化不再影响 golang 程序。</li>
+<li>golang 程序对环境变量的所有操作，都是在自身的子进程中，因此 <strong>只会影响 golang 程序本身</strong>。</li>
+<li>go 语言中没有类似 bash 中的 <code>export</code> 的操作。 但是可以通过 <code>os.Setenv</code> 设置环境变量。</li>
+</ol>
+</li>
+</ol>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2021/09/06/golang-os-env-operation/image-20210907001155092-fs8.png!v1" alt="image-20210907001155092"  /></p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="环境变量操作方法">
+        环境变量操作方法
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter06/environment/#环境变量操作方法" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 环境变量操作方法" aria-label="Anchor to: 环境变量操作方法" href="#%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e6%93%8d%e4%bd%9c%e6%96%b9%e6%b3%95">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="1-ossetenvkeyval">
+        1. <code>os.Setenv(&quot;key&quot;,&quot;val&quot;)</code>
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter06/environment/#1-ossetenvkeyval" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 1. os.Setenv(&quot;key&quot;,&quot;val&quot;)" aria-label="Anchor to: 1. os.Setenv(&quot;key&quot;,&quot;val&quot;)" href="#1-ossetenvkeyval">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>创建一个环境变量</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="2-osunsetenvkey">
+        2. <code>os.Unsetenv(&quot;key&quot;)</code>
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter06/environment/#2-osunsetenvkey" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 2. os.Unsetenv(&quot;key&quot;)" aria-label="Anchor to: 2. os.Unsetenv(&quot;key&quot;)" href="#2-osunsetenvkey">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>取消一个变量</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="3-valosgetenvkey">
+        3. <code>val=os.Getenv(&quot;key&quot;)</code>
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter06/environment/#3-valosgetenvkey" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 3. val=os.Getenv(&quot;key&quot;)" aria-label="Anchor to: 3. val=os.Getenv(&quot;key&quot;)" href="#3-valosgetenvkey">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>返回一个变量的值。 如果变量不存在， val 为空字符串。
+使用 <code>len(val)==0</code> 无法判断 <strong>变量值为空</strong> 或者 <strong>变量不存在</strong></p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="4-valokoslookupenvkey">
+        4. <code>val,ok=os.LookupEnv(&quot;key&quot;)</code>
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter06/environment/#4-valokoslookupenvkey" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 4. val,ok=os.LookupEnv(&quot;key&quot;)" aria-label="Anchor to: 4. val,ok=os.LookupEnv(&quot;key&quot;)" href="#4-valokoslookupenvkey">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>返回一个变量的值 与 变量是否存在的 bool 结果。</p>
+<ul>
+<li>
+<p>如果变量存在， val 为值， ok 为 <code>true</code></p>
+</li>
+<li>
+<p>如果变量不存在， val 为空字符串， ok 为 <code>false</code></p>
+</li>
+</ul>
+<blockquote>
+<p>注意， <strong>变量不存在  <code>(ok=false)</code></strong> 和 <strong>变量值为空 <code>(ok=true)</code></strong> 不一样</p>
+</blockquote>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="5-osclearenv">
+        5. <code>os.Clearenv()</code>
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter06/environment/#5-osclearenv" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 5. os.Clearenv()" aria-label="Anchor to: 5. os.Clearenv()" href="#5-osclearenv">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>清空所有变量。 危险 <strong>慎用</strong>。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="6-envsosenviron">
+        6. <code>envs=os.Environ()</code>
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter06/environment/#6-envsosenviron" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 6. envs=os.Environ()" aria-label="Anchor to: 6. envs=os.Environ()" href="#6-envsosenviron">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>返回包含所有变量的 <code>[]string</code> 切片 <strong>副本</strong> 。</p>
+<p>由于 <code>os.Environ()</code> 返回的是一个 <code>[]string</code>  切片， 在某些场景下， 如果要进行 <strong>传递并检索</strong> 的时候， 并不是很方便， 因此会有需求转换成 <code>map[string]string</code> 。</p>
+<p>在这里 <strong>需要额外小心</strong>， 如果变量值中存在 <strong>等号 <code>=</code></strong> 的话， 使用 <code>strings.Split</code> 进行分割之后， 而没有再使用 <code>strings.Join</code> 合并时， 可能会造成数据丢失。 有点拗口， 看例子。</p>
+<p>因为一下语句时合法的</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">VAR</span><span class="o">=</span><span class="nv">key1</span><span class="o">=</span>val1,key2<span class="o">=</span>val2
+</span></span></code></pre></div><p>这句话赋值语句表示将&amp; <strong>字符串 <code>key1=val1,key2=val2</code></strong> 赋值给 <strong>变量 <code>VAR</code></strong></p>
+<p>例如下面这段代码,  <a
+  class="gdoc-markdown__link"
+  href="https://github.com/tangx/envutils/commit/ca10e1c057193283ef308ae708ef421de3d1ec1b"title="envutils - fix: lost value when trans env string slice into map"
+>envutils - fix: lost value when trans env string slice into map</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">	<span class="nx">_</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;VAR&#34;</span><span class="p">,</span> <span class="s">&#34;key=val1,key2=val2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">envs</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Environ</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">pair</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">envs</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">kv</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">pair</span><span class="p">,</span> <span class="s">&#34;=&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// m[kv[0]] = kv[1] // wrong: VAR=key 与实际情况不符合
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">		<span class="nx">m</span><span class="p">[</span><span class="nx">kv</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">kv</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="s">&#34;=&#34;</span><span class="p">)</span>  <span class="c1">// 注意这里要使用 Join
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h3 id="7-osexpandenvstring--or-osexpandstringosgetenv">
+        7. <code>os.ExpandEnv(&quot;string&quot;)</code>  or <code>os.Expand(&quot;string&quot;,os.Getenv)</code>
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter06/environment/#7-osexpandenvstring--or-osexpandstringosgetenv" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 7. os.ExpandEnv(&quot;string&quot;)  or os.Expand(&quot;string&quot;,os.Getenv)" aria-label="Anchor to: 7. os.ExpandEnv(&quot;string&quot;)  or os.Expand(&quot;string&quot;,os.Getenv)" href="#7-osexpandenvstring--or-osexpandstringosgetenv">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>如果 string 中包含 <code>$key</code> 或者 <code>${key}</code>  的 <strong>占位符</strong> ， 则将被替换为实际的值。就是 <code>bash</code> 中的变量用法。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Test_ExpandEnv</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">	<span class="nx">_</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;MY_Age&#34;</span><span class="p">,</span> <span class="s">&#34;18&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">_</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;MY_Name&#34;</span><span class="p">,</span> <span class="s">&#34;Zhangsan&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// MY_age 大小写不匹配。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">result</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">ExpandEnv</span><span class="p">(</span><span class="s">&#34;my name is ${MY_Name}, i&#39;m $MY_age years old&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="c1">// my name is Zhangsan, i&#39;m  years old
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div>
 </article>
 
 

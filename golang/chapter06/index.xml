@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>06. Go 应用笔记 on 《Shell 转 Go》</title>
+    <link>https://typonotes.com/books/golang/chapter06/</link>
+    <description>Recent content in 06. Go 应用笔记 on 《Shell 转 Go》</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/chapter06/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>01. 环境变量操作</title>
+      <link>https://typonotes.com/books/golang/chapter06/environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter06/environment/</guid>
+      <description>一篇文章告诉你 golang 环境变量的所有基础操作 原文链接： https://typonotes.com/posts/2021/09/06/golang-os-env-operation/
+golang 中的环境变量操作都在 os 包下面， 只有很少的几个方法， 而且字面意思也很明确。
+所有环境变量操作对象都是 字符串string ， 因此对于 int， bool 类型需要自己实现转换。
+golang 程序执行的时候， 是在 linux 系统中 fork 的一种子进程中
+golang程序 在 复制了开始运行的那一瞬间的当前环境所有变量， 之后的父进程中的变量变化不再影响 golang 程序。 golang 程序对环境变量的所有操作，都是在自身的子进程中，因此 只会影响 golang 程序本身。 go 语言中没有类似 bash 中的 export 的操作。 但是可以通过 os.Setenv 设置环境变量。 环境变量操作方法 1. os.Setenv(&amp;quot;key&amp;quot;,&amp;quot;val&amp;quot;) 创建一个环境变量
+2. os.Unsetenv(&amp;quot;key&amp;quot;) 取消一个变量
+3. val=os.Getenv(&amp;quot;key&amp;quot;) 返回一个变量的值。 如果变量不存在， val 为空字符串。 使用 len(val)==0 无法判断 变量值为空 或者 变量不存在
+4. val,ok=os.LookupEnv(&amp;quot;key&amp;quot;) 返回一个变量的值 与 变量是否存在的 bool 结果。</description>
+    </item>
+    
+    <item>
+      <title>02. Go 的时区管理</title>
+      <link>https://typonotes.com/books/golang/chapter06/timezone/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter06/timezone/</guid>
+      <description>这些关于 Golang timezone 时区的坑， 我已经帮你踩过了 原文链接: https://typonotes.com/posts/2023/01/09/golang-timezone-issue/
+Golang 中一些不太注意的时区问题
+1. time/tzdata 库 Golang 内置的一个时区文件。
+可以在程序中任意位置被导入。 导入后， 如果程序 找不到本地 时区文件， 就会使用该库的数据。 本地 指的是 运行环境， 可能是实际的服务器， 也可能是容器。 通常， 应该在 main.go 中被导入。 如果是 库代码 则 不应该 导入该文件。 导入该文件后， 程序会增加 450KB 大小。 import ( _ &amp;#34;time/tzdata&amp;#34; ) 在老版本（1.15）以前并不包含时区信息， 通常会在容器化的时候单独处理时区问题。
+FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . RUN CGO_ENABLED=0 GOOS=linux go build -o myapp FROM scratch as final COPY --from=build /app/myapp .</description>
+    </item>
+    
+  </channel>
+</rss>
