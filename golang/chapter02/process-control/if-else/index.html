@@ -9,11 +9,8 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="作业要求 使用 https://github.com/spf13/cobra 实现命令工具 命令具有以下参数 --config , -c 配置文件 配置文件如下
-# config.yml name: zhangsan age: 20 将配置文件保存为 JSON 格式 $ cat config.json 输出结果
-{ &#34;name&#34;:&#34;zhangsan&#34;, &#34;age&#34;: 20 } 单个参数绑定的困境 之前我们使用了 单个参数独立绑定 的方式， 为我们的 greeting 应用绑定了 name 和 age 参数。
-这种方式有个很明显的缺点， 如果应用参数的数量较多（比如说几十个） 的时候， 就会出现庞大的参数列表， 可读性 和 维护性 都会变得很差。
-var ( name string age int ) func init() { root.Flags().StringVarP(&amp;name, &#34;name&#34;, &#34;n&#34;, &#34;&#34;, &#34;名字&#34;) root.Flags().IntVarP(&amp;age, &#34;age&#34;, &#34;a&#34;, 20, &#34;名字&#34;) } 因此在生产中， 我们常常会选择 配置 文件来进行 参数/变量 的管理。 例如作业要求中提到的 YAML 或者 JSON 文件。" />
+  <meta name="description" content="Shell function abc() { n=$1 if [ $n -gt 100 ]; then { # 括号可有可无 echo &#34;无效&#34; } elif [ $n -gt 90 ]; then echo &#34;优秀&#34; else { echo &#34;一般&#34; } fi } 在 Shell 中，
+if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有可无， 但是最好还是带上， 增强可读性。 判断条件使用 方括号 [ ] 或 [[ ]] 定义。 Go func if_else(n int) { if n &gt;= 100 || n &lt;= -1 { fmt.Println(&#34;无效&#34;) } else if n &gt; 90 { fmt." />
 
 
   
@@ -42,7 +39,7 @@ var ( name string age int ) func init() { root.Flags().StringVarP(&amp;name, &#3
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>2. 配置文件读取与写入 | 《Shell 转 Go》</title>
+  <title>01. if-else | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -63,44 +60,38 @@ var ( name string age int ) func init() { root.Flags().StringVarP(&amp;name, &#3
   
   <meta
     property="og:title"
-    content="2. 配置文件读取与写入"
+    content="01. if-else"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="作业要求 使用 https://github.com/spf13/cobra 实现命令工具 命令具有以下参数 --config , -c 配置文件 配置文件如下
-# config.yml name: zhangsan age: 20 将配置文件保存为 JSON 格式 $ cat config.json 输出结果
-{ &#34;name&#34;:&#34;zhangsan&#34;, &#34;age&#34;: 20 } 单个参数绑定的困境 之前我们使用了 单个参数独立绑定 的方式， 为我们的 greeting 应用绑定了 name 和 age 参数。
-这种方式有个很明显的缺点， 如果应用参数的数量较多（比如说几十个） 的时候， 就会出现庞大的参数列表， 可读性 和 维护性 都会变得很差。
-var ( name string age int ) func init() { root.Flags().StringVarP(&amp;name, &#34;name&#34;, &#34;n&#34;, &#34;&#34;, &#34;名字&#34;) root.Flags().IntVarP(&amp;age, &#34;age&#34;, &#34;a&#34;, 20, &#34;名字&#34;) } 因此在生产中， 我们常常会选择 配置 文件来进行 参数/变量 的管理。 例如作业要求中提到的 YAML 或者 JSON 文件。" />
+  <meta property="og:description" content="Shell function abc() { n=$1 if [ $n -gt 100 ]; then { # 括号可有可无 echo &#34;无效&#34; } elif [ $n -gt 90 ]; then echo &#34;优秀&#34; else { echo &#34;一般&#34; } fi } 在 Shell 中，
+if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有可无， 但是最好还是带上， 增强可读性。 判断条件使用 方括号 [ ] 或 [[ ]] 定义。 Go func if_else(n int) { if n &gt;= 100 || n &lt;= -1 { fmt.Println(&#34;无效&#34;) } else if n &gt; 90 { fmt." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/chapter02/process-control/if-else/" />
 
-<meta property="article:section" content="Cobra in Action" />
+<meta property="article:section" content="Chapter02" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="2. 配置文件读取与写入" />
-  <meta name="twitter:description" content="作业要求 使用 https://github.com/spf13/cobra 实现命令工具 命令具有以下参数 --config , -c 配置文件 配置文件如下
-# config.yml name: zhangsan age: 20 将配置文件保存为 JSON 格式 $ cat config.json 输出结果
-{ &#34;name&#34;:&#34;zhangsan&#34;, &#34;age&#34;: 20 } 单个参数绑定的困境 之前我们使用了 单个参数独立绑定 的方式， 为我们的 greeting 应用绑定了 name 和 age 参数。
-这种方式有个很明显的缺点， 如果应用参数的数量较多（比如说几十个） 的时候， 就会出现庞大的参数列表， 可读性 和 维护性 都会变得很差。
-var ( name string age int ) func init() { root.Flags().StringVarP(&amp;name, &#34;name&#34;, &#34;n&#34;, &#34;&#34;, &#34;名字&#34;) root.Flags().IntVarP(&amp;age, &#34;age&#34;, &#34;a&#34;, 20, &#34;名字&#34;) } 因此在生产中， 我们常常会选择 配置 文件来进行 参数/变量 的管理。 例如作业要求中提到的 YAML 或者 JSON 文件。" />
+<meta name="twitter:title" content="01. if-else" />
+  <meta name="twitter:description" content="Shell function abc() { n=$1 if [ $n -gt 100 ]; then { # 括号可有可无 echo &#34;无效&#34; } elif [ $n -gt 90 ]; then echo &#34;优秀&#34; else { echo &#34;一般&#34; } fi } 在 Shell 中，
+if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有可无， 但是最好还是带上， 增强可读性。 判断条件使用 方括号 [ ] 或 [[ ]] 定义。 Go func if_else(n int) { if n &gt;= 100 || n &lt;= -1 { fmt.Println(&#34;无效&#34;) } else if n &gt; 90 { fmt." />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Cobra in Action",
-      "name": "2. 配置文件读取与写入",
-      "url" : "https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/",
-      "headline": "2. 配置文件读取与写入",
-      "description": "作业要求 使用 https:\/\/github.com\/spf13\/cobra 实现命令工具 命令具有以下参数 --config , -c 配置文件 配置文件如下\n# config.yml name: zhangsan age: 20 将配置文件保存为 JSON 格式 $ cat config.json 输出结果\n{ \u0022name\u0022:\u0022zhangsan\u0022, \u0022age\u0022: 20 } 单个参数绑定的困境 之前我们使用了 单个参数独立绑定 的方式， 为我们的 greeting 应用绑定了 name 和 age 参数。\n这种方式有个很明显的缺点， 如果应用参数的数量较多（比如说几十个） 的时候， 就会出现庞大的参数列表， 可读性 和 维护性 都会变得很差。\nvar ( name string age int ) func init() { root.Flags().StringVarP(\u0026name, \u0022name\u0022, \u0022n\u0022, \u0022\u0022, \u0022名字\u0022) root.Flags().IntVarP(\u0026age, \u0022age\u0022, \u0022a\u0022, 20, \u0022名字\u0022) } 因此在生产中， 我们常常会选择 配置 文件来进行 参数\/变量 的管理。 例如作业要求中提到的 YAML 或者 JSON 文件。",
-      "wordCount" : "438",
+      "articleSection": "Chapter02",
+      "name": "01. if-else",
+      "url" : "https://typonotes.com/books/golang/chapter02/process-control/if-else/",
+      "headline": "01. if-else",
+      "description": "Shell function abc() { n=$1 if [ $n -gt 100 ]; then { # 括号可有可无 echo \u0022无效\u0022 } elif [ $n -gt 90 ]; then echo \u0022优秀\u0022 else { echo \u0022一般\u0022 } fi } 在 Shell 中，\nif-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有可无， 但是最好还是带上， 增强可读性。 判断条件使用 方括号 [ ] 或 [[ ]] 定义。 Go func if_else(n int) { if n \u003e= 100 || n \u003c= -1 { fmt.Println(\u0022无效\u0022) } else if n \u003e 90 { fmt.",
+      "wordCount" : "115",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/"
+          "@id": "https://typonotes.com/books/golang/chapter02/process-control/if-else/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -184,7 +175,7 @@ var ( name string age int ) func init() { root.Flags().StringVarP(&amp;name, &#3
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/chapter02/process-control/if-else/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -692,7 +683,7 @@ var ( name string age int ) func init() { root.Flags().StringVarP(&amp;name, &#3
                 <span class="flex">
                   <a
                     href="/books/golang/chapter02/process-control/if-else/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     01. if-else
                   </a>
@@ -1039,7 +1030,7 @@ var ( name string age int ) func init() { root.Flags().StringVarP(&amp;name, &#3
                 <span class="flex">
                   <a
                     href="/books/golang/cobra-in-action/02-json-yaml-config/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     2. 配置文件读取与写入
                   </a>
@@ -1305,7 +1296,15 @@ var ( name string age int ) func init() { root.Flags().StringVarP(&amp;name, &#3
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/cobra-in-action/' href='/books/golang/cobra-in-action/'><span itemprop='name'>99. Cobra 实战项目</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>2. 配置文件读取与写入</span><meta itemprop='position' content='5' /></li>
+    
+    
+    
+    
+  
+  
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter02/' href='/books/golang/chapter02/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter02/process-control/' href='/books/golang/chapter02/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>01. if-else</span><meta itemprop='position' content='6' /></li>
+  
+
   
 
   
@@ -1321,233 +1320,83 @@ var ( name string age int ) func init() { root.Flags().StringVarP(&amp;name, &#3
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>2. 配置文件读取与写入</h1>
+  <h1>01. if-else</h1>
   <div class="gdoc-page__anchorwrap">
-    <h2 id="作业要求">
-        作业要求
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/#作业要求" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 作业要求" aria-label="Anchor to: 作业要求" href="#%e4%bd%9c%e4%b8%9a%e8%a6%81%e6%b1%82">
+    <h2 id="shell">
+        Shell
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/if-else/#shell" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Shell" aria-label="Anchor to: Shell" href="#shell">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">function</span> abc<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">n</span><span class="o">=</span><span class="nv">$1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">[</span> <span class="nv">$n</span> -gt <span class="m">100</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        <span class="o">{</span> <span class="c1"># 括号可有可无</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">echo</span> <span class="s2">&#34;无效&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="o">[</span> <span class="nv">$n</span> -gt <span class="m">90</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">echo</span> <span class="s2">&#34;优秀&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">echo</span> <span class="s2">&#34;一般&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>在 Shell 中，</p>
 <ol>
-<li>使用 <a
-  class="gdoc-markdown__link"
-  href="https://github.com/spf13/cobra"
->https://github.com/spf13/cobra</a> 实现命令工具</li>
-<li>命令具有以下参数
-<ol>
-<li><code>--config</code> , <code>-c</code> 配置文件</li>
+<li><code>if-else-fi</code> 是通过关键字约束 <strong>语句块</strong> 边界的。</li>
+<li>大括号 <code>{}</code> 可有可无， 但是最好还是带上， 增强可读性。</li>
+<li>判断条件使用 <strong>方括号</strong>  <code>[ ]</code> 或 <code>[[ ]]</code> 定义。</li>
 </ol>
-</li>
-</ol>
-<p><strong>配置文件如下</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># config.yml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">zhangsan</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">age</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
-</span></span></span></code></pre></div><ol start="3">
-<li>将配置文件保存为 <code>JSON</code> 格式</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cat config.json
-</span></span></code></pre></div><p>输出结果</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;zhangsan&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;age&#34;</span><span class="p">:</span> <span class="mi">20</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h2 id="单个参数绑定的困境">
-        单个参数绑定的困境
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/#单个参数绑定的困境" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 单个参数绑定的困境" aria-label="Anchor to: 单个参数绑定的困境" href="#%e5%8d%95%e4%b8%aa%e5%8f%82%e6%95%b0%e7%bb%91%e5%ae%9a%e7%9a%84%e5%9b%b0%e5%a2%83">
+<div class="gdoc-page__anchorwrap">
+    <h2 id="go">
+        Go
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/if-else/#go" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Go" aria-label="Anchor to: Go" href="#go">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
-<p>之前我们使用了 <strong>单个参数独立绑定</strong> 的方式， 为我们的 greeting 应用绑定了 <code>name</code> 和 <code>age</code> 参数。</p>
-<p>这种方式有个很明显的缺点， 如果应用参数的数量较多（比如说几十个） 的时候， 就会出现庞大的参数列表， <strong>可读性</strong> 和 <strong>维护性</strong> 都会变得很差。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">name</span> <span class="kt">string</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">age</span>  <span class="kt">int</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">root</span><span class="p">.</span><span class="nf">Flags</span><span class="p">().</span><span class="nf">StringVarP</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">name</span><span class="p">,</span> <span class="s">&#34;name&#34;</span><span class="p">,</span> <span class="s">&#34;n&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;名字&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">root</span><span class="p">.</span><span class="nf">Flags</span><span class="p">().</span><span class="nf">IntVarP</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">age</span><span class="p">,</span> <span class="s">&#34;age&#34;</span><span class="p">,</span> <span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&#34;名字&#34;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">if_else</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">n</span> <span class="o">&gt;=</span> <span class="mi">100</span> <span class="o">||</span> <span class="nx">n</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;无效&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">n</span> <span class="p">&gt;</span> <span class="mi">90</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;优秀&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;一般&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>因此在生产中， 我们常常会选择 <strong>配置</strong> 文件来进行 <strong>参数/变量</strong> 的管理。 例如作业要求中提到的 <code>YAML</code> 或者 <code>JSON</code> 文件。</p>
+</span></span></code></pre></div><p>在 Go 中，</p>
+<ol>
+<li>大括号 <code>{}</code> 是语句块的定义， 必须存在。</li>
+<li>没有关键字 <code>then, elif, fi</code>。</li>
+</ol>
 <div class="gdoc-page__anchorwrap">
-    <h3 id="配置文件">
-        配置文件
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/#配置文件" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 配置文件" aria-label="Anchor to: 配置文件" href="#%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6">
+    <h3 id="go-中的逻辑运算符">
+        Go 中的逻辑运算符
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/if-else/#go-中的逻辑运算符" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Go 中的逻辑运算符" aria-label="Anchor to: Go 中的逻辑运算符" href="#go-%e4%b8%ad%e7%9a%84%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%e7%ac%a6">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h3>
 </div>
-<p><strong>最常用</strong> 的的配置文件类型就是 <code>YAML</code> 和 <code>JSON</code>。 除此之外还有 <code>toml, xml, ini</code> 等， 这些类型的配置文件可以在实际碰到的时候去学习掌握， 大差不差。</p>
-<p>通常 <strong>解析</strong> 和 <strong>映射</strong> 方法名称分别为 <code>Marshal</code> 和 <code>Unmarshal</code></p>
 <ol>
-<li><code>Marshal(v any) ([]byte, error)</code> 将结构体 <strong>解析</strong> 成 <code>[]byte</code> 类型。</li>
-<li><code>Unmarshal(data []byte, v any) error</code> 将 <code>[]byte</code> <strong>映射</strong> 到结构体中。 这里的 <code>v</code> 需要是 <strong>指针类型</strong></li>
+<li><code>&amp;&amp;</code> 与</li>
+<li><code>||</code> 或</li>
+<li><code>!</code> 非</li>
 </ol>
-<p>但有些库在名字上可能具有一定变种，通常也有迹可循。</p>
-<pre tabindex="0"><code>MarshalJSON
-MarshalYAMl
-</code></pre><p><strong>不同库</strong> 对应的的 <strong>方法名称</strong> 和 <strong>实现逻辑</strong> 也不尽相同， 如果凭经验使用遇到了问题， 一定要去看看官网文档。</p>
-<p>最基本常用的解析库</p>
-<ol>
-<li><code>json</code>: <code>encoding/json</code></li>
-<li><code>yaml</code>: <code>gopkg.in/yaml.v3</code>, <code>gopkg.in/yaml.v2</code> <strong>v2 和 v3</strong> 有区别， 自己研究。</li>
-</ol>
+<p>这点在 Shell 中使一致的。</p>
 <div class="gdoc-page__anchorwrap">
-    <h2 id="解题过程">
-        解题过程
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/#解题过程" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 解题过程" aria-label="Anchor to: 解题过程" href="#%e8%a7%a3%e9%a2%98%e8%bf%87%e7%a8%8b">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<div class="gdoc-page__anchorwrap">
-    <h3 id="1-指定配置文件参数">
-        1. 指定配置文件参数
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/#1-指定配置文件参数" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 1. 指定配置文件参数" aria-label="Anchor to: 1. 指定配置文件参数" href="#1-%e6%8c%87%e5%ae%9a%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e5%8f%82%e6%95%b0">
+    <h3 id="关系运算符">
+        关系运算符
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/if-else/#关系运算符" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 关系运算符" aria-label="Anchor to: 关系运算符" href="#%e5%85%b3%e7%b3%bb%e8%bf%90%e7%ae%97%e7%ac%a6">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h3>
 </div>
-<p>由于我们的实际 <strong>参数/变量</strong> 通过配置文件管理了， 因此我们就需要指定一个配置文件参数。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">config</span> <span class="kt">string</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">root</span><span class="p">.</span><span class="nf">Flags</span><span class="p">().</span><span class="nf">StringVarP</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">config</span><span class="p">,</span> <span class="s">&#34;config&#34;</span><span class="p">,</span> <span class="s">&#34;c&#34;</span><span class="p">,</span> <span class="s">&#34;config.yml&#34;</span><span class="p">,</span> <span class="s">&#34;配置文件&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>有了上一篇作业的经验， 这个应该就很简单。</p>
-<div class="gdoc-page__anchorwrap">
-    <h3 id="2-读取配置">
-        2. 读取配置
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/#2-读取配置" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 2. 读取配置" aria-label="Anchor to: 2. 读取配置" href="#2-%e8%af%bb%e5%8f%96%e9%85%8d%e7%bd%ae">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<p>我们定义了一个名为 <code>Person</code> 的结构体， 包含两个字段 Name 和 Age， 用于接受参数/变量。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Name</span> <span class="kt">string</span> <span class="s">`yaml:&#34;name,omitempty&#34;`</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Age</span>  <span class="kt">int</span>    <span class="s">`yaml:&#34;age,omitempty&#34;`</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>我们在字段后面， 使用 <code>tag</code> 进行了信息补充， 提供 <code>yaml</code> 解析的行为参数。</p>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<img src="https://static.typonotes.com/posts/2023/01/24/devopscamp-cobra-binding-config-file/golang-struct-tag-fs8.png" alt="golang-struct-tag"  /></p>
-<p>图片是之前 struct 的截图， 其中</p>
 <ol>
-<li><strong>（1）</strong> 是字段名称</li>
-<li><strong>（2-4）</strong> 是 <code>tag</code> 内容。
-<ol>
-<li><strong>（2）</strong> 是 <code>tag name</code>， 解析库依赖此字段进行判定。</li>
-<li><strong>（3-4）</strong> 是 <code>tag value</code>, 本质上是 <strong>字符串</strong>。 例如这里 <code>name</code> 和 <code>omitempty</code> 使用 <strong>分隔符<code>,</code></strong> 进行分割。 不同的库的分隔符有所不同， 例如 <code>gorm</code> 使用的 <strong>分号<code>;</code></strong>。</li>
-<li><strong>（3）</strong> 在这里对应的是 <strong>映射</strong> 的字段名称。 例如 yaml 文件中的 <code>name</code> 对应结构体中的 <code>Name</code>。 这里 <code>name</code> 也可以是其他值， 例如 <code>MyName</code>， 那么就会在 yaml文件中找对应的 MyName 字段。</li>
-<li><strong>（4）</strong> <code>omitempty</code> 是 yaml 支持的操作符， 同时还支持 <code>flow, inline</code>。 具体功能描述可以参考 <a
-  class="gdoc-markdown__link"
-  href="https://pkg.go.dev/gopkg.in/yaml.v3#pkg-functions"
->https://pkg.go.dev/gopkg.in/yaml.v3#pkg-functions</a></li>
+<li><code>==</code> 等于， <code>!=</code> 不等于</li>
+<li><code>&gt;, &lt;, &gt;=, &lt;=</code> 很直观。</li>
 </ol>
-</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">readConfig</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">Person</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">person</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Person</span><span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// 1. 读取文件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">b</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// 2. 绑定参数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">err2</span> <span class="o">:=</span> <span class="nx">yaml</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">b</span><span class="p">,</span> <span class="nx">person</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err2</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">person</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><ol>
-<li>初始化 <code>person</code> <strong>指针对象</strong>， 其底层类型为 Person 结构体。</li>
-<li>在 <code>readConfig</code> 函数中， 我们使用 <code>os.ReadFile</code> 读取文件内容。</li>
-<li>并通过 <code>yaml.Unmarshal</code> 将数据映射到 <code>person</code> 实例中。 需要 <strong>注意的是</strong>， <code>person</code> 所在的参数未知， 必须是 <strong>指针</strong> 对象， 否则反射无法保存数据到 <strong>内存</strong> 中。</li>
-</ol>
-<div class="gdoc-page__anchorwrap">
-    <h3 id="保存文件为-json">
-        保存文件为 json
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/#保存文件为-json" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 保存文件为 json" aria-label="Anchor to: 保存文件为 json" href="#%e4%bf%9d%e5%ad%98%e6%96%87%e4%bb%b6%e4%b8%ba-json">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<p>把配置信息保存为 json 文件， 就是之前 yaml 的反操作。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// dumpConfig 保存文件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">dumpConfig</span><span class="p">(</span><span class="nx">person</span> <span class="o">*</span><span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 将结构体解析成 []byte
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">b</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// os.ModePerm =&gt; folder 755, file 644
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">err2</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">WriteFile</span><span class="p">(</span><span class="s">&#34;config.json&#34;</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">ModePerm</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err2</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><ol>
-<li>使用 <code>json.Marshal</code> 将对象转换成 []byte。 由于是 <strong>读取操作</strong>， <code>person</code> 所在的参数为止可以是结构体， 也可以是指针。</li>
-<li>使用 <code>os.WriteFile</code> 进行文件写入操作。 需要注意的是 <code>os.ModePerm</code> 这个权限， 对于文件夹是 755， 对于文件是 644， 非常的灵活。</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span><span class="nt">&#34;Name&#34;</span><span class="p">:</span><span class="s2">&#34;zhugeliang&#34;</span><span class="p">,</span><span class="nt">&#34;Age&#34;</span><span class="p">:</span><span class="mi">2600</span><span class="p">}</span>
-</span></span></code></pre></div><p>执行后，得到的结果与期望的结果有一点点不同。<strong>注意</strong> ，这里的 <code>Name</code> 和 <code>Age</code> 都是大写。</p>
-<p>我们对 <code>Person</code> 结构体稍微做一点改造</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Name</span> <span class="kt">string</span> <span class="s">`yaml:&#34;name,omitempty&#34; json:&#34;name,omitempty&#34;`</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Age</span>  <span class="kt">int</span>    <span class="s">`yaml:&#34;age,omitempty&#34; json:&#34;age,omitempty&#34;`</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>加上 <code>json tag</code> 之后， 得到的结果就与期望一致了。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span><span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;zhugeliang&#34;</span><span class="p">,</span><span class="nt">&#34;age&#34;</span><span class="p">:</span><span class="mi">2600</span><span class="p">}</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
-    <h2 id="思考题">
-        思考题
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/#思考题" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 思考题" aria-label="Anchor to: 思考题" href="#%e6%80%9d%e8%80%83%e9%a2%98">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<p>留一点思考题吧。</p>
-<ol>
-<li>为什么没有设置 <code>json tag</code> 也可以成功保存 json 配置？</li>
-<li>设置了 <code>json tag</code> 之后， json 配置中的字段名字变了， 他们的优先级是什么？</li>
-<li>要怎么 <strong>忽略</strong> 一个字段？</li>
-</ol>
-<p>答案在官方文档中。</p>
 
 </article>
 

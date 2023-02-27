@@ -6,6 +6,16 @@
     <description>Recent content on 《Shell 转 Go》</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>01. if-else</title>
+      <link>https://typonotes.com/books/golang/chapter02/process-control/if-else/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter02/process-control/if-else/</guid>
+      <description>Shell function abc() { n=$1 if [ $n -gt 100 ]; then { # 括号可有可无 echo &amp;#34;无效&amp;#34; } elif [ $n -gt 90 ]; then echo &amp;#34;优秀&amp;#34; else { echo &amp;#34;一般&amp;#34; } fi } 在 Shell 中，
+if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有可无， 但是最好还是带上， 增强可读性。 判断条件使用 方括号 [ ] 或 [[ ]] 定义。 Go func if_else(n int) { if n &amp;gt;= 100 || n &amp;lt;= -1 { fmt.Println(&amp;#34;无效&amp;#34;) } else if n &amp;gt; 90 { fmt.</description>
+    </item>
+    
+    <item>
       <title>01. 变量声明</title>
       <link>https://typonotes.com/books/golang/chapter02/variable/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
