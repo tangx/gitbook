@@ -7,10 +7,10 @@
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>01. 变量声明</title>
-      <link>https://typonotes.com/books/golang/chapter02/variable/</link>
+      <link>https://typonotes.com/books/golang/shell-to-go/variable/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter02/variable/</guid>
+      <guid>https://typonotes.com/books/golang/shell-to-go/variable/</guid>
       <description>变量声明 Shell 声明变量 在 Shell 中， 变量声明通常有两种方式
 通过 declare 进行变量声明， 并赋值。 省略 declare 进行变量声明。 # 方式1 declare abc=&amp;#34;abc&amp;#34; declare abc_123=123 # 方式2 abc=&amp;#34;abc&amp;#34; abc_123=123 事实上， declare 的用法还是很复杂的， 更多可以参考: https://www.runoob.com/linux/linux-comm-declare.html
 Go 声明变量 在 Go 中， 也有两种方式
@@ -19,20 +19,20 @@ Go 声明变量 在 Go 中， 也有两种方式
     
     <item>
       <title>01. 条件语句 (if else)</title>
-      <link>https://typonotes.com/books/golang/chapter02/process-control/if-else/</link>
+      <link>https://typonotes.com/books/golang/shell-to-go/process-control/if-else/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter02/process-control/if-else/</guid>
+      <guid>https://typonotes.com/books/golang/shell-to-go/process-control/if-else/</guid>
       <description>Shell function abc() { n=$1 if [ $n -gt 100 ]; then { # 括号可有可无 echo &amp;#34;无效&amp;#34; } elif [ $n -gt 90 ]; then echo &amp;#34;优秀&amp;#34; else { echo &amp;#34;一般&amp;#34; } fi } 在 Shell 中，
 if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有可无， 但是最好还是带上， 增强可读性。 判断条件使用 方括号 [ ] 或 [[ ]] 定义。 Go func if_else(n int) { if n &amp;gt;= 100 || n &amp;lt;= -1 { fmt.Println(&amp;#34;无效&amp;#34;) } else if n &amp;gt; 90 { fmt.</description>
     </item>
     
     <item>
       <title>01. 环境变量操作</title>
-      <link>https://typonotes.com/books/golang/chapter06/environment/</link>
+      <link>https://typonotes.com/books/golang/daily-notes/environment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter06/environment/</guid>
+      <guid>https://typonotes.com/books/golang/daily-notes/environment/</guid>
       <description>一篇文章告诉你 golang 环境变量的所有基础操作 原文链接： https://typonotes.com/posts/2021/09/06/golang-os-env-operation/
 golang 中的环境变量操作都在 os 包下面， 只有很少的几个方法， 而且字面意思也很明确。
 所有环境变量操作对象都是 字符串string ， 因此对于 int， bool 类型需要自己实现转换。
@@ -45,28 +45,28 @@ golang程序 在 复制了开始运行的那一瞬间的当前环境所有变量
     
     <item>
       <title>01. 随机数处理(random)</title>
-      <link>https://typonotes.com/books/golang/chapter03/random/</link>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/random/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter03/random/</guid>
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/random/</guid>
       <description></description>
     </item>
     
     <item>
       <title>01. 项目简介</title>
-      <link>https://typonotes.com/books/golang/chapter01/01-introduce/</link>
+      <link>https://typonotes.com/books/golang/startup/01-introduce/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter01/01-introduce/</guid>
+      <guid>https://typonotes.com/books/golang/startup/01-introduce/</guid>
       <description></description>
     </item>
     
     <item>
       <title>02. Go 的时区管理</title>
-      <link>https://typonotes.com/books/golang/chapter06/timezone/</link>
+      <link>https://typonotes.com/books/golang/daily-notes/timezone/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter06/timezone/</guid>
+      <guid>https://typonotes.com/books/golang/daily-notes/timezone/</guid>
       <description>这些关于 Golang timezone 时区的坑， 我已经帮你踩过了 原文链接: https://typonotes.com/posts/2023/01/09/golang-timezone-issue/
 Golang 中一些不太注意的时区问题
 1. time/tzdata 库 Golang 内置的一个时区文件。
@@ -76,10 +76,10 @@ FROM golang:alpine as build RUN apk --no-cache add tzdata WORKDIR /app ADD . . R
     
     <item>
       <title>02. 下载安装与环境配置</title>
-      <link>https://typonotes.com/books/golang/chapter01/02-install/</link>
+      <link>https://typonotes.com/books/golang/startup/02-install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter01/02-install/</guid>
+      <guid>https://typonotes.com/books/golang/startup/02-install/</guid>
       <description>下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
 通常我会选择压缩包， 然后解压到所需要安装的目录。
 例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
@@ -88,28 +88,28 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
     
     <item>
       <title>02. 函数</title>
-      <link>https://typonotes.com/books/golang/chapter02/function/</link>
+      <link>https://typonotes.com/books/golang/shell-to-go/function/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter02/function/</guid>
+      <guid>https://typonotes.com/books/golang/shell-to-go/function/</guid>
       <description></description>
     </item>
     
     <item>
       <title>02. 基础数据类型</title>
-      <link>https://typonotes.com/books/golang/chapter02/basic-type/</link>
+      <link>https://typonotes.com/books/golang/shell-to-go/basic-type/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter02/basic-type/</guid>
+      <guid>https://typonotes.com/books/golang/shell-to-go/basic-type/</guid>
       <description></description>
     </item>
     
     <item>
       <title>02. 循环语句 (for)</title>
-      <link>https://typonotes.com/books/golang/chapter02/process-control/for-loops/</link>
+      <link>https://typonotes.com/books/golang/shell-to-go/process-control/for-loops/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter02/process-control/for-loops/</guid>
+      <guid>https://typonotes.com/books/golang/shell-to-go/process-control/for-loops/</guid>
       <description>Go 循环 在 Go 中， 循环只有一个关键字 for， 通过不同的 格式 实现不同的逻辑
 基本格式如下
 for 默认值; 条件; 计数器 { fmt.Println(&amp;#34;i=&amp;#34;, i) } 以上的 每一个字段都可以省略 。
@@ -120,10 +120,10 @@ for i := 0; i &amp;lt; 1; i++ { fmt.Println(&amp;#34;i=&amp;#34;, i) } 遍历循
     
     <item>
       <title>02. 时间等待(sleep)</title>
-      <link>https://typonotes.com/books/golang/chapter03/sleep/</link>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/sleep/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter03/sleep/</guid>
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/sleep/</guid>
       <description>时间等待， 让程序 阻塞 一段时间
 在 Shell 中 在 Shell 中使用 sleep n ， n 的默认单位 秒
 sleep 2 在 Go 中 在 Go 中， 对应使用 time.Sleep(n) 方法。但是需要注意的是， n 的默认单位是 毫秒。
@@ -133,48 +133,48 @@ time.Sleep(200) 如果要实现如果实现 秒 级别等待，
     
     <item>
       <title>03. VSCode配置与插件</title>
-      <link>https://typonotes.com/books/golang/chapter01/03-vscode/</link>
+      <link>https://typonotes.com/books/golang/startup/03-vscode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter01/03-vscode/</guid>
+      <guid>https://typonotes.com/books/golang/startup/03-vscode/</guid>
       <description></description>
     </item>
     
     <item>
       <title>03. 分支语句 (switch)</title>
-      <link>https://typonotes.com/books/golang/chapter02/process-control/switch/</link>
+      <link>https://typonotes.com/books/golang/shell-to-go/process-control/switch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter02/process-control/switch/</guid>
+      <guid>https://typonotes.com/books/golang/shell-to-go/process-control/switch/</guid>
       <description>在 Shell 中使用 case ... in 做分支语句。
 使用 case ... in 作为开始， 使用 esac 作为结尾 使用 xxx ) 格式作为条件分支。 其中 xxx 可以是多个并列条件 使用 ;; 作为语句块结束。 使用 * 作为默认条件语句， 可省略。 case $1 in &amp;#34;n1&amp;#34;) echo &amp;#34;n1&amp;#34; ;; &amp;#34;n2&amp;#34; | &amp;#34;n3&amp;#34;) echo &amp;#34;n2 or n3&amp;#34; ;; *) echo &amp;#34;default&amp;#34; ;; esac 在 Go 中使用 switch 作为分支语句
 使用 switch 关键字作为开始 使用 case 关键字作为分支条件。 没有单独的结尾关键字 使用 default 作为 switch n { case 1: fmt.Println(&amp;#34;1&amp;#34;) fallthrough case 2, 3, &amp;#34;a&amp;#34;: fmt.</description>
     </item>
     
     <item>
-      <title>03. 文件路径</title>
-      <link>https://typonotes.com/books/golang/chapter03/03-filepath/</link>
+      <title>03. 文件路径管理</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/filepath/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter03/03-filepath/</guid>
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/filepath/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>04. 文件操作</title>
-      <link>https://typonotes.com/books/golang/chapter03/04-file-operation/</link>
+      <title>04. 文件名管理</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/filename/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter03/04-file-operation/</guid>
-      <description></description>
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/filename/</guid>
+      <description> 1. 文件名 2. 文件后缀 </description>
     </item>
     
     <item>
       <title>04. 跳转语句(label)</title>
-      <link>https://typonotes.com/books/golang/chapter02/process-control/label/</link>
+      <link>https://typonotes.com/books/golang/shell-to-go/process-control/label/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter02/process-control/label/</guid>
+      <guid>https://typonotes.com/books/golang/shell-to-go/process-control/label/</guid>
       <description>Label 标签在 Shell 中没有。 但在 Go 中却应用广泛。
 Label Label 的定义规则为 SomeName: ， 以 : 结尾。
 在 Go 使用 Label 必须使用配置关键字 continue, break, goto 的其中一个。
@@ -183,15 +183,33 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
     </item>
     
     <item>
-      <title>05. 并发选择语句(select)</title>
-      <link>https://typonotes.com/books/golang/chapter02/process-control/select/</link>
+      <title>05. 大小写转换(tr)</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/tr/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter02/process-control/select/</guid>
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/tr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>05. 并发选择语句(select)</title>
+      <link>https://typonotes.com/books/golang/shell-to-go/process-control/select/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/shell-to-go/process-control/select/</guid>
       <description>select 语句在 Shell 中没有， 但是在 Go 中却是 并发 的根基。
 select 在语法上面， 和 switch 相似
 使用 case 作为分支入口。 使用 default 作为默认语句。 不同的是，
 select 没有条件语句 func selectGrammar(ctx context.Context) { channel := make(chan int, 10) value := 100 select { case &amp;lt;-ctx.Done(): // 执行的代码 case &amp;lt;-time.After(10 * time.Second): // 执行的代码 case val := &amp;lt;-channel: fmt.Println(val) // 执行的代码 case channel &amp;lt;- value: // 执行代码 default: // 所有通道都没有准备好，执行的代码 } } 每个 case 语句都必须是一个通道(channel)。 常见的通道包括以下: ctx.Done。 time.</description>
+    </item>
+    
+    <item>
+      <title>06. 字符串切割(cut)</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/cut/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/cut/</guid>
+      <description></description>
     </item>
     
     <item>

@@ -9,12 +9,6 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。
-var root = &amp;cobra.Command{} var child = &amp;cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。
-cobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。
-删除多余的结构， cobra 节点 就是下面这样的。
-type Command struct { // 子命令 commands []*Command // 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养/挂靠 的方式实现的。
-// AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds ." />
 
 
   
@@ -43,7 +37,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>5. 子命令与Cobra命令树的实现 | 《Shell 转 Go》</title>
+  <title>01. Go开发环境配置 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -64,46 +58,33 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
   
   <meta
     property="og:title"
-    content="5. 子命令与Cobra命令树的实现"
+    content="01. Go开发环境配置"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。
-var root = &amp;cobra.Command{} var child = &amp;cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。
-cobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。
-删除多余的结构， cobra 节点 就是下面这样的。
-type Command struct { // 子命令 commands []*Command // 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养/挂靠 的方式实现的。
-// AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds ." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/startup/" />
 
-<meta property="article:section" content="Cobra in Action" />
+<meta property="article:section" content="Startup" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="5. 子命令与Cobra命令树的实现" />
-  <meta name="twitter:description" content="cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。
-var root = &amp;cobra.Command{} var child = &amp;cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。
-cobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。
-删除多余的结构， cobra 节点 就是下面这样的。
-type Command struct { // 子命令 commands []*Command // 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养/挂靠 的方式实现的。
-// AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds ." />
+<meta name="twitter:title" content="01. Go开发环境配置" />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Cobra in Action",
-      "name": "5. 子命令与Cobra命令树的实现",
-      "url" : "https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/",
-      "headline": "5. 子命令与Cobra命令树的实现",
-      "description": "cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。\nvar root = \u0026cobra.Command{} var child = \u0026cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。\ncobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。\n删除多余的结构， cobra 节点 就是下面这样的。\ntype Command struct { \/\/ 子命令 commands []*Command \/\/ 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养\/挂靠 的方式实现的。\n\/\/ AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds .",
-      "wordCount" : "242",
+      "articleSection": "Startup",
+      "name": "01. Go开发环境配置",
+      "url" : "https://typonotes.com/books/golang/startup/",
+      "headline": "01. Go开发环境配置",
+      "wordCount" : "0",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/"
+          "@id": "https://typonotes.com/books/golang/startup/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -187,7 +168,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/startup/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -1463,7 +1444,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
                 <span class="flex">
                   <a
                     href="/books/golang/cobra-in-action/05-1-command-tree/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     5. 子命令与Cobra命令树的实现
                   </a>
@@ -1580,7 +1561,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
 
       <div class="gdoc-page">
         
-
+  
 
 
   
@@ -1615,15 +1596,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
     
   
   
-    
-    
-    
-    
-  
-  
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/cobra-in-action/' href='/books/golang/cobra-in-action/'><span itemprop='name'>99. Cobra 实战项目</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>5. 子命令与Cobra命令树的实现</span><meta itemprop='position' content='5' /></li>
-  
-
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>01. Go开发环境配置</span><meta itemprop='position' content='4' /></li>
   
 
   
@@ -1636,125 +1609,12 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
 
 
 
-<article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>5. 子命令与Cobra命令树的实现</h1>
-  <div class="gdoc-page__anchorwrap">
-    <h2 id="cobra-的子命令">
-        cobra 的子命令
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/#cobra-的子命令" class="gdoc-page__anchor clip flex align-center" title="Anchor to: cobra 的子命令" aria-label="Anchor to: cobra 的子命令" href="#cobra-%e7%9a%84%e5%ad%90%e5%91%bd%e4%bb%a4">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<p>在 cobra 中， 每个 <strong>命令</strong> 都是独立的。 通过 <code>parent.AddCommand(children)</code> 的形式进行串连。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">root</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">child</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">root</span><span class="p">.</span><span class="nf">AddCommand</span><span class="p">(</span><span class="nx">child</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>没了， 应用上就这么多。</p>
-<div class="gdoc-page__anchorwrap">
-    <h2 id="cobra-命令树">
-        cobra 命令树
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/#cobra-命令树" class="gdoc-page__anchor clip flex align-center" title="Anchor to: cobra 命令树" aria-label="Anchor to: cobra 命令树" href="#cobra-%e5%91%bd%e4%bb%a4%e6%a0%91">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<p>如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。</p>
-<p>删除多余的结构， cobra <strong>节点</strong> 就是下面这样的。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Command</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 子命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">commands</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Command</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 父命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">parent</span> <span class="o">*</span><span class="nx">Command</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>当进行 <strong>命令树</strong> 组合的时候， 是通过 <strong>领养/挂靠</strong> 的方式实现的。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// AddCommand adds one or more commands to this parent command.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Command</span><span class="p">)</span> <span class="nf">AddCommand</span><span class="p">(</span><span class="nx">cmds</span> <span class="o">...*</span><span class="nx">Command</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">x</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">cmds</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">cmds</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">==</span> <span class="nx">c</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nb">panic</span><span class="p">(</span><span class="s">&#34;Command can&#39;t be a child of itself&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="c1">// 为子命令设置父命令（认亲）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">cmds</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">parent</span> <span class="p">=</span> <span class="nx">c</span> <span class="c1">// (1)
-</span></span></span><span class="line"><span class="cl"><span class="c1">// 省略
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// 添加传入的子命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">c</span><span class="p">.</span><span class="nx">commands</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">commands</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="c1">// (2)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><code>(1)</code> 在我们可以在任意节点调用 <code>Execute</code> 方法， 这个调用会通过 <strong>递归</strong> 找到最上层的 <strong>根</strong> 节点。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Command</span><span class="p">)</span> <span class="nf">Execute</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">ExecuteC</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">err</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// ExecuteC executes the command.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Command</span><span class="p">)</span> <span class="nf">ExecuteC</span><span class="p">()</span> <span class="p">(</span><span class="nx">cmd</span> <span class="o">*</span><span class="nx">Command</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Regardless of what command execute is called on, run on Root only
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 递归寻找最上层
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="nx">c</span><span class="p">.</span><span class="nf">HasParent</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Root</span><span class="p">().</span><span class="nf">ExecuteC</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>再来看一次 Command 结构体定义</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Command</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 子命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">commands</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Command</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 父命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">parent</span> <span class="o">*</span><span class="nx">Command</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><code>(2)</code>  通过将传入的命令保存到 <code>[]*Command</code> 切片中， 实现了命令树的 <strong>组合</strong> 。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">c</span><span class="p">.</span><span class="nx">commands</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">commands</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="c1">// (2)
-</span></span></span></code></pre></div><p><strong>且同时</strong> 实现了 <strong>同一个命令挂载到多个父命令上</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">root</span><span class="p">.</span><span class="nf">AddCommand</span><span class="p">(</span><span class="nx">sub1</span><span class="p">,</span> <span class="nx">sub2</span><span class="p">)</span> <span class="c1">// (a)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">sub1</span><span class="p">.</span><span class="nf">AddCommand</span><span class="p">(</span><span class="nx">sub2</span><span class="p">)</span> <span class="c1">// (b)
-</span></span></span></code></pre></div><p><code>commands</code> 是一个切片， 用于保存 <strong>挂载</strong> 上来的子命令。 <strong>但是， 这里需要注意</strong>， 由于 <code>*Command</code> 是指针类型， 意味着在任何修改， 都可能影响其他调用的地方。</p>
-<p>对于 <code>sub2</code> 而言,  <code>(a)</code>处父节点是 <code>root</code>。 <code>(b)</code>处父节点是 <code>sub1</code>。 <strong>最终父节点是 <code>sub1</code></strong>。
-但不影响 <code>sub2</code> 同时是 <code>root</code> 和 <code>sub1</code> 的子命令。</p>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<img src="https://static.typonotes.com/posts/2023/02/14/devopscamp-cobra-05-subcommand/cobra-command-tree-fs8.png" alt=""  /></p>
-<p>总体来说， cobra 命令节点 <strong>独立而又统一</strong></p>
-
-</article>
-
-
-
-
-<div class="post bg-white">
-  <script src="https://utteranc.es/client.js" repo="tangx/tangx.github.io"
-    issue-term="pathname" theme="github-light" crossorigin="anonymous"
-    async>
-    </script>
-</div>
-
+  <article
+    class="gdoc-markdown gdoc-markdown__align--left"
+  >
+    <h1>01. Go开发环境配置</h1>
+    
+  </article>
 
 
 

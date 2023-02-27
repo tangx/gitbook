@@ -5,53 +5,57 @@
     <loc>https://typonotes.com/books/golang/</loc>
     <priority>0</priority>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter01/</loc>
+    <loc>https://typonotes.com/books/golang/startup/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter02/variable/</loc>
+    <loc>https://typonotes.com/books/golang/shell-to-go/variable/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter02/process-control/if-else/</loc>
+    <loc>https://typonotes.com/books/golang/shell-to-go/process-control/if-else/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter06/environment/</loc>
+    <loc>https://typonotes.com/books/golang/daily-notes/environment/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter03/random/</loc>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/random/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter01/01-introduce/</loc>
+    <loc>https://typonotes.com/books/golang/startup/01-introduce/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter06/timezone/</loc>
+    <loc>https://typonotes.com/books/golang/daily-notes/timezone/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter02/</loc>
+    <loc>https://typonotes.com/books/golang/shell-to-go/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter01/02-install/</loc>
+    <loc>https://typonotes.com/books/golang/startup/02-install/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter02/function/</loc>
+    <loc>https://typonotes.com/books/golang/shell-to-go/function/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter02/basic-type/</loc>
+    <loc>https://typonotes.com/books/golang/shell-to-go/basic-type/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter02/process-control/for-loops/</loc>
+    <loc>https://typonotes.com/books/golang/shell-to-go/process-control/for-loops/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter03/sleep/</loc>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/sleep/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter03/</loc>
+    <loc>https://typonotes.com/books/golang/go-features/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter01/03-vscode/</loc>
+    <loc>https://typonotes.com/books/golang/startup/03-vscode/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter02/process-control/switch/</loc>
+    <loc>https://typonotes.com/books/golang/shell-to-go/process-control/switch/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter03/03-filepath/</loc>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/filepath/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter02/process-control/</loc>
+    <loc>https://typonotes.com/books/golang/shell-to-go/process-control/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter04/</loc>
+    <loc>https://typonotes.com/books/golang/go-libraries/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter03/04-file-operation/</loc>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/filename/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter02/process-control/label/</loc>
+    <loc>https://typonotes.com/books/golang/shell-to-go/process-control/label/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter05/</loc>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter02/process-control/select/</loc>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/tr/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/chapter06/</loc>
+    <loc>https://typonotes.com/books/golang/shell-to-go/process-control/select/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/daily-notes/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/cut/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/cobra-in-action/01-cobra-sample/</loc>
   </url><url>

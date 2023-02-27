@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>02. Go基础语法: Shell to Go on 《Shell 转 Go》</title>
+    <link>https://typonotes.com/books/golang/shell-to-go/</link>
+    <description>Recent content in 02. Go基础语法: Shell to Go on 《Shell 转 Go》</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/shell-to-go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>01. 变量声明</title>
+      <link>https://typonotes.com/books/golang/shell-to-go/variable/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/shell-to-go/variable/</guid>
+      <description>变量声明 Shell 声明变量 在 Shell 中， 变量声明通常有两种方式
+通过 declare 进行变量声明， 并赋值。 省略 declare 进行变量声明。 # 方式1 declare abc=&amp;#34;abc&amp;#34; declare abc_123=123 # 方式2 abc=&amp;#34;abc&amp;#34; abc_123=123 事实上， declare 的用法还是很复杂的， 更多可以参考: https://www.runoob.com/linux/linux-comm-declare.html
+Go 声明变量 在 Go 中， 也有两种方式
+通过 var 关键字定义， 这种方式可以在 任意位置 定义变量。 省略 var 后， 可以使用 := 进行变量声明。 但是这种方式只能在 代码块 中使用， 可以简单的理解为 只能在函数中使用。 var abc int8 = 100 // 指定 abc 的类型是 int8 var def = 100 // 推定类型为 int func demo() { a1 := 100 var a2 = 100 fmt.</description>
+    </item>
+    
+    <item>
+      <title>02. 函数</title>
+      <link>https://typonotes.com/books/golang/shell-to-go/function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/shell-to-go/function/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>02. 基础数据类型</title>
+      <link>https://typonotes.com/books/golang/shell-to-go/basic-type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/shell-to-go/basic-type/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

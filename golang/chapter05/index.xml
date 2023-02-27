@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>05. 好用的Go库 on 《Shell 转 Go》</title>
-    <link>https://typonotes.com/books/golang/chapter05/</link>
-    <description>Recent content in 05. 好用的Go库 on 《Shell 转 Go》</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/chapter05/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
-</rss>

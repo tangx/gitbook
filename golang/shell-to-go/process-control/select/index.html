@@ -9,12 +9,10 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。
-var root = &amp;cobra.Command{} var child = &amp;cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。
-cobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。
-删除多余的结构， cobra 节点 就是下面这样的。
-type Command struct { // 子命令 commands []*Command // 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养/挂靠 的方式实现的。
-// AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds ." />
+  <meta name="description" content="select 语句在 Shell 中没有， 但是在 Go 中却是 并发 的根基。
+select 在语法上面， 和 switch 相似
+使用 case 作为分支入口。 使用 default 作为默认语句。 不同的是，
+select 没有条件语句 func selectGrammar(ctx context.Context) { channel := make(chan int, 10) value := 100 select { case &lt;-ctx.Done(): // 执行的代码 case &lt;-time.After(10 * time.Second): // 执行的代码 case val := &lt;-channel: fmt.Println(val) // 执行的代码 case channel &lt;- value: // 执行代码 default: // 所有通道都没有准备好，执行的代码 } } 每个 case 语句都必须是一个通道(channel)。 常见的通道包括以下: ctx.Done。 time." />
 
 
   
@@ -43,7 +41,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>5. 子命令与Cobra命令树的实现 | 《Shell 转 Go》</title>
+  <title>05. 并发选择语句(select) | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -64,46 +62,42 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
   
   <meta
     property="og:title"
-    content="5. 子命令与Cobra命令树的实现"
+    content="05. 并发选择语句(select)"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。
-var root = &amp;cobra.Command{} var child = &amp;cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。
-cobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。
-删除多余的结构， cobra 节点 就是下面这样的。
-type Command struct { // 子命令 commands []*Command // 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养/挂靠 的方式实现的。
-// AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds ." />
+  <meta property="og:description" content="select 语句在 Shell 中没有， 但是在 Go 中却是 并发 的根基。
+select 在语法上面， 和 switch 相似
+使用 case 作为分支入口。 使用 default 作为默认语句。 不同的是，
+select 没有条件语句 func selectGrammar(ctx context.Context) { channel := make(chan int, 10) value := 100 select { case &lt;-ctx.Done(): // 执行的代码 case &lt;-time.After(10 * time.Second): // 执行的代码 case val := &lt;-channel: fmt.Println(val) // 执行的代码 case channel &lt;- value: // 执行代码 default: // 所有通道都没有准备好，执行的代码 } } 每个 case 语句都必须是一个通道(channel)。 常见的通道包括以下: ctx.Done。 time." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/shell-to-go/process-control/select/" />
 
-<meta property="article:section" content="Cobra in Action" />
+<meta property="article:section" content="Shell to Go" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="5. 子命令与Cobra命令树的实现" />
-  <meta name="twitter:description" content="cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。
-var root = &amp;cobra.Command{} var child = &amp;cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。
-cobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。
-删除多余的结构， cobra 节点 就是下面这样的。
-type Command struct { // 子命令 commands []*Command // 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养/挂靠 的方式实现的。
-// AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds ." />
+<meta name="twitter:title" content="05. 并发选择语句(select)" />
+  <meta name="twitter:description" content="select 语句在 Shell 中没有， 但是在 Go 中却是 并发 的根基。
+select 在语法上面， 和 switch 相似
+使用 case 作为分支入口。 使用 default 作为默认语句。 不同的是，
+select 没有条件语句 func selectGrammar(ctx context.Context) { channel := make(chan int, 10) value := 100 select { case &lt;-ctx.Done(): // 执行的代码 case &lt;-time.After(10 * time.Second): // 执行的代码 case val := &lt;-channel: fmt.Println(val) // 执行的代码 case channel &lt;- value: // 执行代码 default: // 所有通道都没有准备好，执行的代码 } } 每个 case 语句都必须是一个通道(channel)。 常见的通道包括以下: ctx.Done。 time." />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Cobra in Action",
-      "name": "5. 子命令与Cobra命令树的实现",
-      "url" : "https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/",
-      "headline": "5. 子命令与Cobra命令树的实现",
-      "description": "cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。\nvar root = \u0026cobra.Command{} var child = \u0026cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。\ncobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。\n删除多余的结构， cobra 节点 就是下面这样的。\ntype Command struct { \/\/ 子命令 commands []*Command \/\/ 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养\/挂靠 的方式实现的。\n\/\/ AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds .",
-      "wordCount" : "242",
+      "articleSection": "Shell to Go",
+      "name": "05. 并发选择语句(select)",
+      "url" : "https://typonotes.com/books/golang/shell-to-go/process-control/select/",
+      "headline": "05. 并发选择语句(select)",
+      "description": "select 语句在 Shell 中没有， 但是在 Go 中却是 并发 的根基。\nselect 在语法上面， 和 switch 相似\n使用 case 作为分支入口。 使用 default 作为默认语句。 不同的是，\nselect 没有条件语句 func selectGrammar(ctx context.Context) { channel := make(chan int, 10) value := 100 select { case \u003c-ctx.Done(): \/\/ 执行的代码 case \u003c-time.After(10 * time.Second): \/\/ 执行的代码 case val := \u003c-channel: fmt.Println(val) \/\/ 执行的代码 case channel \u003c- value: \/\/ 执行代码 default: \/\/ 所有通道都没有准备好，执行的代码 } } 每个 case 语句都必须是一个通道(channel)。 常见的通道包括以下: ctx.Done。 time.",
+      "wordCount" : "177",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/"
+          "@id": "https://typonotes.com/books/golang/shell-to-go/process-control/select/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -187,7 +181,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/shell-to-go/process-control/select/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -810,7 +804,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
                 <span class="flex">
                   <a
                     href="/books/golang/shell-to-go/process-control/select/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     05. 并发选择语句(select)
                   </a>
@@ -1463,7 +1457,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
                 <span class="flex">
                   <a
                     href="/books/golang/cobra-in-action/05-1-command-tree/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     5. 子命令与Cobra命令树的实现
                   </a>
@@ -1621,7 +1615,15 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/cobra-in-action/' href='/books/golang/cobra-in-action/'><span itemprop='name'>99. Cobra 实战项目</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>5. 子命令与Cobra命令树的实现</span><meta itemprop='position' content='5' /></li>
+    
+    
+    
+    
+  
+  
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/' href='/books/golang/shell-to-go/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/process-control/' href='/books/golang/shell-to-go/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>05. 并发选择语句(select)</span><meta itemprop='position' content='6' /></li>
+  
+
   
 
   
@@ -1637,111 +1639,111 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>5. 子命令与Cobra命令树的实现</h1>
-  <div class="gdoc-page__anchorwrap">
-    <h2 id="cobra-的子命令">
-        cobra 的子命令
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/#cobra-的子命令" class="gdoc-page__anchor clip flex align-center" title="Anchor to: cobra 的子命令" aria-label="Anchor to: cobra 的子命令" href="#cobra-%e7%9a%84%e5%ad%90%e5%91%bd%e4%bb%a4">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h2>
-</div>
-<p>在 cobra 中， 每个 <strong>命令</strong> 都是独立的。 通过 <code>parent.AddCommand(children)</code> 的形式进行串连。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">root</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">child</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">root</span><span class="p">.</span><span class="nf">AddCommand</span><span class="p">(</span><span class="nx">child</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>没了， 应用上就这么多。</p>
+  <h1>05. 并发选择语句(select)</h1>
+  <p><code>select</code> 语句在 Shell 中没有， 但是在 Go 中却是 <strong>并发</strong> 的根基。</p>
 <div class="gdoc-page__anchorwrap">
-    <h2 id="cobra-命令树">
-        cobra 命令树
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/#cobra-命令树" class="gdoc-page__anchor clip flex align-center" title="Anchor to: cobra 命令树" aria-label="Anchor to: cobra 命令树" href="#cobra-%e5%91%bd%e4%bb%a4%e6%a0%91">
+    <h1 id="select">
+        select
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/process-control/select/#select" class="gdoc-page__anchor clip flex align-center" title="Anchor to: select" aria-label="Anchor to: select" href="#select">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
-    </h2>
+    </h1>
 </div>
-<p>如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。</p>
-<p>删除多余的结构， cobra <strong>节点</strong> 就是下面这样的。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Command</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 子命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">commands</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Command</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 父命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">parent</span> <span class="o">*</span><span class="nx">Command</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>当进行 <strong>命令树</strong> 组合的时候， 是通过 <strong>领养/挂靠</strong> 的方式实现的。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// AddCommand adds one or more commands to this parent command.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Command</span><span class="p">)</span> <span class="nf">AddCommand</span><span class="p">(</span><span class="nx">cmds</span> <span class="o">...*</span><span class="nx">Command</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">x</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">cmds</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">cmds</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">==</span> <span class="nx">c</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nb">panic</span><span class="p">(</span><span class="s">&#34;Command can&#39;t be a child of itself&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+<p>在语法上面， 和 <code>switch</code> 相似</p>
+<ol>
+<li>使用 <code>case</code> 作为分支入口。</li>
+<li>使用 <code>default</code> 作为默认语句。</li>
+</ol>
+<p>不同的是，</p>
+<ol>
+<li><code>select</code> 没有条件语句</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">selectGrammar</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">channel</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">value</span> <span class="o">:=</span> <span class="mi">100</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="c1">// 为子命令设置父命令（认亲）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">cmds</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">parent</span> <span class="p">=</span> <span class="nx">c</span> <span class="c1">// (1)
-</span></span></span><span class="line"><span class="cl"><span class="c1">// 省略
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// 添加传入的子命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">c</span><span class="p">.</span><span class="nx">commands</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">commands</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="c1">// (2)
+</span></span><span class="line"><span class="cl">	<span class="k">select</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">case</span> <span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Done</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 执行的代码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 执行的代码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">case</span> <span class="nx">val</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">channel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 执行的代码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">case</span> <span class="nx">channel</span> <span class="o">&lt;-</span> <span class="nx">value</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 执行代码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 所有通道都没有准备好，执行的代码
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><code>(1)</code> 在我们可以在任意节点调用 <code>Execute</code> 方法， 这个调用会通过 <strong>递归</strong> 找到最上层的 <strong>根</strong> 节点。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Command</span><span class="p">)</span> <span class="nf">Execute</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">ExecuteC</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">err</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// ExecuteC executes the command.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Command</span><span class="p">)</span> <span class="nf">ExecuteC</span><span class="p">()</span> <span class="p">(</span><span class="nx">cmd</span> <span class="o">*</span><span class="nx">Command</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Regardless of what command execute is called on, run on Root only
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 递归寻找最上层
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="nx">c</span><span class="p">.</span><span class="nf">HasParent</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Root</span><span class="p">().</span><span class="nf">ExecuteC</span><span class="p">()</span>
+</span></span></code></pre></div><ol>
+<li>每个 <code>case</code> 语句都必须是一个通道(channel)。 常见的通道包括以下:</li>
+</ol>
+<ul>
+<li><code>ctx.Done</code>。</li>
+<li><code>time.After</code>。</li>
+<li>chan 定义的通道</li>
+</ul>
+<ol start="2">
+<li><strong>所有</strong> 通达都会 <strong>被求值</strong>。 无论 <strong>进入或发送</strong></li>
+<li>如果在进入 <code>select</code> 的时候， 已经有 <strong>多个分支</strong> 的通道 <strong>就绪</strong>， 则 <strong>随机</strong> 选择一个。</li>
+<li>如果任意分支执行了， 其他分支就不执行了。</li>
+<li>关于 <code>default</code> 分支, 其他分支没准备好是</li>
+</ol>
+<ul>
+<li>当 <strong>没有 default</strong> 将 <strong>阻塞</strong>。 由于 <strong>阻塞</strong> 的特性， 所以有一个特点是 <strong>先到先执行</strong>。</li>
+<li>当 <strong>有 default</strong> 执行 <code>default</code>。</li>
+</ul>
+<p>当 select 的从句执行完成后， 整个 select 就退出了。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="一直选择">
+        一直选择
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/process-control/select/#一直选择" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 一直选择" aria-label="Anchor to: 一直选择" href="#%e4%b8%80%e7%9b%b4%e9%80%89%e6%8b%a9">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>因此， 在服务端通常会配合 <code>for</code> 一起使用。</p>
+<ol>
+<li>当 select 没有从句满足条件是， 就 <strong>阻塞</strong> 等待。</li>
+<li>当 select 执行并退出后， 被 <code>for</code> 捕获， 进入下一次循环。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">foreverSelect</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">select</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span> <span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Done</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// 执行的代码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// 执行的代码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>再来看一次 Command 结构体定义</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Command</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 子命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">commands</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Command</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 父命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">parent</span> <span class="o">*</span><span class="nx">Command</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h2 id="永远等待">
+        永远等待
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/process-control/select/#永远等待" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 永远等待" aria-label="Anchor to: 永远等待" href="#%e6%b0%b8%e8%bf%9c%e7%ad%89%e5%be%85">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>当需要自定义的服务保持一直运行不退出的时候， 可以使用 <strong>阻塞</strong> 特性。 （见过，没这样用过）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">foreverWaiting</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 自己实现了一个服务器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">server</span><span class="p">.</span><span class="nf">Run</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 阻塞以保持服务器始终运行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">select</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><code>(2)</code>  通过将传入的命令保存到 <code>[]*Command</code> 切片中， 实现了命令树的 <strong>组合</strong> 。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">c</span><span class="p">.</span><span class="nx">commands</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">commands</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="c1">// (2)
-</span></span></span></code></pre></div><p><strong>且同时</strong> 实现了 <strong>同一个命令挂载到多个父命令上</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">root</span><span class="p">.</span><span class="nf">AddCommand</span><span class="p">(</span><span class="nx">sub1</span><span class="p">,</span> <span class="nx">sub2</span><span class="p">)</span> <span class="c1">// (a)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">sub1</span><span class="p">.</span><span class="nf">AddCommand</span><span class="p">(</span><span class="nx">sub2</span><span class="p">)</span> <span class="c1">// (b)
-</span></span></span></code></pre></div><p><code>commands</code> 是一个切片， 用于保存 <strong>挂载</strong> 上来的子命令。 <strong>但是， 这里需要注意</strong>， 由于 <code>*Command</code> 是指针类型， 意味着在任何修改， 都可能影响其他调用的地方。</p>
-<p>对于 <code>sub2</code> 而言,  <code>(a)</code>处父节点是 <code>root</code>。 <code>(b)</code>处父节点是 <code>sub1</code>。 <strong>最终父节点是 <code>sub1</code></strong>。
-但不影响 <code>sub2</code> 同时是 <code>root</code> 和 <code>sub1</code> 的子命令。</p>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<img src="https://static.typonotes.com/posts/2023/02/14/devopscamp-cobra-05-subcommand/cobra-command-tree-fs8.png" alt=""  /></p>
-<p>总体来说， cobra 命令节点 <strong>独立而又统一</strong></p>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h2 id="总结">
+        总结
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/process-control/select/#总结" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 总结" aria-label="Anchor to: 总结" href="#%e6%80%bb%e7%bb%93">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>目前就发现这么多用法， 如果不写并发服务的话， 估计一辈子用不到 select。 T.T</p>
 
 </article>
 

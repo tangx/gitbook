@@ -9,12 +9,10 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。
-var root = &amp;cobra.Command{} var child = &amp;cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。
-cobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。
-删除多余的结构， cobra 节点 就是下面这样的。
-type Command struct { // 子命令 commands []*Command // 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养/挂靠 的方式实现的。
-// AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds ." />
+  <meta name="description" content="变量声明 Shell 声明变量 在 Shell 中， 变量声明通常有两种方式
+通过 declare 进行变量声明， 并赋值。 省略 declare 进行变量声明。 # 方式1 declare abc=&#34;abc&#34; declare abc_123=123 # 方式2 abc=&#34;abc&#34; abc_123=123 事实上， declare 的用法还是很复杂的， 更多可以参考: https://www.runoob.com/linux/linux-comm-declare.html
+Go 声明变量 在 Go 中， 也有两种方式
+通过 var 关键字定义， 这种方式可以在 任意位置 定义变量。 省略 var 后， 可以使用 := 进行变量声明。 但是这种方式只能在 代码块 中使用， 可以简单的理解为 只能在函数中使用。 var abc int8 = 100 // 指定 abc 的类型是 int8 var def = 100 // 推定类型为 int func demo() { a1 := 100 var a2 = 100 fmt." />
 
 
   
@@ -43,7 +41,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>5. 子命令与Cobra命令树的实现 | 《Shell 转 Go》</title>
+  <title>01. 变量声明 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -64,46 +62,42 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
   
   <meta
     property="og:title"
-    content="5. 子命令与Cobra命令树的实现"
+    content="01. 变量声明"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。
-var root = &amp;cobra.Command{} var child = &amp;cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。
-cobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。
-删除多余的结构， cobra 节点 就是下面这样的。
-type Command struct { // 子命令 commands []*Command // 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养/挂靠 的方式实现的。
-// AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds ." />
+  <meta property="og:description" content="变量声明 Shell 声明变量 在 Shell 中， 变量声明通常有两种方式
+通过 declare 进行变量声明， 并赋值。 省略 declare 进行变量声明。 # 方式1 declare abc=&#34;abc&#34; declare abc_123=123 # 方式2 abc=&#34;abc&#34; abc_123=123 事实上， declare 的用法还是很复杂的， 更多可以参考: https://www.runoob.com/linux/linux-comm-declare.html
+Go 声明变量 在 Go 中， 也有两种方式
+通过 var 关键字定义， 这种方式可以在 任意位置 定义变量。 省略 var 后， 可以使用 := 进行变量声明。 但是这种方式只能在 代码块 中使用， 可以简单的理解为 只能在函数中使用。 var abc int8 = 100 // 指定 abc 的类型是 int8 var def = 100 // 推定类型为 int func demo() { a1 := 100 var a2 = 100 fmt." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/shell-to-go/variable/" />
 
-<meta property="article:section" content="Cobra in Action" />
+<meta property="article:section" content="Shell to Go" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="5. 子命令与Cobra命令树的实现" />
-  <meta name="twitter:description" content="cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。
-var root = &amp;cobra.Command{} var child = &amp;cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。
-cobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。
-删除多余的结构， cobra 节点 就是下面这样的。
-type Command struct { // 子命令 commands []*Command // 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养/挂靠 的方式实现的。
-// AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds ." />
+<meta name="twitter:title" content="01. 变量声明" />
+  <meta name="twitter:description" content="变量声明 Shell 声明变量 在 Shell 中， 变量声明通常有两种方式
+通过 declare 进行变量声明， 并赋值。 省略 declare 进行变量声明。 # 方式1 declare abc=&#34;abc&#34; declare abc_123=123 # 方式2 abc=&#34;abc&#34; abc_123=123 事实上， declare 的用法还是很复杂的， 更多可以参考: https://www.runoob.com/linux/linux-comm-declare.html
+Go 声明变量 在 Go 中， 也有两种方式
+通过 var 关键字定义， 这种方式可以在 任意位置 定义变量。 省略 var 后， 可以使用 := 进行变量声明。 但是这种方式只能在 代码块 中使用， 可以简单的理解为 只能在函数中使用。 var abc int8 = 100 // 指定 abc 的类型是 int8 var def = 100 // 推定类型为 int func demo() { a1 := 100 var a2 = 100 fmt." />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Cobra in Action",
-      "name": "5. 子命令与Cobra命令树的实现",
-      "url" : "https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/",
-      "headline": "5. 子命令与Cobra命令树的实现",
-      "description": "cobra 的子命令 在 cobra 中， 每个 命令 都是独立的。 通过 parent.AddCommand(children) 的形式进行串连。\nvar root = \u0026cobra.Command{} var child = \u0026cobra.Command{} func init() { root.AddCommand(child) } 没了， 应用上就这么多。\ncobra 命令树 如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。\n删除多余的结构， cobra 节点 就是下面这样的。\ntype Command struct { \/\/ 子命令 commands []*Command \/\/ 父命令 parent *Command } 当进行 命令树 组合的时候， 是通过 领养\/挂靠 的方式实现的。\n\/\/ AddCommand adds one or more commands to this parent command. func (c *Command) AddCommand(cmds .",
-      "wordCount" : "242",
+      "articleSection": "Shell to Go",
+      "name": "01. 变量声明",
+      "url" : "https://typonotes.com/books/golang/shell-to-go/variable/",
+      "headline": "01. 变量声明",
+      "description": "变量声明 Shell 声明变量 在 Shell 中， 变量声明通常有两种方式\n通过 declare 进行变量声明， 并赋值。 省略 declare 进行变量声明。 # 方式1 declare abc=\u0022abc\u0022 declare abc_123=123 # 方式2 abc=\u0022abc\u0022 abc_123=123 事实上， declare 的用法还是很复杂的， 更多可以参考: https:\/\/www.runoob.com\/linux\/linux-comm-declare.html\nGo 声明变量 在 Go 中， 也有两种方式\n通过 var 关键字定义， 这种方式可以在 任意位置 定义变量。 省略 var 后， 可以使用 := 进行变量声明。 但是这种方式只能在 代码块 中使用， 可以简单的理解为 只能在函数中使用。 var abc int8 = 100 \/\/ 指定 abc 的类型是 int8 var def = 100 \/\/ 推定类型为 int func demo() { a1 := 100 var a2 = 100 fmt.",
+      "wordCount" : "280",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/"
+          "@id": "https://typonotes.com/books/golang/shell-to-go/variable/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -187,7 +181,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/shell-to-go/variable/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -532,7 +526,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
                 <span class="flex">
                   <a
                     href="/books/golang/shell-to-go/variable/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     01. 变量声明
                   </a>
@@ -1463,7 +1457,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
                 <span class="flex">
                   <a
                     href="/books/golang/cobra-in-action/05-1-command-tree/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     5. 子命令与Cobra命令树的实现
                   </a>
@@ -1621,7 +1615,7 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/cobra-in-action/' href='/books/golang/cobra-in-action/'><span itemprop='name'>99. Cobra 实战项目</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>5. 子命令与Cobra命令树的实现</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/' href='/books/golang/shell-to-go/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>01. 变量声明</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -1637,111 +1631,151 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>5. 子命令与Cobra命令树的实现</h1>
+  <h1>01. 变量声明</h1>
   <div class="gdoc-page__anchorwrap">
-    <h2 id="cobra-的子命令">
-        cobra 的子命令
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/#cobra-的子命令" class="gdoc-page__anchor clip flex align-center" title="Anchor to: cobra 的子命令" aria-label="Anchor to: cobra 的子命令" href="#cobra-%e7%9a%84%e5%ad%90%e5%91%bd%e4%bb%a4">
+    <h2 id="变量声明">
+        变量声明
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/variable/#变量声明" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 变量声明" aria-label="Anchor to: 变量声明" href="#%e5%8f%98%e9%87%8f%e5%a3%b0%e6%98%8e">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
-<p>在 cobra 中， 每个 <strong>命令</strong> 都是独立的。 通过 <code>parent.AddCommand(children)</code> 的形式进行串连。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">root</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">child</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">root</span><span class="p">.</span><span class="nf">AddCommand</span><span class="p">(</span><span class="nx">child</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>没了， 应用上就这么多。</p>
 <div class="gdoc-page__anchorwrap">
-    <h2 id="cobra-命令树">
-        cobra 命令树
-        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/05-1-command-tree/#cobra-命令树" class="gdoc-page__anchor clip flex align-center" title="Anchor to: cobra 命令树" aria-label="Anchor to: cobra 命令树" href="#cobra-%e5%91%bd%e4%bb%a4%e6%a0%91">
+    <h3 id="shell-声明变量">
+        Shell 声明变量
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/variable/#shell-声明变量" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Shell 声明变量" aria-label="Anchor to: Shell 声明变量" href="#shell-%e5%a3%b0%e6%98%8e%e5%8f%98%e9%87%8f">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>在 Shell 中， 变量声明通常有两种方式</p>
+<ol>
+<li>通过 <code>declare</code> 进行变量声明， 并赋值。</li>
+<li>省略 <code>declare</code> 进行变量声明。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 方式1</span>
+</span></span><span class="line"><span class="cl"><span class="nb">declare</span> <span class="nv">abc</span><span class="o">=</span><span class="s2">&#34;abc&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">declare</span> <span class="nv">abc_123</span><span class="o">=</span><span class="m">123</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 方式2</span>
+</span></span><span class="line"><span class="cl"><span class="nv">abc</span><span class="o">=</span><span class="s2">&#34;abc&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">abc_123</span><span class="o">=</span><span class="m">123</span>
+</span></span></code></pre></div><p>事实上， <code>declare</code> 的用法还是很复杂的， 更多可以参考: <a
+  class="gdoc-markdown__link"
+  href="https://www.runoob.com/linux/linux-comm-declare.html"
+>https://www.runoob.com/linux/linux-comm-declare.html</a></p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="go-声明变量">
+        Go 声明变量
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/variable/#go-声明变量" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Go 声明变量" aria-label="Anchor to: Go 声明变量" href="#go-%e5%a3%b0%e6%98%8e%e5%8f%98%e9%87%8f">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>在 Go 中， 也有两种方式</p>
+<ol>
+<li>通过 <code>var</code> 关键字定义， 这种方式可以在 <strong>任意位置</strong> 定义变量。</li>
+<li>省略 <code>var</code> 后， 可以使用 <code>:=</code> 进行变量声明。  但是这种方式只能在 <strong>代码块</strong> 中使用， 可以简单的理解为 <strong>只能在函数中使用</strong>。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">abc</span> <span class="kt">int8</span> <span class="p">=</span> <span class="mi">100</span> <span class="c1">// 指定 abc 的类型是 int8
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">def</span> <span class="p">=</span> <span class="mi">100</span>      <span class="c1">// 推定类型为 int
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">demo</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">a1</span> <span class="o">:=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">a2</span> <span class="p">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">a1</span><span class="p">,</span> <span class="nx">a2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h2 id="弱类型与强类型">
+        弱类型与强类型
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/variable/#弱类型与强类型" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 弱类型与强类型" aria-label="Anchor to: 弱类型与强类型" href="#%e5%bc%b1%e7%b1%bb%e5%9e%8b%e4%b8%8e%e5%bc%ba%e7%b1%bb%e5%9e%8b">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
-<p>如果你用过 gin 的路由树的话， 可能会对 cobra 的命令树实现更为深刻。</p>
-<p>删除多余的结构， cobra <strong>节点</strong> 就是下面这样的。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Command</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 子命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">commands</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Command</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 父命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">parent</span> <span class="o">*</span><span class="nx">Command</span>
+<blockquote>
+<p>有句笑话说： <strong>动态类型一时爽， 重构全是火葬场</strong></p>
+</blockquote>
+<p>Shell 中， 变量是完完全全的 <strong>弱类型（动态类型）</strong>。 换句话说， 同一个变量名可以是 <strong>字符串</strong>， 也可以是 <strong>数字</strong>， 也可以是其他的。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">abc</span><span class="o">=</span><span class="s2">&#34;word&#34;</span> <span class="c1"># 字符串</span>
+</span></span><span class="line"><span class="cl"><span class="nv">abc</span><span class="o">=</span><span class="m">123</span>  <span class="c1"># 数字</span>
+</span></span><span class="line"><span class="cl"><span class="nv">abc</span><span class="o">=(</span>value1 value2<span class="o">)</span> <span class="c1"># 数组</span>
+</span></span></code></pre></div><p>而 Go 是一个完完全全的 <strong>强类型</strong> 语言。 如果变量声明时是 <strong>字符串</strong>， 那么绝对不能再重新被赋值为 <strong>数字</strong>。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">assignment</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">abc</span> <span class="o">:=</span> <span class="s">&#34;word&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">abc</span> <span class="p">=</span> <span class="mi">123</span> <span class="c1">// 报错: cannot use 123 (untyped int constant) as string value
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">abc</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>当进行 <strong>命令树</strong> 组合的时候， 是通过 <strong>领养/挂靠</strong> 的方式实现的。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// AddCommand adds one or more commands to this parent command.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Command</span><span class="p">)</span> <span class="nf">AddCommand</span><span class="p">(</span><span class="nx">cmds</span> <span class="o">...*</span><span class="nx">Command</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">x</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">cmds</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">cmds</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">==</span> <span class="nx">c</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nb">panic</span><span class="p">(</span><span class="s">&#34;Command can&#39;t be a child of itself&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span></code></pre></div><p>更有甚者， Go 语言数字还分 <strong>有无符号</strong>， <strong>各种长度</strong>， 之间也是不能互相通用的。</p>
+<ol>
+<li><code>int, int8, int16, int32, int64</code></li>
+<li><code>uint, uint8, uint16, uint32, uint64</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">assignmentNumber</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">n</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">n8</span> <span class="kt">int8</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">n8</span> <span class="p">=</span> <span class="nx">n</span> <span class="c1">// cannot use n (variable of type int) as int8 value
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">n8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h2 id="常量只读变量">
+        常量(只读变量)
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/variable/#常量只读变量" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 常量(只读变量)" aria-label="Anchor to: 常量(只读变量)" href="#%e5%b8%b8%e9%87%8f%e5%8f%aa%e8%af%bb%e5%8f%98%e9%87%8f">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p><strong>常量</strong>， 可以理解未 <strong>不可变</strong> 的变量， 也就是 <strong>只读</strong>。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="shell-设置常量">
+        Shell 设置常量
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/variable/#shell-设置常量" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Shell 设置常量" aria-label="Anchor to: Shell 设置常量" href="#shell-%e8%ae%be%e7%bd%ae%e5%b8%b8%e9%87%8f">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>在 Shell 中， 使用 <code>readonly</code> 关键字来声明常量</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">readonly</span> <span class="nv">abc</span><span class="o">=</span><span class="m">100</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="c1">// 为子命令设置父命令（认亲）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">cmds</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">parent</span> <span class="p">=</span> <span class="nx">c</span> <span class="c1">// (1)
-</span></span></span><span class="line"><span class="cl"><span class="c1">// 省略
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// 添加传入的子命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">c</span><span class="p">.</span><span class="nx">commands</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">commands</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="c1">// (2)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><code>(1)</code> 在我们可以在任意节点调用 <code>Execute</code> 方法， 这个调用会通过 <strong>递归</strong> 找到最上层的 <strong>根</strong> 节点。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Command</span><span class="p">)</span> <span class="nf">Execute</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">ExecuteC</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">err</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">readonly</span> <span class="nv">abc</span><span class="o">=</span><span class="m">1000</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># bash: abc: readonly variable</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h3 id="go-设置常量">
+        Go 设置常量
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/variable/#go-设置常量" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Go 设置常量" aria-label="Anchor to: Go 设置常量" href="#go-%e8%ae%be%e7%bd%ae%e5%b8%b8%e9%87%8f">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>在 Go 中， 使用 <code>const</code> 关键字来声明常量。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">abc</span><span class="p">=</span><span class="mi">100</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// ExecuteC executes the command.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Command</span><span class="p">)</span> <span class="nf">ExecuteC</span><span class="p">()</span> <span class="p">(</span><span class="nx">cmd</span> <span class="o">*</span><span class="nx">Command</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Regardless of what command execute is called on, run on Root only
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 递归寻找最上层
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="nx">c</span><span class="p">.</span><span class="nf">HasParent</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Root</span><span class="p">().</span><span class="nf">ExecuteC</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>再来看一次 Command 结构体定义</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Command</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 子命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">commands</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Command</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 父命令
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">parent</span> <span class="o">*</span><span class="nx">Command</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><code>(2)</code>  通过将传入的命令保存到 <code>[]*Command</code> 切片中， 实现了命令树的 <strong>组合</strong> 。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">c</span><span class="p">.</span><span class="nx">commands</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">commands</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="c1">// (2)
-</span></span></span></code></pre></div><p><strong>且同时</strong> 实现了 <strong>同一个命令挂载到多个父命令上</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">root</span><span class="p">.</span><span class="nf">AddCommand</span><span class="p">(</span><span class="nx">sub1</span><span class="p">,</span> <span class="nx">sub2</span><span class="p">)</span> <span class="c1">// (a)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">sub1</span><span class="p">.</span><span class="nf">AddCommand</span><span class="p">(</span><span class="nx">sub2</span><span class="p">)</span> <span class="c1">// (b)
-</span></span></span></code></pre></div><p><code>commands</code> 是一个切片， 用于保存 <strong>挂载</strong> 上来的子命令。 <strong>但是， 这里需要注意</strong>， 由于 <code>*Command</code> 是指针类型， 意味着在任何修改， 都可能影响其他调用的地方。</p>
-<p>对于 <code>sub2</code> 而言,  <code>(a)</code>处父节点是 <code>root</code>。 <code>(b)</code>处父节点是 <code>sub1</code>。 <strong>最终父节点是 <code>sub1</code></strong>。
-但不影响 <code>sub2</code> 同时是 <code>root</code> 和 <code>sub1</code> 的子命令。</p>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<img src="https://static.typonotes.com/posts/2023/02/14/devopscamp-cobra-05-subcommand/cobra-command-tree-fs8.png" alt=""  /></p>
-<p>总体来说， cobra 命令节点 <strong>独立而又统一</strong></p>
+</span></span><span class="line"><span class="cl"><span class="c1">// var abc=1000
+</span></span></span></code></pre></div><p>初次之外， Go 语言中还有 <code>iota</code> 这种特殊的用法。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">const</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Monday</span>   <span class="p">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Tuesday</span>  <span class="p">=</span> <span class="kc">iota</span> <span class="c1">// 2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">_</span>               <span class="c1">// 3。 周 3 跳过, 但使用站位符是 iota 递增
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">Thursday</span> <span class="p">=</span> <span class="kc">iota</span> <span class="c1">// 4
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Friday
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Saturday
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">Sunday</span> <span class="p">=</span> <span class="kc">iota</span> <span class="o">+</span> <span class="mi">2</span> <span class="c1">// 7。 5和6不存在， 因此 Sunday 是 iota+2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">)</span>
+</span></span></code></pre></div><p>使用 iota 之后， 组内的的常量值会依次递增。</p>
+<ol>
+<li>可以通过 <code>_</code> 占位符， <strong>顺序递增</strong>。</li>
+<li>可以使用 <code>iota+n</code> 实现 <strong>跳值</strong>。</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="总结">
+        总结
+        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/variable/#总结" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 总结" aria-label="Anchor to: 总结" href="#%e6%80%bb%e7%bb%93">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>除了 <strong>弱类型和强类型</strong> 之外， 其他大部分使用方式都差不多。</p>
 
 </article>
 
