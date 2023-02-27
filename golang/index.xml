@@ -137,6 +137,31 @@ for i := 0; i &amp;lt; 1; i++ { fmt.Println(&amp;#34;i=&amp;#34;, i) } 遍历循
     </item>
     
     <item>
+      <title>04. 跳转语句(label)</title>
+      <link>https://typonotes.com/books/golang/chapter02/process-control/label/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter02/process-control/label/</guid>
+      <description>Label 标签在 Shell 中没有。 但在 Go 中却应用广泛。
+Label Label 的定义规则为 SomeName: ， 以 : 结尾。
+在 Go 使用 Label 必须使用配置关键字 continue, break, goto 的其中一个。
+需要注意的是，
+continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须配置 Laebl 使用。 goto Label for/select/switch 和 Label 直接使用 continue/break 的时候， 作用域在 当前代码体 中。 如果配合了 Label 就可以跳出到 当前代码体外。 在配合 for/select/switch 使用时， Label 必须 紧临 他们， 中间不能有任何其他语句。 func continueBreakDemo() { Outer: for m := 1; m &amp;lt; 10; m++ { Inner: for n := 1; n &amp;lt; 10; n++ { fmt.</description>
+    </item>
+    
+    <item>
+      <title>05. 并发选择语句(select)</title>
+      <link>https://typonotes.com/books/golang/chapter02/process-control/select/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter02/process-control/select/</guid>
+      <description>select 语句在 Shell 中没有， 但是在 Go 中却是 并发 的根基。
+select 在语法上面， 和 switch 相似
+使用 case 作为分支入口。 使用 default 作为默认语句。 不同的是，
+select 没有条件语句 func selectGrammar(ctx context.Context) { channel := make(chan int, 10) value := 100 select { case &amp;lt;-ctx.Done(): // 执行的代码 case &amp;lt;-time.After(10 * time.Second): // 执行的代码 case val := &amp;lt;-channel: fmt.Println(val) // 执行的代码 case channel &amp;lt;- value: // 执行代码 default: // 所有通道都没有准备好，执行的代码 } } 每个 case 语句都必须是一个通道(channel)。 常见的通道包括以下: ctx.Done。 time.</description>
+    </item>
+    
+    <item>
       <title>1. 参数绑定与交叉编译</title>
       <link>https://typonotes.com/books/golang/cobra-in-action/01-cobra-sample/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

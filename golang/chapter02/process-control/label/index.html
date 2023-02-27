@@ -9,6 +9,11 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
+  <meta name="description" content="Label 标签在 Shell 中没有。 但在 Go 中却应用广泛。
+Label Label 的定义规则为 SomeName: ， 以 : 结尾。
+在 Go 使用 Label 必须使用配置关键字 continue, break, goto 的其中一个。
+需要注意的是，
+continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须配置 Laebl 使用。 goto Label for/select/switch 和 Label 直接使用 continue/break 的时候， 作用域在 当前代码体 中。 如果配合了 Label 就可以跳出到 当前代码体外。 在配合 for/select/switch 使用时， Label 必须 紧临 他们， 中间不能有任何其他语句。 func continueBreakDemo() { Outer: for m := 1; m &lt; 10; m&#43;&#43; { Inner: for n := 1; n &lt; 10; n&#43;&#43; { fmt." />
 
 
   
@@ -37,7 +42,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>99. Cobra 实战项目 | 《Shell 转 Go》</title>
+  <title>04. 跳转语句(label) | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -58,33 +63,44 @@
   
   <meta
     property="og:title"
-    content="99. Cobra 实战项目"
+    content="04. 跳转语句(label)"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
+  <meta property="og:description" content="Label 标签在 Shell 中没有。 但在 Go 中却应用广泛。
+Label Label 的定义规则为 SomeName: ， 以 : 结尾。
+在 Go 使用 Label 必须使用配置关键字 continue, break, goto 的其中一个。
+需要注意的是，
+continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须配置 Laebl 使用。 goto Label for/select/switch 和 Label 直接使用 continue/break 的时候， 作用域在 当前代码体 中。 如果配合了 Label 就可以跳出到 当前代码体外。 在配合 for/select/switch 使用时， Label 必须 紧临 他们， 中间不能有任何其他语句。 func continueBreakDemo() { Outer: for m := 1; m &lt; 10; m&#43;&#43; { Inner: for n := 1; n &lt; 10; n&#43;&#43; { fmt." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/cobra-in-action/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/chapter02/process-control/label/" />
 
-<meta property="article:section" content="Cobra in Action" />
+<meta property="article:section" content="Chapter02" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="99. Cobra 实战项目" />
+<meta name="twitter:title" content="04. 跳转语句(label)" />
+  <meta name="twitter:description" content="Label 标签在 Shell 中没有。 但在 Go 中却应用广泛。
+Label Label 的定义规则为 SomeName: ， 以 : 结尾。
+在 Go 使用 Label 必须使用配置关键字 continue, break, goto 的其中一个。
+需要注意的是，
+continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须配置 Laebl 使用。 goto Label for/select/switch 和 Label 直接使用 continue/break 的时候， 作用域在 当前代码体 中。 如果配合了 Label 就可以跳出到 当前代码体外。 在配合 for/select/switch 使用时， Label 必须 紧临 他们， 中间不能有任何其他语句。 func continueBreakDemo() { Outer: for m := 1; m &lt; 10; m&#43;&#43; { Inner: for n := 1; n &lt; 10; n&#43;&#43; { fmt." />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Cobra in Action",
-      "name": "99. Cobra 实战项目",
-      "url" : "https://typonotes.com/books/golang/cobra-in-action/",
-      "headline": "99. Cobra 实战项目",
-      "wordCount" : "0",
+      "articleSection": "Chapter02",
+      "name": "04. 跳转语句(label)",
+      "url" : "https://typonotes.com/books/golang/chapter02/process-control/label/",
+      "headline": "04. 跳转语句(label)",
+      "description": "Label 标签在 Shell 中没有。 但在 Go 中却应用广泛。\nLabel Label 的定义规则为 SomeName: ， 以 : 结尾。\n在 Go 使用 Label 必须使用配置关键字 continue, break, goto 的其中一个。\n需要注意的是，\ncontinue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须配置 Laebl 使用。 goto Label for\/select\/switch 和 Label 直接使用 continue\/break 的时候， 作用域在 当前代码体 中。 如果配合了 Label 就可以跳出到 当前代码体外。 在配合 for\/select\/switch 使用时， Label 必须 紧临 他们， 中间不能有任何其他语句。 func continueBreakDemo() { Outer: for m := 1; m \u003c 10; m\u002b\u002b { Inner: for n := 1; n \u003c 10; n\u002b\u002b { fmt.",
+      "wordCount" : "138",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/cobra-in-action/"
+          "@id": "https://typonotes.com/books/golang/chapter02/process-control/label/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -168,7 +184,7 @@
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/cobra-in-action/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/chapter02/process-control/label/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -755,7 +771,7 @@
                 <span class="flex">
                   <a
                     href="/books/golang/chapter02/process-control/label/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     04. 跳转语句(label)
                   </a>
@@ -1363,7 +1379,7 @@
 
       <div class="gdoc-page">
         
-  
+
 
 
   
@@ -1398,7 +1414,23 @@
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>99. Cobra 实战项目</span><meta itemprop='position' content='4' /></li>
+    
+    
+    
+    
+  
+  
+    
+    
+    
+    
+  
+  
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter02/' href='/books/golang/chapter02/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/chapter02/process-control/' href='/books/golang/chapter02/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>04. 跳转语句(label)</span><meta itemprop='position' content='6' /></li>
+  
+
+  
+
   
 
   
@@ -1411,12 +1443,90 @@
 
 
 
-  <article
-    class="gdoc-markdown gdoc-markdown__align--left"
-  >
-    <h1>99. Cobra 实战项目</h1>
-    
-  </article>
+<article class="gdoc-markdown gdoc-markdown__align-- left">
+  <h1>04. 跳转语句(label)</h1>
+  <p><code>Label</code> 标签在 Shell 中没有。 但在 Go 中却应用广泛。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="label">
+        Label
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/label/#label" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Label" aria-label="Anchor to: Label" href="#label">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p><code>Label</code> 的定义规则为 <code>SomeName:</code> ， 以 <code>:</code> 结尾。</p>
+<p>在 Go 使用 <code>Label</code> 必须使用配置关键字 <code>continue, break, goto</code> 的其中一个。</p>
+<p>需要注意的是，</p>
+<ol>
+<li><code>continue</code> 和 <code>break</code> 的 <code>Label</code> 可以省略。 <code>continue|break [Label]</code></li>
+<li><code>goto</code> 必须配置 <code>Laebl</code> 使用。 <code>goto Label</code></li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="forselectswitch-和-label">
+        for/select/switch 和 Label
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/label/#forselectswitch-和-label" class="gdoc-page__anchor clip flex align-center" title="Anchor to: for/select/switch 和 Label" aria-label="Anchor to: for/select/switch 和 Label" href="#forselectswitch-%e5%92%8c-label">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<ol>
+<li>直接使用 <code>continue/break</code> 的时候， 作用域在 <strong>当前代码体</strong> 中。 如果配合了 <code>Label</code> 就可以跳出到 <strong>当前代码体外</strong>。</li>
+<li>在配合 <code>for/select/switch</code> 使用时， <strong><code>Label</code></strong> 必须 <strong>紧临</strong> 他们， 中间不能有任何其他语句。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">continueBreakDemo</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Outer</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">m</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">m</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">m</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">Inner</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="nx">n</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">n</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">n</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d*%d=%d &#34;</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">m</span><span class="o">*</span><span class="nx">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nx">n</span> <span class="o">==</span> <span class="mi">3</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">break</span> <span class="nx">Outer</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nx">n</span><span class="o">%</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">break</span> <span class="nx">Inner</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Output:
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 1*1=1 1*2=2 1*3=3
+</span></span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h2 id="goto-label">
+        Goto Label
+        <a data-clipboard-text="https://typonotes.com/books/golang/chapter02/process-control/label/#goto-label" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Goto Label" aria-label="Anchor to: Goto Label" href="#goto-label">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>在配置 <code>goto</code> 使用的时候， <code>Label</code> 的位置没有特别要求。 即可以在被 <strong>调用前或后</strong>。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">gotoLabel</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;刚开始&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">goto</span> <span class="nx">End</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;是奇数&#34;</span><span class="p">)</span> <span class="c1">// 永远不会执行， IDE 也提示对应提示
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">End</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;结束啦&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
+</article>
+
+
+
+
+<div class="post bg-white">
+  <script src="https://utteranc.es/client.js" repo="tangx/tangx.github.io"
+    issue-term="pathname" theme="github-light" crossorigin="anonymous"
+    async>
+    </script>
+</div>
+
 
 
 
