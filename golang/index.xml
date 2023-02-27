@@ -6,7 +6,19 @@
     <description>Recent content on 《Shell 转 Go》</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>01 环境变量</title>
+      <title>01. 变量声明</title>
+      <link>https://typonotes.com/books/golang/chapter02/variable/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter02/variable/</guid>
+      <description>变量声明 Shell 声明变量 在 Shell 中， 变量声明通常有两种方式
+通过 declare 进行变量声明， 并赋值。 省略 declare 进行变量声明。 # 方式1 declare abc=&amp;#34;abc&amp;#34; declare abc_123=123 # 方式2 abc=&amp;#34;abc&amp;#34; abc_123=123 事实上， declare 的用法还是很复杂的， 更多可以参考: https://www.runoob.com/linux/linux-comm-declare.html
+Go 声明变量 在 Go 中， 也有两种方式
+通过 var 关键字定义， 这种方式可以在 任意位置 定义变量。 省略 var 后， 可以使用 := 进行变量声明。 但是这种方式只能在 代码块 中使用， 可以简单的理解为 只能在函数中使用。 var abc int8 = 100 // 指定 abc 的类型是 int8 var def = 100 // 推定类型为 int func demo() { a1 := 100 var a2 = 100 fmt.</description>
+    </item>
+    
+    <item>
+      <title>01. 环境变量</title>
       <link>https://typonotes.com/books/golang/chapter03/01-environment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -15,16 +27,46 @@
     </item>
     
     <item>
-      <title>01. 变量声明</title>
-      <link>https://typonotes.com/books/golang/chapter02/01-variable-declare/</link>
+      <title>01. 项目简介</title>
+      <link>https://typonotes.com/books/golang/chapter01/01-introduce/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter02/01-variable-declare/</guid>
+      <guid>https://typonotes.com/books/golang/chapter01/01-introduce/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>02 时间管理</title>
+      <title>02. 下载安装与环境配置</title>
+      <link>https://typonotes.com/books/golang/chapter01/02-install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter01/02-install/</guid>
+      <description>下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
+通常我会选择压缩包， 然后解压到所需要安装的目录。
+例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
+cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。</description>
+    </item>
+    
+    <item>
+      <title>02. 函数</title>
+      <link>https://typonotes.com/books/golang/chapter02/function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter02/function/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>02. 基础数据类型</title>
+      <link>https://typonotes.com/books/golang/chapter02/basic-type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/chapter02/basic-type/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>02. 时间管理</title>
       <link>https://typonotes.com/books/golang/chapter03/02-datetime/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -33,16 +75,16 @@
     </item>
     
     <item>
-      <title>02. 函数</title>
-      <link>https://typonotes.com/books/golang/chapter02/02-function/</link>
+      <title>03. VSCode配置与插件</title>
+      <link>https://typonotes.com/books/golang/chapter01/03-vscode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter02/02-function/</guid>
+      <guid>https://typonotes.com/books/golang/chapter01/03-vscode/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>03 文件路径</title>
+      <title>03. 文件路径</title>
       <link>https://typonotes.com/books/golang/chapter03/03-filepath/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -52,15 +94,15 @@
     
     <item>
       <title>03. 流程控制</title>
-      <link>https://typonotes.com/books/golang/chapter02/03-clause/</link>
+      <link>https://typonotes.com/books/golang/chapter02/process-control/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/chapter02/03-clause/</guid>
+      <guid>https://typonotes.com/books/golang/chapter02/process-control/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>04 文件操作</title>
+      <title>04. 文件操作</title>
       <link>https://typonotes.com/books/golang/chapter03/04-file-operation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -78,27 +120,6 @@
     </item>
     
     <item>
-      <title>1. 项目简介</title>
-      <link>https://typonotes.com/books/golang/chapter01/01-introduce/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/chapter01/01-introduce/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>2. 下载安装与环境配置</title>
-      <link>https://typonotes.com/books/golang/chapter01/02-install/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/chapter01/02-install/</guid>
-      <description>下载和安装 前往 官网Go下载地址 页面下载与自己操作系统对应二进制文件。
-通常我会选择压缩包， 然后解压到所需要安装的目录。
-例如， 我是 mac 的 intel 系统， go1.19.6.darwin-amd64.tar.gz
-cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.19.6.darwin-amd64.tar.gz -C /usr/local 配置环境变量 GOPROXY: Go代理地址， 通常使用 https://goproxy.cn 或 https://goproxy.io GOROOT: Go 二进制的位置, 即我们上面解压目录的 /usr/local/go GOPATH: 这个是我们项目代码的位置， 有了 go mod 之后 不是绝对的了 使用 go install 后， 编译的二进制会默认在 $GOPATH/bin/ 使用 go get 下载的所有库文件在 $GOPATH/pkg/mod/ 中 可以直接 go mod init， 如果项目在 $GOPATH/src/ 中， 会默认以相对目录配置 module 路径。 对于 Mac 和 Linux 系统， 设置环境变量。 配置到 /etc/profile 中。</description>
-    </item>
-    
-    <item>
       <title>2. 配置文件读取与写入</title>
       <link>https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -109,15 +130,6 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
 { &amp;#34;name&amp;#34;:&amp;#34;zhangsan&amp;#34;, &amp;#34;age&amp;#34;: 20 } 单个参数绑定的困境 之前我们使用了 单个参数独立绑定 的方式， 为我们的 greeting 应用绑定了 name 和 age 参数。
 这种方式有个很明显的缺点， 如果应用参数的数量较多（比如说几十个） 的时候， 就会出现庞大的参数列表， 可读性 和 维护性 都会变得很差。
 var ( name string age int ) func init() { root.Flags().StringVarP(&amp;amp;name, &amp;#34;name&amp;#34;, &amp;#34;n&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;名字&amp;#34;) root.Flags().IntVarP(&amp;amp;age, &amp;#34;age&amp;#34;, &amp;#34;a&amp;#34;, 20, &amp;#34;名字&amp;#34;) } 因此在生产中， 我们常常会选择 配置 文件来进行 参数/变量 的管理。 例如作业要求中提到的 YAML 或者 JSON 文件。</description>
-    </item>
-    
-    <item>
-      <title>3. VSCode配置与插件</title>
-      <link>https://typonotes.com/books/golang/chapter01/03-vscode/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/chapter01/03-vscode/</guid>
-      <description></description>
     </item>
     
     <item>
