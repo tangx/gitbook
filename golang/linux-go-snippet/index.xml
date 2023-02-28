@@ -24,19 +24,6 @@
     </item>
     
     <item>
-      <title>05. 大小写转换(tr)</title>
-      <link>https://typonotes.com/books/golang/linux-go-snippet/tr/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/linux-go-snippet/tr/</guid>
-      <description>大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
-echo &amp;#34;abcDefg&amp;#34; | tr &amp;#39;a-z&amp;#39; &amp;#39;A-Z&amp;#39; 对于这个使用 Go 中对应的标准库 strings
-func TrDemo() { s1 := strings.ToLower(&amp;#34;abcDEFg&amp;#34;) // 转小写 s2 := strings.ToUpper(&amp;#34;abcDEFg&amp;#34;) // 转大写 fmt.Println(s1, s2) } 删除字符 使用 tr -d 删除出现的字符
-echo &amp;#34;abcabcabc&amp;#34; | tr -d &amp;#34;ac&amp;#34; 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器
-func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&amp;#34;a&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;c&amp;#34;, &amp;#34;&amp;#34;) ret := delAbc.Replace(&amp;#34;abcabcabc&amp;#34;) fmt.Println(ret) } 其中, NewReplacer 的参数必须为双数， 两个一组(old -&amp;gt; new)。 例如这里的就是 a -&amp;gt; 空, c -&amp;gt; 空， 也就是删除的意思。</description>
-    </item>
-    
-    <item>
       <title>cut</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/cut/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -46,7 +33,7 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&amp;#34;a&amp;#
     </item>
     
     <item>
-      <title>ls</title>
+      <title>ls 查看目录内容</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/ls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -57,7 +44,7 @@ func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { pani
     </item>
     
     <item>
-      <title>md5sum</title>
+      <title>md5sum 计算md5值</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -69,12 +56,14 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
     </item>
     
     <item>
-      <title>mkdir</title>
+      <title>mkdir 创建目录</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/mkdir/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://typonotes.com/books/golang/linux-go-snippet/mkdir/</guid>
-      <description></description>
+      <description>在 Linux 中， 创建目录使用 mkdir， 如果要多级创建使用 mkdir -p
+mkdir -p /path mkdir -p /path/to/abc 在 Go 中， 有对应的标准库 os.Mkdir
+func Mkdir() { os.Mkdir(&amp;#34;path&amp;#34;, os.ModePerm) // 创建一级目录 os.MkdirAll(&amp;#34;path/to/abc&amp;#34;, os.ModePerm) // 创建多级目录 } 在创建的时候， 需要指定目录权限， 通常使用 os.ModePerm 就可以了。</description>
     </item>
     
     <item>
@@ -87,7 +76,7 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
     </item>
     
     <item>
-      <title>sleep</title>
+      <title>sleep 时间等待</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/sleep/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -97,6 +86,19 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
 sleep 2 在 Go 中 在 Go 中， 对应使用 time.Sleep(n) 方法。但是需要注意的是， n 的默认单位是 毫秒。
 time.Sleep(200) 如果要实现如果实现 秒 级别等待，
 可以将数字扩大 1000 倍， n * 1000 可以使用单位 n * time.Second time.Sleep(2 * 1000) time.Sleep(2 * time.Second) 常见单位 const ( Nanosecond Duration = 1 // 纳秒 Microsecond = 1000 * Nanosecond // 微秒 Millisecond = 1000 * Microsecond // 毫秒 Second = 1000 * Millisecond Minute = 60 * Second Hour = 60 * Minute ) </description>
+    </item>
+    
+    <item>
+      <title>tr 大小写转换</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/tr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/tr/</guid>
+      <description>大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
+echo &amp;#34;abcDefg&amp;#34; | tr &amp;#39;a-z&amp;#39; &amp;#39;A-Z&amp;#39; 对于这个使用 Go 中对应的标准库 strings
+func TrDemo() { s1 := strings.ToLower(&amp;#34;abcDEFg&amp;#34;) // 转小写 s2 := strings.ToUpper(&amp;#34;abcDEFg&amp;#34;) // 转大写 fmt.Println(s1, s2) } 删除字符 使用 tr -d 删除出现的字符
+echo &amp;#34;abcabcabc&amp;#34; | tr -d &amp;#34;ac&amp;#34; 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器
+func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&amp;#34;a&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;c&amp;#34;, &amp;#34;&amp;#34;) ret := delAbc.Replace(&amp;#34;abcabcabc&amp;#34;) fmt.Println(ret) } 其中, NewReplacer 的参数必须为双数， 两个一组(old -&amp;gt; new)。 例如这里的就是 a -&amp;gt; 空, c -&amp;gt; 空， 也就是删除的意思。</description>
     </item>
     
   </channel>

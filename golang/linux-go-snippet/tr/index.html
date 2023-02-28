@@ -42,7 +42,7 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#3
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>05. 大小写转换(tr) | 《Shell 转 Go》</title>
+  <title>tr 大小写转换 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -63,7 +63,7 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#3
   
   <meta
     property="og:title"
-    content="05. 大小写转换(tr)"
+    content="tr 大小写转换"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
   <meta property="og:description" content="大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
@@ -78,7 +78,7 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#3
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="05. 大小写转换(tr)" />
+<meta name="twitter:title" content="tr 大小写转换" />
   <meta name="twitter:description" content="大小写转换 tr 其中一个最常见的， 是 大小写 的转换。
 echo &#34;abcDefg&#34; | tr &#39;a-z&#39; &#39;A-Z&#39; 对于这个使用 Go 中对应的标准库 strings
 func TrDemo() { s1 := strings.ToLower(&#34;abcDEFg&#34;) // 转小写 s2 := strings.ToUpper(&#34;abcDEFg&#34;) // 转大写 fmt.Println(s1, s2) } 删除字符 使用 tr -d 删除出现的字符
@@ -91,9 +91,9 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#3
       "@context": "http://schema.org",
       "@type": "TechArticle",
       "articleSection": "Linux Go Snippet",
-      "name": "05. 大小写转换(tr)",
+      "name": "tr 大小写转换",
       "url" : "https://typonotes.com/books/golang/linux-go-snippet/tr/",
-      "headline": "05. 大小写转换(tr)",
+      "headline": "tr 大小写转换",
       "description": "大小写转换 tr 其中一个最常见的， 是 大小写 的转换。\necho \u0022abcDefg\u0022 | tr \u0027a-z\u0027 \u0027A-Z\u0027 对于这个使用 Go 中对应的标准库 strings\nfunc TrDemo() { s1 := strings.ToLower(\u0022abcDEFg\u0022) \/\/ 转小写 s2 := strings.ToUpper(\u0022abcDEFg\u0022) \/\/ 转大写 fmt.Println(s1, s2) } 删除字符 使用 tr -d 删除出现的字符\necho \u0022abcabcabc\u0022 | tr -d \u0022ac\u0022 这种情况下， 可以使用 strings.NewReplacer 创建自己的过滤器\nfunc TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(\u0022a\u0022, \u0022\u0022, \u0022c\u0022, \u0022\u0022) ret := delAbc.Replace(\u0022abcabcabc\u0022) fmt.Println(ret) } 其中, NewReplacer 的参数必须为双数， 两个一组(old -\u003e new)。 例如这里的就是 a -\u003e 空, c -\u003e 空， 也就是删除的意思。",
       "wordCount" : "76",
       "inLanguage": "en",
@@ -1338,42 +1338,6 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#3
               
             >
               
-                <span class="flex">
-                  <a
-                    href="/books/golang/linux-go-snippet/tr/"
-                    class="gdoc-nav__entry is-active"
-                  >
-                    05. 大小写转换(tr)
-                  </a>
-                </span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
                 <span class="flex">cut</span>
               
               
@@ -1408,7 +1372,7 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#3
                     href="/books/golang/linux-go-snippet/ls/"
                     class="gdoc-nav__entry"
                   >
-                    ls
+                    ls 查看目录内容
                   </a>
                 </span>
               
@@ -1444,7 +1408,7 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#3
                     href="/books/golang/linux-go-snippet/md5sum/"
                     class="gdoc-nav__entry"
                   >
-                    md5sum
+                    md5sum 计算md5值
                   </a>
                 </span>
               
@@ -1475,7 +1439,14 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#3
               
             >
               
-                <span class="flex">mkdir</span>
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/mkdir/"
+                    class="gdoc-nav__entry"
+                  >
+                    mkdir 创建目录
+                  </a>
+                </span>
               
               
             </label>
@@ -1538,7 +1509,43 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#3
                     href="/books/golang/linux-go-snippet/sleep/"
                     class="gdoc-nav__entry"
                   >
-                    sleep
+                    sleep 时间等待
+                  </a>
+                </span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/tr/"
+                    class="gdoc-nav__entry is-active"
+                  >
+                    tr 大小写转换
                   </a>
                 </span>
               
@@ -2060,7 +2067,7 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#3
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>05. 大小写转换(tr)</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>tr 大小写转换</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -2076,7 +2083,7 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&#34;a&#34;, &#3
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>05. 大小写转换(tr)</h1>
+  <h1>tr 大小写转换</h1>
   <div class="gdoc-page__anchorwrap">
     <h2 id="大小写转换">
         大小写转换

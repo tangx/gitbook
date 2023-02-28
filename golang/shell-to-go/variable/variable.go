@@ -27,14 +27,14 @@ func demo2(gg int) {
 
 func assignment() {
 	abc := "word"
-	abc = 123 // cannot use 123 (untyped int constant) as string value
+	// abc = 123 // cannot use 123 (untyped int constant) as string value
 
 	fmt.Println(abc)
 }
 
 func assignmentNumber() {
-	var n int = 100
+	// var n int = 100
 	var n8 int8
-	n8 = n // cannot use n (variable of type int) as int8 value
+	// n8 = n // cannot use n (variable of type int) as int8 value
 	fmt.Println(n8)
 }

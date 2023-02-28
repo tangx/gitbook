@@ -53,8 +53,6 @@
   </url><url>
     <loc>https://typonotes.com/books/golang/linux-go-snippet/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/linux-go-snippet/tr/</loc>
-  </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/process-control/select/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/go-features/generic/</loc>
@@ -96,5 +94,7 @@
     <loc>https://typonotes.com/books/golang/linux-go-snippet/sleep/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/tags/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/tr/</loc>
   </url>
 </urlset>

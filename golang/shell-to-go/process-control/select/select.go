@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 	"time"
-
-	"k8s.io/apiextensions-apiserver/pkg/cmd/server"
 )
 
 func selectGrammar(ctx context.Context) {
@@ -41,7 +39,7 @@ func foreverSelect(ctx context.Context) {
 func foreverWaiting() {
 
 	// 自己实现了一个服务器
-	server.Run()
+	// server.Run()
 
 	// 阻塞以保持服务器始终运行
 	select {}

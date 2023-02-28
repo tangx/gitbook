@@ -9,6 +9,9 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
+  <meta name="description" content="在 Linux 中， 创建目录使用 mkdir， 如果要多级创建使用 mkdir -p
+mkdir -p /path mkdir -p /path/to/abc 在 Go 中， 有对应的标准库 os.Mkdir
+func Mkdir() { os.Mkdir(&#34;path&#34;, os.ModePerm) // 创建一级目录 os.MkdirAll(&#34;path/to/abc&#34;, os.ModePerm) // 创建多级目录 } 在创建的时候， 需要指定目录权限， 通常使用 os.ModePerm 就可以了。" />
 
 
   
@@ -37,7 +40,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>mkdir | 《Shell 转 Go》</title>
+  <title>mkdir 创建目录 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -58,9 +61,12 @@
   
   <meta
     property="og:title"
-    content="mkdir"
+    content="mkdir 创建目录"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
+  <meta property="og:description" content="在 Linux 中， 创建目录使用 mkdir， 如果要多级创建使用 mkdir -p
+mkdir -p /path mkdir -p /path/to/abc 在 Go 中， 有对应的标准库 os.Mkdir
+func Mkdir() { os.Mkdir(&#34;path&#34;, os.ModePerm) // 创建一级目录 os.MkdirAll(&#34;path/to/abc&#34;, os.ModePerm) // 创建多级目录 } 在创建的时候， 需要指定目录权限， 通常使用 os.ModePerm 就可以了。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://typonotes.com/books/golang/linux-go-snippet/mkdir/" />
 
@@ -68,7 +74,10 @@
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="mkdir" />
+<meta name="twitter:title" content="mkdir 创建目录" />
+  <meta name="twitter:description" content="在 Linux 中， 创建目录使用 mkdir， 如果要多级创建使用 mkdir -p
+mkdir -p /path mkdir -p /path/to/abc 在 Go 中， 有对应的标准库 os.Mkdir
+func Mkdir() { os.Mkdir(&#34;path&#34;, os.ModePerm) // 创建一级目录 os.MkdirAll(&#34;path/to/abc&#34;, os.ModePerm) // 创建多级目录 } 在创建的时候， 需要指定目录权限， 通常使用 os.ModePerm 就可以了。" />
 
 
   <script type="application/ld+json">
@@ -76,10 +85,11 @@
       "@context": "http://schema.org",
       "@type": "TechArticle",
       "articleSection": "Linux Go Snippet",
-      "name": "mkdir",
+      "name": "mkdir 创建目录",
       "url" : "https://typonotes.com/books/golang/linux-go-snippet/mkdir/",
-      "headline": "mkdir",
-      "wordCount" : "0",
+      "headline": "mkdir 创建目录",
+      "description": "在 Linux 中， 创建目录使用 mkdir， 如果要多级创建使用 mkdir -p\nmkdir -p \/path mkdir -p \/path\/to\/abc 在 Go 中， 有对应的标准库 os.Mkdir\nfunc Mkdir() { os.Mkdir(\u0022path\u0022, os.ModePerm) \/\/ 创建一级目录 os.MkdirAll(\u0022path\/to\/abc\u0022, os.ModePerm) \/\/ 创建多级目录 } 在创建的时候， 需要指定目录权限， 通常使用 os.ModePerm 就可以了。",
+      "wordCount" : "36",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -1322,42 +1332,6 @@
               
             >
               
-                <span class="flex">
-                  <a
-                    href="/books/golang/linux-go-snippet/tr/"
-                    class="gdoc-nav__entry"
-                  >
-                    05. 大小写转换(tr)
-                  </a>
-                </span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
                 <span class="flex">cut</span>
               
               
@@ -1392,7 +1366,7 @@
                     href="/books/golang/linux-go-snippet/ls/"
                     class="gdoc-nav__entry"
                   >
-                    ls
+                    ls 查看目录内容
                   </a>
                 </span>
               
@@ -1428,7 +1402,7 @@
                     href="/books/golang/linux-go-snippet/md5sum/"
                     class="gdoc-nav__entry"
                   >
-                    md5sum
+                    md5sum 计算md5值
                   </a>
                 </span>
               
@@ -1459,7 +1433,14 @@
               
             >
               
-                <span class="flex">mkdir</span>
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/mkdir/"
+                    class="gdoc-nav__entry is-active"
+                  >
+                    mkdir 创建目录
+                  </a>
+                </span>
               
               
             </label>
@@ -1522,7 +1503,43 @@
                     href="/books/golang/linux-go-snippet/sleep/"
                     class="gdoc-nav__entry"
                   >
-                    sleep
+                    sleep 时间等待
+                  </a>
+                </span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/tr/"
+                    class="gdoc-nav__entry"
+                  >
+                    tr 大小写转换
                   </a>
                 </span>
               
@@ -2044,7 +2061,7 @@
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>mkdir</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>mkdir 创建目录</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -2060,8 +2077,17 @@
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>mkdir</h1>
-  
+  <h1>mkdir 创建目录</h1>
+  <p>在 Linux 中， 创建目录使用 <code>mkdir</code>， 如果要多级创建使用 <code>mkdir -p</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p /path
+</span></span><span class="line"><span class="cl">mkdir -p /path/to/abc
+</span></span></code></pre></div><p>在 Go 中， 有对应的标准库 <code>os.Mkdir</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Mkdir</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">os</span><span class="p">.</span><span class="nf">Mkdir</span><span class="p">(</span><span class="s">&#34;path&#34;</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">ModePerm</span><span class="p">)</span> <span class="c1">// 创建一级目录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">os</span><span class="p">.</span><span class="nf">MkdirAll</span><span class="p">(</span><span class="s">&#34;path/to/abc&#34;</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">ModePerm</span><span class="p">)</span> <span class="c1">// 创建多级目录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>在创建的时候， 需要指定目录权限， 通常使用 <code>os.ModePerm</code> 就可以了。</p>
+
 </article>
 
 
