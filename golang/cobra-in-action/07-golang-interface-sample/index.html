@@ -9,7 +9,13 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content=" 1. 文件名 2. 文件后缀 " />
+  <meta name="description" content="Golang 接口(interface) 简介和入门使用 上下文 interface 应该是 Go语言 中一个极其重要的 基石 概念了。
+这里有一篇 Go 语言设计与实现 - 接口 interface ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。
+在 go v1.18 中， interface 有了一个别名 any。 所以在说 interface 和 any 的时候， 其实说的是相同的东西。
+interface 的使用场景到处都是。 还记得我们之前说的 JSON 和 YAML 的配置文件处理吗？
+// json.Marshal func Marshal(v any) ([]byte, error) { // .... } 看完文章， 你至少应该知道
+什么是 鸭式对象 ？ 怎么使用 接口断言 ？ 鸭式对象 先来说说 鸭式对象: 叫的像鸭子， 走路像鸭子， 那它就是鸭子。
+我们对鸭子下一个定义， 1. 发出嘎嘎的叫声， 2." />
 
 
   
@@ -38,7 +44,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>04. 文件名管理 | 《Shell 转 Go》</title>
+  <title>7. Golang 接口(interface) 简介和入门使用 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -59,36 +65,48 @@
   
   <meta
     property="og:title"
-    content="04. 文件名管理"
+    content="7. Golang 接口(interface) 简介和入门使用"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content=" 1. 文件名 2. 文件后缀 " />
+  <meta property="og:description" content="Golang 接口(interface) 简介和入门使用 上下文 interface 应该是 Go语言 中一个极其重要的 基石 概念了。
+这里有一篇 Go 语言设计与实现 - 接口 interface ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。
+在 go v1.18 中， interface 有了一个别名 any。 所以在说 interface 和 any 的时候， 其实说的是相同的东西。
+interface 的使用场景到处都是。 还记得我们之前说的 JSON 和 YAML 的配置文件处理吗？
+// json.Marshal func Marshal(v any) ([]byte, error) { // .... } 看完文章， 你至少应该知道
+什么是 鸭式对象 ？ 怎么使用 接口断言 ？ 鸭式对象 先来说说 鸭式对象: 叫的像鸭子， 走路像鸭子， 那它就是鸭子。
+我们对鸭子下一个定义， 1. 发出嘎嘎的叫声， 2." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/linux-go-snippet/filename/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/" />
 
-<meta property="article:section" content="Linux Go Snippet" />
+<meta property="article:section" content="Cobra in Action" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="04. 文件名管理" />
-  <meta name="twitter:description" content=" 1. 文件名 2. 文件后缀 " />
+<meta name="twitter:title" content="7. Golang 接口(interface) 简介和入门使用" />
+  <meta name="twitter:description" content="Golang 接口(interface) 简介和入门使用 上下文 interface 应该是 Go语言 中一个极其重要的 基石 概念了。
+这里有一篇 Go 语言设计与实现 - 接口 interface ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。
+在 go v1.18 中， interface 有了一个别名 any。 所以在说 interface 和 any 的时候， 其实说的是相同的东西。
+interface 的使用场景到处都是。 还记得我们之前说的 JSON 和 YAML 的配置文件处理吗？
+// json.Marshal func Marshal(v any) ([]byte, error) { // .... } 看完文章， 你至少应该知道
+什么是 鸭式对象 ？ 怎么使用 接口断言 ？ 鸭式对象 先来说说 鸭式对象: 叫的像鸭子， 走路像鸭子， 那它就是鸭子。
+我们对鸭子下一个定义， 1. 发出嘎嘎的叫声， 2." />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Linux Go Snippet",
-      "name": "04. 文件名管理",
-      "url" : "https://typonotes.com/books/golang/linux-go-snippet/filename/",
-      "headline": "04. 文件名管理",
-      "description": " 1. 文件名 2. 文件后缀 ",
-      "wordCount" : "4",
+      "articleSection": "Cobra in Action",
+      "name": "7. Golang 接口(interface) 简介和入门使用",
+      "url" : "https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/",
+      "headline": "7. Golang 接口(interface) 简介和入门使用",
+      "description": "Golang 接口(interface) 简介和入门使用 上下文 interface 应该是 Go语言 中一个极其重要的 基石 概念了。\n这里有一篇 Go 语言设计与实现 - 接口 interface ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。\n在 go v1.18 中， interface 有了一个别名 any。 所以在说 interface 和 any 的时候， 其实说的是相同的东西。\ninterface 的使用场景到处都是。 还记得我们之前说的 JSON 和 YAML 的配置文件处理吗？\n\/\/ json.Marshal func Marshal(v any) ([]byte, error) { \/\/ .... } 看完文章， 你至少应该知道\n什么是 鸭式对象 ？ 怎么使用 接口断言 ？ 鸭式对象 先来说说 鸭式对象: 叫的像鸭子， 走路像鸭子， 那它就是鸭子。\n我们对鸭子下一个定义， 1. 发出嘎嘎的叫声， 2.",
+      "wordCount" : "345",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/linux-go-snippet/filename/"
+          "@id": "https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -172,7 +190,7 @@
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/linux-go-snippet/filename/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -1198,7 +1216,7 @@
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-5bbc575b"
-                checked
+                
               
             />
             <label
@@ -1293,7 +1311,7 @@
                 <span class="flex">
                   <a
                     href="/books/golang/linux-go-snippet/filename/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     04. 文件名管理
                   </a>
@@ -1737,7 +1755,7 @@
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-b67bb428"
-                
+                checked
               
             />
             <label
@@ -2048,7 +2066,7 @@
                 <span class="flex">
                   <a
                     href="/books/golang/cobra-in-action/07-golang-interface-sample/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     7. Golang 接口(interface) 简介和入门使用
                   </a>
@@ -2134,7 +2152,7 @@
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>04. 文件名管理</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/cobra-in-action/' href='/books/golang/cobra-in-action/'><span itemprop='name'>99. Cobra 实战项目</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>7. Golang 接口(interface) 简介和入门使用</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -2150,23 +2168,183 @@
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>04. 文件名管理</h1>
+  <h1>7. Golang 接口(interface) 简介和入门使用</h1>
   <div class="gdoc-page__anchorwrap">
-    <h2 id="1-文件名">
-        1. 文件名
-        <a data-clipboard-text="https://typonotes.com/books/golang/linux-go-snippet/filename/#1-文件名" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 1. 文件名" aria-label="Anchor to: 1. 文件名" href="#1-%e6%96%87%e4%bb%b6%e5%90%8d">
+    <h1 id="golang-接口interface-简介和入门使用">
+        Golang 接口(interface) 简介和入门使用
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/#golang-接口interface-简介和入门使用" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Golang 接口(interface) 简介和入门使用" aria-label="Anchor to: Golang 接口(interface) 简介和入门使用" href="#golang-%e6%8e%a5%e5%8f%a3interface-%e7%ae%80%e4%bb%8b%e5%92%8c%e5%85%a5%e9%97%a8%e4%bd%bf%e7%94%a8">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
-    </h2>
+    </h1>
 </div>
+<p>上下文 <code>interface</code> 应该是 Go语言 中一个极其重要的 <strong>基石</strong> 概念了。</p>
+<p>这里有一篇 <a
+  class="gdoc-markdown__link"
+  href="https://draveness.me/golang/docs/part2-foundation/ch04-basic/golang-interface/"
+>Go 语言设计与实现 - 接口 interface</a> ， 是目前我学习的资料中 <strong>完成度</strong> 和 <strong>友善度</strong> 都很高的一篇文章。</p>
+<p>在 <code>go v1.18</code> 中， <code>interface</code> 有了一个别名 <code>any</code>。 所以在说 interface 和 any 的时候， 其实说的是相同的东西。</p>
+<p><code>interface</code> 的使用场景到处都是。 还记得我们之前说的 <code>JSON</code> 和 <code>YAML</code> 的配置文件处理吗？</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// json.Marshal
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">Marshal</span><span class="p">(</span><span class="nx">v</span> <span class="nx">any</span><span class="p">)</span> <span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// ....
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>看完文章， 你至少应该知道</p>
+<ol>
+<li>什么是 <strong>鸭式对象</strong> ？</li>
+<li>怎么使用 <strong>接口断言</strong> ？</li>
+</ol>
 <div class="gdoc-page__anchorwrap">
-    <h2 id="2-文件后缀">
-        2. 文件后缀
-        <a data-clipboard-text="https://typonotes.com/books/golang/linux-go-snippet/filename/#2-文件后缀" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 2. 文件后缀" aria-label="Anchor to: 2. 文件后缀" href="#2-%e6%96%87%e4%bb%b6%e5%90%8e%e7%bc%80">
+    <h3 id="鸭式对象">
+        鸭式对象
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/#鸭式对象" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 鸭式对象" aria-label="Anchor to: 鸭式对象" href="#%e9%b8%ad%e5%bc%8f%e5%af%b9%e8%b1%a1">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
-    </h2>
+    </h3>
 </div>
+<p>先来说说 <strong>鸭式对象</strong>: 叫的像鸭子， 走路像鸭子， 那它就是鸭子。</p>
+<ol>
+<li>我们对鸭子下一个定义， <strong>1. 发出嘎嘎的叫声， 2. 走路一摇一摆</strong>， 然后规定 <strong>任何满足这两个条件的</strong> 都是鸭子</li>
+<li>我们拿着定义去对比。
+<ol>
+<li>有一个 <strong>人</strong> 是演员， 他能模仿鸭子发出嘎嘎声， 也能模仿鸭子一摇一摆的走路。 那么， 这个人能被认为是鸭子。</li>
+<li>有一个 <strong>玩具</strong> ， 能发出嘎嘎声， 也能一摇一摆的就走。 那么， 这个玩具也能被认为是鸭子。</li>
+</ol>
+</li>
+</ol>
+<p>简单的说， 接口就是 <strong>白名单定义</strong>， 满足白名单要求就行。</p>
+<p>在上面描述中， 已经提到了接口的两个重要概念： 定义 与 实现。</p>
+<p><strong>(1)</strong> 叫做 <strong>接口定义</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Duck</span> <span class="kd">interface</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">Quack</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">Walk</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>(2)</strong> 叫做 <strong>接口实现</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 人
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="o">*</span><span class="nx">Person</span><span class="p">)</span> <span class="nf">Quack</span><span class="p">(){}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="o">*</span><span class="nx">Person</span><span class="p">)</span> <span class="nf">Walk</span><span class="p">(){}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 玩具
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Toy</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">Toy</span><span class="p">)</span> <span class="nf">Quack</span><span class="p">(){}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">Toy</span><span class="p">)</span> <span class="nf">Walk</span><span class="p">(){}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h3 id="通过案例讲解">
+        通过案例讲解
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/#通过案例讲解" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 通过案例讲解" aria-label="Anchor to: 通过案例讲解" href="#%e9%80%9a%e8%bf%87%e6%a1%88%e4%be%8b%e8%ae%b2%e8%a7%a3">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>我们知道， 人和大熊猫都是哺乳动物</p>
+<ol>
+<li>他们都会 <strong>吃 (Eat)</strong> 吃东西， 区别是 <strong>人吃饭， 熊猫吃竹子</strong></li>
+<li>更大的不同是， 人会 <strong>读书 (Read)</strong>， 熊猫不会。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Eating</span><span class="p">(</span><span class="nx">v</span> <span class="nx">any</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">v</span><span class="p">.</span><span class="nf">Eat</span><span class="p">()</span> <span class="c1">// output: ???
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">WhoAreYou</span><span class="p">(</span><span class="nx">v</span> <span class="nx">any</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ???? 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h4 id="接口定义">
+        接口定义
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/#接口定义" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 接口定义" aria-label="Anchor to: 接口定义" href="#%e6%8e%a5%e5%8f%a3%e5%ae%9a%e4%b9%89">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h4>
+</div>
+<p>我们回到作业要求， 要求实现 <strong>动物</strong> 和 <strong>人</strong> 两种接口。 要求</p>
+<ol>
+<li>动物接口需要实现 <strong>吃</strong> 这个动作。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Animal</span> <span class="kd">interface</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">Eat</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="2">
+<li>人接口 <strong>除了需要吃之外</strong> ， 还需要 <strong>读书</strong> 这个动作。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Human</span> <span class="kd">interface</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">Eat</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">Read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>这种 <strong>直接为人定义两种方法</strong> 的方式是可以的， 但是当以后我们要扩展动物接口， 添加 <code>Walk</code> 的时候， 也必须要为人添加 <code>Walk</code> 才行。 久而久之， 不仅难以管理， 还无法从字面值上看到人和动物的关系。</p>
+<p>那有没有更简单的方式呢？ 有！ <strong>接口嵌套</strong>， Go 语言中没有继承概念。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Human</span> <span class="kd">interface</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">Read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Animal</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h4 id="接口实现">
+        接口实现
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/#接口实现" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 接口实现" aria-label="Anchor to: 接口实现" href="#%e6%8e%a5%e5%8f%a3%e5%ae%9e%e7%8e%b0">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h4>
+</div>
+<p>我们定两个 struct， 分别是 Panda 和 Child</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Panda</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="o">*</span><span class="nx">Panda</span><span class="p">)</span> <span class="nf">Eat</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;熊猫吃竹子&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Child</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Child</span><span class="p">)</span> <span class="nf">Eat</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;人吃饭&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Child</span><span class="p">)</span> <span class="nf">Read</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;人还会读书&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>这样， 小孩和熊猫的结构对象就定义好了， 他们实现了各自的方法。 并且满足之前人和动物的接口。</p>
+<div class="gdoc-page__anchorwrap">
+    <h4 id="接口检查">
+        接口检查
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/#接口检查" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 接口检查" aria-label="Anchor to: 接口检查" href="#%e6%8e%a5%e5%8f%a3%e6%a3%80%e6%9f%a5">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h4>
+</div>
+<p>在书写代码的过程中， 要检查一个结构对象是否完全 <strong>实现了接口对应的所有方法</strong>， 避免在运行调用的时候才发现。</p>
+<p>可以使用以下代码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">_</span> <span class="nx">Person</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">Child</span><span class="p">{}</span>
+</span></span></code></pre></div><p>这是一个 <strong>变量定义并赋值</strong> 的语句。 特殊的地方在于， 变量名使用了 <strong>下划线<code>_</code></strong>。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">peppa</span> <span class="nx">Person</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">Child</span><span class="p">{}</span> <span class="c1">// 把 _ 换成了 peppa 
+</span></span></span></code></pre></div><p>如此操作</p>
+<ol>
+<li>编译器在书写的时候就会进行语法检查。</li>
+<li>创建的 <strong>不存在变量</strong> 最终会被丢弃。</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="接口断言">
+        接口断言
+        <a data-clipboard-text="https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/#接口断言" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 接口断言" aria-label="Anchor to: 接口断言" href="#%e6%8e%a5%e5%8f%a3%e6%96%ad%e8%a8%80">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>在日常使用中， 我们可以通过 <strong>断言</strong> 将 <strong>接口A</strong> 转换成 <strong>接口B</strong>。</p>
+<p>类似的， 就像问一头 <strong>熊猫</strong> 是不是 <strong>人</strong>？</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">WhoAreYou</span><span class="p">(</span><span class="nx">v</span> <span class="nx">any</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">animal</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.(</span><span class="nx">Animal</span><span class="p">)</span>  <span class="c1">// 断言， 判断 any 是否为能转换为 Animal
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="nx">ok</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">animal</span><span class="p">.</span><span class="nf">Eat</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">child</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">animal</span><span class="p">.(</span><span class="nx">Human</span><span class="p">)</span> <span class="c1">// 断言
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="nx">ok</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">child</span><span class="p">.</span><span class="nf">Read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>断言</strong> 返回的 <strong>第二个结果（ok）</strong> 是可以省略的。 不过这种用法需要用在我们能 <strong>保证</strong> 转换一定成功的情况下。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">animal</span> <span class="o">:=</span> <span class="nx">child</span><span class="p">.(</span><span class="nx">Animal</span><span class="p">)</span>
+</span></span></code></pre></div><p>在这里， <code>Human</code> 嵌套了 <code>Animal</code> 方法， 所以转换一定成功。</p>
 
 </article>
 

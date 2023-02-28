@@ -102,5 +102,20 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
 var root = &amp;amp;cobra.Command{ Use: &amp;#34;root&amp;#34;, // Persistent Run (1) PersistentPreRun: func(cmd *cobra.Command, args []string) { fmt.Println(&amp;#34;PersistentPreRun in root&amp;#34;) }, Run: func(cmd *cobra.Command, args []string) { _ = cmd.Help() }, } var config string func init() { // Persistent Flag (2) root.</description>
     </item>
     
+    <item>
+      <title>7. Golang 接口(interface) 简介和入门使用</title>
+      <link>https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/</guid>
+      <description>Golang 接口(interface) 简介和入门使用 上下文 interface 应该是 Go语言 中一个极其重要的 基石 概念了。
+这里有一篇 Go 语言设计与实现 - 接口 interface ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。
+在 go v1.18 中， interface 有了一个别名 any。 所以在说 interface 和 any 的时候， 其实说的是相同的东西。
+interface 的使用场景到处都是。 还记得我们之前说的 JSON 和 YAML 的配置文件处理吗？
+// json.Marshal func Marshal(v any) ([]byte, error) { // .... } 看完文章， 你至少应该知道
+什么是 鸭式对象 ？ 怎么使用 接口断言 ？ 鸭式对象 先来说说 鸭式对象: 叫的像鸭子， 走路像鸭子， 那它就是鸭子。
+我们对鸭子下一个定义， 1. 发出嘎嘎的叫声， 2.</description>
+    </item>
+    
   </channel>
 </rss>
