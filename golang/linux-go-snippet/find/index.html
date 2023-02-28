@@ -9,6 +9,9 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
+  <meta name="description" content="在 Linux 中， find 是一个很强大的命令， 不仅能 递归 遍历所有子目录， 还提供了丰富的参数进行过滤。 更重要的是， 可以通过 管道 &#43; xargs 将结果提供给其他命令。
+$ find ./ -type f -name &#34;*.md&#34; $ find ./ -type f -name &#34;*.md&#34; | xargs rm -f 在 Go 中， 同样使用 os.ReadDir 获取当前目录信息， 当目标是 文件夹 的时候进行递归遍历。
+// 递归查找 func walk(name string, handler func(name string)) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { // (0) 获取 完整 的相对路径 name := filepath." />
 
 
   
@@ -37,7 +40,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>08. panic and recover | 《Shell 转 Go》</title>
+  <title>find 递归查找 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -58,33 +61,40 @@
   
   <meta
     property="og:title"
-    content="08. panic and recover"
+    content="find 递归查找"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
+  <meta property="og:description" content="在 Linux 中， find 是一个很强大的命令， 不仅能 递归 遍历所有子目录， 还提供了丰富的参数进行过滤。 更重要的是， 可以通过 管道 &#43; xargs 将结果提供给其他命令。
+$ find ./ -type f -name &#34;*.md&#34; $ find ./ -type f -name &#34;*.md&#34; | xargs rm -f 在 Go 中， 同样使用 os.ReadDir 获取当前目录信息， 当目标是 文件夹 的时候进行递归遍历。
+// 递归查找 func walk(name string, handler func(name string)) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { // (0) 获取 完整 的相对路径 name := filepath." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/go-features/panic-recover/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/linux-go-snippet/find/" />
 
-<meta property="article:section" content="Go Features" />
+<meta property="article:section" content="Linux Go Snippet" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="08. panic and recover" />
+<meta name="twitter:title" content="find 递归查找" />
+  <meta name="twitter:description" content="在 Linux 中， find 是一个很强大的命令， 不仅能 递归 遍历所有子目录， 还提供了丰富的参数进行过滤。 更重要的是， 可以通过 管道 &#43; xargs 将结果提供给其他命令。
+$ find ./ -type f -name &#34;*.md&#34; $ find ./ -type f -name &#34;*.md&#34; | xargs rm -f 在 Go 中， 同样使用 os.ReadDir 获取当前目录信息， 当目标是 文件夹 的时候进行递归遍历。
+// 递归查找 func walk(name string, handler func(name string)) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { // (0) 获取 完整 的相对路径 name := filepath." />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Go Features",
-      "name": "08. panic and recover",
-      "url" : "https://typonotes.com/books/golang/go-features/panic-recover/",
-      "headline": "08. panic and recover",
-      "wordCount" : "0",
+      "articleSection": "Linux Go Snippet",
+      "name": "find 递归查找",
+      "url" : "https://typonotes.com/books/golang/linux-go-snippet/find/",
+      "headline": "find 递归查找",
+      "description": "在 Linux 中， find 是一个很强大的命令， 不仅能 递归 遍历所有子目录， 还提供了丰富的参数进行过滤。 更重要的是， 可以通过 管道 \u002b xargs 将结果提供给其他命令。\n$ find .\/ -type f -name \u0022*.md\u0022 $ find .\/ -type f -name \u0022*.md\u0022 | xargs rm -f 在 Go 中， 同样使用 os.ReadDir 获取当前目录信息， 当目标是 文件夹 的时候进行递归遍历。\n\/\/ 递归查找 func walk(name string, handler func(name string)) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { \/\/ (0) 获取 完整 的相对路径 name := filepath.",
+      "wordCount" : "177",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/go-features/panic-recover/"
+          "@id": "https://typonotes.com/books/golang/linux-go-snippet/find/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -168,7 +178,7 @@
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/go-features/panic-recover/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/linux-go-snippet/find/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -869,7 +879,7 @@
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-7120c285"
-                checked
+                
               
             />
             <label
@@ -1194,7 +1204,7 @@
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-5bbc575b"
-                
+                checked
               
             />
             <label
@@ -1361,7 +1371,7 @@
                 <span class="flex">
                   <a
                     href="/books/golang/linux-go-snippet/find/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     find 递归查找
                   </a>
@@ -2094,7 +2104,7 @@
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/go-features/' href='/books/golang/go-features/'><span itemprop='name'>03. Go 特性语法</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>08. panic and recover</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>find 递归查找</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -2110,8 +2120,58 @@
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>08. panic and recover</h1>
-  
+  <h1>find 递归查找</h1>
+  <p>在 Linux 中， <code>find</code> 是一个很强大的命令， 不仅能 <strong>递归</strong> 遍历所有子目录， 还提供了丰富的参数进行过滤。 更重要的是， 可以通过 <strong>管道 + <code>xargs</code></strong> 将结果提供给其他命令。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ find ./ -type f -name <span class="s2">&#34;*.md&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find ./ -type f -name <span class="s2">&#34;*.md&#34;</span> <span class="p">|</span> xargs rm -f 
+</span></span></code></pre></div><p>在 Go 中， 同样使用 <code>os.ReadDir</code> 获取当前目录信息， 当目标是 <strong>文件夹</strong> 的时候进行递归遍历。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 递归查找
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">walk</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">handler</span> <span class="kd">func</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">entries</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">ReadDir</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">entry</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">entries</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// (0) 获取 完整 的相对路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">name</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// (1) 递归查找
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nf">walk</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">handler</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="c1">// (2) 过滤参数: -type f
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">HasSuffix</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="s">&#34;.md&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// _ = os.Remove(name)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// (3) 管道应用 | xargs rm -f
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nf">handler</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// rm -f
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">remove</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>需要注意的是：</p>
+<ol>
+<li><code>entry.Name</code> 得到的时候 <strong>文件名</strong>， 不包含路径。 使用 <code>filepath</code> 进行拼接， 获取 <strong>完整</strong> 的相对路径。</li>
+<li>在 <code>entry.IsDir</code> 判断为真的时候， 调用了 <code>walk</code> 函数本身， 进入下一级目录，进行递归查找。</li>
+<li>使用 <code>strings.HasSuffix</code> 判断文件名是否具有某些特定结尾， 类似需求中的 <code>*.md</code></li>
+<li>向 <code>handler(name)</code> 中传入文件路径， 类似使用 <code>| xargs &lt;do_something&gt;</code> 时的 <strong>标准输入</strong>。 <code>handler</code> 是一个自定义函数， 可以执行任何处理。</li>
+</ol>
+<p>在使用的时候， 将 <code>remove</code> 作为参数端的， 类似 <code>xargs</code> 后面接的命令。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">OsWalkDelete</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">walk</span><span class="p">(</span><span class="s">&#34;/path/2/somefolder&#34;</span><span class="p">,</span> <span class="nx">remove</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
 </article>
 
 

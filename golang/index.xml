@@ -362,6 +362,17 @@ func CutB() { s := &amp;#34;abcdefg&amp;#34; b1 := s[0] // (1) var b1 byte fmt.P
     </item>
     
     <item>
+      <title>find 递归查找</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/find/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/find/</guid>
+      <description>在 Linux 中， find 是一个很强大的命令， 不仅能 递归 遍历所有子目录， 还提供了丰富的参数进行过滤。 更重要的是， 可以通过 管道 + xargs 将结果提供给其他命令。
+$ find ./ -type f -name &amp;#34;*.md&amp;#34; $ find ./ -type f -name &amp;#34;*.md&amp;#34; | xargs rm -f 在 Go 中， 同样使用 os.ReadDir 获取当前目录信息， 当目标是 文件夹 的时候进行递归遍历。
+// 递归查找 func walk(name string, handler func(name string)) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { // (0) 获取 完整 的相对路径 name := filepath.</description>
+    </item>
+    
+    <item>
       <title>ls 查看目录内容</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/ls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
