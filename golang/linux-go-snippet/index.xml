@@ -24,12 +24,15 @@
     </item>
     
     <item>
-      <title>cut</title>
+      <title>cut 切割字符串</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/cut/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://typonotes.com/books/golang/linux-go-snippet/cut/</guid>
-      <description></description>
+      <description>cut 有几个参数， 分别提供了不同的用法。
+1. -b 获取字符或字符串 $ echo abcdefg |cut -b 1,5 ae $ echo abcdefg |cut -b 1-5 abcde 这种情况， 相当于在 Go 中的切片操作
+func CutB() { s := &amp;#34;abcdefg&amp;#34; b1 := s[0] // (1) var b1 byte fmt.Println(string(b1)) // cut -b 1 fmt.Println(s[0:5]) // (2) cut -b 1-5 } 这里需要注意的是
+如果对字符串取 1个值， 则取出来的值是 byte 类型。 例如这里的 b1 Go 中的索引是 从 0 开始 计数； 且属于 左闭又开 模式， 即 左包含右不包含。 2. -d 指定分隔符， -f 指定分段位置 在使用 -d 的时候， 可以指定 分割符。</description>
     </item>
     
     <item>

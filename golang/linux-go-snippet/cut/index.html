@@ -9,6 +9,10 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
+  <meta name="description" content="cut 有几个参数， 分别提供了不同的用法。
+1. -b 获取字符或字符串 $ echo abcdefg |cut -b 1,5 ae $ echo abcdefg |cut -b 1-5 abcde 这种情况， 相当于在 Go 中的切片操作
+func CutB() { s := &#34;abcdefg&#34; b1 := s[0] // (1) var b1 byte fmt.Println(string(b1)) // cut -b 1 fmt.Println(s[0:5]) // (2) cut -b 1-5 } 这里需要注意的是
+如果对字符串取 1个值， 则取出来的值是 byte 类型。 例如这里的 b1 Go 中的索引是 从 0 开始 计数； 且属于 左闭又开 模式， 即 左包含右不包含。 2. -d 指定分隔符， -f 指定分段位置 在使用 -d 的时候， 可以指定 分割符。" />
 
 
   
@@ -37,7 +41,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>cut | 《Shell 转 Go》</title>
+  <title>cut 切割字符串 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -58,9 +62,13 @@
   
   <meta
     property="og:title"
-    content="cut"
+    content="cut 切割字符串"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
+  <meta property="og:description" content="cut 有几个参数， 分别提供了不同的用法。
+1. -b 获取字符或字符串 $ echo abcdefg |cut -b 1,5 ae $ echo abcdefg |cut -b 1-5 abcde 这种情况， 相当于在 Go 中的切片操作
+func CutB() { s := &#34;abcdefg&#34; b1 := s[0] // (1) var b1 byte fmt.Println(string(b1)) // cut -b 1 fmt.Println(s[0:5]) // (2) cut -b 1-5 } 这里需要注意的是
+如果对字符串取 1个值， 则取出来的值是 byte 类型。 例如这里的 b1 Go 中的索引是 从 0 开始 计数； 且属于 左闭又开 模式， 即 左包含右不包含。 2. -d 指定分隔符， -f 指定分段位置 在使用 -d 的时候， 可以指定 分割符。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://typonotes.com/books/golang/linux-go-snippet/cut/" />
 
@@ -68,7 +76,11 @@
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="cut" />
+<meta name="twitter:title" content="cut 切割字符串" />
+  <meta name="twitter:description" content="cut 有几个参数， 分别提供了不同的用法。
+1. -b 获取字符或字符串 $ echo abcdefg |cut -b 1,5 ae $ echo abcdefg |cut -b 1-5 abcde 这种情况， 相当于在 Go 中的切片操作
+func CutB() { s := &#34;abcdefg&#34; b1 := s[0] // (1) var b1 byte fmt.Println(string(b1)) // cut -b 1 fmt.Println(s[0:5]) // (2) cut -b 1-5 } 这里需要注意的是
+如果对字符串取 1个值， 则取出来的值是 byte 类型。 例如这里的 b1 Go 中的索引是 从 0 开始 计数； 且属于 左闭又开 模式， 即 左包含右不包含。 2. -d 指定分隔符， -f 指定分段位置 在使用 -d 的时候， 可以指定 分割符。" />
 
 
   <script type="application/ld+json">
@@ -76,10 +88,11 @@
       "@context": "http://schema.org",
       "@type": "TechArticle",
       "articleSection": "Linux Go Snippet",
-      "name": "cut",
+      "name": "cut 切割字符串",
       "url" : "https://typonotes.com/books/golang/linux-go-snippet/cut/",
-      "headline": "cut",
-      "wordCount" : "0",
+      "headline": "cut 切割字符串",
+      "description": "cut 有几个参数， 分别提供了不同的用法。\n1. -b 获取字符或字符串 $ echo abcdefg |cut -b 1,5 ae $ echo abcdefg |cut -b 1-5 abcde 这种情况， 相当于在 Go 中的切片操作\nfunc CutB() { s := \u0022abcdefg\u0022 b1 := s[0] \/\/ (1) var b1 byte fmt.Println(string(b1)) \/\/ cut -b 1 fmt.Println(s[0:5]) \/\/ (2) cut -b 1-5 } 这里需要注意的是\n如果对字符串取 1个值， 则取出来的值是 byte 类型。 例如这里的 b1 Go 中的索引是 从 0 开始 计数； 且属于 左闭又开 模式， 即 左包含右不包含。 2. -d 指定分隔符， -f 指定分段位置 在使用 -d 的时候， 可以指定 分割符。",
+      "wordCount" : "145",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -1322,7 +1335,14 @@
               
             >
               
-                <span class="flex">cut</span>
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/cut/"
+                    class="gdoc-nav__entry is-active"
+                  >
+                    cut 切割字符串
+                  </a>
+                </span>
               
               
             </label>
@@ -2051,7 +2071,7 @@
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>cut</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>cut 切割字符串</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -2067,8 +2087,65 @@
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>cut</h1>
-  
+  <h1>cut 切割字符串</h1>
+  <p><code>cut</code> 有几个参数， 分别提供了不同的用法。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="1--b-获取字符或字符串">
+        1. <code>-b</code> 获取字符或字符串
+        <a data-clipboard-text="https://typonotes.com/books/golang/linux-go-snippet/cut/#1--b-获取字符或字符串" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 1. -b 获取字符或字符串" aria-label="Anchor to: 1. -b 获取字符或字符串" href="#1--b-%e8%8e%b7%e5%8f%96%e5%ad%97%e7%ac%a6%e6%88%96%e5%ad%97%e7%ac%a6%e4%b8%b2">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">echo</span> abcdefg <span class="p">|</span>cut -b 1,5
+</span></span><span class="line"><span class="cl">ae
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ <span class="nb">echo</span> abcdefg <span class="p">|</span>cut -b 1-5
+</span></span><span class="line"><span class="cl">abcde
+</span></span></code></pre></div><p>这种情况， 相当于在 Go 中的切片操作</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">CutB</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;abcdefg&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">b1</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>              <span class="c1">// (1) var b1 byte
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">b1</span><span class="p">))</span> <span class="c1">// cut -b 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span> <span class="c1">// (2) cut -b 1-5
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>这里需要注意的是</p>
+<ol>
+<li>如果对字符串取 <strong>1个值</strong>， 则取出来的值是 <code>byte</code> 类型。 例如这里的 <code>b1</code></li>
+<li>Go 中的索引是 <strong>从 0 开始</strong> 计数； 且属于 <strong>左闭又开</strong> 模式， 即 <strong>左包含右不包含</strong>。</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="2--d-指定分隔符--f-指定分段位置">
+        2. <code>-d</code> 指定分隔符， <code>-f</code> 指定分段位置
+        <a data-clipboard-text="https://typonotes.com/books/golang/linux-go-snippet/cut/#2--d-指定分隔符--f-指定分段位置" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 2. -d 指定分隔符， -f 指定分段位置" aria-label="Anchor to: 2. -d 指定分隔符， -f 指定分段位置" href="#2--d-%e6%8c%87%e5%ae%9a%e5%88%86%e9%9a%94%e7%ac%a6--f-%e6%8c%87%e5%ae%9a%e5%88%86%e6%ae%b5%e4%bd%8d%e7%bd%ae">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>在使用 <code>-d</code> 的时候， 可以指定 <strong>分割符</strong>。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ a-bc-de-123-a <span class="p">|</span>cut -d <span class="s1">&#39;-&#39;</span> -f <span class="m">2</span>
+</span></span><span class="line"><span class="cl">bc
+</span></span></code></pre></div><p>在 Go 中， 使用标准库 <code>strings.Split</code> 进行字符串分割</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">CutSplit</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s</span> <span class="o">:=</span> <span class="s">`a-bc-de-123-a`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">list</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="s">&#34;-&#34;</span><span class="p">)</span> <span class="c1">// (1) var list []string
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">// 取第 2 个位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Output: bc
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s2</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">)</span> <span class="c1">// (2) 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Output: a/bc/de/123/a
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>这里需要注意的是，</p>
+<ol>
+<li>使用 <code>strings.Split</code> 拆分字符串后， 将会得到一个 <strong>切片</strong>。 如果指定的分隔符不存在， 也将得到一个长度为 1 的切片， 内容就是字符串本身。</li>
+<li>拆分之后， 可以使用 <code>strings.Join</code> 将切片重新组合成一个字符串。 如果切片长度为 1， 则得到字符串本身（没有分隔符）。</li>
+</ol>
+
 </article>
 
 
