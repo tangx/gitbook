@@ -41,7 +41,7 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>07. 计算MD5值(md5sum) | 《Shell 转 Go》</title>
+  <title>md5sum | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -62,7 +62,7 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
   
   <meta
     property="og:title"
-    content="07. 计算MD5值(md5sum)"
+    content="md5sum"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
   <meta property="og:description" content="在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。
@@ -76,7 +76,7 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="07. 计算MD5值(md5sum)" />
+<meta name="twitter:title" content="md5sum" />
   <meta name="twitter:description" content="在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。
 # 字符串 echo &#34;abc&#34; | md5sum # 文件 md5sum /path/2/file.txt 计算字符串 md5 计算字符串 md5 值相对简单， 直接使用标准库中的 md5 库就可以了
 func MustMd5(s string) string { h := md5.New() _, err := io.WriteString(h, s) if err != nil { panic(err) } return fmt.Sprintf(&#34;%x&#34;, h.Sum(nil)) } 计算文件 md5 计算文件的就稍微多一个步骤， 就是读取文件内容。 读取完了， 直接丢到上一个函数中就可以了。
@@ -88,9 +88,9 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
       "@context": "http://schema.org",
       "@type": "TechArticle",
       "articleSection": "Linux Go Snippet",
-      "name": "07. 计算MD5值(md5sum)",
+      "name": "md5sum",
       "url" : "https://typonotes.com/books/golang/linux-go-snippet/md5sum/",
-      "headline": "07. 计算MD5值(md5sum)",
+      "headline": "md5sum",
       "description": "在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。\n# 字符串 echo \u0022abc\u0022 | md5sum # 文件 md5sum \/path\/2\/file.txt 计算字符串 md5 计算字符串 md5 值相对简单， 直接使用标准库中的 md5 库就可以了\nfunc MustMd5(s string) string { h := md5.New() _, err := io.WriteString(h, s) if err != nil { panic(err) } return fmt.Sprintf(\u0022%x\u0022, h.Sum(nil)) } 计算文件 md5 计算文件的就稍微多一个步骤， 就是读取文件内容。 读取完了， 直接丢到上一个函数中就可以了。\nfunc MustMd5File(name string) string { data, err := os.ReadFile(name) if err != nil { panic(err) } return MustMd5(string(data)) } ",
       "wordCount" : "73",
       "inLanguage": "en",
@@ -1270,71 +1270,6 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
               
             >
               
-                <span class="flex">01. 随机数处理(random)</span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">
-                  <a
-                    href="/books/golang/linux-go-snippet/sleep/"
-                    class="gdoc-nav__entry"
-                  >
-                    02. 时间等待(sleep)
-                  </a>
-                </span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
                 <span class="flex">03. 文件路径管理</span>
               
               
@@ -1436,7 +1371,43 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
               
             >
               
-                <span class="flex">06. 字符串切割(cut)</span>
+                <span class="flex">cut</span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/ls/"
+                    class="gdoc-nav__entry"
+                  >
+                    ls
+                  </a>
+                </span>
               
               
             </label>
@@ -1470,7 +1441,101 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
                     href="/books/golang/linux-go-snippet/md5sum/"
                     class="gdoc-nav__entry is-active"
                   >
-                    07. 计算MD5值(md5sum)
+                    md5sum
+                  </a>
+                </span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">mkdir</span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">random</span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/linux-go-snippet/sleep/"
+                    class="gdoc-nav__entry"
+                  >
+                    sleep
                   </a>
                 </span>
               
@@ -1992,7 +2057,7 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>07. 计算MD5值(md5sum)</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>md5sum</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -2008,7 +2073,7 @@ func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != 
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>07. 计算MD5值(md5sum)</h1>
+  <h1>md5sum</h1>
   <p>在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 字符串</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;abc&#34;</span> <span class="p">|</span> md5sum

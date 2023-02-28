@@ -6,28 +6,6 @@
     <description>Recent content in 05. Go 实现: Shell 命令 on 《Shell 转 Go》</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/linux-go-snippet/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>01. 随机数处理(random)</title>
-      <link>https://typonotes.com/books/golang/linux-go-snippet/random/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/linux-go-snippet/random/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>02. 时间等待(sleep)</title>
-      <link>https://typonotes.com/books/golang/linux-go-snippet/sleep/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/linux-go-snippet/sleep/</guid>
-      <description>时间等待， 让程序 阻塞 一段时间
-在 Shell 中 在 Shell 中使用 sleep n ， n 的默认单位 秒
-sleep 2 在 Go 中 在 Go 中， 对应使用 time.Sleep(n) 方法。但是需要注意的是， n 的默认单位是 毫秒。
-time.Sleep(200) 如果要实现如果实现 秒 级别等待，
-可以将数字扩大 1000 倍， n * 1000 可以使用单位 n * time.Second time.Sleep(2 * 1000) time.Sleep(2 * time.Second) 常见单位 const ( Nanosecond Duration = 1 // 纳秒 Microsecond = 1000 * Nanosecond // 微秒 Millisecond = 1000 * Microsecond // 毫秒 Second = 1000 * Millisecond Minute = 60 * Second Hour = 60 * Minute ) </description>
-    </item>
-    
-    <item>
       <title>03. 文件路径管理</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/filepath/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -59,7 +37,7 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&amp;#34;a&amp;#
     </item>
     
     <item>
-      <title>06. 字符串切割(cut)</title>
+      <title>cut</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/cut/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -68,7 +46,18 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&amp;#34;a&amp;#
     </item>
     
     <item>
-      <title>07. 计算MD5值(md5sum)</title>
+      <title>ls</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/ls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/ls/</guid>
+      <description>在 Linux 中， 使用 ls 命令查看文件夹内容
+ls /path/2/folder 在 Go 中， 使用 os.ReadDir 获取文件夹中的内容。
+func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { if entry.IsDir() { fmt.Printf(&amp;#34;%s 是文件夹\n&amp;#34;, entry.Name()) } fmt.Printf(&amp;#34;%s 是文件\n&amp;#34;, entry.Name()) } } </description>
+    </item>
+    
+    <item>
+      <title>md5sum</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -77,6 +66,37 @@ func TrDeleteDemo(t *testing.T) { delAbc := strings.NewReplacer(&amp;#34;a&amp;#
 # 字符串 echo &amp;#34;abc&amp;#34; | md5sum # 文件 md5sum /path/2/file.txt 计算字符串 md5 计算字符串 md5 值相对简单， 直接使用标准库中的 md5 库就可以了
 func MustMd5(s string) string { h := md5.New() _, err := io.WriteString(h, s) if err != nil { panic(err) } return fmt.Sprintf(&amp;#34;%x&amp;#34;, h.Sum(nil)) } 计算文件 md5 计算文件的就稍微多一个步骤， 就是读取文件内容。 读取完了， 直接丢到上一个函数中就可以了。
 func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != nil { panic(err) } return MustMd5(string(data)) } </description>
+    </item>
+    
+    <item>
+      <title>mkdir</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/mkdir/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/mkdir/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>random</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/random/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/random/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sleep</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/sleep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/sleep/</guid>
+      <description>时间等待， 让程序 阻塞 一段时间
+在 Shell 中 在 Shell 中使用 sleep n ， n 的默认单位 秒
+sleep 2 在 Go 中 在 Go 中， 对应使用 time.Sleep(n) 方法。但是需要注意的是， n 的默认单位是 毫秒。
+time.Sleep(200) 如果要实现如果实现 秒 级别等待，
+可以将数字扩大 1000 倍， n * 1000 可以使用单位 n * time.Second time.Sleep(2 * 1000) time.Sleep(2 * time.Second) 常见单位 const ( Nanosecond Duration = 1 // 纳秒 Microsecond = 1000 * Nanosecond // 微秒 Millisecond = 1000 * Microsecond // 毫秒 Second = 1000 * Millisecond Minute = 60 * Second Hour = 60 * Minute ) </description>
     </item>
     
   </channel>

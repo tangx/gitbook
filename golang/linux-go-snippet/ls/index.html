@@ -9,6 +9,9 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
+  <meta name="description" content="在 Linux 中， 使用 ls 命令查看文件夹内容
+ls /path/2/folder 在 Go 中， 使用 os.ReadDir 获取文件夹中的内容。
+func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, entry.Name()) } fmt.Printf(&#34;%s 是文件\n&#34;, entry.Name()) } } " />
 
 
   
@@ -37,7 +40,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>04. 通道 channel | 《Shell 转 Go》</title>
+  <title>ls | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -58,33 +61,40 @@
   
   <meta
     property="og:title"
-    content="04. 通道 channel"
+    content="ls"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
+  <meta property="og:description" content="在 Linux 中， 使用 ls 命令查看文件夹内容
+ls /path/2/folder 在 Go 中， 使用 os.ReadDir 获取文件夹中的内容。
+func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, entry.Name()) } fmt.Printf(&#34;%s 是文件\n&#34;, entry.Name()) } } " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/go-features/channel/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/linux-go-snippet/ls/" />
 
-<meta property="article:section" content="Go Features" />
+<meta property="article:section" content="Linux Go Snippet" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="04. 通道 channel" />
+<meta name="twitter:title" content="ls" />
+  <meta name="twitter:description" content="在 Linux 中， 使用 ls 命令查看文件夹内容
+ls /path/2/folder 在 Go 中， 使用 os.ReadDir 获取文件夹中的内容。
+func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, entry.Name()) } fmt.Printf(&#34;%s 是文件\n&#34;, entry.Name()) } } " />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Go Features",
-      "name": "04. 通道 channel",
-      "url" : "https://typonotes.com/books/golang/go-features/channel/",
-      "headline": "04. 通道 channel",
-      "wordCount" : "0",
+      "articleSection": "Linux Go Snippet",
+      "name": "ls",
+      "url" : "https://typonotes.com/books/golang/linux-go-snippet/ls/",
+      "headline": "ls",
+      "description": "在 Linux 中， 使用 ls 命令查看文件夹内容\nls \/path\/2\/folder 在 Go 中， 使用 os.ReadDir 获取文件夹中的内容。\nfunc OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { if entry.IsDir() { fmt.Printf(\u0022%s 是文件夹\\n\u0022, entry.Name()) } fmt.Printf(\u0022%s 是文件\\n\u0022, entry.Name()) } } ",
+      "wordCount" : "48",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/go-features/channel/"
+          "@id": "https://typonotes.com/books/golang/linux-go-snippet/ls/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -168,7 +178,7 @@
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/go-features/channel/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/linux-go-snippet/ls/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -869,7 +879,7 @@
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-7120c285"
-                checked
+                
               
             />
             <label
@@ -1194,7 +1204,7 @@
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-5bbc575b"
-                
+                checked
               
             />
             <label
@@ -1390,7 +1400,7 @@
                 <span class="flex">
                   <a
                     href="/books/golang/linux-go-snippet/ls/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     ls
                   </a>
@@ -2044,7 +2054,7 @@
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/go-features/' href='/books/golang/go-features/'><span itemprop='name'>03. Go 特性语法</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>04. 通道 channel</span><meta itemprop='position' content='5' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>ls</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -2060,8 +2070,24 @@
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>04. 通道 channel</h1>
-  
+  <h1>ls</h1>
+  <p>在 Linux 中， 使用 <code>ls</code> 命令查看文件夹内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls /path/2/folder
+</span></span></code></pre></div><p>在 Go 中， 使用 <code>os.ReadDir</code> 获取文件夹中的内容。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">OsWalk</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">entries</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">ReadDir</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">entry</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">entries</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s 是文件夹\n&#34;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s 是文件\n&#34;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
 </article>
 
 

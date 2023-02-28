@@ -53,15 +53,6 @@ golang程序 在 复制了开始运行的那一瞬间的当前环境所有变量
     </item>
     
     <item>
-      <title>01. 随机数处理(random)</title>
-      <link>https://typonotes.com/books/golang/linux-go-snippet/random/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/linux-go-snippet/random/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>01. 项目简介</title>
       <link>https://typonotes.com/books/golang/startup/introduce/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -125,19 +116,6 @@ for 默认值; 条件; 计数器 { fmt.Println(&amp;#34;i=&amp;#34;, i) } 以上
 计数循环 在 shell 中， 通常使用 seq 实现计数循环
 for i in $(seq 1 10); do { echo &amp;#34;i = $i&amp;#34; } done 而在 Go 中，
 for i := 0; i &amp;lt; 1; i++ { fmt.Println(&amp;#34;i=&amp;#34;, i) } 遍历循环 for name in zhangsan lisi wangwu zhaoliu; do { echo &amp;#34;name = $name&amp;#34; } done 在 Go 中， 需要将对象放入到 切片 中</description>
-    </item>
-    
-    <item>
-      <title>02. 时间等待(sleep)</title>
-      <link>https://typonotes.com/books/golang/linux-go-snippet/sleep/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/linux-go-snippet/sleep/</guid>
-      <description>时间等待， 让程序 阻塞 一段时间
-在 Shell 中 在 Shell 中使用 sleep n ， n 的默认单位 秒
-sleep 2 在 Go 中 在 Go 中， 对应使用 time.Sleep(n) 方法。但是需要注意的是， n 的默认单位是 毫秒。
-time.Sleep(200) 如果要实现如果实现 秒 级别等待，
-可以将数字扩大 1000 倍， n * 1000 可以使用单位 n * time.Second time.Sleep(2 * 1000) time.Sleep(2 * time.Second) 常见单位 const ( Nanosecond Duration = 1 // 纳秒 Microsecond = 1000 * Nanosecond // 微秒 Millisecond = 1000 * Microsecond // 毫秒 Second = 1000 * Millisecond Minute = 60 * Second Hour = 60 * Minute ) </description>
     </item>
     
     <item>
@@ -257,15 +235,6 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
     </item>
     
     <item>
-      <title>06. 字符串切割(cut)</title>
-      <link>https://typonotes.com/books/golang/linux-go-snippet/cut/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/linux-go-snippet/cut/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>06. 错误处理(error)</title>
       <link>https://typonotes.com/books/golang/go-features/error-operation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -285,18 +254,6 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
 从细节来了， 还需要注意
 变量 在 defer 中的 作用域 ？ 函数 的 执行操作 是在 入堆前还是后 ？ defer 中的函数发生了 panic 会怎样 ？ 真题测试 以下这是 go语言爱好者 97 期的一道题目。 要求很简单， 代码执行 i, j 的值分别是什么。
 func Test_Demo(t *testing.T) { i := 10 j := hello(&amp;amp;i) fmt.Println(i, j) } func hello(i *int) int { defer func() { *i = 19 }() return *i } 这道题虽然代码少， 但是考点还是蛮多的</description>
-    </item>
-    
-    <item>
-      <title>07. 计算MD5值(md5sum)</title>
-      <link>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</guid>
-      <description>在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。
-# 字符串 echo &amp;#34;abc&amp;#34; | md5sum # 文件 md5sum /path/2/file.txt 计算字符串 md5 计算字符串 md5 值相对简单， 直接使用标准库中的 md5 库就可以了
-func MustMd5(s string) string { h := md5.New() _, err := io.WriteString(h, s) if err != nil { panic(err) } return fmt.Sprintf(&amp;#34;%x&amp;#34;, h.Sum(nil)) } 计算文件 md5 计算文件的就稍微多一个步骤， 就是读取文件内容。 读取完了， 直接丢到上一个函数中就可以了。
-func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != nil { panic(err) } return MustMd5(string(data)) } </description>
     </item>
     
     <item>
@@ -403,6 +360,69 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
 嗯， 在 cobra 中提供了一种叫做 Persistent 的 状态， 定向支持 函数 与 参数。
 下面这段代码是是使用时的定义。
 var root = &amp;amp;cobra.Command{ Use: &amp;#34;root&amp;#34;, // Persistent Run (1) PersistentPreRun: func(cmd *cobra.Command, args []string) { fmt.Println(&amp;#34;PersistentPreRun in root&amp;#34;) }, Run: func(cmd *cobra.Command, args []string) { _ = cmd.Help() }, } var config string func init() { // Persistent Flag (2) root.</description>
+    </item>
+    
+    <item>
+      <title>cut</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/cut/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/cut/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ls</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/ls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/ls/</guid>
+      <description>在 Linux 中， 使用 ls 命令查看文件夹内容
+ls /path/2/folder 在 Go 中， 使用 os.ReadDir 获取文件夹中的内容。
+func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { if entry.IsDir() { fmt.Printf(&amp;#34;%s 是文件夹\n&amp;#34;, entry.Name()) } fmt.Printf(&amp;#34;%s 是文件\n&amp;#34;, entry.Name()) } } </description>
+    </item>
+    
+    <item>
+      <title>md5sum</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</guid>
+      <description>在 Linux 中， 使用 MD5 值作为唯一性校验应该是最基本的了。
+# 字符串 echo &amp;#34;abc&amp;#34; | md5sum # 文件 md5sum /path/2/file.txt 计算字符串 md5 计算字符串 md5 值相对简单， 直接使用标准库中的 md5 库就可以了
+func MustMd5(s string) string { h := md5.New() _, err := io.WriteString(h, s) if err != nil { panic(err) } return fmt.Sprintf(&amp;#34;%x&amp;#34;, h.Sum(nil)) } 计算文件 md5 计算文件的就稍微多一个步骤， 就是读取文件内容。 读取完了， 直接丢到上一个函数中就可以了。
+func MustMd5File(name string) string { data, err := os.ReadFile(name) if err != nil { panic(err) } return MustMd5(string(data)) } </description>
+    </item>
+    
+    <item>
+      <title>mkdir</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/mkdir/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/mkdir/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>random</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/random/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/random/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sleep</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/sleep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/sleep/</guid>
+      <description>时间等待， 让程序 阻塞 一段时间
+在 Shell 中 在 Shell 中使用 sleep n ， n 的默认单位 秒
+sleep 2 在 Go 中 在 Go 中， 对应使用 time.Sleep(n) 方法。但是需要注意的是， n 的默认单位是 毫秒。
+time.Sleep(200) 如果要实现如果实现 秒 级别等待，
+可以将数字扩大 1000 倍， n * 1000 可以使用单位 n * time.Second time.Sleep(2 * 1000) time.Sleep(2 * time.Second) 常见单位 const ( Nanosecond Duration = 1 // 纳秒 Microsecond = 1000 * Nanosecond // 微秒 Millisecond = 1000 * Microsecond // 毫秒 Second = 1000 * Millisecond Minute = 60 * Second Hour = 60 * Minute ) </description>
     </item>
     
   </channel>

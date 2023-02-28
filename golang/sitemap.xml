@@ -15,8 +15,6 @@
   </url><url>
     <loc>https://typonotes.com/books/golang/daily-notes/environment/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/linux-go-snippet/random/</loc>
-  </url><url>
     <loc>https://typonotes.com/books/golang/startup/introduce/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/daily-notes/timezone/</loc>
@@ -30,8 +28,6 @@
     <loc>https://typonotes.com/books/golang/shell-to-go/basic-type/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/process-control/for-loops/</loc>
-  </url><url>
-    <loc>https://typonotes.com/books/golang/linux-go-snippet/sleep/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/go-features/struct/</loc>
   </url><url>
@@ -65,13 +61,9 @@
   </url><url>
     <loc>https://typonotes.com/books/golang/daily-notes/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/linux-go-snippet/cut/</loc>
-  </url><url>
     <loc>https://typonotes.com/books/golang/go-features/error-operation/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/go-features/defer/</loc>
-  </url><url>
-    <loc>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/go-features/panic-recover/</loc>
   </url><url>
@@ -90,6 +82,18 @@
     <loc>https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/cobra-in-action/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/cut/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/ls/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/md5sum/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/mkdir/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/random/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/linux-go-snippet/sleep/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/tags/</loc>
   </url>
