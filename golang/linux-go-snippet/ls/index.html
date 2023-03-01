@@ -10,8 +10,8 @@
 
 
   <meta name="description" content="在 Linux 中， 使用 ls 命令查看文件夹内容
-ls /path/2/folder 在 Go 中， 使用 os.ReadDir 获取文件夹中的内容。
-func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, entry.Name()) } fmt.Printf(&#34;%s 是文件\n&#34;, entry.Name()) } } " />
+ls /path/2/folder 在 Go 中，
+使用 os.ReadDir 获取文件夹中的内容。 使用 os.Stat 获取详细信息， 例如 大小， 权限 等。 func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { name := entry.Name() if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, name) } // 如果是文件 fi, err2 := os.Stat(name) if err2 != nil { panic(err) } fmt.Printf(&#34;%s %d %s\n&#34;, fi.Mode().String(), fi." />
 
 
   
@@ -65,8 +65,8 @@ func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { pani
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
   <meta property="og:description" content="在 Linux 中， 使用 ls 命令查看文件夹内容
-ls /path/2/folder 在 Go 中， 使用 os.ReadDir 获取文件夹中的内容。
-func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, entry.Name()) } fmt.Printf(&#34;%s 是文件\n&#34;, entry.Name()) } } " />
+ls /path/2/folder 在 Go 中，
+使用 os.ReadDir 获取文件夹中的内容。 使用 os.Stat 获取详细信息， 例如 大小， 权限 等。 func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { name := entry.Name() if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, name) } // 如果是文件 fi, err2 := os.Stat(name) if err2 != nil { panic(err) } fmt.Printf(&#34;%s %d %s\n&#34;, fi.Mode().String(), fi." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://typonotes.com/books/golang/linux-go-snippet/ls/" />
 
@@ -76,8 +76,8 @@ func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { pani
   <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="ls 查看目录内容" />
   <meta name="twitter:description" content="在 Linux 中， 使用 ls 命令查看文件夹内容
-ls /path/2/folder 在 Go 中， 使用 os.ReadDir 获取文件夹中的内容。
-func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, entry.Name()) } fmt.Printf(&#34;%s 是文件\n&#34;, entry.Name()) } } " />
+ls /path/2/folder 在 Go 中，
+使用 os.ReadDir 获取文件夹中的内容。 使用 os.Stat 获取详细信息， 例如 大小， 权限 等。 func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { name := entry.Name() if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, name) } // 如果是文件 fi, err2 := os.Stat(name) if err2 != nil { panic(err) } fmt.Printf(&#34;%s %d %s\n&#34;, fi.Mode().String(), fi." />
 
 
   <script type="application/ld+json">
@@ -88,8 +88,8 @@ func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { pani
       "name": "ls 查看目录内容",
       "url" : "https://typonotes.com/books/golang/linux-go-snippet/ls/",
       "headline": "ls 查看目录内容",
-      "description": "在 Linux 中， 使用 ls 命令查看文件夹内容\nls \/path\/2\/folder 在 Go 中， 使用 os.ReadDir 获取文件夹中的内容。\nfunc OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { if entry.IsDir() { fmt.Printf(\u0022%s 是文件夹\\n\u0022, entry.Name()) } fmt.Printf(\u0022%s 是文件\\n\u0022, entry.Name()) } } ",
-      "wordCount" : "48",
+      "description": "在 Linux 中， 使用 ls 命令查看文件夹内容\nls \/path\/2\/folder 在 Go 中，\n使用 os.ReadDir 获取文件夹中的内容。 使用 os.Stat 获取详细信息， 例如 大小， 权限 等。 func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { name := entry.Name() if entry.IsDir() { fmt.Printf(\u0022%s 是文件夹\\n\u0022, name) } \/\/ 如果是文件 fi, err2 := os.Stat(name) if err2 != nil { panic(err) } fmt.Printf(\u0022%s %d %s\\n\u0022, fi.Mode().String(), fi.",
+      "wordCount" : "74",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -2159,7 +2159,11 @@ func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { pani
   <h1>ls 查看目录内容</h1>
   <p>在 Linux 中， 使用 <code>ls</code> 命令查看文件夹内容</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls /path/2/folder
-</span></span></code></pre></div><p>在 Go 中， 使用 <code>os.ReadDir</code> 获取文件夹中的内容。</p>
+</span></span></code></pre></div><p>在 Go 中，</p>
+<ol>
+<li>使用 <code>os.ReadDir</code> 获取文件夹中的内容。</li>
+<li>使用 <code>os.Stat</code> 获取详细信息， 例如 <strong>大小， 权限</strong> 等。</li>
+</ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">OsWalk</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">entries</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">ReadDir</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -2167,10 +2171,18 @@ func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { pani
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">entry</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">entries</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">name</span> <span class="o">:=</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">Name</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s 是文件夹\n&#34;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s 是文件夹\n&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s 是文件\n&#34;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="c1">// 如果是文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">fi</span><span class="p">,</span> <span class="nx">err2</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Stat</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">err2</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s  %d  %s\n&#34;</span><span class="p">,</span> <span class="nx">fi</span><span class="p">.</span><span class="nf">Mode</span><span class="p">().</span><span class="nf">String</span><span class="p">(),</span> <span class="nx">fi</span><span class="p">.</span><span class="nf">Size</span><span class="p">(),</span> <span class="nx">name</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div>

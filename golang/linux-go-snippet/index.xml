@@ -53,8 +53,8 @@ $ find ./ -type f -name &amp;#34;*.md&amp;#34; $ find ./ -type f -name &amp;#34;
       
       <guid>https://typonotes.com/books/golang/linux-go-snippet/ls/</guid>
       <description>在 Linux 中， 使用 ls 命令查看文件夹内容
-ls /path/2/folder 在 Go 中， 使用 os.ReadDir 获取文件夹中的内容。
-func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { if entry.IsDir() { fmt.Printf(&amp;#34;%s 是文件夹\n&amp;#34;, entry.Name()) } fmt.Printf(&amp;#34;%s 是文件\n&amp;#34;, entry.Name()) } } </description>
+ls /path/2/folder 在 Go 中，
+使用 os.ReadDir 获取文件夹中的内容。 使用 os.Stat 获取详细信息， 例如 大小， 权限 等。 func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { name := entry.Name() if entry.IsDir() { fmt.Printf(&amp;#34;%s 是文件夹\n&amp;#34;, name) } // 如果是文件 fi, err2 := os.Stat(name) if err2 != nil { panic(err) } fmt.Printf(&amp;#34;%s %d %s\n&amp;#34;, fi.Mode().String(), fi.</description>
     </item>
     
     <item>
