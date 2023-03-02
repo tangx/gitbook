@@ -6,16 +6,7 @@
     <description>Recent content in 03. Go 特性语法 on 《Shell 转 Go》</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/go-features/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>01. 上下文 context</title>
-      <link>https://typonotes.com/books/golang/go-features/context/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/go-features/context/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>02. 结构体 struct</title>
+      <title>01. 结构体 Struct</title>
       <link>https://typonotes.com/books/golang/go-features/struct/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -24,16 +15,22 @@
     </item>
     
     <item>
-      <title>03. 接口 interface</title>
-      <link>https://typonotes.com/books/golang/go-features/interface/</link>
+      <title>03. Golang 接口(interface)</title>
+      <link>https://typonotes.com/books/golang/go-features/golang-interface/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/go-features/interface/</guid>
-      <description></description>
+      <guid>https://typonotes.com/books/golang/go-features/golang-interface/</guid>
+      <description>Golang 接口(interface) 简介和入门使用 上下文 interface 应该是 Go语言 中一个极其重要的 基石 概念了。
+这里有一篇 Go 语言设计与实现 - 接口 interface ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。
+在 go v1.18 中， interface 有了一个别名 any。 所以在说 interface 和 any 的时候， 其实说的是相同的东西。
+interface 的使用场景到处都是。 还记得我们之前说的 JSON 和 YAML 的配置文件处理吗？
+// json.Marshal func Marshal(v any) ([]byte, error) { // .... } 看完文章， 你至少应该知道
+什么是 鸭式对象 ？ 怎么使用 接口断言 ？ 鸭式对象 先来说说 鸭式对象: 叫的像鸭子， 走路像鸭子， 那它就是鸭子。
+我们对鸭子下一个定义， 1. 发出嘎嘎的叫声， 2.</description>
     </item>
     
     <item>
-      <title>04. 通道 channel</title>
+      <title>04. 通道 Channel</title>
       <link>https://typonotes.com/books/golang/go-features/channel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

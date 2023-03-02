@@ -6,15 +6,6 @@
     <description>Recent content on 《Shell 转 Go》</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>01. 上下文 context</title>
-      <link>https://typonotes.com/books/golang/go-features/context/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/go-features/context/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>01. 变量声明</title>
       <link>https://typonotes.com/books/golang/shell-to-go/variable/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -27,7 +18,7 @@ Go 声明变量 在 Go 中， 也有两种方式
     </item>
     
     <item>
-      <title>01. 条件语句 (if else)</title>
+      <title>01. 条件语句 (if)</title>
       <link>https://typonotes.com/books/golang/shell-to-go/process-control/if-else/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -50,6 +41,15 @@ golang程序 在 复制了开始运行的那一瞬间的当前环境所有变量
 2. os.Unsetenv(&amp;quot;key&amp;quot;) 取消一个变量
 3. val=os.Getenv(&amp;quot;key&amp;quot;) 返回一个变量的值。 如果变量不存在， val 为空字符串。 使用 len(val)==0 无法判断 变量值为空 或者 变量不存在
 4. val,ok=os.LookupEnv(&amp;quot;key&amp;quot;) 返回一个变量的值 与 变量是否存在的 bool 结果。</description>
+    </item>
+    
+    <item>
+      <title>01. 结构体 Struct</title>
+      <link>https://typonotes.com/books/golang/go-features/struct/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/struct/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -105,7 +105,7 @@ cd /tmp wget -c https://go.dev/dl/go1.19.6.darwin-amd64.tar.gz sudo tar xf go1.1
     </item>
     
     <item>
-      <title>02. 循环语句 (for)</title>
+      <title>02. 循环语句 (for / while)</title>
       <link>https://typonotes.com/books/golang/shell-to-go/process-control/for-loops/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -119,12 +119,18 @@ for i := 0; i &amp;lt; 1; i++ { fmt.Println(&amp;#34;i=&amp;#34;, i) } 遍历循
     </item>
     
     <item>
-      <title>02. 结构体 struct</title>
-      <link>https://typonotes.com/books/golang/go-features/struct/</link>
+      <title>03. Golang 接口(interface)</title>
+      <link>https://typonotes.com/books/golang/go-features/golang-interface/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://typonotes.com/books/golang/go-features/struct/</guid>
-      <description></description>
+      <guid>https://typonotes.com/books/golang/go-features/golang-interface/</guid>
+      <description>Golang 接口(interface) 简介和入门使用 上下文 interface 应该是 Go语言 中一个极其重要的 基石 概念了。
+这里有一篇 Go 语言设计与实现 - 接口 interface ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。
+在 go v1.18 中， interface 有了一个别名 any。 所以在说 interface 和 any 的时候， 其实说的是相同的东西。
+interface 的使用场景到处都是。 还记得我们之前说的 JSON 和 YAML 的配置文件处理吗？
+// json.Marshal func Marshal(v any) ([]byte, error) { // .... } 看完文章， 你至少应该知道
+什么是 鸭式对象 ？ 怎么使用 接口断言 ？ 鸭式对象 先来说说 鸭式对象: 叫的像鸭子， 走路像鸭子， 那它就是鸭子。
+我们对鸭子下一个定义， 1. 发出嘎嘎的叫声， 2.</description>
     </item>
     
     <item>
@@ -141,7 +147,7 @@ Go 相关的 必须安装的 Go 插件 , 现在已经交给 Go Team 维护: 非�
     </item>
     
     <item>
-      <title>03. 分支语句 (switch)</title>
+      <title>03. 分支语句 (switch / case)</title>
       <link>https://typonotes.com/books/golang/shell-to-go/process-control/switch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -149,15 +155,6 @@ Go 相关的 必须安装的 Go 插件 , 现在已经交给 Go Team 维护: 非�
       <description>在 Shell 中使用 case ... in 做分支语句。
 使用 case ... in 作为开始， 使用 esac 作为结尾 使用 xxx ) 格式作为条件分支。 其中 xxx 可以是多个并列条件 使用 ;; 作为语句块结束。 使用 * 作为默认条件语句， 可省略。 case $1 in &amp;#34;n1&amp;#34;) echo &amp;#34;n1&amp;#34; ;; &amp;#34;n2&amp;#34; | &amp;#34;n3&amp;#34;) echo &amp;#34;n2 or n3&amp;#34; ;; *) echo &amp;#34;default&amp;#34; ;; esac 在 Go 中使用 switch 作为分支语句
 使用 switch 关键字作为开始 使用 case 关键字作为分支条件。 没有单独的结尾关键字 使用 default 作为 switch n { case 1: fmt.Println(&amp;#34;1&amp;#34;) fallthrough case 2, 3, &amp;#34;a&amp;#34;: fmt.</description>
-    </item>
-    
-    <item>
-      <title>03. 接口 interface</title>
-      <link>https://typonotes.com/books/golang/go-features/interface/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/go-features/interface/</guid>
-      <description></description>
     </item>
     
     <item>
@@ -179,7 +176,7 @@ Go 相关的 必须安装的 Go 插件 , 现在已经交给 Go Team 维护: 非�
     </item>
     
     <item>
-      <title>04. 跳转语句(label)</title>
+      <title>04. 标签跳转语句 (label)</title>
       <link>https://typonotes.com/books/golang/shell-to-go/process-control/label/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -192,7 +189,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
     </item>
     
     <item>
-      <title>04. 通道 channel</title>
+      <title>04. 通道 Channel</title>
       <link>https://typonotes.com/books/golang/go-features/channel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -201,7 +198,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
     </item>
     
     <item>
-      <title>05. 并发选择语句(select)</title>
+      <title>05. 并发选择语句 (select)</title>
       <link>https://typonotes.com/books/golang/shell-to-go/process-control/select/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -250,6 +247,23 @@ func Test_Demo(t *testing.T) { i := 10 j := hello(&amp;amp;i) fmt.Println(i, j) 
       
       <guid>https://typonotes.com/books/golang/go-features/panic-recover/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>1. Context 值传递 - 源码解析(1)</title>
+      <link>https://typonotes.com/books/golang/go-features/context/context-value-propagation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/context/context-value-propagation/</guid>
+      <description>Golang 上下文(Context) 源码解析(1): 值传递 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
+状态: 未更新
+原文链接: https://typonotes.com/posts/2023/03/01/devopscamp-context-sample/
+上下文 Context 应该是 Go语言 中一个极其重要的 基石 概念了。 本文将通过一个案例 着重 说明 值传递 的过程、用法和注意事项。
+本文会通过 案例分析， 扩展到 源码讲解、使用方式 等多方面进行 Context 讲解。
+阅读完本文后， 你能
+掌握标准库中的 Context 是如何实现存取值的。 掌握开源库中， 对于 Context 的封装使用。 扩展阅读 这里有一篇 Go 语言设计与实现 - 上下文 Context ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。
+不管你愿不愿意， 用 Go 都绕不过 Context。不管用不用， 在所有 公共方法或函数 中强迫自己自己使用 context 作为入参。 虽然有点武断，但是&amp;hellip;（我也没有想到好的理由）
+从上文中我们可以确认， context 有两个核心作用， 值传递 与 信号传递。</description>
     </item>
     
     <item>
@@ -347,21 +361,6 @@ type Command struct { // 子命令 commands []*Command // 父命令 parent *Comm
 嗯， 在 cobra 中提供了一种叫做 Persistent 的 状态， 定向支持 函数 与 参数。
 下面这段代码是是使用时的定义。
 var root = &amp;amp;cobra.Command{ Use: &amp;#34;root&amp;#34;, // Persistent Run (1) PersistentPreRun: func(cmd *cobra.Command, args []string) { fmt.Println(&amp;#34;PersistentPreRun in root&amp;#34;) }, Run: func(cmd *cobra.Command, args []string) { _ = cmd.Help() }, } var config string func init() { // Persistent Flag (2) root.</description>
-    </item>
-    
-    <item>
-      <title>7. Golang 接口(interface) 简介和入门使用</title>
-      <link>https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/</guid>
-      <description>Golang 接口(interface) 简介和入门使用 上下文 interface 应该是 Go语言 中一个极其重要的 基石 概念了。
-这里有一篇 Go 语言设计与实现 - 接口 interface ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。
-在 go v1.18 中， interface 有了一个别名 any。 所以在说 interface 和 any 的时候， 其实说的是相同的东西。
-interface 的使用场景到处都是。 还记得我们之前说的 JSON 和 YAML 的配置文件处理吗？
-// json.Marshal func Marshal(v any) ([]byte, error) { // .... } 看完文章， 你至少应该知道
-什么是 鸭式对象 ？ 怎么使用 接口断言 ？ 鸭式对象 先来说说 鸭式对象: 叫的像鸭子， 走路像鸭子， 那它就是鸭子。
-我们对鸭子下一个定义， 1. 发出嘎嘎的叫声， 2.</description>
     </item>
     
     <item>

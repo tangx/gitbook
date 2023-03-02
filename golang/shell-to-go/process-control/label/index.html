@@ -42,7 +42,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>04. 跳转语句(label) | 《Shell 转 Go》</title>
+  <title>04. 标签跳转语句 (label) | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -63,7 +63,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
   
   <meta
     property="og:title"
-    content="04. 跳转语句(label)"
+    content="04. 标签跳转语句 (label)"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
   <meta property="og:description" content="Label 标签在 Shell 中没有。 但在 Go 中却应用广泛。
@@ -78,7 +78,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="04. 跳转语句(label)" />
+<meta name="twitter:title" content="04. 标签跳转语句 (label)" />
   <meta name="twitter:description" content="Label 标签在 Shell 中没有。 但在 Go 中却应用广泛。
 Label Label 的定义规则为 SomeName: ， 以 : 结尾。
 在 Go 使用 Label 必须使用配置关键字 continue, break, goto 的其中一个。
@@ -91,9 +91,9 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
       "@context": "http://schema.org",
       "@type": "TechArticle",
       "articleSection": "Shell to Go",
-      "name": "04. 跳转语句(label)",
+      "name": "04. 标签跳转语句 (label)",
       "url" : "https://typonotes.com/books/golang/shell-to-go/process-control/label/",
-      "headline": "04. 跳转语句(label)",
+      "headline": "04. 标签跳转语句 (label)",
       "description": "Label 标签在 Shell 中没有。 但在 Go 中却应用广泛。\nLabel Label 的定义规则为 SomeName: ， 以 : 结尾。\n在 Go 使用 Label 必须使用配置关键字 continue, break, goto 的其中一个。\n需要注意的是，\ncontinue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须配置 Laebl 使用。 goto Label for\/select\/switch 和 Label 直接使用 continue\/break 的时候， 作用域在 当前代码体 中。 如果配合了 Label 就可以跳出到 当前代码体外。 在配合 for\/select\/switch 使用时， Label 必须 紧临 他们， 中间不能有任何其他语句。 func continueBreakDemo() { Outer: for m := 1; m \u003c 10; m\u002b\u002b { Inner: for n := 1; n \u003c 10; n\u002b\u002b { fmt.",
       "wordCount" : "138",
       "inLanguage": "en",
@@ -702,7 +702,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
                     href="/books/golang/shell-to-go/process-control/if-else/"
                     class="gdoc-nav__entry"
                   >
-                    01. 条件语句 (if else)
+                    01. 条件语句 (if)
                   </a>
                 </span>
               
@@ -738,7 +738,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
                     href="/books/golang/shell-to-go/process-control/for-loops/"
                     class="gdoc-nav__entry"
                   >
-                    02. 循环语句 (for)
+                    02. 循环语句 (for / while)
                   </a>
                 </span>
               
@@ -774,7 +774,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
                     href="/books/golang/shell-to-go/process-control/switch/"
                     class="gdoc-nav__entry"
                   >
-                    03. 分支语句 (switch)
+                    03. 分支语句 (switch / case)
                   </a>
                 </span>
               
@@ -810,7 +810,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
                     href="/books/golang/shell-to-go/process-control/label/"
                     class="gdoc-nav__entry is-active"
                   >
-                    04. 跳转语句(label)
+                    04. 标签跳转语句 (label)
                   </a>
                 </span>
               
@@ -846,7 +846,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
                     href="/books/golang/shell-to-go/process-control/select/"
                     class="gdoc-nav__entry"
                   >
-                    05. 并发选择语句(select)
+                    05. 并发选择语句 (select)
                   </a>
                 </span>
               
@@ -941,7 +941,136 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
               
             >
               
-                <span class="flex">01. 上下文 context</span>
+                <span class="flex">01. 结构体 Struct</span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="gdoc-nav__toggle" id="navtree-aefd5264"
+                
+              
+            />
+            <label
+              
+                for="navtree-aefd5264" class="flex justify-between align-center"
+              
+            >
+              
+                <span class="flex">02. 上下文 Context</span>
+              
+              
+                <svg class="gdoc-icon toggle gdoc_keyboard_arrow_left">
+                  <use xlink:href="#gdoc_keyboard_arrow_left"></use>
+                </svg>
+                <svg class="gdoc-icon toggle gdoc_keyboard_arrow_down">
+                  <use xlink:href="#gdoc_keyboard_arrow_down"></use>
+                </svg>
+              
+            </label>
+
+            
+              
+  
+
+
+  <ul class="gdoc-nav__list">
+    
+    
+      
+
+      
+        
+      
+
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/go-features/context/context-value-propagation/"
+                    class="gdoc-nav__entry"
+                  >
+                    1. Context 值传递 - 源码解析(1)
+                  </a>
+                </span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+    
+  </ul>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/go-features/golang-interface/"
+                    class="gdoc-nav__entry"
+                  >
+                    03. Golang 接口(interface)
+                  </a>
+                </span>
               
               
             </label>
@@ -970,65 +1099,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
               
             >
               
-                <span class="flex">02. 结构体 struct</span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">03. 接口 interface</span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">04. 通道 channel</span>
+                <span class="flex">04. 通道 Channel</span>
               
               
             </label>
@@ -2037,42 +2108,6 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
           </li>
         
       
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">
-                  <a
-                    href="/books/golang/cobra-in-action/07-golang-interface-sample/"
-                    class="gdoc-nav__entry"
-                  >
-                    7. Golang 接口(interface) 简介和入门使用
-                  </a>
-                </span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
     
   </ul>
 
@@ -2152,7 +2187,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/' href='/books/golang/shell-to-go/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/process-control/' href='/books/golang/shell-to-go/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>04. 跳转语句(label)</span><meta itemprop='position' content='6' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/' href='/books/golang/shell-to-go/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/process-control/' href='/books/golang/shell-to-go/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>04. 标签跳转语句 (label)</span><meta itemprop='position' content='6' /></li>
   
 
   
@@ -2170,7 +2205,7 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>04. 跳转语句(label)</h1>
+  <h1>04. 标签跳转语句 (label)</h1>
   <p><code>Label</code> 标签在 Shell 中没有。 但在 Go 中却应用广泛。</p>
 <div class="gdoc-page__anchorwrap">
     <h2 id="label">

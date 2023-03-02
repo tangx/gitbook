@@ -41,7 +41,7 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>05. 并发选择语句(select) | 《Shell 转 Go》</title>
+  <title>05. 并发选择语句 (select) | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -62,7 +62,7 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
   
   <meta
     property="og:title"
-    content="05. 并发选择语句(select)"
+    content="05. 并发选择语句 (select)"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
   <meta property="og:description" content="select 语句在 Shell 中没有， 但是在 Go 中却是 并发 的根基。
@@ -76,7 +76,7 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="05. 并发选择语句(select)" />
+<meta name="twitter:title" content="05. 并发选择语句 (select)" />
   <meta name="twitter:description" content="select 语句在 Shell 中没有， 但是在 Go 中却是 并发 的根基。
 select 在语法上面， 和 switch 相似
 使用 case 作为分支入口。 使用 default 作为默认语句。 不同的是，
@@ -88,9 +88,9 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
       "@context": "http://schema.org",
       "@type": "TechArticle",
       "articleSection": "Shell to Go",
-      "name": "05. 并发选择语句(select)",
+      "name": "05. 并发选择语句 (select)",
       "url" : "https://typonotes.com/books/golang/shell-to-go/process-control/select/",
-      "headline": "05. 并发选择语句(select)",
+      "headline": "05. 并发选择语句 (select)",
       "description": "select 语句在 Shell 中没有， 但是在 Go 中却是 并发 的根基。\nselect 在语法上面， 和 switch 相似\n使用 case 作为分支入口。 使用 default 作为默认语句。 不同的是，\nselect 没有条件语句 func selectGrammar(ctx context.Context) { channel := make(chan int, 10) value := 100 select { case \u003c-ctx.Done(): \/\/ 执行的代码 case \u003c-time.After(10 * time.Second): \/\/ 执行的代码 case val := \u003c-channel: fmt.Println(val) \/\/ 执行的代码 case channel \u003c- value: \/\/ 执行代码 default: \/\/ 所有通道都没有准备好，执行的代码 } } 每个 case 语句都必须是一个通道(channel)。 常见的通道包括以下: ctx.Done。 time.",
       "wordCount" : "177",
       "inLanguage": "en",
@@ -699,7 +699,7 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
                     href="/books/golang/shell-to-go/process-control/if-else/"
                     class="gdoc-nav__entry"
                   >
-                    01. 条件语句 (if else)
+                    01. 条件语句 (if)
                   </a>
                 </span>
               
@@ -735,7 +735,7 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
                     href="/books/golang/shell-to-go/process-control/for-loops/"
                     class="gdoc-nav__entry"
                   >
-                    02. 循环语句 (for)
+                    02. 循环语句 (for / while)
                   </a>
                 </span>
               
@@ -771,7 +771,7 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
                     href="/books/golang/shell-to-go/process-control/switch/"
                     class="gdoc-nav__entry"
                   >
-                    03. 分支语句 (switch)
+                    03. 分支语句 (switch / case)
                   </a>
                 </span>
               
@@ -807,7 +807,7 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
                     href="/books/golang/shell-to-go/process-control/label/"
                     class="gdoc-nav__entry"
                   >
-                    04. 跳转语句(label)
+                    04. 标签跳转语句 (label)
                   </a>
                 </span>
               
@@ -843,7 +843,7 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
                     href="/books/golang/shell-to-go/process-control/select/"
                     class="gdoc-nav__entry is-active"
                   >
-                    05. 并发选择语句(select)
+                    05. 并发选择语句 (select)
                   </a>
                 </span>
               
@@ -938,7 +938,136 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
               
             >
               
-                <span class="flex">01. 上下文 context</span>
+                <span class="flex">01. 结构体 Struct</span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="gdoc-nav__toggle" id="navtree-aefd5264"
+                
+              
+            />
+            <label
+              
+                for="navtree-aefd5264" class="flex justify-between align-center"
+              
+            >
+              
+                <span class="flex">02. 上下文 Context</span>
+              
+              
+                <svg class="gdoc-icon toggle gdoc_keyboard_arrow_left">
+                  <use xlink:href="#gdoc_keyboard_arrow_left"></use>
+                </svg>
+                <svg class="gdoc-icon toggle gdoc_keyboard_arrow_down">
+                  <use xlink:href="#gdoc_keyboard_arrow_down"></use>
+                </svg>
+              
+            </label>
+
+            
+              
+  
+
+
+  <ul class="gdoc-nav__list">
+    
+    
+      
+
+      
+        
+      
+
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/go-features/context/context-value-propagation/"
+                    class="gdoc-nav__entry"
+                  >
+                    1. Context 值传递 - 源码解析(1)
+                  </a>
+                </span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+    
+  </ul>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/go-features/golang-interface/"
+                    class="gdoc-nav__entry"
+                  >
+                    03. Golang 接口(interface)
+                  </a>
+                </span>
               
               
             </label>
@@ -967,65 +1096,7 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
               
             >
               
-                <span class="flex">02. 结构体 struct</span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">03. 接口 interface</span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">04. 通道 channel</span>
+                <span class="flex">04. 通道 Channel</span>
               
               
             </label>
@@ -2034,42 +2105,6 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
           </li>
         
       
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">
-                  <a
-                    href="/books/golang/cobra-in-action/07-golang-interface-sample/"
-                    class="gdoc-nav__entry"
-                  >
-                    7. Golang 接口(interface) 简介和入门使用
-                  </a>
-                </span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
     
   </ul>
 
@@ -2149,7 +2184,7 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/' href='/books/golang/shell-to-go/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/process-control/' href='/books/golang/shell-to-go/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>05. 并发选择语句(select)</span><meta itemprop='position' content='6' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/' href='/books/golang/shell-to-go/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/process-control/' href='/books/golang/shell-to-go/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>05. 并发选择语句 (select)</span><meta itemprop='position' content='6' /></li>
   
 
   
@@ -2167,7 +2202,7 @@ select 没有条件语句 func selectGrammar(ctx context.Context) { channel := m
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>05. 并发选择语句(select)</h1>
+  <h1>05. 并发选择语句 (select)</h1>
   <p><code>select</code> 语句在 Shell 中没有， 但是在 Go 中却是 <strong>并发</strong> 的根基。</p>
 <div class="gdoc-page__anchorwrap">
     <h1 id="select">

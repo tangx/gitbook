@@ -7,19 +7,21 @@
   </url><url>
     <loc>https://typonotes.com/books/golang/startup/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/go-features/context/</loc>
-  </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/variable/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/process-control/if-else/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/daily-notes/environment/</loc>
   </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/struct/</loc>
+  </url><url>
     <loc>https://typonotes.com/books/golang/startup/introduce/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/daily-notes/timezone/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/context/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/startup/install/</loc>
   </url><url>
@@ -29,15 +31,13 @@
   </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/process-control/for-loops/</loc>
   </url><url>
-    <loc>https://typonotes.com/books/golang/go-features/struct/</loc>
-  </url><url>
     <loc>https://typonotes.com/books/golang/go-features/</loc>
+  </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/golang-interface/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/startup/vscode/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/shell-to-go/process-control/switch/</loc>
-  </url><url>
-    <loc>https://typonotes.com/books/golang/go-features/interface/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/linux-go-snippet/filepath/</loc>
   </url><url>
@@ -65,6 +65,8 @@
   </url><url>
     <loc>https://typonotes.com/books/golang/go-features/panic-recover/</loc>
   </url><url>
+    <loc>https://typonotes.com/books/golang/go-features/context/context-value-propagation/</loc>
+  </url><url>
     <loc>https://typonotes.com/books/golang/cobra-in-action/01-cobra-sample/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/</loc>
@@ -78,8 +80,6 @@
     <loc>https://typonotes.com/books/golang/cobra-in-action/05-2-gin-router-tree/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/cobra-in-action/06-persistent-flag/</loc>
-  </url><url>
-    <loc>https://typonotes.com/books/golang/cobra-in-action/07-golang-interface-sample/</loc>
   </url><url>
     <loc>https://typonotes.com/books/golang/cobra-in-action/</loc>
   </url><url>

@@ -40,7 +40,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>03. 分支语句 (switch) | 《Shell 转 Go》</title>
+  <title>03. 分支语句 (switch / case) | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -61,7 +61,7 @@
   
   <meta
     property="og:title"
-    content="03. 分支语句 (switch)"
+    content="03. 分支语句 (switch / case)"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
   <meta property="og:description" content="在 Shell 中使用 case ... in 做分支语句。
@@ -74,7 +74,7 @@
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="03. 分支语句 (switch)" />
+<meta name="twitter:title" content="03. 分支语句 (switch / case)" />
   <meta name="twitter:description" content="在 Shell 中使用 case ... in 做分支语句。
 使用 case ... in 作为开始， 使用 esac 作为结尾 使用 xxx ) 格式作为条件分支。 其中 xxx 可以是多个并列条件 使用 ;; 作为语句块结束。 使用 * 作为默认条件语句， 可省略。 case $1 in &#34;n1&#34;) echo &#34;n1&#34; ;; &#34;n2&#34; | &#34;n3&#34;) echo &#34;n2 or n3&#34; ;; *) echo &#34;default&#34; ;; esac 在 Go 中使用 switch 作为分支语句
 使用 switch 关键字作为开始 使用 case 关键字作为分支条件。 没有单独的结尾关键字 使用 default 作为 switch n { case 1: fmt.Println(&#34;1&#34;) fallthrough case 2, 3, &#34;a&#34;: fmt." />
@@ -85,9 +85,9 @@
       "@context": "http://schema.org",
       "@type": "TechArticle",
       "articleSection": "Shell to Go",
-      "name": "03. 分支语句 (switch)",
+      "name": "03. 分支语句 (switch / case)",
       "url" : "https://typonotes.com/books/golang/shell-to-go/process-control/switch/",
-      "headline": "03. 分支语句 (switch)",
+      "headline": "03. 分支语句 (switch / case)",
       "description": "在 Shell 中使用 case ... in 做分支语句。\n使用 case ... in 作为开始， 使用 esac 作为结尾 使用 xxx ) 格式作为条件分支。 其中 xxx 可以是多个并列条件 使用 ;; 作为语句块结束。 使用 * 作为默认条件语句， 可省略。 case $1 in \u0022n1\u0022) echo \u0022n1\u0022 ;; \u0022n2\u0022 | \u0022n3\u0022) echo \u0022n2 or n3\u0022 ;; *) echo \u0022default\u0022 ;; esac 在 Go 中使用 switch 作为分支语句\n使用 switch 关键字作为开始 使用 case 关键字作为分支条件。 没有单独的结尾关键字 使用 default 作为 switch n { case 1: fmt.Println(\u00221\u0022) fallthrough case 2, 3, \u0022a\u0022: fmt.",
       "wordCount" : "91",
       "inLanguage": "en",
@@ -696,7 +696,7 @@
                     href="/books/golang/shell-to-go/process-control/if-else/"
                     class="gdoc-nav__entry"
                   >
-                    01. 条件语句 (if else)
+                    01. 条件语句 (if)
                   </a>
                 </span>
               
@@ -732,7 +732,7 @@
                     href="/books/golang/shell-to-go/process-control/for-loops/"
                     class="gdoc-nav__entry"
                   >
-                    02. 循环语句 (for)
+                    02. 循环语句 (for / while)
                   </a>
                 </span>
               
@@ -768,7 +768,7 @@
                     href="/books/golang/shell-to-go/process-control/switch/"
                     class="gdoc-nav__entry is-active"
                   >
-                    03. 分支语句 (switch)
+                    03. 分支语句 (switch / case)
                   </a>
                 </span>
               
@@ -804,7 +804,7 @@
                     href="/books/golang/shell-to-go/process-control/label/"
                     class="gdoc-nav__entry"
                   >
-                    04. 跳转语句(label)
+                    04. 标签跳转语句 (label)
                   </a>
                 </span>
               
@@ -840,7 +840,7 @@
                     href="/books/golang/shell-to-go/process-control/select/"
                     class="gdoc-nav__entry"
                   >
-                    05. 并发选择语句(select)
+                    05. 并发选择语句 (select)
                   </a>
                 </span>
               
@@ -935,7 +935,136 @@
               
             >
               
-                <span class="flex">01. 上下文 context</span>
+                <span class="flex">01. 结构体 Struct</span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="gdoc-nav__toggle" id="navtree-aefd5264"
+                
+              
+            />
+            <label
+              
+                for="navtree-aefd5264" class="flex justify-between align-center"
+              
+            >
+              
+                <span class="flex">02. 上下文 Context</span>
+              
+              
+                <svg class="gdoc-icon toggle gdoc_keyboard_arrow_left">
+                  <use xlink:href="#gdoc_keyboard_arrow_left"></use>
+                </svg>
+                <svg class="gdoc-icon toggle gdoc_keyboard_arrow_down">
+                  <use xlink:href="#gdoc_keyboard_arrow_down"></use>
+                </svg>
+              
+            </label>
+
+            
+              
+  
+
+
+  <ul class="gdoc-nav__list">
+    
+    
+      
+
+      
+        
+      
+
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/go-features/context/context-value-propagation/"
+                    class="gdoc-nav__entry"
+                  >
+                    1. Context 值传递 - 源码解析(1)
+                  </a>
+                </span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+    
+  </ul>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/go-features/golang-interface/"
+                    class="gdoc-nav__entry"
+                  >
+                    03. Golang 接口(interface)
+                  </a>
+                </span>
               
               
             </label>
@@ -964,65 +1093,7 @@
               
             >
               
-                <span class="flex">02. 结构体 struct</span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">03. 接口 interface</span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">04. 通道 channel</span>
+                <span class="flex">04. 通道 Channel</span>
               
               
             </label>
@@ -2031,42 +2102,6 @@
           </li>
         
       
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">
-                  <a
-                    href="/books/golang/cobra-in-action/07-golang-interface-sample/"
-                    class="gdoc-nav__entry"
-                  >
-                    7. Golang 接口(interface) 简介和入门使用
-                  </a>
-                </span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
     
   </ul>
 
@@ -2146,7 +2181,7 @@
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/' href='/books/golang/shell-to-go/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/process-control/' href='/books/golang/shell-to-go/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>03. 分支语句 (switch)</span><meta itemprop='position' content='6' /></li>
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/' href='/books/golang/shell-to-go/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/process-control/' href='/books/golang/shell-to-go/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>03. 分支语句 (switch / case)</span><meta itemprop='position' content='6' /></li>
   
 
   
@@ -2164,7 +2199,7 @@
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>03. 分支语句 (switch)</h1>
+  <h1>03. 分支语句 (switch / case)</h1>
   <p>在 Shell 中使用 <code>case ... in</code> 做分支语句。</p>
 <ol>
 <li>使用 <code>case ... in</code> 作为开始， 使用 <code>esac</code> 作为结尾</li>

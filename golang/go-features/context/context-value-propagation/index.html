@@ -9,6 +9,15 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
+  <meta name="description" content="Golang 上下文(Context) 源码解析(1): 值传递 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
+状态: 未更新
+原文链接: https://typonotes.com/posts/2023/03/01/devopscamp-context-sample/
+上下文 Context 应该是 Go语言 中一个极其重要的 基石 概念了。 本文将通过一个案例 着重 说明 值传递 的过程、用法和注意事项。
+本文会通过 案例分析， 扩展到 源码讲解、使用方式 等多方面进行 Context 讲解。
+阅读完本文后， 你能
+掌握标准库中的 Context 是如何实现存取值的。 掌握开源库中， 对于 Context 的封装使用。 扩展阅读 这里有一篇 Go 语言设计与实现 - 上下文 Context ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。
+不管你愿不愿意， 用 Go 都绕不过 Context。不管用不用， 在所有 公共方法或函数 中强迫自己自己使用 context 作为入参。 虽然有点武断，但是&hellip;（我也没有想到好的理由）
+从上文中我们可以确认， context 有两个核心作用， 值传递 与 信号传递。" />
 
 
   
@@ -37,7 +46,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>03. 接口 interface | 《Shell 转 Go》</title>
+  <title>1. Context 值传递 - 源码解析(1) | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -58,17 +67,35 @@
   
   <meta
     property="og:title"
-    content="03. 接口 interface"
+    content="1. Context 值传递 - 源码解析(1)"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
+  <meta property="og:description" content="Golang 上下文(Context) 源码解析(1): 值传递 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
+状态: 未更新
+原文链接: https://typonotes.com/posts/2023/03/01/devopscamp-context-sample/
+上下文 Context 应该是 Go语言 中一个极其重要的 基石 概念了。 本文将通过一个案例 着重 说明 值传递 的过程、用法和注意事项。
+本文会通过 案例分析， 扩展到 源码讲解、使用方式 等多方面进行 Context 讲解。
+阅读完本文后， 你能
+掌握标准库中的 Context 是如何实现存取值的。 掌握开源库中， 对于 Context 的封装使用。 扩展阅读 这里有一篇 Go 语言设计与实现 - 上下文 Context ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。
+不管你愿不愿意， 用 Go 都绕不过 Context。不管用不用， 在所有 公共方法或函数 中强迫自己自己使用 context 作为入参。 虽然有点武断，但是…（我也没有想到好的理由）
+从上文中我们可以确认， context 有两个核心作用， 值传递 与 信号传递。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/go-features/interface/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/go-features/context/context-value-propagation/" />
 
 <meta property="article:section" content="Go Features" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="03. 接口 interface" />
+<meta name="twitter:title" content="1. Context 值传递 - 源码解析(1)" />
+  <meta name="twitter:description" content="Golang 上下文(Context) 源码解析(1): 值传递 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
+状态: 未更新
+原文链接: https://typonotes.com/posts/2023/03/01/devopscamp-context-sample/
+上下文 Context 应该是 Go语言 中一个极其重要的 基石 概念了。 本文将通过一个案例 着重 说明 值传递 的过程、用法和注意事项。
+本文会通过 案例分析， 扩展到 源码讲解、使用方式 等多方面进行 Context 讲解。
+阅读完本文后， 你能
+掌握标准库中的 Context 是如何实现存取值的。 掌握开源库中， 对于 Context 的封装使用。 扩展阅读 这里有一篇 Go 语言设计与实现 - 上下文 Context ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。
+不管你愿不愿意， 用 Go 都绕不过 Context。不管用不用， 在所有 公共方法或函数 中强迫自己自己使用 context 作为入参。 虽然有点武断，但是…（我也没有想到好的理由）
+从上文中我们可以确认， context 有两个核心作用， 值传递 与 信号传递。" />
 
 
   <script type="application/ld+json">
@@ -76,15 +103,16 @@
       "@context": "http://schema.org",
       "@type": "TechArticle",
       "articleSection": "Go Features",
-      "name": "03. 接口 interface",
-      "url" : "https://typonotes.com/books/golang/go-features/interface/",
-      "headline": "03. 接口 interface",
-      "wordCount" : "0",
+      "name": "1. Context 值传递 - 源码解析(1)",
+      "url" : "https://typonotes.com/books/golang/go-features/context/context-value-propagation/",
+      "headline": "1. Context 值传递 - 源码解析(1)",
+      "description": "Golang 上下文(Context) 源码解析(1): 值传递 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。\n状态: 未更新\n原文链接: https:\/\/typonotes.com\/posts\/2023\/03\/01\/devopscamp-context-sample\/\n上下文 Context 应该是 Go语言 中一个极其重要的 基石 概念了。 本文将通过一个案例 着重 说明 值传递 的过程、用法和注意事项。\n本文会通过 案例分析， 扩展到 源码讲解、使用方式 等多方面进行 Context 讲解。\n阅读完本文后， 你能\n掌握标准库中的 Context 是如何实现存取值的。 掌握开源库中， 对于 Context 的封装使用。 扩展阅读 这里有一篇 Go 语言设计与实现 - 上下文 Context ， 是目前我学习的资料中 完成度 和 友善度 都很高的一篇文章。\n不管你愿不愿意， 用 Go 都绕不过 Context。不管用不用， 在所有 公共方法或函数 中强迫自己自己使用 context 作为入参。 虽然有点武断，但是…（我也没有想到好的理由）\n从上文中我们可以确认， context 有两个核心作用， 值传递 与 信号传递。",
+      "wordCount" : "799",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/go-features/interface/"
+          "@id": "https://typonotes.com/books/golang/go-features/context/context-value-propagation/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -168,7 +196,7 @@
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/go-features/interface/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/go-features/context/context-value-propagation/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -686,7 +714,7 @@
                     href="/books/golang/shell-to-go/process-control/if-else/"
                     class="gdoc-nav__entry"
                   >
-                    01. 条件语句 (if else)
+                    01. 条件语句 (if)
                   </a>
                 </span>
               
@@ -722,7 +750,7 @@
                     href="/books/golang/shell-to-go/process-control/for-loops/"
                     class="gdoc-nav__entry"
                   >
-                    02. 循环语句 (for)
+                    02. 循环语句 (for / while)
                   </a>
                 </span>
               
@@ -758,7 +786,7 @@
                     href="/books/golang/shell-to-go/process-control/switch/"
                     class="gdoc-nav__entry"
                   >
-                    03. 分支语句 (switch)
+                    03. 分支语句 (switch / case)
                   </a>
                 </span>
               
@@ -794,7 +822,7 @@
                     href="/books/golang/shell-to-go/process-control/label/"
                     class="gdoc-nav__entry"
                   >
-                    04. 跳转语句(label)
+                    04. 标签跳转语句 (label)
                   </a>
                 </span>
               
@@ -830,7 +858,7 @@
                     href="/books/golang/shell-to-go/process-control/select/"
                     class="gdoc-nav__entry"
                   >
-                    05. 并发选择语句(select)
+                    05. 并发选择语句 (select)
                   </a>
                 </span>
               
@@ -925,7 +953,136 @@
               
             >
               
-                <span class="flex">01. 上下文 context</span>
+                <span class="flex">01. 结构体 Struct</span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="gdoc-nav__toggle" id="navtree-aefd5264"
+                checked
+              
+            />
+            <label
+              
+                for="navtree-aefd5264" class="flex justify-between align-center"
+              
+            >
+              
+                <span class="flex">02. 上下文 Context</span>
+              
+              
+                <svg class="gdoc-icon toggle gdoc_keyboard_arrow_left">
+                  <use xlink:href="#gdoc_keyboard_arrow_left"></use>
+                </svg>
+                <svg class="gdoc-icon toggle gdoc_keyboard_arrow_down">
+                  <use xlink:href="#gdoc_keyboard_arrow_down"></use>
+                </svg>
+              
+            </label>
+
+            
+              
+  
+
+
+  <ul class="gdoc-nav__list">
+    
+    
+      
+
+      
+        
+      
+
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/go-features/context/context-value-propagation/"
+                    class="gdoc-nav__entry is-active"
+                  >
+                    1. Context 值传递 - 源码解析(1)
+                  </a>
+                </span>
+              
+              
+            </label>
+
+            
+          </li>
+        
+      
+    
+  </ul>
+
+            
+          </li>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+
+
+          <li>
+            <input
+              type="checkbox"
+              
+                class="hidden"
+              
+            />
+            <label
+              
+            >
+              
+                <span class="flex">
+                  <a
+                    href="/books/golang/go-features/golang-interface/"
+                    class="gdoc-nav__entry"
+                  >
+                    03. Golang 接口(interface)
+                  </a>
+                </span>
               
               
             </label>
@@ -954,65 +1111,7 @@
               
             >
               
-                <span class="flex">02. 结构体 struct</span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">03. 接口 interface</span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">04. 通道 channel</span>
+                <span class="flex">04. 通道 Channel</span>
               
               
             </label>
@@ -2021,42 +2120,6 @@
           </li>
         
       
-        
-          
-          
-          
-          
-          
-          
-
-
-          <li>
-            <input
-              type="checkbox"
-              
-                class="hidden"
-              
-            />
-            <label
-              
-            >
-              
-                <span class="flex">
-                  <a
-                    href="/books/golang/cobra-in-action/07-golang-interface-sample/"
-                    class="gdoc-nav__entry"
-                  >
-                    7. Golang 接口(interface) 简介和入门使用
-                  </a>
-                </span>
-              
-              
-            </label>
-
-            
-          </li>
-        
-      
     
   </ul>
 
@@ -2130,7 +2193,15 @@
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/go-features/' href='/books/golang/go-features/'><span itemprop='name'>03. Go 特性语法</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>03. 接口 interface</span><meta itemprop='position' content='5' /></li>
+    
+    
+    
+    
+  
+  
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/go-features/' href='/books/golang/go-features/'><span itemprop='name'>03. Go 特性语法</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/go-features/context/' href='/books/golang/go-features/context/'><span itemprop='name'>02. 上下文 Context</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>1. Context 值传递 - 源码解析(1)</span><meta itemprop='position' content='6' /></li>
+  
+
   
 
   
@@ -2146,8 +2217,385 @@
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>03. 接口 interface</h1>
-  
+  <h1>1. Context 值传递 - 源码解析(1)</h1>
+  <div class="gdoc-page__anchorwrap">
+    <h1 id="golang-上下文context-源码解析1-值传递">
+        Golang 上下文(Context) 源码解析(1): 值传递
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#golang-上下文context-源码解析1-值传递" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Golang 上下文(Context) 源码解析(1): 值传递" aria-label="Anchor to: Golang 上下文(Context) 源码解析(1): 值传递" href="#golang-%e4%b8%8a%e4%b8%8b%e6%96%87context-%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%901-%e5%80%bc%e4%bc%a0%e9%80%92">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h1>
+</div>
+<p>如果在 <strong>公众号</strong> 文章发现状态为 <strong>已更新</strong>， 建议点击 <strong>查看原文</strong> 查看最新内容。</p>
+<p>状态: <strong>未更新</strong></p>
+<blockquote>
+<p><strong>原文链接:</strong> <a
+  class="gdoc-markdown__link"
+  href="https://typonotes.com/posts/2023/03/01/devopscamp-context-sample/"
+>https://typonotes.com/posts/2023/03/01/devopscamp-context-sample/</a></p>
+</blockquote>
+<p>上下文 <code>Context</code> 应该是 Go语言 中一个极其重要的 <strong>基石</strong> 概念了。 本文将通过一个案例 <strong>着重</strong> 说明 <strong>值传递</strong> 的过程、用法和注意事项。</p>
+<p>本文会通过 <strong>案例分析</strong>， 扩展到 <strong>源码讲解</strong>、<strong>使用方式</strong> 等多方面进行 Context 讲解。</p>
+<p>阅读完本文后， 你能</p>
+<ol>
+<li>掌握标准库中的 Context 是如何实现存取值的。</li>
+<li>掌握开源库中， 对于 Context 的封装使用。</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="扩展阅读">
+        扩展阅读
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#扩展阅读" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 扩展阅读" aria-label="Anchor to: 扩展阅读" href="#%e6%89%a9%e5%b1%95%e9%98%85%e8%af%bb">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>这里有一篇 <a
+  class="gdoc-markdown__link"
+  href="https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-context/"
+>Go 语言设计与实现 - 上下文 Context</a> ， 是目前我学习的资料中 <strong>完成度</strong> 和 <strong>友善度</strong> 都很高的一篇文章。</p>
+<p>不管你愿不愿意， 用 Go 都绕不过 Context。不管用不用， 在所有 <strong>公共方法或函数</strong> 中强迫自己自己使用 context 作为入参。 <strong>虽然有点武断，但是&hellip;（我也没有想到好的理由）</strong></p>
+<p>从上文中我们可以确认， <code>context</code> 有两个核心作用， <strong>值传递</strong> 与 <strong>信号传递</strong>。</p>
+<ol>
+<li><strong>值传递</strong>： 将上文的中的值传递到下文。 最直观的用法可能应该链路追踪。</li>
+<li><strong>信号传递</strong>： 应该算 <strong>值传递</strong> 的一种特殊情况。 通过捕获信号、处理信息， 可以控制调用链流程。</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="值传递案例讲解-曹操打新野">
+        值传递案例讲解: 曹操打新野
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#值传递案例讲解-曹操打新野" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 值传递案例讲解: 曹操打新野" aria-label="Anchor to: 值传递案例讲解: 曹操打新野" href="#%e5%80%bc%e4%bc%a0%e9%80%92%e6%a1%88%e4%be%8b%e8%ae%b2%e8%a7%a3-%e6%9b%b9%e6%93%8d%e6%89%93%e6%96%b0%e9%87%8e">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>就用 context 实现一个 <strong>曹操打新野</strong> 的值传递游戏， 要求如下</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">main</span> <span class="o">-</span><span class="p">&gt;</span> <span class="nf">Lubei</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="o">-</span><span class="p">&gt;</span> <span class="nf">Guanyu</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="o">-</span><span class="p">&gt;</span> <span class="nf">Zhangfei</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span>
+</span></span></code></pre></div><ol>
+<li>给刘备传递 <strong>任意数字</strong></li>
+<li>刘备拿到数字， 并输出 “曹操来了 n 万人”</li>
+<li>刘备把数字传递给关羽。</li>
+</ol>
+<ul>
+<li>a. 如果数字为偶数， 直接传递给张飞</li>
+<li>b. 如果数字为奇数， 数字扩大10倍后传递给张飞。</li>
+<li>c. 输出 “曹操来了 n 万人”。 （注意 n 的值）</li>
+</ul>
+<ol start="4">
+<li>张飞拿到数字， 直接输出 “曹操来了 n 万人”。</li>
+</ol>
+<p>代码已经放到了 Github 上: <a
+  class="gdoc-markdown__link"
+  href="https://github.com/tangx-labs/golang-context-with-from-demo"
+>https://github.com/tangx-labs/golang-context-with-from-demo</a></p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="context-是一个接口">
+        Context 是一个接口
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#context-是一个接口" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Context 是一个接口" aria-label="Anchor to: Context 是一个接口" href="#context-%e6%98%af%e4%b8%80%e4%b8%aa%e6%8e%a5%e5%8f%a3">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>为什么要单独把这个拿出来说呢？ 因为最开始我以为 Conetxt 是一个 struct， 所有的 Context 都是一样的。 指导我在 <code>gonic-gin/gin</code> 那边踩了坑（挖个坑，以后有机会再说）。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Context</span> <span class="kd">interface</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Deadline</span><span class="p">()</span> <span class="p">(</span><span class="nx">deadline</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="nx">ok</span> <span class="kt">bool</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Done</span><span class="p">()</span> <span class="o">&lt;-</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Err</span><span class="p">()</span> <span class="kt">error</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Value</span><span class="p">(</span><span class="nx">key</span> <span class="nx">any</span><span class="p">)</span> <span class="nx">any</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>而我们常用的 <strong>标准库 Conetxt</strong>， 其实背后基本上是 <strong>4种</strong> 基础 struct 构成。</p>
+<ol>
+<li><code>emptyCtx</code></li>
+<li><code>valueCtx</code>: 这个是我们今天的重点。</li>
+<li><code>cancelCtx</code></li>
+<li><code>timerCtx</code></li>
+</ol>
+<p>如果你常用他们， 应该能马上想起对应他们几个的方法或函数。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="向-context-注入值">
+        向 context 注入值
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#向-context-注入值" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 向 context 注入值" aria-label="Anchor to: 向 context 注入值" href="#%e5%90%91-context-%e6%b3%a8%e5%85%a5%e5%80%bc">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>通常我们使用 <code>context.WithValue</code> <strong>函数</strong> 进行变量值注入。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 定义曹军的 key ， 用于 context 的值传递
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">enemy</span> <span class="kt">int</span> <span class="c1">// 定义一个新类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">keyCaojun</span> <span class="p">=</span> <span class="nf">enemy</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 将曹军数量注入到 context 中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">WithEnemyContext</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">number</span> <span class="kt">int</span><span class="p">)</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">keyCaojun</span><span class="p">,</span> <span class="nx">number</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>最后的返回值 <code>context.Context</code> 就是一个 <code>valueCtx</code>。 也就是不管你传入的 <code>ctx</code> 是什么， 最后得到的都是 <code>valueCtx</code>。 这个是无法控制的， 除非你不用这个函数而自己实现。</p>
+<p>从代码中可以看到， 我定义了一个 <strong>函数</strong> 叫做 <code>WithEnemyContext</code> 专门用作 <strong>值注入</strong>， 而 <code>keyCaojun</code> 并不是作为参数传递进来的， 而是在定义在 <strong>包级别</strong> 的常量。</p>
+<p>这是因为：作为一个 <strong>包</strong>， 所提供功能相对固定， 不需要用户自己定义。 这样可以减少了由于输入带来的不必要问题。</p>
+<blockquote>
+<p>这也是开源库中常见的用法。</p>
+</blockquote>
+<div class="gdoc-page__anchorwrap">
+    <h4 id="conetxt-key-的讲究">
+        conetxt key 的讲究
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#conetxt-key-的讲究" class="gdoc-page__anchor clip flex align-center" title="Anchor to: conetxt key 的讲究" aria-label="Anchor to: conetxt key 的讲究" href="#conetxt-key-%e7%9a%84%e8%ae%b2%e7%a9%b6">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h4>
+</div>
+<p>从代码中可以看到， 我为这个 key 定义了一个 <strong>新类型</strong>， 其基础类型是 <code>int</code>。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 定义曹军的 key ， 用于 context 的值传递
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">enemy</span> <span class="kt">int</span> <span class="c1">// 定义一个新类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">const</span> <span class="nx">keyCaojun</span> <span class="p">=</span> <span class="nf">enemy</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></div><p>掌握了基础的你应该知道， 类型 <code>enemy</code> 和 <code>int</code> 可以互相转换， 但他们并不相同。</p>
+<p>事实上， 在 context 注入值的时候， 应该 <strong>尽量避免</strong> 使用 <strong>基础类型</strong>。 就是因为基础类型太过于常用， 在做 key 的时候， 如果其值很简单， 很可能不知不觉就发生冲突被覆盖了。</p>
+<blockquote>
+<p>如果一定要使用基础类型怎么办？ <strong>那就把值设置复杂一点吧</strong>。</p>
+</blockquote>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="从-context-中取值">
+        从 context 中取值
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#从-context-中取值" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 从 context 中取值" aria-label="Anchor to: 从 context 中取值" href="#%e4%bb%8e-context-%e4%b8%ad%e5%8f%96%e5%80%bc">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>同样的， 为了从 context 中取值， 也封装了一个函数 <code>FromEnemyContext</code>， 同样也用到了 <code>keyCaojun</code> 这个常量。 这样 <code>WithEnemyConetxt</code> 一起， 组成了 <strong>一组</strong> 用于存取的函数。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 从 context 中取出曹军数量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">FromEnemyContext</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">val</span> <span class="o">:=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">Value</span><span class="p">(</span><span class="nx">keyCaojun</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">n</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">val</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span> <span class="c1">// 类型断言
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">n</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>在代码中， 通过 <code>ctx.Value</code> 取出来的值是 <code>any</code> 类型， 在返回之前， 我们需要将其断言成 <code>int</code> 类型。</p>
+<p>不过， 由于我们这是 <strong>一组</strong> 函数， 所以 <code>val</code> 的类型肯定是 <code>int</code>， 而其 <strong>零值</strong> 就是 <code>0</code>。 综上这么多 <strong>约束条件</strong>， 此处代码可以简写， 不需要在判断类型断言是否成功。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 从 context 中取出曹军数量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">FromEnemyContext</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">val</span> <span class="o">:=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">Value</span><span class="p">(</span><span class="nx">keyCaojun</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">n</span> <span class="o">:=</span> <span class="nx">val</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span> <span class="c1">// 类型断言
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="nx">n</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap">
+    <h3 id="值传递源码解析">
+        值传递源码解析
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#值传递源码解析" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 值传递源码解析" aria-label="Anchor to: 值传递源码解析" href="#%e5%80%bc%e4%bc%a0%e9%80%92%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>下面这段代码， 就是 “曹操打新野” 的故事的代码实现。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nf">Liubei</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Liubei</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// (1) 注入到 context
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">ctx</span> <span class="p">=</span> <span class="nx">info</span><span class="p">.</span><span class="nf">WithEnemyContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;刘备: 曹操来了 %d 万人\n&#34;</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Guanyu</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Guanyu</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">n</span> <span class="o">:=</span> <span class="nx">info</span><span class="p">.</span><span class="nf">FromEnemyContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// (2) 获取消息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;关羽(1) &lt;-: 曹操来了 %d 万人\n&#34;</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">n</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 扩大数量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">n</span> <span class="p">=</span> <span class="nx">n</span> <span class="o">*</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// (1) 重新注入到 context
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">ctx</span> <span class="p">=</span> <span class="nx">info</span><span class="p">.</span><span class="nf">WithEnemyContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;关羽(2) -&gt;: 曹操来了 %d 万人\n&#34;</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Zhangfei</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Zhangfei</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// (2) 获取消息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">n</span> <span class="o">:=</span> <span class="nx">info</span><span class="p">.</span><span class="nf">FromEnemyContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;张飞: 曹操来了 %d 万人\n&#34;</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>在代码中， 可以注意到</p>
+<ol>
+<li>在 (1) 处： 刘备和关羽都通过 <code>WithEnemyContext</code> 传递了军情信息。</li>
+<li>在 (2) 处： 关羽和张飞都通过 <code>FromEnemyContext</code> 获得了军情信息。</li>
+</ol>
+<p>虽然他们都使用了相同的函数， 相同的 key， 但是 <strong>传递或得到</strong> 的军情却是不同的。</p>
+<p>我们现在从上到下， 一步步来理清楚。</p>
+<div class="gdoc-page__anchorwrap">
+    <h4 id="background-和-todo">
+        <code>Background</code> 和 <code>TODO</code>
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#background-和-todo" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Background 和 TODO" aria-label="Anchor to: Background 和 TODO" href="#background-%e5%92%8c-todo">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h4>
+</div>
+<p>虽然他们都是 <code>emptyCtx</code> 的实例， 他们 <strong>不能被取消、 没有值、 也没有到期时间</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">background</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">emptyCtx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">todo</span>       <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">emptyCtx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>但是他们用处不同（字面赋予的意义）。</p>
+<ol>
+<li><code>Background</code>: 用于 <code>main</code> 函数、 初始化、 测试以及最顶层的Context。</li>
+<li><code>TODO</code>: 作为一个占位符， 表示这里还不清楚的初始化， 或待替换成其他 context。</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h4 id="重复向-context-传值">
+        重复向 context 传值
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#重复向-context-传值" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 重复向 context 传值" aria-label="Anchor to: 重复向 context 传值" href="#%e9%87%8d%e5%a4%8d%e5%90%91-context-%e4%bc%a0%e5%80%bc">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h4>
+</div>
+<p>在传值使用 <code>WithValue</code>， 省略其他安全边界检查， 可以看到核心代码如下， 每次都创建了一个新的 <code>valueCtx</code> 对象</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">WithValue</span><span class="p">(</span><span class="nx">parent</span> <span class="nx">Context</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">val</span> <span class="nx">any</span><span class="p">)</span> <span class="nx">Context</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// ... 省略安全边界
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">valueCtx</span><span class="p">{</span><span class="nx">parent</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">val</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>我们再来看看 <code>valueCtx</code> 的结构， 非常简单， 就是三个字段。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">valueCtx</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Context</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">key</span><span class="p">,</span> <span class="nx">val</span> <span class="nx">any</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol>
+<li>不管你传入的 context 底层是什么数据结构， 出来的一定是 <code>valueCtx</code> 。</li>
+<li>每一次调用都是一次 <code>valueCtx</code> 的封装。 调用的的越多， 层就越多。 就像俄罗斯套娃一样。</li>
+</ol>
+<p>所以就案例来讲， 画图大概如下。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/03/01/devopscamp-context-sample/context-inject-values.jpg" alt=""  /></p>
+<p>刘备在 main 上套了一层， 关羽在刘备上套了一层。 由于关羽创建新 context 是有条件的， 所以使用虚线表示。</p>
+<div class="gdoc-page__anchorwrap">
+    <h4 id="从-context-取值">
+        从 context 取值
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#从-context-取值" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 从 context 取值" aria-label="Anchor to: 从 context 取值" href="#%e4%bb%8e-context-%e5%8f%96%e5%80%bc">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h4>
+</div>
+<p>这里需要注意， 跟踪 <code>ctx.Value()</code> 其实是到了 <code>Context</code> 接口的定义的 <code>Value</code> 方法字段。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Context</span> <span class="kd">interface</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 省略
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">Value</span><span class="p">(</span><span class="nx">key</span> <span class="nx">any</span><span class="p">)</span> <span class="nx">any</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>因此， 要了解 <code>Value</code> 的实际行为逻辑， 还必须的到清楚 <code>ctx</code> 底层到底是什么结构体？</p>
+<p>我们这里开了天眼， 知道是 <code>valueCtx</code>， 所以直接转到这部分代码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">valueCtx</span><span class="p">)</span> <span class="nf">Value</span><span class="p">(</span><span class="nx">key</span> <span class="nx">any</span><span class="p">)</span> <span class="nx">any</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">c</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="nx">key</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">val</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nf">value</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">value</span><span class="p">(</span><span class="nx">c</span> <span class="nx">Context</span><span class="p">,</span> <span class="nx">key</span> <span class="nx">any</span><span class="p">)</span> <span class="nx">any</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">{</span> <span class="c1">// (1) 循环查找
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">switch</span> <span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span> <span class="o">*</span><span class="nx">valueCtx</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nx">key</span> <span class="o">==</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">key</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">return</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">val</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">c</span> <span class="p">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">Context</span> <span class="c1">// (2) 找到 valueCtx， 但 key 不对， 同变量复制继续循环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// 省略
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">case</span> <span class="o">*</span><span class="nx">emptyCtx</span><span class="p">:</span> <span class="c1">// (3) 如果底层是 emtpyCtx
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">return</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">		<span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Value</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="c1">// (3) 如果最底层是其他自定 Context
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>可以看到， <code>valueCtx.Value</code> 的实现简单粗暴</p>
+<ol>
+<li>先看自己这一层的 key 是否匹配， 匹配则返回 val 值。</li>
+<li>如果不匹配， 那我就不管了。 派遣下面小弟 <code>value()</code> 函数去处理， 自己只需要对外统一返回结果就行。</li>
+</ol>
+<p>在 <code>value()</code> 函数中， 做的事情就比多了。</p>
+<ol>
+<li><strong>(1)</strong> 首先就创建了一个 <code>for {}</code> 死循环， 准备死磕， 非要找到不可。</li>
+<li><strong>(2)</strong> 如果当前的是 valueCtx， 就使用 key 进行比对， 匹配就返回， 不匹配就就把 <code>c</code> 替换成 <strong>父Context</strong>， 继续死磕。</li>
+<li><strong>(3)</strong> 不断的循环迭代， 到最后找到最底层的 Context。
+<ul>
+<li>如果是 <code>emptyCtx</code>， 就直接返回 <code>nil</code></li>
+<li>如果是 <strong>用户自定义</strong> 的 Context ， <code>value()</code> 也不干了， 直接返回用户自定义的方法。 至于后面是什么， 怎么实现的，全看用户。</li>
+</ul>
+</li>
+</ol>
+<p>回到案例中， 情况就比较简单了。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/03/01/devopscamp-context-sample/context-get-values.jpg" alt=""  /></p>
+<ol>
+<li>关羽得到军情， 一定是刘备给的。 用绿线表示。</li>
+<li>而张飞得到军情， 可能是关羽给的、 也可能是刘备给的。从上往下获取。 用黑线表示。</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="总结">
+        总结
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-value-propagation/#总结" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 总结" aria-label="Anchor to: 总结" href="#%e6%80%bb%e7%bb%93">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>本文中， 着力于 <code>valueCtx</code> 的讨论， 而跳过了 <code>timerCtx</code> 和 <code>cancelCtx</code>。</p>
+<p>其一， <code>valueCtx</code> 只有值的操作， 用来说明 Context 的 <strong>层级结构</strong> 更简单。
+其二， <code>timerCtx</code> 和 <code>cancelCtx</code> 可以看作 <code>valueCtx</code> 的扩展。 当后者掌握了之后， 前两者就只需要在补充一点个字特色知识就能掌握。</p>
+
 </article>
 
 
