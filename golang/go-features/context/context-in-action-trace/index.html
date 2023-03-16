@@ -9,9 +9,14 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="在 Linux 中， 使用 ls 命令查看文件夹内容
-ls /path/2/folder 在 Go 中，
-使用 os.ReadDir 获取文件夹中的内容。 使用 os.Stat 获取详细信息， 例如 大小， 权限 等。 func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { name := entry.Name() if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, name) } // 如果是文件 fi, err2 := os.Stat(name) if err2 != nil { panic(err) } fmt.Printf(&#34;%s %d %s\n&#34;, fi.Mode().String(), fi." />
+  <meta name="description" content="Golang Context 值传递的生产案例(01): 链路追踪 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
+状态: 未更新
+原文链接: https://typonotes.com/posts/2023/03/15/golang-context-in-action-trace/
+看完本文
+了解 链路追踪 和 OpenTelemetry 相关知识 了解 Context 值传递是如何在 链路追踪 的发展历程上登台亮相的。 之前在 Golang 上下文 Context 源码解析(1): 值传递 文章中举了一个例子说明讲解 Context 的值传递， 其中说到了 刘备-关羽-张飞 之间使用 Context 传递 曹操军队人数，
+有朋友反馈说这个值应该是 业务参数 放在函数中作为 形参 传递， 难以理解为什么会放在 Context 中。
+func Guanyu(n int) { // statement } func Zhangfei(n int) { // statement } 因此， 这次我们通过生产实际应用， 来说一下 Context 的值传递。
+链路追踪 想必大家也知道， 微服务治理是一个头疼的问题。 由于服务众多且部署分散， 因此通过 调用链路 排查问题就非常重要了。 实现这个的方案就叫 链路追踪 ， 在微服务中非常重要。" />
 
 
   
@@ -40,7 +45,7 @@ ls /path/2/folder 在 Go 中，
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>ls 查看目录内容 | 《Shell 转 Go》</title>
+  <title>2. Golang Context 值传递的生产案例(01) - 链路追踪 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -61,40 +66,50 @@ ls /path/2/folder 在 Go 中，
   
   <meta
     property="og:title"
-    content="ls 查看目录内容"
+    content="2. Golang Context 值传递的生产案例(01) - 链路追踪"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="在 Linux 中， 使用 ls 命令查看文件夹内容
-ls /path/2/folder 在 Go 中，
-使用 os.ReadDir 获取文件夹中的内容。 使用 os.Stat 获取详细信息， 例如 大小， 权限 等。 func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { name := entry.Name() if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, name) } // 如果是文件 fi, err2 := os.Stat(name) if err2 != nil { panic(err) } fmt.Printf(&#34;%s %d %s\n&#34;, fi.Mode().String(), fi." />
+  <meta property="og:description" content="Golang Context 值传递的生产案例(01): 链路追踪 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
+状态: 未更新
+原文链接: https://typonotes.com/posts/2023/03/15/golang-context-in-action-trace/
+看完本文
+了解 链路追踪 和 OpenTelemetry 相关知识 了解 Context 值传递是如何在 链路追踪 的发展历程上登台亮相的。 之前在 Golang 上下文 Context 源码解析(1): 值传递 文章中举了一个例子说明讲解 Context 的值传递， 其中说到了 刘备-关羽-张飞 之间使用 Context 传递 曹操军队人数，
+有朋友反馈说这个值应该是 业务参数 放在函数中作为 形参 传递， 难以理解为什么会放在 Context 中。
+func Guanyu(n int) { // statement } func Zhangfei(n int) { // statement } 因此， 这次我们通过生产实际应用， 来说一下 Context 的值传递。
+链路追踪 想必大家也知道， 微服务治理是一个头疼的问题。 由于服务众多且部署分散， 因此通过 调用链路 排查问题就非常重要了。 实现这个的方案就叫 链路追踪 ， 在微服务中非常重要。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/linux-go-snippet/ls/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/go-features/context/context-in-action-trace/" />
 
-<meta property="article:section" content="Linux Go Snippet" />
+<meta property="article:section" content="Go Features" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="ls 查看目录内容" />
-  <meta name="twitter:description" content="在 Linux 中， 使用 ls 命令查看文件夹内容
-ls /path/2/folder 在 Go 中，
-使用 os.ReadDir 获取文件夹中的内容。 使用 os.Stat 获取详细信息， 例如 大小， 权限 等。 func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { name := entry.Name() if entry.IsDir() { fmt.Printf(&#34;%s 是文件夹\n&#34;, name) } // 如果是文件 fi, err2 := os.Stat(name) if err2 != nil { panic(err) } fmt.Printf(&#34;%s %d %s\n&#34;, fi.Mode().String(), fi." />
+<meta name="twitter:title" content="2. Golang Context 值传递的生产案例(01) - 链路追踪" />
+  <meta name="twitter:description" content="Golang Context 值传递的生产案例(01): 链路追踪 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
+状态: 未更新
+原文链接: https://typonotes.com/posts/2023/03/15/golang-context-in-action-trace/
+看完本文
+了解 链路追踪 和 OpenTelemetry 相关知识 了解 Context 值传递是如何在 链路追踪 的发展历程上登台亮相的。 之前在 Golang 上下文 Context 源码解析(1): 值传递 文章中举了一个例子说明讲解 Context 的值传递， 其中说到了 刘备-关羽-张飞 之间使用 Context 传递 曹操军队人数，
+有朋友反馈说这个值应该是 业务参数 放在函数中作为 形参 传递， 难以理解为什么会放在 Context 中。
+func Guanyu(n int) { // statement } func Zhangfei(n int) { // statement } 因此， 这次我们通过生产实际应用， 来说一下 Context 的值传递。
+链路追踪 想必大家也知道， 微服务治理是一个头疼的问题。 由于服务众多且部署分散， 因此通过 调用链路 排查问题就非常重要了。 实现这个的方案就叫 链路追踪 ， 在微服务中非常重要。" />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Linux Go Snippet",
-      "name": "ls 查看目录内容",
-      "url" : "https://typonotes.com/books/golang/linux-go-snippet/ls/",
-      "headline": "ls 查看目录内容",
-      "description": "在 Linux 中， 使用 ls 命令查看文件夹内容\nls \/path\/2\/folder 在 Go 中，\n使用 os.ReadDir 获取文件夹中的内容。 使用 os.Stat 获取详细信息， 例如 大小， 权限 等。 func OsWalk(name string) { entries, err := os.ReadDir(name) if err != nil { panic(err) } for _, entry := range entries { name := entry.Name() if entry.IsDir() { fmt.Printf(\u0022%s 是文件夹\\n\u0022, name) } \/\/ 如果是文件 fi, err2 := os.Stat(name) if err2 != nil { panic(err) } fmt.Printf(\u0022%s %d %s\\n\u0022, fi.Mode().String(), fi.",
-      "wordCount" : "74",
+      "articleSection": "Go Features",
+      "name": "2. Golang Context 值传递的生产案例(01) - 链路追踪",
+      "url" : "https://typonotes.com/books/golang/go-features/context/context-in-action-trace/",
+      "headline": "2. Golang Context 值传递的生产案例(01) - 链路追踪",
+      "description": "Golang Context 值传递的生产案例(01): 链路追踪 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。\n状态: 未更新\n原文链接: https:\/\/typonotes.com\/posts\/2023\/03\/15\/golang-context-in-action-trace\/\n看完本文\n了解 链路追踪 和 OpenTelemetry 相关知识 了解 Context 值传递是如何在 链路追踪 的发展历程上登台亮相的。 之前在 Golang 上下文 Context 源码解析(1): 值传递 文章中举了一个例子说明讲解 Context 的值传递， 其中说到了 刘备-关羽-张飞 之间使用 Context 传递 曹操军队人数，\n有朋友反馈说这个值应该是 业务参数 放在函数中作为 形参 传递， 难以理解为什么会放在 Context 中。\nfunc Guanyu(n int) { \/\/ statement } func Zhangfei(n int) { \/\/ statement } 因此， 这次我们通过生产实际应用， 来说一下 Context 的值传递。\n链路追踪 想必大家也知道， 微服务治理是一个头疼的问题。 由于服务众多且部署分散， 因此通过 调用链路 排查问题就非常重要了。 实现这个的方案就叫 链路追踪 ， 在微服务中非常重要。",
+      "wordCount" : "230",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/linux-go-snippet/ls/"
+          "@id": "https://typonotes.com/books/golang/go-features/context/context-in-action-trace/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -178,7 +193,7 @@ ls /path/2/folder 在 Go 中，
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/linux-go-snippet/ls/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/go-features/context/context-in-action-trace/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -879,7 +894,7 @@ ls /path/2/folder 在 Go 中，
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-7120c285"
-                
+                checked
               
             />
             <label
@@ -958,7 +973,7 @@ ls /path/2/folder 在 Go 中，
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-aefd5264"
-                
+                checked
               
             />
             <label
@@ -1053,7 +1068,7 @@ ls /path/2/folder 在 Go 中，
                 <span class="flex">
                   <a
                     href="/books/golang/go-features/context/context-in-action-trace/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     2. Golang Context 值传递的生产案例(01) - 链路追踪
                   </a>
@@ -1311,7 +1326,7 @@ ls /path/2/folder 在 Go 中，
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-5bbc575b"
-                checked
+                
               
             />
             <label
@@ -1514,7 +1529,7 @@ ls /path/2/folder 在 Go 中，
                 <span class="flex">
                   <a
                     href="/books/golang/linux-go-snippet/ls/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     ls 查看目录内容
                   </a>
@@ -2211,7 +2226,15 @@ ls /path/2/folder 在 Go 中，
     
   
   
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>ls 查看目录内容</span><meta itemprop='position' content='5' /></li>
+    
+    
+    
+    
+  
+  
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/go-features/' href='/books/golang/go-features/'><span itemprop='name'>03. Go 特性语法</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/go-features/context/' href='/books/golang/go-features/context/'><span itemprop='name'>02. 上下文 Context</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>2. Golang Context 值传递的生产案例(01) - 链路追踪</span><meta itemprop='position' content='6' /></li>
+  
+
   
 
   
@@ -2227,36 +2250,218 @@ ls /path/2/folder 在 Go 中，
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>ls 查看目录内容</h1>
-  <p>在 Linux 中， 使用 <code>ls</code> 命令查看文件夹内容</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls /path/2/folder
-</span></span></code></pre></div><p>在 Go 中，</p>
+  <h1>2. Golang Context 值传递的生产案例(01) - 链路追踪</h1>
+  <div class="gdoc-page__anchorwrap">
+    <h1 id="golang-context-值传递的生产案例01-链路追踪">
+        Golang Context 值传递的生产案例(01): 链路追踪
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-in-action-trace/#golang-context-值传递的生产案例01-链路追踪" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Golang Context 值传递的生产案例(01): 链路追踪" aria-label="Anchor to: Golang Context 值传递的生产案例(01): 链路追踪" href="#golang-context-%e5%80%bc%e4%bc%a0%e9%80%92%e7%9a%84%e7%94%9f%e4%ba%a7%e6%a1%88%e4%be%8b01-%e9%93%be%e8%b7%af%e8%bf%bd%e8%b8%aa">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h1>
+</div>
+<p>如果在 <strong>公众号</strong> 文章发现状态为 <strong>已更新</strong>， 建议点击 <strong>查看原文</strong> 查看最新内容。</p>
+<p>状态: <strong>未更新</strong></p>
+<blockquote>
+<p><strong>原文链接:</strong> <a
+  class="gdoc-markdown__link"
+  href="https://typonotes.com/posts/2023/03/15/golang-context-in-action-trace/"
+>https://typonotes.com/posts/2023/03/15/golang-context-in-action-trace/</a></p>
+</blockquote>
+<p>看完本文</p>
 <ol>
-<li>使用 <code>os.ReadDir</code> 获取文件夹中的内容。</li>
-<li>使用 <code>os.Stat</code> 获取详细信息， 例如 <strong>大小， 权限</strong> 等。</li>
+<li>了解 <strong>链路追踪</strong> 和 OpenTelemetry 相关知识</li>
+<li>了解 Context 值传递是如何在 <strong>链路追踪</strong> 的发展历程上登台亮相的。</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">OsWalk</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">entries</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">ReadDir</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">entry</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">entries</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">name</span> <span class="o">:=</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">Name</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s 是文件夹\n&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="c1">// 如果是文件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">fi</span><span class="p">,</span> <span class="nx">err2</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Stat</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">err2</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s  %d  %s\n&#34;</span><span class="p">,</span> <span class="nx">fi</span><span class="p">.</span><span class="nf">Mode</span><span class="p">().</span><span class="nf">String</span><span class="p">(),</span> <span class="nx">fi</span><span class="p">.</span><span class="nf">Size</span><span class="p">(),</span> <span class="nx">name</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div>
+<p>之前在 <a
+  class="gdoc-markdown__link"
+  href="https://typonotes.com/posts/2023/03/01/devopscamp-context-sample/"
+>Golang 上下文 Context 源码解析(1): 值传递</a> 文章中举了一个例子说明讲解 Context 的值传递， 其中说到了 刘备-关羽-张飞 之间使用 Context 传递 曹操军队人数，</p>
+<p>有朋友反馈说这个值应该是 <strong>业务参数</strong> 放在函数中作为 <strong>形参</strong> 传递， 难以理解为什么会放在 Context 中。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Guanyu</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// statement
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Zhangfei</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// statement
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>因此， 这次我们通过生产实际应用， 来说一下 Context 的值传递。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="链路追踪">
+        链路追踪
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-in-action-trace/#链路追踪" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 链路追踪" aria-label="Anchor to: 链路追踪" href="#%e9%93%be%e8%b7%af%e8%bf%bd%e8%b8%aa">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>想必大家也知道， 微服务治理是一个头疼的问题。 由于服务众多且部署分散， 因此通过 <strong>调用链路</strong> 排查问题就非常重要了。 实现这个的方案就叫 <strong>链路追踪</strong> ， 在微服务中非常重要。</p>
+<p>可以说， 开源项目 OpenTelemetry 在链路追踪层面， 基本上已经是事实标准了。</p>
+<p>Github 地址: <a
+  class="gdoc-markdown__link"
+  href="https://github.com/open-telemetry"
+>https://github.com/open-telemetry</a></p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/03/15/golang-context-in-action-trace/opentelemetry.jpg" alt=""  /></p>
+<p>这里有一个官方一步步实现链路追踪的案例， 可以自己实现一下:
+<a
+  class="gdoc-markdown__link"
+  href="https://github.com/open-telemetry/opentelemetry-go/tree/main/example/fib"
+>https://github.com/open-telemetry/opentelemetry-go/tree/main/example/fib</a></p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="context-在-链路追踪-中的应用">
+        Context 在 链路追踪 中的应用
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-in-action-trace/#context-在-链路追踪-中的应用" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Context 在 链路追踪 中的应用" aria-label="Anchor to: Context 在 链路追踪 中的应用" href="#context-%e5%9c%a8-%e9%93%be%e8%b7%af%e8%bf%bd%e8%b8%aa-%e4%b8%ad%e7%9a%84%e5%ba%94%e7%94%a8">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p>现在假设有 6 个服务， SvcA 1-3 ， SvcB 1-3， 这 6 个服务可能分布在不同机器上面。</p>
+<p><strong>第一阶段</strong></p>
+<p>我们知道他们之间存在调用关系， 但是任何证据支撑。 所以从外部看来， 他们之间就是完全独立的的 6 个服务。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/03/15/golang-context-in-action-trace/micro-services-01.jpg" alt=""  /></p>
+<p>由于时间紧， 任务重， 业务就这样上线了。</p>
+<p><strong>第二阶段</strong></p>
+<p>后来业务出了问题， 除了靠记忆， 就只能现场看代码找调用链路。 排查过程异常艰难。</p>
+<p>于是有人提议说， <strong>不如我们在每个请求中都带上 UUID， 并且打印到日志里面</strong>， 就知道哪些服务在某个请求下， 是有关系的。</p>
+<p>于是就有了 <code>TraceID</code></p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/03/15/golang-context-in-action-trace/micro-services-02.jpg" alt=""  /></p>
+<p><strong>第三阶段</strong></p>
+<p>业务还是除了问题， 这次排查过程相比上次就轻松多了， 但是依然发现了一些 <strong>困惑</strong> 的问题。 <strong>虽然能从日志时间看到服务的调用顺序， 但是并不知道他们之间的调用关系</strong>， 没办法有效的把他们组织起来。</p>
+<p>于是就有人说， <strong>要不在日志中增加两个字段， 表明他们调用的父子关系吧</strong></p>
+<p>于是就有了 <code>ParentSpanID</code> 和 <code>SpanID</code></p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://static.typonotes.com/posts/2023/03/15/golang-context-in-action-trace/micro-services-03.jpg" alt=""  /></p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="使用-context-携带字段">
+        使用 Context 携带字段
+        <a data-clipboard-text="https://typonotes.com/books/golang/go-features/context/context-in-action-trace/#使用-context-携带字段" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 使用 Context 携带字段" aria-label="Anchor to: 使用 Context 携带字段" href="#%e4%bd%bf%e7%94%a8-context-%e6%90%ba%e5%b8%a6%e5%ad%97%e6%ae%b5">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div>
+<p>现在好了我们能通过 <code>TraceID, SpanID, ParentSpanID</code> 搞清楚服务之间的调用关系了。 但是要怎么传递他们呢？</p>
+<p>这些字段是 <strong>肯定不能</strong> 直接放在参数里面，</p>
+<ol>
+<li>这些字段不是业务参数， 放进去会 <strong>污染</strong> 函数或方法。</li>
+<li>即使现在放进去了， 以后要维护 <strong>增加或减少</strong> 怎么办？ 不可能每个地方服务都去改一次吧， 服务里面还有那么多函数。 从理论上来说， 这个就是不合理的设计。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Guanyu</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">TraceID</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">SpanID</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">ParentSpanID</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// statement
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Zhangfei</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">TraceID</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">SpanID</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">ParentSpanID</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// statement
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p><strong>第四阶段</strong></p>
+<p>于是又有人说了， 要不我们统一放在 <code>Context</code> 里面吧，</p>
+<ol>
+<li>Context 本身就是上下文， 就具有传递性。</li>
+<li>而且其设计理论上还可以存储无限多的数据。</li>
+</ol>
+<p>这样我们就只需要在在每个函数或者方法中多添加一个 Context 参数就行了， 维护也方便。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Guanyu</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// statement
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Zhangfei</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// statement
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>这样看起来， 就清爽很多了。 而且这种结构 <strong>是不是很熟悉</strong> ？</p>
+
 </article>
 
 

@@ -276,6 +276,22 @@ func Test_Demo(t *testing.T) { i := 10 j := hello(&amp;amp;i) fmt.Println(i, j) 
     </item>
     
     <item>
+      <title>2. Golang Context 值传递的生产案例(01) - 链路追踪</title>
+      <link>https://typonotes.com/books/golang/go-features/context/context-in-action-trace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/go-features/context/context-in-action-trace/</guid>
+      <description>Golang Context 值传递的生产案例(01): 链路追踪 如果在 公众号 文章发现状态为 已更新， 建议点击 查看原文 查看最新内容。
+状态: 未更新
+原文链接: https://typonotes.com/posts/2023/03/15/golang-context-in-action-trace/
+看完本文
+了解 链路追踪 和 OpenTelemetry 相关知识 了解 Context 值传递是如何在 链路追踪 的发展历程上登台亮相的。 之前在 Golang 上下文 Context 源码解析(1): 值传递 文章中举了一个例子说明讲解 Context 的值传递， 其中说到了 刘备-关羽-张飞 之间使用 Context 传递 曹操军队人数，
+有朋友反馈说这个值应该是 业务参数 放在函数中作为 形参 传递， 难以理解为什么会放在 Context 中。
+func Guanyu(n int) { // statement } func Zhangfei(n int) { // statement } 因此， 这次我们通过生产实际应用， 来说一下 Context 的值传递。
+链路追踪 想必大家也知道， 微服务治理是一个头疼的问题。 由于服务众多且部署分散， 因此通过 调用链路 排查问题就非常重要了。 实现这个的方案就叫 链路追踪 ， 在微服务中非常重要。</description>
+    </item>
+    
+    <item>
       <title>2. 配置文件读取与写入</title>
       <link>https://typonotes.com/books/golang/cobra-in-action/02-json-yaml-config/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
