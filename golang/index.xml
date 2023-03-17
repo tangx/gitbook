@@ -437,6 +437,20 @@ func Mkdir() { os.Mkdir(&amp;#34;path&amp;#34;, os.ModePerm) // 创建一级目�
     </item>
     
     <item>
+      <title>path, filepath 路径管理</title>
+      <link>https://typonotes.com/books/golang/linux-go-snippet/path-and-filepath/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/linux-go-snippet/path-and-filepath/</guid>
+      <description>在 Golang 中， 对于路径管理有两个标准包， path 和 filepath。
+到底使用上有什么区别呢？ 其实也不难， 从名字上就可以看出来。
+path 可以理解成 基础包， 对于分隔符， 只能处理 斜线 / 类型。官方建议是处理 URL 地址， 使用此包。 更多信息， 可以参考包描述信息： https://pkg.go.dev/path#pkg-overview
+filepath 看名字就知道是 文件路径 扩展包。 可以针对处理不同操作类型的的分隔符。 必须 Windows 的 \ ， 其他系统的 /。 另外提供的方法也比 path 多。 同名方法 在实现上， 与 path 还是有差异的。 更多信息， 可以参考包描述信息： https://pkg.go.dev/path/filepath#pkg-overview
+说说 URL 字符串的连接处理（小坑） filepath 和 path 包都提供了 Join() 函数进行字符串的连接。 但是这个方法 不能直接 用来连接 URL， 就是因为 URL 在带有协议的时候， 具有 http://www.example.com/api 使用了两个 // 。
+如果直接 Join() 方法， 将会丢失一个斜线。</description>
+    </item>
+    
+    <item>
       <title>random</title>
       <link>https://typonotes.com/books/golang/linux-go-snippet/random/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -9,6 +9,12 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
+  <meta name="description" content="在 Golang 中， 对于路径管理有两个标准包， path 和 filepath。
+到底使用上有什么区别呢？ 其实也不难， 从名字上就可以看出来。
+path 可以理解成 基础包， 对于分隔符， 只能处理 斜线 / 类型。官方建议是处理 URL 地址， 使用此包。 更多信息， 可以参考包描述信息： https://pkg.go.dev/path#pkg-overview
+filepath 看名字就知道是 文件路径 扩展包。 可以针对处理不同操作类型的的分隔符。 必须 Windows 的 \ ， 其他系统的 /。 另外提供的方法也比 path 多。 同名方法 在实现上， 与 path 还是有差异的。 更多信息， 可以参考包描述信息： https://pkg.go.dev/path/filepath#pkg-overview
+说说 URL 字符串的连接处理（小坑） filepath 和 path 包都提供了 Join() 函数进行字符串的连接。 但是这个方法 不能直接 用来连接 URL， 就是因为 URL 在带有协议的时候， 具有 http://www.example.com/api 使用了两个 // 。
+如果直接 Join() 方法， 将会丢失一个斜线。" />
 
 
   
@@ -37,7 +43,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>Tags | 《Shell 转 Go》</title>
+  <title>path, filepath 路径管理 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -58,19 +64,65 @@
   
   <meta
     property="og:title"
-    content="Tags"
+    content="path, filepath 路径管理"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://typonotes.com/books/golang/tags/" />
+  <meta property="og:description" content="在 Golang 中， 对于路径管理有两个标准包， path 和 filepath。
+到底使用上有什么区别呢？ 其实也不难， 从名字上就可以看出来。
+path 可以理解成 基础包， 对于分隔符， 只能处理 斜线 / 类型。官方建议是处理 URL 地址， 使用此包。 更多信息， 可以参考包描述信息： https://pkg.go.dev/path#pkg-overview
+filepath 看名字就知道是 文件路径 扩展包。 可以针对处理不同操作类型的的分隔符。 必须 Windows 的 \ ， 其他系统的 /。 另外提供的方法也比 path 多。 同名方法 在实现上， 与 path 还是有差异的。 更多信息， 可以参考包描述信息： https://pkg.go.dev/path/filepath#pkg-overview
+说说 URL 字符串的连接处理（小坑） filepath 和 path 包都提供了 Join() 函数进行字符串的连接。 但是这个方法 不能直接 用来连接 URL， 就是因为 URL 在带有协议的时候， 具有 http://www.example.com/api 使用了两个 // 。
+如果直接 Join() 方法， 将会丢失一个斜线。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://typonotes.com/books/golang/linux-go-snippet/path-and-filepath/" />
 
-
+<meta property="article:section" content="Linux Go Snippet" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Tags" />
+<meta name="twitter:title" content="path, filepath 路径管理" />
+  <meta name="twitter:description" content="在 Golang 中， 对于路径管理有两个标准包， path 和 filepath。
+到底使用上有什么区别呢？ 其实也不难， 从名字上就可以看出来。
+path 可以理解成 基础包， 对于分隔符， 只能处理 斜线 / 类型。官方建议是处理 URL 地址， 使用此包。 更多信息， 可以参考包描述信息： https://pkg.go.dev/path#pkg-overview
+filepath 看名字就知道是 文件路径 扩展包。 可以针对处理不同操作类型的的分隔符。 必须 Windows 的 \ ， 其他系统的 /。 另外提供的方法也比 path 多。 同名方法 在实现上， 与 path 还是有差异的。 更多信息， 可以参考包描述信息： https://pkg.go.dev/path/filepath#pkg-overview
+说说 URL 字符串的连接处理（小坑） filepath 和 path 包都提供了 Join() 函数进行字符串的连接。 但是这个方法 不能直接 用来连接 URL， 就是因为 URL 在带有协议的时候， 具有 http://www.example.com/api 使用了两个 // 。
+如果直接 Join() 方法， 将会丢失一个斜线。" />
 
 
+  <script type="application/ld+json">
+  {
+      "@context": "http://schema.org",
+      "@type": "TechArticle",
+      "articleSection": "Linux Go Snippet",
+      "name": "path, filepath 路径管理",
+      "url" : "https://typonotes.com/books/golang/linux-go-snippet/path-and-filepath/",
+      "headline": "path, filepath 路径管理",
+      "description": "在 Golang 中， 对于路径管理有两个标准包， path 和 filepath。\n到底使用上有什么区别呢？ 其实也不难， 从名字上就可以看出来。\npath 可以理解成 基础包， 对于分隔符， 只能处理 斜线 \/ 类型。官方建议是处理 URL 地址， 使用此包。 更多信息， 可以参考包描述信息： https:\/\/pkg.go.dev\/path#pkg-overview\nfilepath 看名字就知道是 文件路径 扩展包。 可以针对处理不同操作类型的的分隔符。 必须 Windows 的 \\ ， 其他系统的 \/。 另外提供的方法也比 path 多。 同名方法 在实现上， 与 path 还是有差异的。 更多信息， 可以参考包描述信息： https:\/\/pkg.go.dev\/path\/filepath#pkg-overview\n说说 URL 字符串的连接处理（小坑） filepath 和 path 包都提供了 Join() 函数进行字符串的连接。 但是这个方法 不能直接 用来连接 URL， 就是因为 URL 在带有协议的时候， 具有 http:\/\/www.example.com\/api 使用了两个 \/\/ 。\n如果直接 Join() 方法， 将会丢失一个斜线。",
+      "wordCount" : "125",
+      "inLanguage": "en",
+      "isFamilyFriendly": "true",
+      "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://typonotes.com/books/golang/linux-go-snippet/path-and-filepath/"
+      },
+      "copyrightHolder" : "《Shell 转 Go》",
+      "copyrightYear" : "0001",
+      "dateCreated": "0001-01-01T00:00:00.00Z",
+      "datePublished": "0001-01-01T00:00:00.00Z",
+      "dateModified": "0001-01-01T00:00:00.00Z",
+      "publisher":{
+          "@type":"Organization",
+          "name": "《Shell 转 Go》",
+          "url": "https://typonotes.com/books/golang/",
+          "logo": {
+              "@type": "ImageObject",
+              "url": "https://typonotes.com/books/golang/brand.svg",
+              "width":"32",
+              "height":"32"
+          }
+      }
+  }
+  </script>
 
 
   
@@ -135,7 +187,7 @@
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/tags/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/linux-go-snippet/path-and-filepath/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -1268,7 +1320,7 @@
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-5bbc575b"
-                
+                checked
               
             />
             <label
@@ -1579,7 +1631,7 @@
                 <span class="flex">
                   <a
                     href="/books/golang/linux-go-snippet/path-and-filepath/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     path, filepath 路径管理
                   </a>
@@ -2163,20 +2215,119 @@
 
       <div class="gdoc-page">
         
+
+
+
+  
+
+
+
+
+
+
+<div
+  class="gdoc-page__header flex flex-wrap
+  
+    justify-between
+  
+  hidden-mobile
+  "
+  itemprop="breadcrumb"
+>
+  
+    <div>
+      <svg class="gdoc-icon gdoc_path hidden-mobile"><use xlink:href="#gdoc_path"></use></svg>
+      <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+        
+        
+        
+        
   
   
-
-
-<nav class="gdoc-paging flex flex-even align-center" role="navigation">
-  <div class="gdoc-paging__item gdoc-paging__item--prev">
     
-  </div>
-  <div class="gdoc-paging__state">1/0</div>
-  <div class="gdoc-paging__item gdoc-paging__item--next">
     
-  </div>
-</nav>
+    
+    
+  
+  
+    
+    
+    
+    
+  
+  
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/linux-go-snippet/' href='/books/golang/linux-go-snippet/'><span itemprop='name'>05. Go 实现: Shell 命令</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>path, filepath 路径管理</span><meta itemprop='position' content='5' /></li>
+  
 
+  
+
+  
+
+      </ol>
+    </div>
+  
+  
+</div>
+
+
+
+<article class="gdoc-markdown gdoc-markdown__align-- left">
+  <h1>path, filepath 路径管理</h1>
+  <p>在 Golang 中， 对于路径管理有两个标准包， <code>path</code> 和 <code>filepath</code>。</p>
+<p>到底使用上有什么区别呢？ 其实也不难， 从名字上就可以看出来。</p>
+<ol>
+<li>
+<p><code>path</code> 可以理解成 <strong>基础包</strong>， 对于分隔符， 只能处理 <strong>斜线 <code>/</code></strong> 类型。官方建议是处理 URL 地址， 使用此包。 更多信息， 可以参考包描述信息： <a
+  class="gdoc-markdown__link"
+  href="https://pkg.go.dev/path#pkg-overview"
+>https://pkg.go.dev/path#pkg-overview</a></p>
+</li>
+<li>
+<p><code>filepath</code> 看名字就知道是 <strong>文件路径</strong> 扩展包。 可以针对处理不同操作类型的的分隔符。 必须 Windows 的 <code>\</code> ， 其他系统的 <code>/</code>。 另外提供的方法也比 <code>path</code> 多。 <strong>同名方法</strong> 在实现上， 与 <code>path</code> 还是有差异的。 更多信息， 可以参考包描述信息： <a
+  class="gdoc-markdown__link"
+  href="https://pkg.go.dev/path/filepath#pkg-overview"
+>https://pkg.go.dev/path/filepath#pkg-overview</a></p>
+</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="说说-url-字符串的连接处理小坑">
+        说说 URL 字符串的连接处理（小坑）
+        <a data-clipboard-text="https://typonotes.com/books/golang/linux-go-snippet/path-and-filepath/#说说-url-字符串的连接处理小坑" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 说说 URL 字符串的连接处理（小坑）" aria-label="Anchor to: 说说 URL 字符串的连接处理（小坑）" href="#%e8%af%b4%e8%af%b4-url-%e5%ad%97%e7%ac%a6%e4%b8%b2%e7%9a%84%e8%bf%9e%e6%8e%a5%e5%a4%84%e7%90%86%e5%b0%8f%e5%9d%91">
+            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div>
+<p><code>filepath</code> 和 <code>path</code> 包都提供了 <code>Join()</code> 函数进行字符串的连接。 但是这个方法 <strong>不能直接</strong> 用来连接 URL， 就是因为 URL 在带有协议的时候， 具有 <code>http://www.example.com/api</code> 使用了两个 <code>//</code> 。</p>
+<p>如果直接 <code>Join()</code> 方法， 将会丢失一个斜线。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestPathJoinURL</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">domain</span> <span class="o">:=</span> <span class="s">&#34;http://www.baidu.com/chatgpt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span> <span class="o">:=</span> <span class="s">&#34;/api/v1/demo&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">s</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">domain</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Output:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 注意， 这里协议后面少了一个斜线。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// http:/www.baidu.com/chatgpt/api/v1/demo
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>而应该使用 <code>url.PathJoin</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Test_URLJoinURL</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">domain</span> <span class="o">:=</span> <span class="s">&#34;http://www.baidu.com/chatgpt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span> <span class="o">:=</span> <span class="s">&#34;/api/v1/demo&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">s</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">JoinPath</span><span class="p">(</span><span class="nx">domain</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Output:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// http://www.baidu.com/chatgpt/api/v1/demo
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div>
+</article>
 
 
 
