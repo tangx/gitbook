@@ -39,5 +39,20 @@ VSCode 本身并不是某个特定语言的 IDE。 但是安装了插件 VSCode 
 Go 相关的 必须安装的 Go 插件 , 现在已经交给 Go Team 维护: 非常有用的 Go template 插件， 可以提供 template 的 高亮 和 格式化。 测试使用的 Go Test Explorer， 前期不写单元测试， 也可以不装。 提供代码片段缩写的 Go Snippet， 有用但不多。 可以将 JSON 文件直接转换成结构体的 Paste JSON as Code 通用的 格式化 JSON 的 Json Tools。 展示更方便。 远程开发必备的 Remote - SSH。 可以直接在目标机器（容器）中开发、调试。 一款网络请求的客户端工具 REST Client , 有他就可以不用 Postman 了。 工具 在安装完 最核心的 Go 插件后， VSCode 就会推荐按安装各种开发工具了。</description>
     </item>
     
+    <item>
+      <title>04. 项目的目录结构</title>
+      <link>https://typonotes.com/books/golang/startup/layout/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/startup/layout/</guid>
+      <description>go 官方本身并没有约束 特定 的项目目录结构， 只有两条最终要的规则
+main.main() 是入口 import 没有循环。 1. 社区建议 然后社区还是给出了推荐的目录结构，可以参考如下。
+https://github.com/golang-standards/project-layout?tab=readme-ov-file
+更详细的说明可以参考 《Cobra 实战》的项目目录鹅机构
+2. 实际情况 实际情况就很复杂了。 比如线上环境和开发完全的不一致（做过政府项目的都知道）
+所以
+不同公司都有自己的要求， 跟着要求走就好了。 个人项目， 可以按照社区规范执行。 规范只是一群特定的人的共同约束， 大家认可就行了。 不必吐槽公司不按照社区规范执行。</description>
+    </item>
+    
   </channel>
 </rss>

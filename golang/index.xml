@@ -212,6 +212,21 @@ continue 和 break 的 Label 可以省略。 continue|break [Label] goto 必须�
     </item>
     
     <item>
+      <title>04. 项目的目录结构</title>
+      <link>https://typonotes.com/books/golang/startup/layout/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://typonotes.com/books/golang/startup/layout/</guid>
+      <description>go 官方本身并没有约束 特定 的项目目录结构， 只有两条最终要的规则
+main.main() 是入口 import 没有循环。 1. 社区建议 然后社区还是给出了推荐的目录结构，可以参考如下。
+https://github.com/golang-standards/project-layout?tab=readme-ov-file
+更详细的说明可以参考 《Cobra 实战》的项目目录鹅机构
+2. 实际情况 实际情况就很复杂了。 比如线上环境和开发完全的不一致（做过政府项目的都知道）
+所以
+不同公司都有自己的要求， 跟着要求走就好了。 个人项目， 可以按照社区规范执行。 规范只是一群特定的人的共同约束， 大家认可就行了。 不必吐槽公司不按照社区规范执行。</description>
+    </item>
+    
+    <item>
       <title>05. 并发选择语句 (select)</title>
       <link>https://typonotes.com/books/golang/shell-to-go/process-control/select/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

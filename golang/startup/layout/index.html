@@ -9,8 +9,13 @@
 <meta name="generator" content="Hugo 0.105.0">
 
 
-  <meta name="description" content="Shell function abc() { n=$1 if [ $n -gt 100 ]; then { # 括号可有可无 echo &#34;无效&#34; } elif [ $n -gt 90 ]; then echo &#34;优秀&#34; else { echo &#34;一般&#34; } fi } 在 Shell 中，
-if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有可无， 但是最好还是带上， 增强可读性。 判断条件使用 方括号 [ ] 或 [[ ]] 定义。 Go func if_else(n int) { if n &gt;= 100 || n &lt;= -1 { fmt.Println(&#34;无效&#34;) } else if n &gt; 90 { fmt." />
+  <meta name="description" content="go 官方本身并没有约束 特定 的项目目录结构， 只有两条最终要的规则
+main.main() 是入口 import 没有循环。 1. 社区建议 然后社区还是给出了推荐的目录结构，可以参考如下。
+https://github.com/golang-standards/project-layout?tab=readme-ov-file
+更详细的说明可以参考 《Cobra 实战》的项目目录鹅机构
+2. 实际情况 实际情况就很复杂了。 比如线上环境和开发完全的不一致（做过政府项目的都知道）
+所以
+不同公司都有自己的要求， 跟着要求走就好了。 个人项目， 可以按照社区规范执行。 规范只是一群特定的人的共同约束， 大家认可就行了。 不必吐槽公司不按照社区规范执行。" />
 
 
   
@@ -39,7 +44,7 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5359126171348711"
   crossorigin="anonymous"></script>
 
-  <title>01. 条件语句 (if) | 《Shell 转 Go》</title>
+  <title>04. 项目的目录结构 | 《Shell 转 Go》</title>
 
   <link rel="icon" type="image/svg+xml" href="/books/golang/favicon/favicon.svg" />
 <link
@@ -60,38 +65,48 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
   
   <meta
     property="og:title"
-    content="01. 条件语句 (if)"
+    content="04. 项目的目录结构"
   />
   <meta property="og:site_name" content="《Shell 转 Go》" />
-  <meta property="og:description" content="Shell function abc() { n=$1 if [ $n -gt 100 ]; then { # 括号可有可无 echo &#34;无效&#34; } elif [ $n -gt 90 ]; then echo &#34;优秀&#34; else { echo &#34;一般&#34; } fi } 在 Shell 中，
-if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有可无， 但是最好还是带上， 增强可读性。 判断条件使用 方括号 [ ] 或 [[ ]] 定义。 Go func if_else(n int) { if n &gt;= 100 || n &lt;= -1 { fmt.Println(&#34;无效&#34;) } else if n &gt; 90 { fmt." />
+  <meta property="og:description" content="go 官方本身并没有约束 特定 的项目目录结构， 只有两条最终要的规则
+main.main() 是入口 import 没有循环。 1. 社区建议 然后社区还是给出了推荐的目录结构，可以参考如下。
+https://github.com/golang-standards/project-layout?tab=readme-ov-file
+更详细的说明可以参考 《Cobra 实战》的项目目录鹅机构
+2. 实际情况 实际情况就很复杂了。 比如线上环境和开发完全的不一致（做过政府项目的都知道）
+所以
+不同公司都有自己的要求， 跟着要求走就好了。 个人项目， 可以按照社区规范执行。 规范只是一群特定的人的共同约束， 大家认可就行了。 不必吐槽公司不按照社区规范执行。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://typonotes.com/books/golang/shell-to-go/process-control/if-else/" />
+<meta property="og:url" content="https://typonotes.com/books/golang/startup/layout/" />
 
-<meta property="article:section" content="Shell to Go" />
+<meta property="article:section" content="Startup" />
 
 
   <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="01. 条件语句 (if)" />
-  <meta name="twitter:description" content="Shell function abc() { n=$1 if [ $n -gt 100 ]; then { # 括号可有可无 echo &#34;无效&#34; } elif [ $n -gt 90 ]; then echo &#34;优秀&#34; else { echo &#34;一般&#34; } fi } 在 Shell 中，
-if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有可无， 但是最好还是带上， 增强可读性。 判断条件使用 方括号 [ ] 或 [[ ]] 定义。 Go func if_else(n int) { if n &gt;= 100 || n &lt;= -1 { fmt.Println(&#34;无效&#34;) } else if n &gt; 90 { fmt." />
+<meta name="twitter:title" content="04. 项目的目录结构" />
+  <meta name="twitter:description" content="go 官方本身并没有约束 特定 的项目目录结构， 只有两条最终要的规则
+main.main() 是入口 import 没有循环。 1. 社区建议 然后社区还是给出了推荐的目录结构，可以参考如下。
+https://github.com/golang-standards/project-layout?tab=readme-ov-file
+更详细的说明可以参考 《Cobra 实战》的项目目录鹅机构
+2. 实际情况 实际情况就很复杂了。 比如线上环境和开发完全的不一致（做过政府项目的都知道）
+所以
+不同公司都有自己的要求， 跟着要求走就好了。 个人项目， 可以按照社区规范执行。 规范只是一群特定的人的共同约束， 大家认可就行了。 不必吐槽公司不按照社区规范执行。" />
 
 
   <script type="application/ld+json">
   {
       "@context": "http://schema.org",
       "@type": "TechArticle",
-      "articleSection": "Shell to Go",
-      "name": "01. 条件语句 (if)",
-      "url" : "https://typonotes.com/books/golang/shell-to-go/process-control/if-else/",
-      "headline": "01. 条件语句 (if)",
-      "description": "Shell function abc() { n=$1 if [ $n -gt 100 ]; then { # 括号可有可无 echo \u0022无效\u0022 } elif [ $n -gt 90 ]; then echo \u0022优秀\u0022 else { echo \u0022一般\u0022 } fi } 在 Shell 中，\nif-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有可无， 但是最好还是带上， 增强可读性。 判断条件使用 方括号 [ ] 或 [[ ]] 定义。 Go func if_else(n int) { if n \u003e= 100 || n \u003c= -1 { fmt.Println(\u0022无效\u0022) } else if n \u003e 90 { fmt.",
-      "wordCount" : "115",
+      "articleSection": "Startup",
+      "name": "04. 项目的目录结构",
+      "url" : "https://typonotes.com/books/golang/startup/layout/",
+      "headline": "04. 项目的目录结构",
+      "description": "go 官方本身并没有约束 特定 的项目目录结构， 只有两条最终要的规则\nmain.main() 是入口 import 没有循环。 1. 社区建议 然后社区还是给出了推荐的目录结构，可以参考如下。\nhttps:\/\/github.com\/golang-standards\/project-layout?tab=readme-ov-file\n更详细的说明可以参考 《Cobra 实战》的项目目录鹅机构\n2. 实际情况 实际情况就很复杂了。 比如线上环境和开发完全的不一致（做过政府项目的都知道）\n所以\n不同公司都有自己的要求， 跟着要求走就好了。 个人项目， 可以按照社区规范执行。 规范只是一群特定的人的共同约束， 大家认可就行了。 不必吐槽公司不按照社区规范执行。",
+      "wordCount" : "28",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://typonotes.com/books/golang/shell-to-go/process-control/if-else/"
+          "@id": "https://typonotes.com/books/golang/startup/layout/"
       },
       "copyrightHolder" : "《Shell 转 Go》",
       "copyrightYear" : "0001",
@@ -175,7 +190,7 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
   href="/books/golang/custom.css"
   media="all"
 />
-  <link href="https://typonotes.com/books/golang/shell-to-go/process-control/if-else/" rel="canonical" type="text/html" />
+  <link href="https://typonotes.com/books/golang/startup/layout/" rel="canonical" type="text/html" />
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
@@ -330,7 +345,7 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-5d75f187"
-                
+                checked
               
             />
             <label
@@ -490,7 +505,7 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
                 <span class="flex">
                   <a
                     href="/books/golang/startup/layout/"
-                    class="gdoc-nav__entry"
+                    class="gdoc-nav__entry is-active"
                   >
                     04. 项目的目录结构
                   </a>
@@ -524,7 +539,7 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-9e280bda"
-                checked
+                
               
             />
             <label
@@ -668,7 +683,7 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
               type="checkbox"
               
                 class="gdoc-nav__toggle" id="navtree-309be815"
-                checked
+                
               
             />
             <label
@@ -727,7 +742,7 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
                 <span class="flex">
                   <a
                     href="/books/golang/shell-to-go/process-control/if-else/"
-                    class="gdoc-nav__entry is-active"
+                    class="gdoc-nav__entry"
                   >
                     01. 条件语句 (if)
                   </a>
@@ -2373,15 +2388,7 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
     
   
   
-    
-    
-    
-    
-  
-  
-    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/' href='/books/golang/shell-to-go/'><span itemprop='name'>02. Go基础语法: Shell to Go</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/shell-to-go/process-control/' href='/books/golang/shell-to-go/process-control/'><span itemprop='name'>03. 流程控制</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>01. 条件语句 (if)</span><meta itemprop='position' content='6' /></li>
-  
-
+    <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/' href='/books/golang/'><span itemprop='name'></span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/books/golang/startup/' href='/books/golang/startup/'><span itemprop='name'>01. Go开发环境配置</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>04. 项目的目录结构</span><meta itemprop='position' content='5' /></li>
   
 
   
@@ -2397,83 +2404,45 @@ if-else-fi 是通过关键字约束 语句块 边界的。 大括号 {} 可有�
 
 
 <article class="gdoc-markdown gdoc-markdown__align-- left">
-  <h1>01. 条件语句 (if)</h1>
-  <div class="gdoc-page__anchorwrap">
-    <h2 id="shell">
-        Shell
-        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/process-control/if-else/#shell" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Shell" aria-label="Anchor to: Shell" href="#shell">
+  <h1>04. 项目的目录结构</h1>
+  <p>go 官方本身并没有约束 <strong>特定</strong> 的项目目录结构， 只有两条最终要的规则</p>
+<ol>
+<li><code>main.main()</code> 是入口</li>
+<li><code>import</code> 没有循环。</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="1-社区建议">
+        1. 社区建议
+        <a data-clipboard-text="https://typonotes.com/books/golang/startup/layout/#1-社区建议" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 1. 社区建议" aria-label="Anchor to: 1. 社区建议" href="#1-%e7%a4%be%e5%8c%ba%e5%bb%ba%e8%ae%ae">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">function</span> abc<span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">n</span><span class="o">=</span><span class="nv">$1</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">[</span> <span class="nv">$n</span> -gt <span class="m">100</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">        <span class="o">{</span> <span class="c1"># 括号可有可无</span>
-</span></span><span class="line"><span class="cl">            <span class="nb">echo</span> <span class="s2">&#34;无效&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="o">[</span> <span class="nv">$n</span> -gt <span class="m">90</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">            <span class="nb">echo</span> <span class="s2">&#34;优秀&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">else</span>
-</span></span><span class="line"><span class="cl">        <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="nb">echo</span> <span class="s2">&#34;一般&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>在 Shell 中，</p>
-<ol>
-<li><code>if-else-fi</code> 是通过关键字约束 <strong>语句块</strong> 边界的。</li>
-<li>大括号 <code>{}</code> 可有可无， 但是最好还是带上， 增强可读性。</li>
-<li>判断条件使用 <strong>方括号</strong>  <code>[ ]</code> 或 <code>[[ ]]</code> 定义。</li>
-</ol>
+<p>然后社区还是给出了推荐的目录结构，可以参考如下。</p>
+<p><a
+  class="gdoc-markdown__link"
+  href="https://github.com/golang-standards/project-layout?tab=readme-ov-file"
+>https://github.com/golang-standards/project-layout?tab=readme-ov-file</a></p>
+<p>更详细的说明可以参考 <a
+  class="gdoc-markdown__link"
+  href="/books/golang/cobra-in-action/04-layout/"
+>《Cobra 实战》的项目目录鹅机构</a></p>
 <div class="gdoc-page__anchorwrap">
-    <h2 id="go">
-        Go
-        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/process-control/if-else/#go" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Go" aria-label="Anchor to: Go" href="#go">
+    <h2 id="2-实际情况">
+        2. 实际情况
+        <a data-clipboard-text="https://typonotes.com/books/golang/startup/layout/#2-实际情况" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 2. 实际情况" aria-label="Anchor to: 2. 实际情况" href="#2-%e5%ae%9e%e9%99%85%e6%83%85%e5%86%b5">
             <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
 </div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">if_else</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">n</span> <span class="o">&gt;=</span> <span class="mi">100</span> <span class="o">||</span> <span class="nx">n</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;无效&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">n</span> <span class="p">&gt;</span> <span class="mi">90</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;优秀&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;一般&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>在 Go 中，</p>
+<p>实际情况就很复杂了。 比如线上环境和开发完全的不一致（做过政府项目的都知道）</p>
+<p>所以</p>
 <ol>
-<li>大括号 <code>{}</code> 是语句块的定义， 必须存在。</li>
-<li>没有关键字 <code>then, elif, fi</code>。</li>
+<li><strong>不同公司都有自己的要求， 跟着要求走就好了。</strong></li>
+<li>个人项目， 可以按照社区规范执行。</li>
 </ol>
-<div class="gdoc-page__anchorwrap">
-    <h3 id="go-中的逻辑运算符">
-        Go 中的逻辑运算符
-        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/process-control/if-else/#go-中的逻辑运算符" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Go 中的逻辑运算符" aria-label="Anchor to: Go 中的逻辑运算符" href="#go-%e4%b8%ad%e7%9a%84%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%e7%ac%a6">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<ol>
-<li><code>&amp;&amp;</code> 与</li>
-<li><code>||</code> 或</li>
-<li><code>!</code> 非</li>
-</ol>
-<p>这点在 Shell 中使一致的。</p>
-<div class="gdoc-page__anchorwrap">
-    <h3 id="关系运算符">
-        关系运算符
-        <a data-clipboard-text="https://typonotes.com/books/golang/shell-to-go/process-control/if-else/#关系运算符" class="gdoc-page__anchor clip flex align-center" title="Anchor to: 关系运算符" aria-label="Anchor to: 关系运算符" href="#%e5%85%b3%e7%b3%bb%e8%bf%90%e7%ae%97%e7%ac%a6">
-            <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-        </a>
-    </h3>
-</div>
-<ol>
-<li><code>==</code> 等于， <code>!=</code> 不等于</li>
-<li><code>&gt;, &lt;, &gt;=, &lt;=</code> 很直观。</li>
-</ol>
+<p>规范只是一群特定的人的共同约束， 大家认可就行了。
+不必吐槽公司不按照社区规范执行。</p>
 
 </article>
 
