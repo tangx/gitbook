@@ -1,0 +1,30 @@
+baseURL = "https://typenotes.com/books/react/"
+title = "《React 18 step by step》"
+theme = "hugo-geekdoc"
+
+pluralizeListTitles = false
+
+# Geekdoc required configuration
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+disablePathToLower = true
+
+# Required if you want to render robots.txt template
+enableRobotsTXT = true
+
+# Needed for mermaid shortcodes
+[markup]
+  [markup.goldmark.renderer]
+    # Needed for mermaid shortcode
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 9
+
+[taxonomies]
+   tag = "tags"
+
+# 去除静态文件前缀
+# md 文件为了引用公共文件， 使用了项目级别绝对路径 /docs/static/logo.png
+[params.static_prefix]
+  name = "/docs"
