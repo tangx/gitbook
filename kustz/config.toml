@@ -1,5 +1,5 @@
-baseURL = "https://tangx.in/books/kustz/"
-title = "kustz 写你自己的工具"
+baseURL = "https://typenotes.com/books/react/"
+title = "《React 18 step by step》"
 theme = "hugo-geekdoc"
 
 pluralizeListTitles = false
