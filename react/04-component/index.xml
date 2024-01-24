@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>4. 组件 on 《React 18 step by step》</title><link>https://typenotes.com/books/react/04-component/</link><description>Recent content in 4. 组件 on 《React 18 step by step》</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://typenotes.com/books/react/04-component/index.xml" rel="self" type="application/rss+xml"/><item><title>01. 组件式开发</title><link>https://typenotes.com/books/react/04-component/what-is-component/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://typenotes.com/books/react/04-component/what-is-component/</guid><description>1. 组件是什么 组件是用户界面的一部分， 他可以有自己的的逻辑和外观。
+组件之间 可以互相嵌套 组件 可以多次重复使用 组件化开发， 可以让开发者像搭积木一样构建一个庞大而完整的新系统。
+2. 如何定义组件</description></item><item><title>02. 如何定义组件</title><link>https://typenotes.com/books/react/04-component/define-component/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://typenotes.com/books/react/04-component/define-component/</guid><description>组件的定义方式有两种。
+函数式组件： 最常用 类式组件 组件名通常使用 大驼峰 命名方式， 即 首字母大写的驼峰
+例如， MyButton, UserInfoDisplay
+1. 组件的定义 1.1. 函数式组件 在 /src/components/component/FuncComponent.js 中
+function FunctionButtion() { return ( &amp;lt;button&amp;gt;function buttion&amp;lt;/button&amp;gt; ) } export default FunctionButtion; 1.2. 箭头函数式组件 箭头函数也是函数， 所以和上面 function 定义没什么区别。 也在 /src/components/component/FuncComponent.js 中
+export const ArrowFuncButtion = () =&amp;gt; { return ( &amp;lt;button&amp;gt;arrow func button&amp;lt;/button&amp;gt; ) } 1.3. 类式组件 这个有有点特别了， 在 React 18 中， 已经不怎么用了。</description></item></channel></rss>
