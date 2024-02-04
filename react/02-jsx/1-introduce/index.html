@@ -19,7 +19,8 @@
 <label><span class=flex><a href=/books/react/02-jsx/3-list-render/ class=gdoc-nav__entry>03. 列表与字典渲染</a></span></label></li><li><input type=checkbox class=hidden>
 <label><span class=flex><a href=/books/react/02-jsx/4-conditional-render/ class=gdoc-nav__entry>04. 条件渲染</a></span></label></li></ul></li><li><input type=checkbox class=hidden>
 <label><span class=flex>3. 事件绑定</span></label><ul class=gdoc-nav__list><li><input type=checkbox class=hidden>
-<label><span class=flex><a href=/books/react/03-event/onlick/ class=gdoc-nav__entry>1. OnClick Event</a></span></label></li></ul></li><li><input type=checkbox class=hidden>
+<label><span class=flex><a href=/books/react/03-event/on-click/ class=gdoc-nav__entry>1. OnClick 点击事件</a></span></label></li><li><input type=checkbox class=hidden>
+<label><span class=flex><a href=/books/react/03-event/on-change/ class=gdoc-nav__entry>onChange 变更事件实现数据绑定</a></span></label></li></ul></li><li><input type=checkbox class=hidden>
 <label><span class=flex>4. 组件</span></label><ul class=gdoc-nav__list><li><input type=checkbox class=hidden>
 <label><span class=flex><a href=/books/react/04-component/what-is-component/ class=gdoc-nav__entry>01. 组件式开发</a></span></label></li><li><input type=checkbox class=hidden>
 <label><span class=flex><a href=/books/react/04-component/define-component/ class=gdoc-nav__entry>02. 如何定义组件</a></span></label></li></ul></li><li><input type=checkbox class=hidden>
@@ -28,7 +29,10 @@
 <label><span class=flex><a href=/books/react/05-hooks/use-immer/ class=gdoc-nav__entry>02. useImmer</a></span></label></li></ul></li><li><input type=checkbox class=hidden>
 <label><span class=flex>6. 样式管理</span></label><ul class=gdoc-nav__list><li><input type=checkbox class=hidden>
 <label><span class=flex><a href=/books/react/06-styles/style/ class=gdoc-nav__entry>01. 样式的使用</a></span></label></li></ul></li><li><input type=checkbox class=hidden>
-<label><span class=flex>99. demos</span></label><ul class=gdoc-nav__list><li><input type=checkbox class=hidden>
+<label><span class=flex>98. 三方库</span></label><ul class=gdoc-nav__list><li><input type=checkbox class=hidden>
+<label><span class=flex><a href=/books/react/98-library/chassnames/ class=gdoc-nav__entry>classnames 使用对象管理 className</a></span></label></li><li><input type=checkbox class=hidden>
+<label><span class=flex>lodash 工具库</span></label></li></ul></li><li><input type=checkbox class=hidden>
+<label><span class=flex>99. 项目案例</span></label><ul class=gdoc-nav__list><li><input type=checkbox class=hidden>
 <label><span class=flex><a href=/books/react/99-demos/bili-comment/ class=gdoc-nav__entry>01. B站评论</a></span></label></li></ul></li></ul></section><section class=gdoc-nav--more></section></nav></aside><div class=gdoc-page><div class="gdoc-page__header flex flex-wrap
 justify-between
 hidden-mobile" itemprop=breadcrumb><div><svg class="gdoc-icon gdoc_path hidden-mobile"><use xlink:href="#gdoc_path"/></svg><ol class=breadcrumb itemscope itemtype=https://schema.org/BreadcrumbList><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a itemscope itemtype=https://schema.org/WebPage itemprop=item itemid=/books/react/ href=/books/react/><span itemprop=name></span></a><meta itemprop=position content="3"></li><li>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a itemscope itemtype=https://schema.org/WebPage itemprop=item itemid=/books/react/02-jsx/ href=/books/react/02-jsx/><span itemprop=name>2. jsx 基础用法</span></a><meta itemprop=position content="4"></li><li>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><span itemprop=name>01. jsx 的介绍</span><meta itemprop=position content="5"></li></ol></div></div><article class="gdoc-markdown gdoc-markdown__align-- left"><h1>01. jsx 的介绍</h1><p>之前在 <code>/src/App.js</code> 中说到了 <code>className</code> 是 react 语法。 更准确的说是 <strong>JSX</strong> 语法。</p><p>这是一个带有变量的例子</p><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=c1>// 定义 变量
