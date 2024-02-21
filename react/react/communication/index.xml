@@ -2,4 +2,4 @@
 解决了 props 中不相关的组件之间需要传递数据时 状态提升 的复杂操作。
 使用 createContext 方法创建一个 上下文对象 Ctx 在顶层组件 (如图, App) 中使用 Ctx.Provider 组件提供数据。 在下层组件 (如图, B) 中使用 useContext 钩子获取消费数据。 在 /src/components/communication/UseContext.jsx 中， 定义三个组件形成嵌套关系
 UseContext, 对应上图中的 App A 对应 A B 对应 B 1. 定义 MsgContext 在文件级别， 使用 createContext 创建 Context 对象
-注意: 经测试， 创建时提供的 default value 并不起作用。 实际 可用数据 还是需要在 &amp;lt;MsgContext.</description></item></channel></rss>
+注意: 经测试， 创建时提供的 default value 并不起作用。 实际 可用数据 还是需要在 &amp;lt;MsgContext.</description></item><item><title>redux</title><link>https://typonotes.com/books/react/react/communication/redux/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://typonotes.com/books/react/react/communication/redux/</guid><description>到 三方库/redux 中查看</description></item></channel></rss>
