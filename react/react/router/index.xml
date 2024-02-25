@@ -14,4 +14,7 @@ import { Link } from &amp;#34;react-router-dom&amp;#34;; import { useParams } fr
 嵌套到一级路由内的路由又被称为 二级路由。 以此类推， 三级、四级路由。
 最常见应用场景， 就是 系统管理界面， 如图。
 1. 使用 children 属性配置路由嵌套关系 在 /src/components/router/RootRouter.jsx 中， 添加路由表。
-const router = createBrowserRouter([ { path: &amp;#34;/&amp;#34;, element: &amp;lt;Layout /&amp;gt;, // 指定子路由 children: [ // 子路由与父路由定义方式一样 { path: &amp;#34;/board&amp;#34;, element: &amp;lt;Board /&amp;gt; }, { path: &amp;#34;/about&amp;#34;, element: &amp;lt;About /&amp;gt; } ], } ]) 2. 使用 &amp;lt;Outlet /&amp;gt; 指定二级路由渲染位置 在 /src/components/router/Layout/index.</description></item></channel></rss>
+const router = createBrowserRouter([ { path: &amp;#34;/&amp;#34;, element: &amp;lt;Layout /&amp;gt;, // 指定子路由 children: [ // 子路由与父路由定义方式一样 { path: &amp;#34;/board&amp;#34;, element: &amp;lt;Board /&amp;gt; }, { path: &amp;#34;/about&amp;#34;, element: &amp;lt;About /&amp;gt; } ], } ]) 2. 使用 &amp;lt;Outlet /&amp;gt; 指定二级路由渲染位置 在 /src/components/router/Layout/index.</description></item><item><title>5. 默认路径</title><link>https://typonotes.com/books/react/react/router/404-page/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://typonotes.com/books/react/react/router/404-page/</guid><description>在 router 配置的时候， path 的值使用 * 即可配置默认路径。 当用户访问路径无法匹配时返回。
+通常， 默认路径可以用于 优化 404 页面， 提高用户体验。
+在 /src/components/router/RootRouter.jsx 中,
+const router = createBrowserRouter([ { // 使用 * 匹配所有路由 path: &amp;#34;*&amp;#34;, element: &amp;lt;NotFound /&amp;gt; } ])</description></item></channel></rss>
