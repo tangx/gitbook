@@ -10,4 +10,8 @@ import { createBrowserRouter, RouterProvider } from &amp;#34;react-router-dom&am
 路径传参: /path/1234/zhangsan query请求传参: /article?id=1101&amp;amp;name=wangwu 1. 路径传参 顾名思义， 就是 将参数放在 path 中。
 在使用之前需要 定义参数名称和位置。 使用 useParams 接受参数 在 /src/components/router/RootRouter.jsx 中
 const router = createBrowserRouter([ { // 定义参数位置和名称 path: &amp;#34;/article/:id/:name&amp;#34;, element: &amp;lt;Article /&amp;gt; } ]) 在 /src/components/router/Article/index.jsx 中使用 useParams 使用 解构赋值 接受参数
-import { Link } from &amp;#34;react-router-dom&amp;#34;; import { useParams } from &amp;#34;react-router-dom&amp;#34;; export default function Article() { // 使用 解构赋值 获取路由参数 const { id, name } = useParams(); return ( &amp;lt;div&amp;gt; &amp;lt;h3&amp;gt;8.</description></item></channel></rss>
+import { Link } from &amp;#34;react-router-dom&amp;#34;; import { useParams } from &amp;#34;react-router-dom&amp;#34;; export default function Article() { // 使用 解构赋值 获取路由参数 const { id, name } = useParams(); return ( &amp;lt;div&amp;gt; &amp;lt;h3&amp;gt;8.</description></item><item><title>4. 嵌套路由</title><link>https://typonotes.com/books/react/react/router/nested-routers/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://typonotes.com/books/react/react/router/nested-routers/</guid><description>嵌套路由: 在一级路由中 内嵌 了其他路由， 这种路由关系就叫做 嵌套路由。
+嵌套到一级路由内的路由又被称为 二级路由。 以此类推， 三级、四级路由。
+最常见应用场景， 就是 系统管理界面， 如图。
+1. 使用 children 属性配置路由嵌套关系 在 /src/components/router/RootRouter.jsx 中， 添加路由表。
+const router = createBrowserRouter([ { path: &amp;#34;/&amp;#34;, element: &amp;lt;Layout /&amp;gt;, // 指定子路由 children: [ // 子路由与父路由定义方式一样 { path: &amp;#34;/board&amp;#34;, element: &amp;lt;Board /&amp;gt; }, { path: &amp;#34;/about&amp;#34;, element: &amp;lt;About /&amp;gt; } ], } ]) 2. 使用 &amp;lt;Outlet /&amp;gt; 指定二级路由渲染位置 在 /src/components/router/Layout/index.</description></item></channel></rss>
