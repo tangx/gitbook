@@ -2,4 +2,5 @@
 2. mock 数据 创建 /src/demos/redux-meituan/mock 目录， 创建mock 数据。
 $ npm install json-server 启动服务
 $ json-server --watch data.json --port 3101 3. 对外提供数据 对外提供数据
-const takeawayURL = &amp;#39;http://localhost:3101/takeaway&amp;#39; export { takeawayURL }</description></item></channel></rss>
+const takeawayURL = &amp;#39;http://localhost:3101/takeaway&amp;#39; export { takeawayURL }</description></item><item><title>2. 使用 redux 管理数据</title><link>https://typonotes.com/books/react/demos/redux-meituan/initial-store/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://typonotes.com/books/react/demos/redux-meituan/initial-store/</guid><description>1. 创建 takeaway slice 在 /src/demos/redux-meituan/store/modules/takeaway.js
+使用 @reduxjs/toolkit 提供的 createSlice 创建 state 对象 并导出 reducer import { createSlice } from &amp;#39;@reduxjs/toolkit&amp;#39; import { defaultFoodsList } from &amp;#39;./default&amp;#39; const takeaway = createSlice({ // 名称 name: &amp;#39;takeaway&amp;#39;, // 初始数据 initialState: { foodsList: defaultFoodsList, }, // actions reducers: { } }) // 导出 reducer 在 store/index.js 中合并 const takeawayReducer = takeaway.reducer export default takeawayReducer 初始化 foodsList 的时候使用了 精简版 的默认值， 保证数据解构完整性。 以避免从服务器获取数据失败时的渲染报错。</description></item></channel></rss>
