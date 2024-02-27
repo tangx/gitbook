@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2. 书写位置</title>
+  <!-- 2.1. 外部 -->
+  <script src="http://cdn.example.com/position.js"></script>
+</head>
+
+<body>
+  <!-- 2.2. 外部 -->
+  <script src="./position.js"></script>
+
+  <script>
+    // 1. 内部
+    console.log('script标签可以放在body标签内部');
+  </script>
+
+  <!-- 3. 内联 -->
+  <botton onclick="alert('内联 js')">内联</botton>
+</body>
+
+</html>
