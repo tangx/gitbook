@@ -1,5 +1,5 @@
-baseURL = "https://typonotes.com/books/grpc-go/"
-title = "Grpc-Go"
+baseURL = "https://typonotes.com/books/grpc/"
+title = "gRPC"
 theme = "hugo-geekdoc"
 
 pluralizeListTitles = false
