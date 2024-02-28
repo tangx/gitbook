@@ -1,1 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>1. 环境准备 on Rust Rusher</title><link>https://typonotes.com/books/rust/setup/</link><description>Recent content in 1. 环境准备 on Rust Rusher</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/rust/setup/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>1. 环境准备 on Rust Rusher</title><link>https://typonotes.com/books/rust/setup/</link><description>Recent content in 1. 环境准备 on Rust Rusher</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/rust/setup/index.xml" rel="self" type="application/rss+xml"/><item><title>1. 安装配置</title><link>https://typonotes.com/books/rust/setup/install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://typonotes.com/books/rust/setup/install/</guid><description>1. 安装 在 官网 有推荐的安装方式。
+但是我并不喜欢这种脚本的方式， 不知道发生了什么。
+$ curl --proto &amp;#39;=https&amp;#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh 还可以跳转到 其他安装方式 - 独立安装 下载对应的系统的安装包。
+Mac 系统只提供了 pkg ，不提供 tar.gz 我不是很开心。
+下载对应系统的安装文件。 双击安装， 全部下一步即可。
+当前版本为 v1.76.0
+安装完成后，
+$ which rustc cargo /usr/local/bin/rustc /usr/local/bin/cargo $ rustc --version rustc 1.76.0 (07dca489a 2024-02-04) 2. vscode 配置 官方插件 rust-analyzer cargo 管理插件 crates</description></item><item><title>2. rustup</title><link>https://typonotes.com/books/rust/setup/rustup/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://typonotes.com/books/rust/setup/rustup/</guid><description>我也不知道做什么的， 看文档是管理 rust 版本的。
+官网: https://rust-lang.github.io/rustup/index.html Github: https://github.com/rust-lang/rustup</description></item></channel></rss>
