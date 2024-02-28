@@ -39,7 +39,7 @@ enableRobotsTXT = true
 [params]
     # (Optional, default static/brand.svg) Set the path to a logo for the Geekdoc
     # relative to your 'static/' folder.
-    geekdocLogo = "react.svg"
+    geekdocLogo = "rust-logo.svg"
 
     # 侧边栏折叠
     geekdocCollapseAllSections = true
