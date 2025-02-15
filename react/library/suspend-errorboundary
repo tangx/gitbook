@@ -1,0 +1,59 @@
+---
+title: Suspend and ErrorBoundary
+---
+
+Promise 有三种状态
+
+1. pending: 处理状态
+2. fullfilled: 成功状态， 使用 `Suspend` 处理
+3. rejected: 失败状态， 使用 `ErrorBoundary` 处理
+
+
+```bash
+bun install react-error-boundary
+```
+
+在 Pending 的时候， 处于等待状态。 为了保证用户体验更好，可以给出等待状态。
+
+```tsx
+import { Suspense } from "react"
+import { ErrorBoundary } from "react-error-boundary"
+
+
+export function MessageContainer() {
+  // const messagePromise = fetchMessage()
+  return (
+    <div>
+      <ErrorBoundary fallback={<p>⚠️Something went wrong</p>}>
+        <Suspense fallback={<h3>⏬Loading ...</h3>}>
+          <Message messagePromise={fetchMessage()} />
+        </Suspense>
+      </ErrorBoundary>
+    </div>
+  )
+}
+```
+
+## 封装
+
+```ts
+
+interface SuspendWithErrorProps {
+  success: React.ReactNode
+  // failed: React.ReactNode
+  children: React.ReactNode
+}
+
+function SuspendWithError(props: SuspendWithErrorProps) {
+  return (
+    <>
+      <ErrorBoundary fallback={<p>Something went wrong</p>}>  // 预设的错误状态
+        <Suspense fallback={props.success}> // 外部的成功状态
+          // 传入的节点
+          {props.children}
+        </Suspense>
+      </ErrorBoundary>
+    </>
+  )
+}
+```
