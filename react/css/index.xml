@@ -1,1 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>5. CSS on React18</title><link>https://typonotes.com/books/react/css/</link><description>Recent content in 5. CSS on React18</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/react/css/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>5. CSS on React 18/19</title><link>https://typonotes.com/books/react/css/</link><description>Recent content in 5. CSS on React 18/19</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://typonotes.com/books/react/css/index.xml" rel="self" type="application/rss+xml"/><item><title>1. 选择器</title><link>https://typonotes.com/books/react/css/class-selector/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://typonotes.com/books/react/css/class-selector/</guid><description>选择器 通用选择选择器 *
+元素选择器 h1, div ...
+类选择器 .name
+ID选择器 #name
+元素选择器 [name]
+* {} h1 {} .left {} #app {} [title] {} 1. 选择器关系 （组合使用） 这里的所有代词都可以替换为上述选择器。
+1. 后代关系 包含 亲子关系 及以后的所有后代。 选择器之间使用 空格 连接。
+father .son, father grandson ...。
+father son {} div grandson {} 1.</description></item><item><title>2. 伪类选择器</title><link>https://typonotes.com/books/react/css/pseudo-class-selector/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://typonotes.com/books/react/css/pseudo-class-selector/</guid><description>伪类(pseudo class) 即 类所处的一种状体。 使用 冒号 : 连接 类 与 状态
+a:link { color: green; } div:hover{ font-size: 30px; } 常见的状态有 (lvha), 效果与定义顺序有关系。
+link : (&amp;lt;a&amp;gt; 特有属性) 表示 未访问过的 链接状态。 visited: (&amp;lt;a&amp;gt; 特有属性) 表示 访问过的 链接状态。 hover: 通用属性， 表示 鼠标悬浮 时的状态。 active: 通用属性， 表示 鼠标点击但未抬起 时的状体。</description></item></channel></rss>

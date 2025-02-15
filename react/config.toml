@@ -1,5 +1,5 @@
 baseURL = "https://typonotes.com/books/react/"
-title = "React18"
+title = "React 18/19"
 theme = "hugo-geekdoc"
 
 pluralizeListTitles = false
